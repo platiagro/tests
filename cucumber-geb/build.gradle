@@ -1,0 +1,179 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.9"
+
+		// if you use the version of cucumber-jvm that the plugin was built with
+		classpath "io.cucumber:cucumber-core:4.2.0" //classpath "info.cukes:cucumber-core:1.2.5"
+		classpath 'ru.alfalab.gradle:cucumber-reporting-gradle-plugin:0.1.0'
+		classpath 'org.apache.logging.log4j:log4j-api:2.8.2'
+		classpath 'org.apache.logging.log4j:log4j-core:2.8.2'
+	}
+}
+
+ext {
+	groovyVersion = '2.5.6' //groovyVersion = '2.4.5'
+	gebVersion = '2.3.1' //gebVersion = '1.1.1'
+	seleniumVersion = '3.5.3' //seleniumVersion = '2.51.0'
+	cucumberJvmVersion = '4.2.0' //cucumberJvmVersion = '1.2.5'
+	chromeDriverVersion = '2.37'
+	phantomJsVersion = '1.9.8'
+	ieDriverVersion = '2.49.0'
+	firefoxDriverVersion = '0.22.0'
+
+	ciBuild = System.getenv('SNAP_CI')
+}
+
+apply plugin: "groovy"
+apply plugin: "com.github.samueltbrown.cucumber"
+
+apply from: "gradle/idea/idea.gradle"
+apply from: "gradle/osSpecificDownloads.gradle"
+apply plugin: 'ru.alfalab.cucumber-reporting'
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
+	testCompile "org.gebish:geb-core:$gebVersion"
+	testCompile "org.seleniumhq.selenium:selenium-api:$seleniumVersion"
+	testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+	compile 'com.github.groovy-wslite:groovy-wslite:1.1.2'
+
+	testCompile "io.cucumber:cucumber-core:$cucumberJvmVersion" //"info.cukes:cucumber-core:$cucumberJvmVersion"
+	testCompile "io.cucumber:cucumber-groovy:$cucumberJvmVersion" //"info.cukes:cucumber-groovy:$cucumberJvmVersion"
+	// this supplies some pre-built cucumber steps for driving Geb,
+	// see https://github.com/tomdcc/geb-cucumber
+	testCompile "io.jdev.geb:geb-cucumber:0.3"
+	//compile 'com.github.mkolisnyk:cucumber-runner:1.0.10'
+	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+	testCompile 'org.apache.logging.log4j:log4j-api:2.8.2'
+	testCompile 'org.apache.logging.log4j:log4j-core:2.8.2'
+
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+  compile "commons-io:commons-io:2.5"
+
+
+	// pick whichever drivers you want. We test against most of them here.
+	// see src/test/resources/GebConfig.groovy for how to switch between them
+	compile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion" 
+	compile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+	// using a custom version of phantomjs driver for now as the original one does not support WebDriver > 2.43.1
+	compile("com.codeborne:phantomjsdriver:1.2.1") {
+		// phantomjs driver pulls in a different selenium version
+		transitive = false
+	}
+	compile "org.seleniumhq.selenium:selenium-ie-driver:$seleniumVersion"
+
+	compile fileTree(dir: 'lib', include: '*.jar')
+}
+
+cucumber {
+	println "### getting log4j2"
+	System.setProperty("log4j.configurationFile","log4j2.xml");
+	println "### getting ReportsDir"
+	System.setProperty("ReportsDir","${project.buildDir}/reports/cucumber");
+
+
+	formats = [
+		'pretty', // prints nice format out to the console
+		'html:build/reports/cucumber', // html
+		'junit:build/cucumber.xml', // junit format for integration with CI tool etc
+    'json:build/cucumber.json'
+		]
+
+	// src/cucumber/resources is included automatically
+	glueDirs = [
+		"classpath:io.jdev.geb.cucumber.steps.groovy.pt" //Esta dando erro com o cucumber 4.2.0 "classpath:io.jdev.geb.cucumber.steps.groovy.en"
+	]
+	strict = true
+}
+
+cucumberReporting {
+    cucumberResultsDirectory = file("${project.buildDir}") // cucumber results dir (eg. cucumber.json location)
+    outputDirectory = file("${project.buildDir}/reports/cucumber") // directory for save html reports
+}
+
+tasks.cucumber {
+
+	if(project.hasProperty('env')){
+		println "### getting env ${env}"
+		System.setProperty("geb.env", "${env}")
+	}
+
+	dependsOn unzipChromeDriver, unzipPhantomJs, unzipIEDriver, unzipFirefoxDriver 
+
+	def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromeDriver.exe" : "chromedriver"
+	def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
+	def iedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "IEDriverServer.exe" : "IEDriverServer"
+	def firefoxDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "geckodriver.exe" : "firefoxdriver"
+	
+
+	jvmOptions.systemProperties([
+		"webdriver.chrome.driver": new File(unzipChromeDriver.outputs.files.singleFile, chromeDriverFilename).absolutePath,
+		"phantomjs.binary.path": new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath,
+		"webdriver.ie.driver": new File(unzipIEDriver.outputs.files.singleFile, iedriverFilename).absolutePath,
+		"webdriver.gecko.driver": new File(unzipFirefoxDriver.outputs.files.singleFile, firefoxDriverFilename).absolutePath,		
+		"geb.cucumber.step.packages": "pages",
+		"geb.env": System.getProperty("geb.env"),
+		"log4j.configurationFile": System.getProperty("log4j.configurationFile"), 
+		"ReportsDir": System.getProperty("ReportsDir")
+	])
+
+}
+
+apply from: "gradle/ci.gradle"
+
+task bdd() {
+	dependsOn tasks.cucumber.dependsOn
+	doLast{
+		 println "### BDD running"
+			if(project.hasProperty('tag')){
+				String stags //Tratamento das tags com ~ e multiplas tags
+				if (tag.indexOf("@",2) == -1){
+					stags = tag
+				}
+				else
+				{
+					if (tag.indexOf("~@",0) != -1){ //~@ só pode estar na primeira tag
+						stags = tag.replace("~@", ", ~@") //tratamento para separar as tags por ,
+						stags = stags.substring(2,stags.length())
+						if (stags.indexOf("@",2) != -1){
+							String stagsa = stags.substring(2,stags.length())
+							String stagsb = stagsa.replace("@", ", @") //tratamento para separar as tags por ,
+							stags = stags.substring(0,2) + stagsb
+						}
+					}
+					else
+					{
+						stags = tag.replace("@", ", @") //tratamento para separar as tags por ,
+						stags = stags.substring(2,stags.length())
+					}
+				}//fim tratamento tags
+				//println "### getting tag ${tag}"
+				println "### getting tags ${stags}"
+				tasks.cucumber.tags=[stags]
+			}
+			println "### executing cucumber"
+			tasks.cucumber.execute()
+	}
+ }
+
+task bddReport() {
+	dependsOn tasks.generateCucumberReport.dependsOn
+
+	doLast{
+		//tasks.generateCucumberReport.setOnlyIf { true }
+	   tasks.generateCucumberReport.outputs.upToDateWhen { false }
+		 println "### BDD Report running"
+			tasks.generateCucumberReport.execute()
+	}
+}
+bdd.finalizedBy bddReport

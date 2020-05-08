@@ -1,0 +1,141 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+import org.apache.commons.io.FileUtils
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "commons-io:commons-io:2.4"
+	}
+}
+
+task downloadChromeDriver {
+	enabled = !ciBuild
+
+	def outputFile = file("$buildDir/webdriver/chromedriver.zip")
+	inputs.property("chromeDriverVersion", chromeDriverVersion)
+	outputs.file(outputFile)
+
+	doLast {
+		def driverOsFilenamePart
+		if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+			driverOsFilenamePart = "win32"
+		} else if (Os.isFamily(Os.FAMILY_MAC)) {
+			driverOsFilenamePart = "mac64"
+		} else if (Os.isFamily(Os.FAMILY_UNIX)) {
+			driverOsFilenamePart = Os.isArch("amd64") ? "linux64" : "linux32"
+		}
+		FileUtils.copyURLToFile(new URL("http://chromedriver.storage.googleapis.com/${chromeDriverVersion}/chromedriver_${driverOsFilenamePart}.zip"), outputFile)
+	}
+}
+
+task unzipChromeDriver(type: Copy) {
+	enabled = !ciBuild
+
+	def outputDir = file("$buildDir/webdriver/chromedriver")
+	dependsOn downloadChromeDriver
+	outputs.dir(outputDir)
+
+	from(zipTree(downloadChromeDriver.outputs.files.singleFile))
+	into(outputDir)
+}
+
+task downloadPhantomJs {
+	def osFilenamePart
+	if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+		osFilenamePart = "windows.zip"
+	} else if (Os.isFamily(Os.FAMILY_MAC)) {
+		osFilenamePart = "macosx.zip"
+	} else if (Os.isFamily(Os.FAMILY_UNIX)) {
+		osFilenamePart = Os.isArch("amd64") ? "linux-x86_64.tar.bz2" : "linux-i686.tar.bz2"
+	}
+
+	def filename = "phantomjs-$phantomJsVersion-$osFilenamePart"
+	def outputFile = file("$buildDir/webdriver/$filename")
+	inputs.property("phantomJsVersion", phantomJsVersion)
+	outputs.file(outputFile)
+
+	doLast {
+		FileUtils.copyURLToFile(new URL("https://bitbucket.org/ariya/phantomjs/downloads/$filename"), outputFile)
+	}
+}
+
+task unzipPhantomJs(type: Copy) {
+	def outputDir = file("$buildDir/webdriver/phantomjs")
+	dependsOn downloadPhantomJs
+	outputs.dir(outputDir)
+
+	def archive = downloadPhantomJs.outputs.files.singleFile
+
+	from(Os.isFamily(Os.FAMILY_MAC) || Os.isFamily(Os.FAMILY_WINDOWS) ? zipTree(archive) : tarTree(archive))
+	into(outputDir)
+	eachFile { FileCopyDetails fcp ->
+		fcp.relativePath = new RelativePath(!fcp.directory, *fcp.relativePath.segments[1..-1])
+	}
+}
+
+task downloadInternetExplorerDriver {
+		//enabled = !ciBuild
+
+		def outputFile = file("$buildDir/webdriver/IEdriver.zip")
+    inputs.property("IEDriverVersion", ieDriverVersion)
+    outputs.file(outputFile)
+		def ieDriverVersionShort = ieDriverVersion.substring(0, 4)
+
+    doLast {
+        def driverOsFilenamePart
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //driverOsFilenamePart = "x64"
+						driverOsFilenamePart = "Win32" //navegador 32 bits
+        } else if (Os.isFamily(Os.FAMILY_MAC)) {
+            driverOsFilenamePart = "mac32"
+        } else if (Os.isFamily(Os.FAMILY_UNIX)) {
+            driverOsFilenamePart = Os.isArch("amd64") ? "linux64" : "linux32"
+        }
+        println "https://code.google.com/p/selenium/downloads/detail?name=IEDriverServer_${driverOsFilenamePart}_${ieDriverVersion}"
+				FileUtils.copyURLToFile(new URL("http://selenium-release.storage.googleapis.com/${ieDriverVersionShort}/IEDriverServer_${driverOsFilenamePart}_${ieDriverVersion}.zip"), outputFile)
+    }
+}
+
+task unzipIEDriver(type: Copy) {
+    def outputDir = file("$buildDir/webdriver/IEdriver")
+    dependsOn downloadInternetExplorerDriver
+    outputs.dir(outputDir)
+
+    from(zipTree(downloadInternetExplorerDriver.outputs.files.singleFile))
+    into(outputDir)
+}
+
+task downloadFirefoxDriver {
+	//enabled = !ciBuild
+	
+	def outputFile = file("$buildDir/webdriver/firefoxdriver.zip")
+	inputs.property("firefoxDriverVersion", firefoxDriverVersion)
+	outputs.file(outputFile)
+
+	doLast {
+		def driverOsFilenamePart
+		if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+			//driverOsFilenamePart = "win32"
+			driverOsFilenamePart = "win64"
+		} else if (Os.isFamily(Os.FAMILY_MAC)) {
+			driverOsFilenamePart = "mac64"
+		} else if (Os.isFamily(Os.FAMILY_UNIX)) {
+			driverOsFilenamePart = Os.isArch("amd64") ? "linux64" : "linux32"
+		}
+		println "https://github.com/mozilla/geckodriver/releases/download/v${firefoxDriverVersion}/geckodriver-v${firefoxDriverVersion}-${driverOsFilenamePart}.zip"
+		FileUtils.copyURLToFile(new URL("https://github.com/mozilla/geckodriver/releases/download/v${firefoxDriverVersion}/geckodriver-v${firefoxDriverVersion}-${driverOsFilenamePart}.zip"), outputFile)
+	}
+}
+
+task unzipFirefoxDriver(type: Copy) {
+	//enabled = !ciBuild
+
+	def outputDir = file("$buildDir/webdriver/firefoxdriver")
+	dependsOn downloadFirefoxDriver
+	outputs.dir(outputDir)
+
+	from(zipTree(downloadFirefoxDriver.outputs.files.singleFile))
+	into(outputDir)
+}

@@ -1,0 +1,11 @@
+if (System.getenv('SNAP_CI')) {
+	tasks.cucumber {
+		jvmOptions.systemProperties("webdriver.chrome.driver": "/usr/loal/bin/chromedriver")		
+	}
+
+	tasks.withType(Test) {
+		testLogging {
+			exceptionFormat = 'full'
+		}
+	}
+}
