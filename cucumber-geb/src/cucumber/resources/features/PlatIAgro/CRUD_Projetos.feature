@@ -32,7 +32,8 @@ E nomear o projeto com: 'ProjetoTeste'
 E deixar a descrição em branco 
 E selecionar o botão Criar projeto  
 Então o projeto será criado
-E o usuário irá escolher se deseja iniciar uma Experimentação ou uma Pré-implantação
+E será adicionado a lista de projetos
+E o usuário poderá escolher se deseja iniciar uma Experimentação ou uma Pré-implantação
 
 
 @CRUDPROJ
@@ -43,8 +44,11 @@ E nomear o projeto com: 'ProjetoTeste2'
 E deixar a descrição em branco 
 E selecionar o botão Criar projeto  
 Então o projeto será criado
-Quando selecionar o botão Editar - íncone Lápis ao lado do nome do projeto
-E renomear o projeto com:'Teste Projeto3'
+E será adicionado a lista de projetos
+Quando o usuário selecionar o projeto
+E for direcionado a página do projeto
+E selecionar o botão Editar - íncone Lápis ao lado do nome do projeto
+E renomear o projeto como:'Teste Projeto3'
 Então o nome do projeto será atualizado
 
 
@@ -56,11 +60,13 @@ E nomear o projeto com: 'ProjetoTeste'
 E deixar a descrição em branco 
 E selecionar o botão Criar projeto  
 Então o projeto será criado
+E será adicionado a lista de projetos
 
-Quando o usuário estiver na página do Projeto
-E selecionar o botão Excluir Projeto
+Quando o usuário selecionar o projeto
+E for direcionado a página do projeto
+E selecionar o botão Excluir 
 E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
-E o usuário confirmar a operação clicando no botão Sim
+E confirmar a operação clicando no botão Sim
 Então o projeto será excluido
 
 
