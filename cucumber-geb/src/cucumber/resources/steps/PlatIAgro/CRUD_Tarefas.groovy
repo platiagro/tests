@@ -22,8 +22,6 @@ Então(~/o usuário irá selecionar a aba Tarefas do Menu/){->
    } Thread.sleep(5000) 
 }
 
-
-
 //C01
 
 Dado(/que o usuário acessa a tela inicial da plataforma/){->

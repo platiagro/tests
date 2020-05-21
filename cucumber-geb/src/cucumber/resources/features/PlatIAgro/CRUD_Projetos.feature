@@ -9,46 +9,82 @@ Como usuário da plataforma, desejo criar um novo Projeto para iniciar um experi
 
 Contexto: Acessar Plataforma
 Dado que o usuário acessa a plataforma PlatIAgro
-E é apresentado a página inicial da plataforma
-Então o usuário irá selecionar a aba Projetos do Menu
+E está na tela de longin
+Quando inserir o usuário:'user'
+E inserir a senha:'000000'
+E confirmar
+Então será apresentado a página inicial da plataforma
 
 
 @CRUDPROJ
 Cenário: C01 - Lista de Projetos
-Dado que o usuário acessa a tela inicial da plataforma
-E selecionar a aba Projetos do Menu
-Quando o sistema direcionar o usuário para a página de Projetos
-Então deverá observar que todas os projetos existentes estarão listados
-E as informações dos projetos estarão divididos em três colunas: Nome do Projeto, Data de Criação e Ação
+Dado que o usuário está na página inicial da plataforma
+Quando selecionar o menu Meus Projetos
+E será apresentado uma lista com os projetos existentes
+Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Ultima modificação e Ação
 
 
 @CRUDPROJ
 Cenário: C02 - Criar Projeto
-Dado que o usuário está na página Projetos da plataforma
+Dado que o usuário está na página Meus Projetos
 Quando selecionar o botão Novo Projeto
-E o sistema abrir um modal para o usuário informar o nome do projeto com:'Teste Projeto1'
-E selecionar o botão Criar
-Então o projeto será criado 
-E o usuário será direcionado para a página de experimentos do projeto
+E nomear o projeto com: 'ProjetoTeste'
+E deixar a descrição em branco 
+E selecionar o botão Criar projeto  
+Então o projeto será criado
+E o usuário irá escolher se deseja iniciar uma Experimentação ou uma Pré-implantação
 
 
 @CRUDPROJ
 Cenário: C03 - Alterar nome do Projeto
-Dado que o usuário está na página de Experimentos do Projetos
+Dado que o usuário está na página Meus Projetos
+Quando selecionar o botão Novo Projeto
+E nomear o projeto com: 'ProjetoTeste2'
+E deixar a descrição em branco 
+E selecionar o botão Criar projeto  
+Então o projeto será criado
 Quando selecionar o botão Editar - íncone Lápis ao lado do nome do projeto
-E renomear o projeto com:'Teste Projeto2'
+E renomear o projeto com:'Teste Projeto3'
 Então o nome do projeto será atualizado
 
 
 @CRUDPROJ
 Cenário: C04 - Excluir Projeto
-Dado que o usuário está na página Projetos da plataforma
-Quando selecionar um projeto na lista de Projetos
-E clicar no botão Excluir
+Dado que o usuário está na página Meus Projetos
+Quando selecionar o botão Novo Projeto
+E nomear o projeto com: 'ProjetoTeste'
+E deixar a descrição em branco 
+E selecionar o botão Criar projeto  
+Então o projeto será criado
+
+Quando o usuário estiver na página do Projeto
+E selecionar o botão Excluir Projeto
 E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
+E o usuário confirmar a operação clicando no botão Sim
+Então o projeto será excluido
+
+
+
+@CRUDPROJ
+Cenário: C05 - Excluir Projeto - Ação Excluir
+Dado que o usuário está na página inicial da plataforma
+Quando selecionar o menu Meus Projetos
+E será apresentado uma lista com os projetos existentes
+E selecionar um dos projetos da lista
+E na coluna ação selecionar a opção Excluir
+Quando o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
 E o usuário confirmar a operação clicando no botão Sim
 Então o projeto será excluido da lista de Projetos
 
 
-
+@CRUDPROJ
+Cenário: C06 - Excluir N Projetos
+Dado que o usuário está na página inicial da plataforma
+Quando selecionar o menu Meus Projetos
+E será apresentado uma lista com os projetos existentes
+E selecionar vários projetos da lista
+E selecionaro botão Excluir Projetos
+Quando o sistema abrir uma pop-up com a seguinte mensagem "Excluir projetos selecionados?"
+E o usuário confirmar a operação clicando no botão Sim
+Então os projetos serão excluidos da lista de Projetos
 
