@@ -89,7 +89,7 @@ Dado que o usuário está na página inicial da plataforma
 Quando selecionar o menu Meus Projetos
 E será apresentado uma lista com os projetos existentes
 E selecionar vários projetos da lista
-E selecionaro botão Excluir Projetos
+E selecionar o botão Excluir Selecionadoso
 Quando o sistema abrir uma pop-up com a seguinte mensagem "Excluir projetos selecionados?"
 E o usuário confirmar a operação clicando no botão Sim
 Então os projetos serão excluidos da lista de Projetos

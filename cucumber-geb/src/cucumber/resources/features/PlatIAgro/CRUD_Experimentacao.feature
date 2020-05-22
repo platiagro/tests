@@ -25,7 +25,8 @@ E nomear o projeto com: 'ProjetoTeste'
 E deixar a descrição em branco 
 E selecionar o botão Criar projeto  
 Então o projeto será criado
-E o usuário irá escolher a opção Experimentação para iniciar um experimento
+E o usuário irá selecionar o botão Novo Fluxo
+E irá escolher a opção Experimentação para iniciar um experimento
 
 Quando o usuário estiver na tela de Experimentação
 E selecionar o menu Conjunto de Dados
@@ -56,7 +57,8 @@ E nomear o projeto com: 'ProjetoTeste'
 E deixar a descrição em branco 
 E selecionar o botão Criar projeto  
 Então o projeto será criado
-E o usuário irá escolher a opção Experimentação para iniciar um experimento
+E o usuário irá selecionar o botão Novo Fluxo
+E irá escolher a opção Experimentação para iniciar um experimento
 
 Quando o usuário estiver na tela de Experimentação
 E selecionar o menu Conjunto de Dados
@@ -78,7 +80,8 @@ E nomear o projeto com: 'ProjetoTeste'
 E deixar a descrição em branco 
 E selecionar o botão Criar projeto  
 Então o projeto será criado
-E o usuário irá escolher a opção Experimentação para iniciar um experimento
+E o usuário irá selecionar o botão Novo Fluxo
+E irá escolher a opção Experimentação para iniciar um experimento
 
 Quando o usuário estiver na tela de Experimentação
 E selecionar o menu Conjunto de Dados
