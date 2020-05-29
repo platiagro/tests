@@ -69,7 +69,9 @@ E adicionar a tarefa: 'AutoML Classifier'
 Quando ligar as tarefas 
 E selecionar o botão Executar
 Então a operação não será executada
-E ao selecionar a tarefa o motivo do erro deverá ser exebido no campo Erro na execução 
+E o sistema exibira uma mensagem de erro
+E a tarefa com erro de execução estará destacada em vermelho
+Quando o usuário selecionar a tarefa o motivo do erro deverá ser exibido no campo Erro na execução 
 
 
 @CRUDPROJ

@@ -19,7 +19,7 @@ Então será presentado a página inicial da plataforma
 
 Cenário: C01 - Lista de Tarefas
 Dado que o usuário está na página inicial da plataforma
-Quando selecionaro menu Tarefas
+Quando selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
 Então deverá observar que todas as tarefas existentes estarão listadas
 E as informações das tarefas estarão divididas em três colunas: Nome da Tarefa, Descrição e Ação
@@ -31,11 +31,11 @@ Dado que o usuário está na página inicial da plataforma
 E selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
 Quando selecionar o botão Nova Tarefa
-E o sistema abrir um modal com as opções de exemplos e template para criação
+E o sistema abrir um modal com exemplos de tarefas e template em branco para a criação
 E o usuário selecionar a opção Template em branco
 E nomear a tarefa com: 'Teste Tarefa01'
 Quando selecionar o botão Criar Notebooks
-Então será aberto uma nova aba no navegador contento os Notebooks criados na tarefa
+Então será aberto uma nova aba no navegador contento os Notebooks de implantação e os de treinamento
 
 
 
