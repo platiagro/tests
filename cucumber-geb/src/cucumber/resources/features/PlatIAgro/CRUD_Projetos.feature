@@ -20,7 +20,7 @@ Então será apresentado a página "Meus Projetos", com a lista de projetos exis
 Cenário: C01 - Lista de Projetos
 Dado que o usuário está na página "Meus Projetos"
 E será apresentado sua lista de projetos existentes 
-Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última modificação e Ação
+Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição e Ação
 
 
 @CRUDPROJ

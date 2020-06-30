@@ -22,7 +22,8 @@ Dado que o usuário está na página "Meus Projetos"
 Quando selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
 Então deverá observar que todas as tarefas existentes estarão listadas em ordem alfabética 
-E as informações das tarefas estarão divididas em três colunas: Nome da Tarefa, Descrição e Ação
+E as informações das tarefas estarão divididas em três colunas: Nome da Tarefa, Origem,Descrição e Ação
+E se o usuário não possuir nenhuma tarefa existente a página será apresentada em branco
 
 
 @CRUDTAREFA
@@ -31,8 +32,9 @@ Dado que o usuário está na página "Meus Projetos"
 Quando selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
 Quando selecionar o botão Nova Tarefa
-E será aberto um modal com exemplos de tarefas e template em branco para a criação
-E o nome default "AutoML Classifier" deve estar destacado no campo nome
+E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
+E os exemplos de tarefas serão apresentados com uma breve descrição
+E o nome default "Nova tarefa" deve estar destacado no campo nome
 Quando o usuário selecionar a opção Template em branco
 E limpar o campo nome
 E nomear a tarefa com: 'Teste Tarefa01'
@@ -41,6 +43,9 @@ E clicar no botão Criar Notebooks
 Então o modal será resetado e fechado
 E tarefa será criada
 E o usuário deverá observar que a tarefa criada foi adicionada na lista de tarefas de acordo com a ordenação alfabética
+E ao abrir a tarefa deve observar que os botões: "Notebook de experimentação" e "Notebook de pré-implantação" estarão disponiveis 
+E ao selecionar esses botões será aberto os Notebooks com o código fonte da tarefa
+
 
 
 @CRUDTAREFA
@@ -49,9 +54,10 @@ Dado que o usuário está na página "Meus Projetos"
 Quando selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
 Quando selecionar o botão Nova Tarefa
-E será aberto um modal com exemplos de tarefas e template em branco para a criação
-E o nome default "AutoML Classifier" deve estar destacado no campo nome
-Então o usuário não deve alterar o nome da tarefa
+E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
+E os exemplos de tarefas serão apresentados com uma breve descrição
+E o nome default "Nova tarefa" deve estar destacado no campo nome
+Então o usuário não deve nomear a tarefa com: 'Teste Tarefa01'
 E não deve informar a descrição para a tarefa
 Quando clicar no botão Criar Notebooks
 Então a operação deve ser cancelada
@@ -63,8 +69,9 @@ Dado que o usuário está na página "Meus Projetos"
 Quando selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
 Quando selecionar o botão Nova Tarefa
-E será aberto um modal com exemplos de tarefas e template em branco para a criação
-E o nome default "AutoML Classifier" deve estar destacado no campo nome
+E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
+E os exemplos de tarefas serão apresentados com uma breve descrição
+E o nome default "Nova Tarefa" deve estar destacado no campo nome
 Quando o usuário selecionar a opção Template em branco
 E limpar o campo nome
 E nomear a tarefa com: 'Teste Tarefa'
@@ -75,29 +82,19 @@ E nenhuma tarefa será criada
 
 
 @CRUDTAREFA
-Cenário: C05 - Editar Tarefa
+Cenário: C05- Alterar nome e descrição da Tarefa
 Dado que o usuário está na página "Meus Projetos"
 Quando selecionar o menu Tarefas
 E o sistema o direcionar para a página de Tarefas
-Quando selecionar a tarefa que deseja editar na lista de tarefas 
-Então será aberto uma nova aba no navegador contento os Notebooks da tarefa selecionada para edição
-
-
-@CRUDTAREFA
-Cenário: C06 - Alterar nome e descrição da Tarefa
-Dado que o usuário está na página "Meus Projetos"
-Quando selecionar o menu Tarefas
-E o sistema o direcionar para a página de Tarefas
-E clicar no botão Alterar Nome e Descrição
-Então será aberto um modal com o nome atual da tarefa em destaque
-Quando o usuário limpar o campo nome
+E o usuário selecionar a tarefa que deseja editar
+Então será aberta a página da tarefa
+Quando selecionar o botão editar - ícone lápis
+E limpar o campo nome
 E nomear a tarefa com:'AltNome Tarefa'
 E informar a seguinte descrição: 'Teste - Editar':
-Quando selecionar o botão Confirmar
-Então o modal será fechado
-E o nome e descrição da tarefa serão atualizados
-E o usuário deverá observar que a tarefa atualizada está posicionada corretamente na lista de tarefas de acordo com a ordenação alfabética
-
+E poderá alterar os seguintes campos: Categoria, Dados de Entrada, Dados de Saída e Tags de busca
+Quando o usuário selecionar o botão "Alterações Salvas"
+Então o sitema apresentará ao usuário todas as alterações salvas daquela tarefa
 
 
 @CRUDTAREFA
