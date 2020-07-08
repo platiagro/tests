@@ -32,8 +32,7 @@ environments {
         capabilities.setCapability("browserConnectionEnabled", true);
 				capabilities.setJavascriptEnabled(true);
 				
-  	driver = { new FirefoxDriver(capabilities) }		
-	}
+  	driver = { new FirefoxDriver(capabilities) }}
 
 	// run as â€œgradle -Dgeb.env=phantomjs cucumberâ€�
 	// See: https://github.com/detro/ghostdriver
@@ -43,11 +42,11 @@ environments {
 
 	chrome {
 		driver =  { new ChromeDriver() }
+
   }
 
 	ie {
-    driver = {new InternetExplorerDriver()}
-  }
+    driver = {new InternetExplorerDriver()} }
 
 	chromeheadless {
 	  	//driver =  { new ChromeDriver() }
@@ -58,13 +57,7 @@ environments {
 
 }
 
-//baseUrl="http://10.50.11.13/"
-
-//baseUrl="http://10.50.11.21/"
-
-//baseUrl="http://10.50.11.112/"
-
-baseUrl="http://10.50.11.120/"
-
+baseUrl="http://10.50.11.77"
+ 
 
 baseNavigatorWaiting = true
