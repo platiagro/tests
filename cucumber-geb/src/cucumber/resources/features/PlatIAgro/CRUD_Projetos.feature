@@ -24,22 +24,22 @@ E será apresentado sua lista de projetos existentes
 Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição e Ação
 
 
-@CRUDPROJB
+@CRUDPROJA
 Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 E o usuário limpar o campo nome
-E nomear o projeto com: 'ProjetoTeste'
-# E informar a seguinte descrição: 'Teste - Funcionalidade: Criar projeto'
-# Quando clicar no botão Criar projeto
-# Então o novo projeto será criado 
-# E o usuário será direcionado para a página do projeto
-# E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
-# Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
+E nomear o projeto com:'ProjetoTeste'
+E informar a seguinte descrição:'Teste - Funcionalidade: Criar projeto'
+Quando clicar no botão Criar projeto
+Então o novo projeto será criado 
+E o usuário será direcionado para a página do projeto
+E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
+Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
 
 
-@CRUDPROJ
+@CRUDPROJA
 Cenário:C03 - Criar Projeto - Operação: Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -49,36 +49,36 @@ Então o modal deve ser resetado e fechado
 E nenhum projeto deve ser criado
 
 
-@CRUDPROJ
+@CRUDPROJA
 Cenário:C04 - Criar Projeto - Nome repetido
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 E o usuário limpar o campo nome
-E nomear o projeto com: 'ProjetoTeste'
+E nomear o projeto com:'ProjetoTeste'
 E não informar a descrição
 Quando clicar no botão Criar projeto
 Então a operação deve ser cancelada
 E o sistema deverá informar que já existe um projeto com o nome informado
 
 
-@CRUDPROJ
+@CRUDPROJB
 Cenário:C05 - Alterar nome do Projeto - Operação: Confirmar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 E o usuário limpar o campo nome
-E renomear o projeto para: 'TesteProj2'
-E a descrição como: 'Teste - Operação: Editar'
+E nomear o projeto com:'TesteProj2'
+E informar a seguinte descrição:'Teste - Operação: Editar'
 Quando clicar no botão Criar projeto
 Então o novo projeto será criado 
 E o usuário será direcionado para a página do projeto
-Quando o usuário estiver na página do novo projeto
-E selecionar o botão Editar - ícone lápis ao lado do nome do projeto
+Quando o usuário voltar para a página projeto
+E selecionar o botão Alterar nome e descrição
 Então será aberto um modal
 E o atual nome do projeto deve estar selecionado
-Quando o usuário limpar o campo nome
-E renomear o projeto para: 'TesteProj3'
+Quando o usuário limpar o campo
+E nomear o projeto com:'TesteProj3'
 E manter a descrição atual do projeto
 E clicar no botão Confirmar
 Então o nome e a descrição do projeto serão atualizados
@@ -101,12 +101,11 @@ Quando o usuário retornar para a página Meus Projetos deverá observar que as 
 Cenário: C07 - Alterar nome do Projeto - Nome repetido
 Dado que o usuário está na página Meus Projetos
 E selecionar um dos projetos da lista de projetos
-E for direcionado para página do projeto 
-Quando o usuário selecionar o botão Editar - ícone lápis ao lado do nome do projeto
+E selecionar o botão Alterar nome e descrição
 Então será aberto um modal
 E o atual nome do projeto deve estar selecionado
 Quando o usuário limpar o campo nome
-E nomear o projeto com: 'ProjetoTeste'
+E nomear o projeto com:'ProjetoTeste'
 E manter a descrição atual do projeto
 E clicar no botão confirmar 
 Então a operação deve ser cancelada
