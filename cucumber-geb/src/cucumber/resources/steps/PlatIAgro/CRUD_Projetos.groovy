@@ -26,11 +26,17 @@ at PageInicial
        page.projetoMenu.click()
    } 
 
-   Thread.sleep(2000) 
+   Thread.sleep(5000) 
 }
 
 E(~/será apresentado sua lista de projetos existentes/){->
- assert true
+ at PageProj
+
+   waitFor(60){
+     $(By.xpath("//*[@id='root']/section/aside/div[2]")).click()
+   }
+
+    Thread.sleep(2000)
 }
 
 Então(~/deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição e Ação/){->
@@ -43,10 +49,18 @@ assert true
 Quando(~/clicar no botão Novo Projeto/){->
  at PageProj
 
-   waitFor(60){
+     waitFor(60){
+     $(By.xpath("//*[@id='root']/section/aside/div[2]")).click()
+      }
+
+      Thread.sleep(2000)
+
+
+       waitFor(60){
        page.btnNewproj.click()
-   } 
-   Thread.sleep(2000)
+       } 
+
+     Thread.sleep(2000)
 }
 
 E(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
@@ -88,7 +102,7 @@ E(~/informar a seguinte descrição:'(.*)'/){String desc->
        Thread.sleep(5000) 
 }
 
-Quando(~/clicar no botão Criar projeto/){->
+Quando(~/clicar no botão Criar/){->
     at PageProj
 
      waitFor(60){
@@ -96,6 +110,7 @@ Quando(~/clicar no botão Criar projeto/){->
        } 
        Thread.sleep(5000) 
  }
+
 
 Então(~/o novo projeto será criado/){->
   assert true
@@ -160,16 +175,6 @@ E(~/o sistema deverá informar que já existe um projeto com o nome informado/){
 
 
 //CENÁRIO 5
-
-Quando(~/o usuário voltar para a página projeto/){->
-  at PageInicial
-
-   waitFor(60){
-       page.projetoMenu.click()
-   } 
-    Thread.sleep(5000)
-}
-
 E(~/selecionar o botão Alterar nome e descrição/){->
     at PageProj
     
@@ -189,69 +194,92 @@ E(~/o atual nome do projeto deve estar selecionado/){->
 }
 
 
-E(~/manter a descrição atual do projeto/){->
-  assert true
-}
-
-
 Quando(~/o usuário limpar o campo/){->
 at PageProj
-     
-    Thread.sleep(5000)
-     browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
-     
-    waitFor(60){
-     page.btnclear.click()
-     }
+        Thread.sleep(6000)  
 
-     Thread.sleep(2000)
+        waitFor(60){
+       page.campclear.click()
+        }
+
+      Thread.sleep(5000) 
 }
 
 
-
-E(~/clicar no botão confirmar/){->
+E(~/clicar no botão Salvar/){->
  at PageProj
 
      waitFor(60){
-       page.btnsalvar.click()  
+       page.btnConfirm.click()  
        } 
        Thread.sleep(5000) 
+       
 }
+
 
 Então(~/o nome e a descrição do projeto serão atualizados/){->
   assert true
 }
 
-//CENARIO 7
 
-E(~/selecionar um dos projetos da lista de projetos/){->
-   at PageProj
-
+Quando(~/selecionar o botão Alterar nome e descrição novamente/){->
+ at PageProj
+    
      waitFor(60){
-       page.btnselect.click()  
+       page.btnalt.click()  
       } 
+
       Thread.sleep(5000) 
 }
 
+E(~/o sitema abrir o modal/){->
+ assert true
+}
 
-E(~/for direcionado para página do projeto/){->
+E(~/nenhuma alteração deve ser feita/){->
+ assert true
+}
+
+
+//CENARIO 7
+E(~/selecionar um dos projetos da lista de projetos/){->
   assert true
 } 
+E(~/manter a descrição atual do projeto/){->
+assert true
+}  
 
+E(~/clicar no botão confirmar/){->
+   at PageProj
+
+     waitFor(60){
+       page.btnConfirm.click()  
+       } 
+       Thread.sleep(2000)
+}
 
 //CENÁRIO 9
 
 Quando(~/selecionar um dos projetos da lista/){->
-  assert true
+at PageProj
+
+ waitFor(60){
+     $(By.xpath("//*[@id='root']/section/aside/div[2]")).click()
+      }
 }
+
 
 E(~/na coluna ação selecionar a opção Excluir/){->
    at PageProj
 
+     Thread.sleep(1000) 
+
      waitFor(60){
        page.btnexcluir.click()  
-      } Thread.sleep(5000) 
-     
+      } 
+      
+      Thread.sleep(1000) 
+
 }
 
 E(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"/){->
@@ -261,10 +289,13 @@ E(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que de
 E(~/o usuário confirmar a operação clicando no botão Sim/){->
 at PageProj
 
-     waitFor(60){
-       page.btnexcluir.click()  
-      } Thread.sleep(5000) 
+ Thread.sleep(5000)
 
+     waitFor(60){
+       page.btnsim.click()  
+      } 
+      
+      Thread.sleep(5000) 
 }
 
 Então(~/o projeto será excluído da lista de Projetos/){->
@@ -277,9 +308,13 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 E(~/o usuário clicar no botão Não/){->
 at PageProj
 
+Thread.sleep(1000)
+
      waitFor(60){
        page.btnNao.click() 
-      } Thread.sleep(5000) 
+      } 
+      
+      Thread.sleep(5000) 
 }
 
 Então(~/a operação será cancelada/){->
