@@ -10,7 +10,7 @@ import static cucumber.api.groovy.PT.*
 //Contexto
 
  Dado(~/que o usuário acessa a plataforma PlatIAgro/){->
- to PageInicial
+ to PageProj
  }
 
  E(~/está na tela inicial/){->
@@ -36,7 +36,7 @@ E(~/será apresentado sua lista de projetos existentes/){->
      $(By.xpath("//*[@id='root']/section/aside/div[2]")).click()
    }
 
-    Thread.sleep(2000)
+    Thread.sleep(5000)
 }
 
 Então(~/deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição e Ação/){->

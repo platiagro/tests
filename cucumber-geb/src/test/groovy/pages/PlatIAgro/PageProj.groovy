@@ -8,6 +8,10 @@ class PageProj extends BasePage {
    title == "PlatIAgro - Plataforma de Inteligência Artficial para o Agronegócio" }
     static content ={
       
+       projetoMenu{$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
+       tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[3]"))}
+
+
      btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[2]/button"))}
      btnclear{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div[1]/div[2]/div/span/span/span"))}
      campnome{$(By.xpath("//*[@id='newProjectForm_name']"))}
