@@ -45,7 +45,7 @@ E o usuário deverá observar que a tarefa criada foi adicionada na lista de tar
 
 
 
-@A
+@CRUDTAREFA
 Cenário: C03 - Criar Tarefa - Nome Repetido
 Dado que o usuário está na página Tarefas
 Quando selecionar o botão Nova Tarefa
@@ -62,7 +62,7 @@ E o sistema deverá informar que já existe uma tarefa com aquele nome
 E nenhuma tarefa deve ser criada
 
 
-@B
+@CRUDTAREFA
 Cenário: C04 - Criar Tarefa Operação: Cancelar
 Dado que o usuário está na página Tarefas
 Quando selecionar o botão Nova Tarefa
@@ -83,11 +83,11 @@ Cenário: C05- Alterar nome e descrição da Tarefa
 Dado que o usuário está na página Tarefas
 Quando selecionar o botão Nova Tarefa
 E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
-E o nome default "Nova tarefa" deve estar destacado no campo nome
+E o nome default Nova tarefa deve estar destacado no campo nome
 E o Template em branco também deve estar definido como default
 Quando o usuário limpar o campo nome da tarefa
-E nomear a tarefa com: 'AltNome Tarefa'
-E informar a seguinte descrição: 'Teste - Editar'
+E nomear a Tarefa: 'AltNome Tarefa'
+E inserir a Descrição: 'Teste - Editar'
 #E poderá alterar os seguintes campos: Categoria, Dados de Entrada, Dados de Saída e Tags de busca
 #Quando o usuário selecionar o botão "Alterações Salvas"
 #Então o sitema apresentará ao usuário todas as alterações salvas daquela tarefa
@@ -105,14 +105,15 @@ Então o modal será fechado
 E uma mensagem de sucesso será exibida na tela
 E o usuário poderá observar que o nome e descrição da tarefa foram editados
 
+
 @CRUDTAREFA
 Cenário: C06- Alterar nome e descrição da Tarefa - Cancelar
 Dado que o usuário está na página Tarefas
-E escolhe um das Tarefas da lista de tarefas para editar
-Quando selecionar o botão Alterar nome e descrição da tarefa
-E limpar o campo nome da tarefa
-E nomear a tarefa com: 'Tarefa_Teste 3'
-E informar a seguinte descrição: 'Alterar Nome e Descrição - CANCELAR'
+E escolhe uma das Tarefas da lista de tarefas para editar
+E selecionar o botão Alterar nome e descrição da tarefa
+Quando limpar o campo nome
+E nomear a Tarefa: 'Tarefa_Teste 3'
+E inserir a Descrição: 'Alterar Nome e Descrição - CANCELAR'
 E clicar no botão Cancelar
 Então o modal será fechado
 E o nome e descrição da Tarefa não devem ser alterados
@@ -120,25 +121,21 @@ E o nome e descrição da Tarefa não devem ser alterados
 
 @CRUDTAREFA
 Cenário: C07 - Excluir Tarefa
-Dado que o usuário está na página "Meus Projetos"
-Quando selecionar o menu Tarefas
-E o sistema o direcionar para a página de Tarefas
-Quando selecionar uma tarefa da lista de tarefas
+Dado que o usuário está na página Tarefas
+E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
-E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"
-E o usuário confirmar a operação clicando no botão Sim
-Então a terefa será excluida da lista de tarefas
+Quando o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"
+E o usuário confirmar a operação
+Então a terefa será excluida da lista
 
 
 @CRUDTAREFA
 Cenário: C08 - Excluir Tarefa - Cancelar
-Dado que o usuário está na página "Meus Projetos"
-Quando selecionar o menu Tarefas
-E o sistema o direcionar para a página de Tarefas
-Quando selecionar uma tarefa da lista de tarefas
+Dado que o usuário está na página Tarefas
+E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
-E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"
-E o usuário clicar no botão Não
+Quando o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"
+E selecionar o botão Não
 Então a operação será cancelada 
 E nenhuma tarefa será excluída
 

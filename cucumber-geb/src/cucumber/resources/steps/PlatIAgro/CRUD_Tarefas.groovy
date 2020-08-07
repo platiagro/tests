@@ -149,28 +149,32 @@ E(~/o usuário deverá observar que a tarefa criada foi adicionada na lista de t
 //CENÁRIO 3
 
 E(~/o sistema deverá informar que já existe uma tarefa com aquele nome/){->
-  assert true
+at PageTarefa
+
+    Thread.sleep(2000)
+
+     waitFor(60){
+       $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")).click()
+     }
+    
+    Thread.sleep(5000)
 }
 
 E(~/nenhuma tarefa deve ser criada/){->
-  at PageTarefa
-
-     waitFor(60){
-       page.btnclose.click()
-     }
-    
-    Thread.sleep(2000)
+  assert true
 }
 
 //CENÁRIO 4
 E(~/clicar no botão Cancelar/){->
  at PageTarefa
 
+Thread.sleep(2000)
+
      waitFor(60){
-       $(By.xpath("//*[contains(text(), 'Cancelar')]")).click()
-     }
-    
-    Thread.sleep(2000)
+     $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")).click()
+    } 
+
+   Thread.sleep(5000)
 }
 
 E(~/nenhuma tarefa será criada/){->
@@ -192,6 +196,11 @@ E(~/nenhuma tarefa será criada/){->
 }
 
 //CENÁRIO 5
+E(~/tarefa será criada/){->
+ assert true
+}
+
+
 E(~/o usuário deverá observar que a tarefa criada foi adicionada a lista de Tarefas/){->
   assert true
 }
@@ -221,7 +230,7 @@ Quando(~/limpar o campo nome/){->
     Thread.sleep(2000)
 
      waitFor(60){
-      $(By.xpath("//*[@id='newEditTaskForm']/div[1]/div[2]/div/span/span/span")).click()
+      page.btneditlimp.click()
      }
 
     Thread.sleep(2000)  
@@ -231,7 +240,7 @@ E(~/informar um novo nome para a Tarefa: '(.*)'/){ String editname->
   at PageTarefa
 
    waitFor(60){
-   page.campeditname.value(editname)
+    $(By.xpath("//*[@id='name']")).value(editname)
    }
 
   Thread.sleep(2000) 
@@ -241,7 +250,7 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
   at PageTarefa
 
    waitFor(60){
-   page.campeditdesc.value(editdesc)
+   $(By.xpath("//*[@id='description']")).value(editdesc)
    }
 
   Thread.sleep(2000)
@@ -250,15 +259,13 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
 E(~/clicar no botão Confirmar/){->
   at PageTarefa
 
-    Thread.sleep(2000)
-
      waitFor(60){
-       $(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/div/button[2]")).click()  
+     $(By.xpath("//*[contains(text(), 'Confirmar')]")).click()
      }
 
-      Thread.sleep(5000)
-      
+   Thread.sleep(5000)
 }
+
 
 Então(~/o modal será fechado/){->
     assert true
@@ -279,3 +286,98 @@ E(~/o usuário poderá observar que o nome e descrição da tarefa foram editado
 
     Thread.sleep(5000)
 } 
+
+//CENARIO 6
+
+E(~/escolhe uma das Tarefas da lista de tarefas para editar/){->
+at PageTarefa
+
+     waitFor(60){
+      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[3]/a")).click()
+    }
+
+    Thread.sleep(5000)
+}
+  
+
+
+Quando(~/selecionar o botão Alterar nome e descrição da tarefa/){->
+ at PageTarefa
+
+     waitFor(60){
+      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[3]/button[1]")).click()
+     }   
+ 
+   Thread.sleep(5000)
+}
+
+E(~/o nome e descrição da Tarefa não devem ser alterados/){->
+  assert true
+}
+
+//CENÁRIO 7
+
+E(~/seleciona uma Tarefa da lista de tarefas/){->
+  at PageTarefa
+
+    Thread.sleep(2000)
+
+    waitFor(60){
+       page.btnnext3.click()
+    } 
+
+    Thread.sleep(5000)
+}
+
+
+
+E(~/na coluna Ação clicar no botão Excluir/){->
+at PageTarefa
+
+    Thread.sleep(2000)
+
+    waitFor(60){
+       page.btnexcluir.click()
+    } 
+
+    Thread.sleep(5000)
+}
+
+
+Quando(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"/){->
+ assert true
+}
+
+E(~/o usuário confirmar a operação/){->
+  at PageTarefa
+
+    Thread.sleep(2000)
+
+    waitFor(60){
+       page.btnsim.click()
+    } 
+
+    Thread.sleep(6000)
+}
+
+Então(~/a terefa será excluida da lista/){->
+ assert true
+}
+
+//CENÁRIO 8
+
+E(~/selecionar o botão Não/){->
+ at PageTarefa
+
+    Thread.sleep(2000)
+
+    waitFor(60){  
+       $(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[1]")).click()
+    } 
+
+    Thread.sleep(6000)
+}
+
+E(~/nenhuma tarefa será excluída/){->
+ assert true
+}
