@@ -20,47 +20,39 @@ import static cucumber.api.groovy.PT.*
 
 //CENÁRIO 1
 Dado(~/que o usuário está na página Meus Projetos/){->
-at PageInicial
-
-   waitFor(60){
-       page.projetoMenu.click()
-   } 
-
-   Thread.sleep(5000) 
+ assert true 
 }
 
 E(~/será apresentado sua lista de projetos existentes/){->
  at PageProj
 
    waitFor(60){
-     $(By.xpath("//*[@id='root']/section/aside/div[2]")).click()
+     $(By.xpath("//*[@id='root']/section/section/div[2]/div/ul/li[4]/div/div[1]")).click()
    }
 
+    Thread.sleep(2000)
+  }
+
+ Então(~/deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última Modificação e Ação/){->
+ at PageProj
+
+   waitFor(60){
+     $(By.xpath("//*[@id='root']/section/section/div[2]/div/ul/li[4]/div/div[1]")).click()
+    }
+
     Thread.sleep(5000)
-}
-
-Então(~/deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição e Ação/){->
-assert true
-}
-
+  }
 
 //CENÁRIO 2
 
 Quando(~/clicar no botão Novo Projeto/){->
  at PageProj
 
-     waitFor(60){
-     $(By.xpath("//*[@id='root']/section/aside/div[2]")).click()
-      }
-
-      Thread.sleep(2000)
-
-
        waitFor(60){
-       page.btnNewproj.click()
+       $(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]")).click()
        } 
 
-     Thread.sleep(2000)
+     Thread.sleep(5000)
 }
 
 E(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
@@ -71,14 +63,14 @@ E(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
 E(~/o usuário limpar o campo nome/){->
   at PageProj
      
-    Thread.sleep(1000)
+    Thread.sleep(5000)
  
     waitFor(60){
-     page.btnclear.click()
+     $(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span")).click()
      }
 
      Thread.sleep(2000)
-}      
+ }       
 
 
 
@@ -126,11 +118,12 @@ E(~/nessa página poderá escolher se deseja iniciar um fluxo de Experimentaçã
 }
 
 Quando(~/o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos/){->
-  at PageInicial
+  at PageProj
 
    waitFor(60){
-       page.projetoMenu.click()
-   } 
+       $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
+       } 
+
     Thread.sleep(5000)   
 }
 
@@ -140,9 +133,12 @@ Quando(~/o usuário retornar para a página Meus Projetos deverá observar se o 
 E(~/o usuário clicar no botão Cancelar/){->
    at PageProj
  
-     waitFor(60){
+   Thread.sleep(5000)
+
+       waitFor(60){
        page.btncancel.click()  
-      } 
+       } 
+
       Thread.sleep(5000)  
 }
 

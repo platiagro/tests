@@ -21,10 +21,10 @@ Como usuário da plataforma, desejo criar um novo Projeto para iniciar um experi
 Cenário: C01 - Lista de Projetos
 Dado que o usuário está na página Meus Projetos
 E será apresentado sua lista de projetos existentes 
-Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição e Ação
+Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última Modificação e Ação
 
 
-@Proj
+@CRUDPROJ
 Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -39,7 +39,7 @@ E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação 
 Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
 
 
-@CRUDPROJ
+@B
 Cenário:C03 - Criar Projeto - Operação: Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto

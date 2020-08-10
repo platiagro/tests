@@ -41,20 +41,24 @@ at PageTarefa
 E(~/as informações das tarefas estarão divididas em três colunas: Nome da Tarefa, Origem,Descrição e Ação/){->
  at PageTarefa
 
-    Thread.sleep(2000)
+  Thread.sleep(5000)
 
-      waitFor(60){
-       page.btnprevious.click()
-      } 
-   
-     Thread.sleep(5000) 
+       waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[6]/div/div[1]/span[2]")).click()
+       } 
+     
+       Thread.sleep(5000)
+       browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)") 
 
-      waitFor(60){
-       page.btnprevious.click()
-      } 
+       waitFor(60){
+       $(By.xpath("//*[contains(text(), '50 / página')]")).click()
+       } 
     
-    Thread.sleep(5000) 
+       Thread.sleep(5000)
+       
+     browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
 
+  Thread.sleep(5000) 
 }
 
 //CENÁRIO 2

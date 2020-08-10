@@ -57,9 +57,9 @@ environments {
 
 }
 
-baseUrl="http://10.50.11.77"
+//baseUrl="http://10.50.11.77"
 
-// baseUrl="http://10.50.11.13"
+baseUrl="http://10.50.11.112"
  
 
 baseNavigatorWaiting = true
