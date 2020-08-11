@@ -95,7 +95,8 @@ E clicar no botão Criar Notebooks
 Então o modal será resetado e fechado
 E tarefa será criada
 E o usuário deverá observar que a tarefa criada foi adicionada a lista de Tarefas
-Quando selecionar o botão Alterar nome e descrição da tarefa criada
+
+Quando selecionar a Tarefa criada
 Então será aberto um modal onde o usuário poderá editar o nome e a descrição da Tarefa
 Quando limpar o campo nome
 E informar um novo nome para a Tarefa: 'Tarefa_Teste2'
@@ -110,7 +111,6 @@ E o usuário poderá observar que o nome e descrição da tarefa foram editados
 Cenário: C06- Alterar nome e descrição da Tarefa - Cancelar
 Dado que o usuário está na página Tarefas
 E escolhe uma das Tarefas da lista de tarefas para editar
-E selecionar o botão Alterar nome e descrição da tarefa
 Quando limpar o campo nome
 E nomear a Tarefa: 'Tarefa_Teste 3'
 E inserir a Descrição: 'Alterar Nome e Descrição - CANCELAR'

@@ -41,7 +41,7 @@ class PageTarefa extends BasePage {
     
     btnexcluir {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[3]/button[2]"))}
     
-    btnsim {$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
+    btnsim {$(By.xpath("/html/body/div[12]/div/div/div/div[2]/div/div[2]/button[2]"))}
    }
 }
   

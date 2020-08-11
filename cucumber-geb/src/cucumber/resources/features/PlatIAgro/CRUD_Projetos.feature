@@ -24,7 +24,7 @@ E será apresentado sua lista de projetos existentes
 Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última Modificação e Ação
 
 
-@CRUDPROJ
+@A
 Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -39,7 +39,7 @@ E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação 
 Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
 
 
-@B
+@CRUDPROJ
 Cenário:C03 - Criar Projeto - Operação: Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -49,23 +49,31 @@ Então o modal deve ser resetado e fechado
 E nenhum projeto deve ser criado
 
 
-@CRUDPROJA
+@CRUDPROJ
 Cenário:C04 - Criar Projeto - Nome repetido
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 E o usuário limpar o campo nome
 E nomear o projeto com:'Teste'
-E não informar a descrição
+E informar a seguinte descrição:'Teste - Nome Repetido'
 Quando clicar no botão Criar
 Então a operação deve ser cancelada
 E o sistema deverá informar que já existe um projeto com o nome informado
 
 
-@CRUDPROJA
+@A
 Cenário:C05 - Alterar nome do Projeto - Operação: Salvar e Cancelar
 Dado que o usuário está na página Meus Projetos
-E selecionar o botão Alterar nome e descrição
+Quando clicar no botão Novo Projeto
+E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
+E o usuário limpar o campo nome
+E nomear o projeto com:'TesteProj3'
+E informar a seguinte descrição:'Teste - Funcionalidade: Criar projeto'
+E clicar no botão Criar 
+Então um novo projeto será criado
+
+Quando selecionar o botão Alterar nome e descrição
 Então será aberto um modal
 E o atual nome do projeto deve estar selecionado
 Quando o usuário limpar o campo
@@ -73,10 +81,10 @@ E nomear o projeto com:'TesteProj3'
 E informar a seguinte descrição:'Teste - Alterar Nome e Descrição'
 E clicar no botão Salvar
 Então o nome e a descrição do projeto serão atualizados
+
 Quando selecionar o botão Alterar nome e descrição novamente
 E o sitema abrir o modal
-E o atual nome do projeto deve estar selecionado
-Quando o usuário clicar no botão Cancelar
+E o usuário clicar no botão Cancelar
 Então o modal deve ser resetado e fechado
 E nenhuma alteração deve ser feita
 

@@ -210,13 +210,13 @@ E(~/o usuário deverá observar que a tarefa criada foi adicionada a lista de Ta
 }
 
 
-Quando(~/selecionar o botão Alterar nome e descrição da tarefa criada/){->
+Quando(~/selecionar a Tarefa criada/){->
   at PageTarefa
 
     Thread.sleep(2000)
 
      waitFor(60){
-      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[3]/button[1]")).click()
+      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/div/button")).click()
       }
     
       Thread.sleep(5000)
@@ -297,22 +297,10 @@ E(~/escolhe uma das Tarefas da lista de tarefas para editar/){->
 at PageTarefa
 
      waitFor(60){
-      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[3]/a")).click()
+      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[1]/div/button")).click()
     }
 
     Thread.sleep(5000)
-}
-  
-
-
-Quando(~/selecionar o botão Alterar nome e descrição da tarefa/){->
- at PageTarefa
-
-     waitFor(60){
-      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[3]/button[1]")).click()
-     }   
- 
-   Thread.sleep(5000)
 }
 
 E(~/o nome e descrição da Tarefa não devem ser alterados/){->
@@ -340,9 +328,15 @@ at PageTarefa
 
     Thread.sleep(2000)
 
-    waitFor(60){
-       page.btnexcluir.click()
-    } 
+     waitFor(60){
+      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[4]/td[4]/div/div[3]/button")).click()     
+     }
+
+     Thread.sleep(2000)
+
+       waitFor(60){
+       $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
+       }
 
     Thread.sleep(5000)
 }
@@ -354,12 +348,12 @@ Quando(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza q
 
 E(~/o usuário confirmar a operação/){->
   at PageTarefa
+ 
+    Thread.sleep(5000)
 
-    Thread.sleep(2000)
-
-    waitFor(60){
-       page.btnsim.click()
-    } 
+      waitFor(60){
+       $(By.xpath("//*[contains(text(), 'Sim')]")).click()
+      }
 
     Thread.sleep(6000)
 }
@@ -372,12 +366,12 @@ Então(~/a terefa será excluida da lista/){->
 
 E(~/selecionar o botão Não/){->
  at PageTarefa
+ 
+    Thread.sleep(5000)
 
-    Thread.sleep(2000)
-
-    waitFor(60){  
-       $(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[1]")).click()
-    } 
+      waitFor(60){
+       $(By.xpath("//*[contains(text(), 'Não')]")).click()
+      }
 
     Thread.sleep(6000)
 }

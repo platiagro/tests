@@ -152,10 +152,6 @@ E(~/nenhum projeto deve ser criado/){->
 
 //CENÁRIO 4
 
-E (~/não informar a descrição/){->
-  assert true
-}
-
 Então(~/a operação deve ser cancelada/){->
   assert true
 }
@@ -171,6 +167,17 @@ E(~/o sistema deverá informar que já existe um projeto com o nome informado/){
 
 
 //CENÁRIO 5
+Então(~/um novo projeto será criado/){->
+at PageProj
+Thread.sleep(5000)
+
+     waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
+    } 
+
+    Thread.sleep(5000)
+}
+
 E(~/selecionar o botão Alterar nome e descrição/){->
     at PageProj
     
