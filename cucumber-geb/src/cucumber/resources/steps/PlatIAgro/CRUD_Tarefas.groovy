@@ -172,7 +172,7 @@ E(~/nenhuma tarefa deve ser criada/){->
 E(~/clicar no botão Cancelar/){->
  at PageTarefa
 
-Thread.sleep(2000)
+Thread.sleep(5000)
 
      waitFor(60){
      $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")).click()
@@ -378,4 +378,32 @@ E(~/selecionar o botão Não/){->
 
 E(~/nenhuma tarefa será excluída/){->
  assert true
+}
+
+//CENÁRIO 9
+
+E(~/seleciona uma Tarefa da lista que esteja relacionada a um projeto/){->
+ assert true
+}
+
+E(~/na coluna Ação clicar nos botões Mais e Excluir/){->
+ at PageTarefa
+ 
+    Thread.sleep(2000)
+
+      waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button")).click()
+      }
+
+     Thread.sleep(5000)
+    
+      waitFor(60){
+       $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
+       }
+
+    Thread.sleep(5000)
+}
+
+E(~/o sistema deverá informar que aquela Tarefa está em uso/){->
+  assert true 
 }

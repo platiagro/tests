@@ -24,7 +24,7 @@ E será apresentado sua lista de projetos existentes
 Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última Modificação e Ação
 
 
-@A
+@CRUDPROJ
 Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -62,14 +62,14 @@ Então a operação deve ser cancelada
 E o sistema deverá informar que já existe um projeto com o nome informado
 
 
-@A
+@CRUDPROJ
 Cenário:C05 - Alterar nome do Projeto - Operação: Salvar e Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 E o usuário limpar o campo nome
-E nomear o projeto com:'TesteProj3'
-E informar a seguinte descrição:'Teste - Funcionalidade: Criar projeto'
+E nomear o projeto com:'TesteProj2'
+E informar a seguinte descrição:'Teste - Alterar Nome'
 E clicar no botão Criar 
 Então um novo projeto será criado
 
@@ -124,7 +124,7 @@ E o sistema deverá informar que já existe um projeto com o nome informado
 
 
 
-@CRUDPROJA
+@CRUDPROJ
 Cenário:C09 - Excluir Projeto - Ação Excluir
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um dos projetos da lista
@@ -155,19 +155,19 @@ E o projeto não será excluído e permanecerá na lista de projetos
 
 
 
-# @CRUDPROJ
-# Cenário:C11 - Excluir N Projetos
-# Dado que o usuário está na página Meus Projetos
-# E será apresentado sua lista de projetos existente
-# Quando selecionar vários projetos da lista
-# E clicar no botão Excluir Selecionados
-# E o sistema abrir uma pop-up com a seguinte mensagem "Excluir projetos selecionados?"
-# E o usuário selecionar o botão "Não"
-# Então a operação será cancelada
-# E nenhum dos projetos selecionados será excluído
-# Quando o usuários selecionar vários projetos da lista novamente 
-# E clicar no botão Excluir Selecionados
-# E selecionar o botão "Sim"
-# Então todos os projetos selecionados serão excluídos
-# E removidos da lista de projetos
+@CRUDPROJ
+Cenário:C11 - Excluir N Projetos
+Dado que o usuário está na página Meus Projetos
+E será apresentado sua lista de projetos existente
+Quando selecionar vários projetos da lista
+E clicar no botão Excluir Selecionados
+E o sistema abrir uma pop-up com a seguinte mensagem "Excluir projetos selecionados?"
+E o usuário selecionar o botão "Não"
+Então a operação será cancelada
+E nenhum dos projetos selecionados será excluído
+Quando o usuários selecionar vários projetos da lista novamente 
+E clicar no botão Excluir Selecionados
+E selecionar o botão "Sim"
+Então todos os projetos selecionados serão excluídos
+E removidos da lista de projetos
 

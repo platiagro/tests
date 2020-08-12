@@ -30,8 +30,10 @@ class PageProj extends BasePage {
 
      btnalt{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[5]/button[1]"))}
      
-     btnexcluir{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[2]"))}
-     btnsim{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div/div[2]/button[2]"))}
+     btnexcluir{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[6]/button"))}
+     
+     btnsim{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
+     
 
      btnNao{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div/div[2]/button[1]"))}
      
