@@ -63,11 +63,11 @@ E(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
 E(~/o usuário limpar o campo nome/){->
   at PageProj
      
-    Thread.sleep(5000)
+  Thread.sleep(5000)
  
     waitFor(60){
-     $(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span")).click()
-     }
+     (By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span")).click() 
+     } 
 
      Thread.sleep(2000)
  }       
@@ -261,7 +261,202 @@ E(~/clicar no botão confirmar/){->
        Thread.sleep(2000)
 }
 
-//CENÁRIO 9
+
+//CENÁRIO 8
+
+E(~/deseja pesquisar um projeto pelo nome/){->
+ assert true
+} 
+
+Quando(~/selecionar o icone de pesquisa ao lado da coluna Nome do Projeto/){->
+ at PageProj
+
+Thread.sleep(5000)
+
+  waitFor(60){
+    page.btnsearch.click()  
+  } 
+  
+  Thread.sleep(2000)
+}
+
+
+Então(~/será aberto um modal/){->
+ assert true
+}
+
+Quando(~/o usuário inserir: "(.*)"/){String name->
+at PageProj
+ Thread.sleep(5000)
+
+      waitFor(60){
+       page.campnome.value(name)  
+       } 
+       
+       Thread.sleep(2000) 
+}
+
+
+E(~/selecionar o botão "Search"/){->
+at PageProj
+
+Thread.sleep(5000)
+
+      waitFor(60){
+       page.btnpesq.click()  
+       } 
+       
+       Thread.sleep(2000)
+}
+
+Então(~/o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa/){->
+  assert true
+}
+
+E(~/se não houver nenhum projeto com o nome informado o sitema deve apresentar a página em branco/){->
+ assert true
+}
+
+
+//CENARIO 9
+
+E(~/selecionar o botão "Reset"/){->
+at PageProj
+
+Thread.sleep(5000)
+
+      waitFor(60){
+       page.btnreset.click()  
+       } 
+       
+    Thread.sleep(2000)
+}
+
+Então(~/o sistema deve cancelar a operação/){->
+ assert true
+}
+
+
+E(~/o modal deve ser fechado/){->
+ assert true
+}
+
+
+//CENÁRIO 10
+
+E(~/deseja pesquisar um projeto pela Tag/){->
+  assert true
+}
+
+Quando(~/selecionar o icone ao lado da coluna Tags/){->
+at PageProj
+
+ Thread.sleep(5000)
+
+      waitFor(60){
+       page.btntag.click()  
+       } 
+       
+   Thread.sleep(5000)
+}
+
+Então(~/será aberto um modal com as opções de tags/){->
+  assert true
+}
+
+Quando(~/o usuário selecionar a Tag "Experimentação"/){->
+ at PageProj
+
+ Thread.sleep(5000)
+
+  waitFor(60){
+    $(By.xpath("//*[contains(text(), 'Experimentação')]")).click()
+  }
+
+ Thread.sleep(2000)
+
+} 
+
+E(~/selecionar o botão "OK"/){->
+at PageProj
+
+ Thread.sleep(5000)
+
+  waitFor(60){
+    page.btnok.click()
+  }
+
+ Thread.sleep(2000)
+
+}
+
+Então(~/o sistema deverá exibir os projetos que possuem experimeto/){->
+ assert true
+}
+
+
+Então(~/novamente será aberto o modal com as opções de tags/){->
+ assert true
+}
+
+Quando(~/o usuário selecionar a Tag "Pré implantação"/){->
+ at PageProj
+
+ Thread.sleep(5000)
+
+  waitFor(60){
+    $(By.xpath("//*[contains(text(), 'Pré-implantação')]")).click()
+  }
+ 
+ Thread.sleep(2000)
+
+} 
+
+Então(~/o sistema deverá exibir os projetos que possuem Pré implantação/){->
+  assert true
+}
+
+Quando(~/o usuário selecionar a Tag "Implantado"/){->
+ at PageProj
+
+ Thread.sleep(5000)
+
+  waitFor(60){
+    $(By.xpath("//*[contains(text(), 'Implantado')]")).click()
+  }
+ 
+ Thread.sleep(2000)
+
+
+}
+
+Então(~/o sistema deverá exibir os projetos que possuem Experimento Implantado/){->
+ assert true
+}
+
+
+
+//CENÁRIO 11
+
+E(~/selecionar o botão "Resetar"/){->
+ at PageProj
+
+ Thread.sleep(5000)
+
+  waitFor(60){
+   page.btnresetar.click()
+  }
+  
+  Thread.sleep(2000)
+}
+
+
+Então(~/o modal será resetado e fechado/){->
+ assert true
+}
+
+
+//CENÁRIO 13
 
 Quando(~/selecionar um dos projetos da lista/){->
 at PageProj
@@ -306,7 +501,7 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 }
 
 
-//CENÁRIO 10
+//CENÁRIO 14
 
 E(~/o usuário clicar no botão Não/){->
 at PageProj
@@ -329,7 +524,7 @@ E(~/o projeto não será excluído e permanecerá na lista de projetos/){->
  assert true
 }
 
-//CENÁRIO 11
+//CENÁRIO 15
 E(~/será apresentado sua lista de projetos existente/){->
 assert true
 }
