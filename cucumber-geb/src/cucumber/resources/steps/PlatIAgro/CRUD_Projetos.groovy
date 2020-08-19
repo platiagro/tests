@@ -55,23 +55,23 @@ Quando(~/clicar no botão Novo Projeto/){->
      Thread.sleep(5000)
 }
 
-E(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
+Então(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
     assert true
 } 
 
 
-E(~/o usuário limpar o campo nome/){->
-  at PageProj
-     
-   Thread.sleep(5000)
- 
-    waitFor(60){
-     page.clscamp.click() 
-     } 
+// Quando(~/o usuário limpar o campo nome do projeto/){->
+//  at PageProj
 
-   Thread.sleep(2000)
+//     Thread.sleep(5000)
 
-}       
+//     waitFor(60){
+//       $(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span")).click()
+//     }
+
+//     Thread.sleep(5000)
+
+// }       
 
 
 
@@ -169,38 +169,34 @@ E(~/o sistema deverá informar que já existe um projeto com o nome informado/){
 
 //CENÁRIO 5
 Então(~/um novo projeto será criado/){->
-at PageProj
-Thread.sleep(5000)
-
-     waitFor(60){
-       $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
-    } 
-
-    Thread.sleep(5000)
+ assert true
 }
 
-E(~/selecionar o botão Alterar nome e descrição/){->
-    at PageProj
-    
-     waitFor(60){
-       page.btnalt.click()  
-      } 
+Quando(~/o usuário estiver na página do Projeto/){->
+ assert true
+}
+
+E(~/selecionar o botão Editar, ao lado do nome do projeto/){->
+ at PageProj
+        
+        Thread.sleep(6000)  
+
+        waitFor(60){
+       page.btnedit.click()
+        }
 
       Thread.sleep(5000) 
 }
 
-Então(~/será aberto um modal/){->
-  assert true
-}
-
-E(~/o atual nome do projeto deve estar selecionado/){->
-  assert true
+Então(~/o sistema deve abrir um modal, com o atual nome do projeto selecionado/){->
+ asser true
 }
 
 
 Quando(~/o usuário limpar o campo/){->
 at PageProj
-        Thread.sleep(6000)  
+       
+   Thread.sleep(6000)  
 
         waitFor(60){
        page.campclear.click()
@@ -226,14 +222,15 @@ Então(~/o nome e a descrição do projeto serão atualizados/){->
 }
 
 
-Quando(~/selecionar o botão Alterar nome e descrição novamente/){->
+Quando(~/selecionar o botão Editar novamente/){->
  at PageProj
-    
-     waitFor(60){
-       page.btnalt.click()  
-      } 
+        Thread.sleep(6000)  
 
-      Thread.sleep(5000) 
+        waitFor(60){
+       page.btnedit.click()
+        }
+
+      Thread.sleep(5000)  
 }
 
 E(~/o sitema abrir o modal/){->
@@ -245,7 +242,7 @@ E(~/nenhuma alteração deve ser feita/){->
 }
 
 
-//CENARIO 7
+//CENARIO 6
 E(~/selecionar um dos projetos da lista de projetos/){->
   assert true
 } 
@@ -263,7 +260,7 @@ E(~/clicar no botão confirmar/){->
 }
 
 
-//CENÁRIO 8
+//CENÁRIO 7
 
 E(~/deseja pesquisar um projeto pelo nome/){->
  assert true
@@ -318,7 +315,7 @@ E(~/se não houver nenhum projeto com o nome informado o sitema deve apresentar 
 }
 
 
-//CENARIO 9
+//CENARIO 8
 
 E(~/selecionar o botão "Reset"/){->
 at PageProj
@@ -342,7 +339,7 @@ E(~/o modal deve ser fechado/){->
 }
 
 
-//CENÁRIO 10
+//CENÁRIO 9
 
 E(~/deseja pesquisar um projeto pela Tag/){->
   assert true
@@ -436,7 +433,7 @@ Então(~/o sistema deverá exibir os projetos que possuem Experimento Implantado
 
 
 
-//CENÁRIO 11
+//CENÁRIO 10
 
 E(~/selecionar o botão "Resetar"/){->
  at PageProj
@@ -452,7 +449,7 @@ E(~/selecionar o botão "Resetar"/){->
 
 
 
-//CENÁRIO 13
+//CENÁRIO 11
 
 Quando(~/selecionar um dos projetos da lista/){->
 at PageProj
@@ -497,7 +494,7 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 }
 
 
-//CENÁRIO 14
+//CENÁRIO 12
 
 E(~/o usuário clicar no botão Não/){->
 at PageProj
@@ -520,7 +517,7 @@ E(~/o projeto não será excluído e permanecerá na lista de projetos/){->
  assert true
 }
 
-//CENÁRIO 15
+//CENÁRIO 13
 E(~/será apresentado sua lista de projetos existente/){->
 assert true
 }

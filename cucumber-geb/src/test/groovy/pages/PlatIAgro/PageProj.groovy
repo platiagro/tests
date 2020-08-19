@@ -16,19 +16,19 @@ class PageProj extends BasePage {
 
      campnome{$(By.xpath("//*[@id='name']"))}
 
-     clscamp{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span/svg/path"))}
-    
+     //limparcamp{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span"))}
+
      campDesc{$(By.xpath("//*[@id='description']"))}
 
-     btnConfirm{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+     btnConfirm{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
-     btncancel{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+     btncancel{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
      
      returnProj{$(By.xpath("//*[@id='root']/section/header/ul/li[6]"))}
 
-     btnclose{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/button/span"))}
+     btnclose{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/button/span"))}
 
-     btnedit{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/i"))}
+     btnedit{$(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/span/svg"))}
 
      btnalt{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[5]/button[1]"))}
      
@@ -41,8 +41,8 @@ class PageProj extends BasePage {
      
      btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
      
-     campclear{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div[1]/div[2]/div/span/span/span/i"))}
-     
+     campclear{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span/svg"))}
+   
      btnproj{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]]"))}
    
      btnsearch{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[2]/span"))}
