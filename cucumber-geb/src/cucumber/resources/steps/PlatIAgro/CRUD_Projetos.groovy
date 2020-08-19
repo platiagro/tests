@@ -63,14 +63,15 @@ E(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
 E(~/o usuário limpar o campo nome/){->
   at PageProj
      
-  Thread.sleep(5000)
+   Thread.sleep(5000)
  
     waitFor(60){
-     (By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span")).click() 
+     page.clscamp.click() 
      } 
 
-     Thread.sleep(2000)
- }       
+   Thread.sleep(2000)
+
+}       
 
 
 
@@ -281,23 +282,22 @@ Thread.sleep(5000)
 }
 
 
-Então(~/será aberto um modal/){->
- assert true
-}
 
-Quando(~/o usuário inserir: "(.*)"/){String name->
-at PageProj
- Thread.sleep(5000)
+Quando(~/o usuário inserir:'(.*)'/){String psq->
+ at PageProj
 
-      waitFor(60){
-       page.campnome.value(name)  
-       } 
+    Thread.sleep(5000)
+
+     waitFor(60){
+       $(By.xpath("/html/body/div[2]/div/div/div/div/input")).click()
+     }
+    
+    Thread.sleep(5000)
        
-       Thread.sleep(2000) 
 }
 
 
-E(~/selecionar o botão "Search"/){->
+E(~/selecionar o botão Search/){->
 at PageProj
 
 Thread.sleep(5000)
@@ -370,7 +370,7 @@ Quando(~/o usuário selecionar a Tag "Experimentação"/){->
  Thread.sleep(5000)
 
   waitFor(60){
-    $(By.xpath("//*[contains(text(), 'Experimentação')]")).click()
+    $(By.xpath("/html/body/div[7]/div/div/div/ul/li[1]/label/span")).click()
   }
 
  Thread.sleep(2000)
@@ -450,10 +450,6 @@ E(~/selecionar o botão "Resetar"/){->
   Thread.sleep(2000)
 }
 
-
-Então(~/o modal será resetado e fechado/){->
- assert true
-}
 
 
 //CENÁRIO 13

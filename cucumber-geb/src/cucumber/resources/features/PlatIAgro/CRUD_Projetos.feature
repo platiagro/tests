@@ -89,7 +89,7 @@ Então o modal deve ser resetado e fechado
 E nenhuma alteração deve ser feita
 
 
-@CRUDPROJ
+@C
 Cenário: C07 - Alterar nome do Projeto - Nome repetido
 Dado que o usuário está na página Meus Projetos
 E selecionar um dos projetos da lista de projetos
@@ -110,8 +110,8 @@ Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome do Projeto
 Então será aberto um modal
-Quando o usuário inserir: 'TesteProj3'
-E selecionar o botão "Search"
+Quando o usuário inserir:'TesteProj3'
+E selecionar o botão Search
 Então o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa
 E se não houver nenhum projeto com o nome informado o sitema deve apresentar a página em branco
 

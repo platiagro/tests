@@ -15,7 +15,9 @@ class PageProj extends BasePage {
      //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
 
      campnome{$(By.xpath("//*[@id='name']"))}
- 
+
+     clscamp{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span/svg/path"))}
+    
      campDesc{$(By.xpath("//*[@id='description']"))}
 
      btnConfirm{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
@@ -44,9 +46,7 @@ class PageProj extends BasePage {
      btnproj{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]]"))}
    
      btnsearch{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[2]/span"))}
-     
-     campnome {$(By.xpath("/html/body/div[4]/div/div/div/div/input"))}
-
+  
      btnpesq{$(By.xpath("/html/body/div[4]/div/div/div/div/div/div[1]/button"))}
 
      btnreset {$(By.xpath("/html/body/div[4]/div/div/div/div/div/div[2]/button"))}
@@ -56,7 +56,7 @@ class PageProj extends BasePage {
      btnok{$(By.xpath("/html/body/div[6]/div/div/div/div/button[2]"))}
      
      btnresetar{$(By.xpath("/html/body/div[6]/div/div/div/div/button[1]"))}
-     
+
     }
 
 } 
