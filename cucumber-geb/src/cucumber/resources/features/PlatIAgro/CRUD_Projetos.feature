@@ -130,7 +130,7 @@ Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome do Projeto
 Então será aberto um modal
-Quando o usuário inserir: 'Projeto Teste'
+Quando o usuário inserir:'Projeto Teste'
 E selecionar o botão "Reset"
 Então o sistema deve cancelar a operação
 E o modal deve ser fechado

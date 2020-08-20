@@ -351,10 +351,14 @@ E(~/deseja pesquisar um projeto pelo nome/){->
  assert true
 } 
 
+Então(~/será aberto um modal/){->
+ assert true
+}
+
 Quando(~/selecionar o icone de pesquisa ao lado da coluna Nome do Projeto/){->
  at PageProj
 
-Thread.sleep(5000)
+ Thread.sleep(5000)
 
   waitFor(60){
     page.btnsearch.click()  
@@ -365,30 +369,30 @@ Thread.sleep(5000)
 
 
 
-Quando(~/o usuário inserir:'(.*)'/){String psq->
+Quando(~/o usuário inserir:'(.*)'/){String psqnome->
  at PageProj
 
     Thread.sleep(5000)
 
      waitFor(60){
-       $(By.xpath("/html/body/div[2]/div/div/div/div/input")).click()
+       $(By.xpath("/html/body/div[2]/div/div/div/div/input")).value(psqnome)
      }
     
-    Thread.sleep(5000)
+    Thread.sleep(2000)
        
 }
 
 
 E(~/selecionar o botão Search/){->
-at PageProj
+ at  PageProj
 
-Thread.sleep(5000)
+   Thread.sleep(5000)
 
       waitFor(60){
        page.btnpesq.click()  
        } 
        
-       Thread.sleep(2000)
+       Thread.sleep(7000)
 }
 
 Então(~/o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa/){->
@@ -411,7 +415,7 @@ Thread.sleep(5000)
        page.btnreset.click()  
        } 
        
-    Thread.sleep(2000)
+    Thread.sleep(5000)
 }
 
 Então(~/o sistema deve cancelar a operação/){->
@@ -452,7 +456,7 @@ Quando(~/o usuário selecionar a Tag "Experimentação"/){->
  Thread.sleep(5000)
 
   waitFor(60){
-    $(By.xpath("/html/body/div[7]/div/div/div/ul/li[1]/label/span")).click()
+    $(By.xpath("/html/body/div[4]/div/div/div/ul/li[1]/label/span")).click()
   }
 
  Thread.sleep(2000)
@@ -487,7 +491,7 @@ Quando(~/o usuário selecionar a Tag "Pré implantação"/){->
  Thread.sleep(5000)
 
   waitFor(60){
-    $(By.xpath("//*[contains(text(), 'Pré-implantação')]")).click()
+    $(By.xpath("/html/body/div[4]/div/div/div/ul/li[2]/label/span")).click()
   }
  
  Thread.sleep(2000)
@@ -504,7 +508,7 @@ Quando(~/o usuário selecionar a Tag "Implantado"/){->
  Thread.sleep(5000)
 
   waitFor(60){
-    $(By.xpath("//*[contains(text(), 'Implantado')]")).click()
+    $(By.xpath("/html/body/div[4]/div/div/div/ul/li[3]/label/span")).click()
   }
  
  Thread.sleep(2000)
