@@ -5,7 +5,7 @@ import pages.base.BasePage
 
 class PageTarefa extends BasePage {
   static at = {
-   title == "PlatIAgro - Plataforma de Inteligência Artficial para o Agronegócio" }
+   title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
     static content ={
     btnnext{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[5]"))}
 

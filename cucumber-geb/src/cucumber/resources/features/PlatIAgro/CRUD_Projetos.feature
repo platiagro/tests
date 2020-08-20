@@ -62,8 +62,8 @@ Então a operação deve ser cancelada
 E o sistema deverá informar que já existe um projeto com o nome informado
 
 
-@tst
-Cenário:C05 - Alterar nome do Projeto - Operação: Salvar e Cancelar
+@CRUDPROJ
+Cenário:C05 - Alterar nome do Projeto - Operação: Salvar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
@@ -82,30 +82,38 @@ E informar a seguinte descrição:'Teste - Alterar Nome e Descrição'
 E clicar no botão Salvar
 Então o nome e a descrição do projeto serão atualizados
 
-Quando selecionar o botão Editar novamente
+
+@CRUDPROJ
+Cenário:C06- Alterar nome do Projeto - Operação: Cancelar
+Dado que o usuário está na página Meus Projetos
+Quando selecionar o projeto que deseja Editar
+E o sitema direcionar o usuário para a página do projeto
+Quando selecionar o botão Editar
 E o sitema abrir o modal
-E o usuário clicar no botão Cancelar
+E o usuário informar a seguinte descrição:'Teste - operação: Cancelar'
+E selecionar o botão Cancelar
 Então o modal deve ser resetado e fechado
 E nenhuma alteração deve ser feita
 
 
-@C
-Cenário: C06 - Alterar nome do Projeto - Nome repetido
+@CRUDPROJ
+Cenário: C07 - Alterar nome do Projeto - Nome repetido
 Dado que o usuário está na página Meus Projetos
 E selecionar um dos projetos da lista de projetos
-E selecionar o botão Alterar nome e descrição
-Então será aberto um modal
+Quando selecionar o botão Editar
+E o sitema abrir o modal
 E o atual nome do projeto deve estar selecionado
 Quando o usuário limpar o campo
 E nomear o projeto com:'Teste'
-E manter a descrição atual do projeto
-E clicar no botão confirmar 
+E o usuário informar a seguinte descrição:'Teste - Nome Repetido'
+E selecionar o botão Salvar 
 Então a operação deve ser cancelada
-E o sistema deverá informar que já existe um projeto com o nome informado
+E o sistema deverá informar que já existe um projeto com aquele nome
+E nenhuma alteração deve ser feita
 
 
 @CRUDPROJ
-Cenário: C07 - Pesquisar Nome do Projeto
+Cenário: C08 - Pesquisar Nome do Projeto
 Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome do Projeto
@@ -117,7 +125,7 @@ E se não houver nenhum projeto com o nome informado o sitema deve apresentar a 
 
 
 @CRUDPROJ
-Cenário: C08 - Pesquisar Nome do Projeto - Cancelar
+Cenário: C09 - Pesquisar Nome do Projeto - Cancelar
 Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome do Projeto
@@ -130,7 +138,7 @@ E o modal deve ser fechado
 
 
 @CRUDPROJ
-Cenário: C09 - Filtrar Projeto - Tags
+Cenário: C10 - Filtrar Projeto - Tags
 Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pela Tag
 Quando selecionar o icone ao lado da coluna Tags
@@ -155,7 +163,7 @@ Então o sistema deverá exibir os projetos que possuem Experimento Implantado
 
 
 @CRUDPROJ
-Esquema do Cenário: C10 - Filtrar Projeto - Tags - Resetar
+Esquema do Cenário: C11 - Filtrar Projeto - Tags - Resetar
 Dado que o usuário está na página Meus Projetos
 Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pela Tag
@@ -180,7 +188,7 @@ Então o modal será resetado e fechado
 
 
 # @CRUDPROJ
-# Cenário: C11 - Excluir Projeto
+# Cenário: C12 - Excluir Projeto
 # Dado que o usuário está na página Meus Projetos
 # Quando clicar no botão Novo Projeto
 # Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
@@ -200,7 +208,7 @@ Então o modal será resetado e fechado
 
 
 @CRUDPROJ
-Cenário:C12 - Excluir Projeto - Ação Excluir
+Cenário:C13 - Excluir Projeto - Ação Excluir
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um dos projetos da lista
 E na coluna ação selecionar a opção Excluir
@@ -211,7 +219,7 @@ Então o projeto será excluído da lista de Projetos
 
 
 @CRUDPROJ
-Cenário:C13 - Excluir Projeto - Ação Excluir - Cancelar
+Cenário:C14 - Excluir Projeto - Ação Excluir - Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um dos projetos da lista
 E na coluna ação selecionar a opção Excluir
@@ -231,7 +239,7 @@ E o projeto não será excluído e permanecerá na lista de projetos
 
 
 @CRUDPROJ
-Cenário:C14 - Excluir N Projetos
+Cenário:C15 - Excluir N Projetos
 Dado que o usuário está na página Meus Projetos
 E será apresentado sua lista de projetos existente
 Quando selecionar vários projetos da lista

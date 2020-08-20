@@ -179,17 +179,17 @@ Quando(~/o usuário estiver na página do Projeto/){->
 E(~/selecionar o botão Editar, ao lado do nome do projeto/){->
  at PageProj
         
-        Thread.sleep(6000)  
+   Thread.sleep(5000)  
 
-        waitFor(60){
-       page.btnedit.click()
-        }
+      waitFor(60){
+        page.btnedit.click()
+      }
 
-      Thread.sleep(5000) 
+    Thread.sleep(2000) 
 }
 
 Então(~/o sistema deve abrir um modal, com o atual nome do projeto selecionado/){->
- asser true
+ assert true
 }
 
 
@@ -212,55 +212,140 @@ E(~/clicar no botão Salvar/){->
      waitFor(60){
        page.btnConfirm.click()  
        } 
+
        Thread.sleep(5000) 
        
 }
 
 
 Então(~/o nome e a descrição do projeto serão atualizados/){->
-  assert true
+  at PageProj
+
+   waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
+       } 
+
+    Thread.sleep(5000) 
 }
 
 
-Quando(~/selecionar o botão Editar novamente/){->
+
+//CENÁRIO 6
+
+Quando(~/selecionar o projeto que deseja Editar/){->
  at PageProj
-        Thread.sleep(6000)  
 
-        waitFor(60){
+     Thread.sleep(5000) 
+
+     waitFor(60){
+     $(By.xpath("//*[contains(text(), 'TesteProj3')]")).click()
+    }
+}
+
+E(~/o sitema direcionar o usuário para a página do projeto/){->
+ assert true
+}
+
+
+Quando(~/selecionar o botão Editar/){->
+ at PageProj
+   Thread.sleep(5000) 
+
+      waitFor(60){
        page.btnedit.click()
-        }
+      }
 
-      Thread.sleep(5000)  
+      Thread.sleep(5000)
 }
 
 E(~/o sitema abrir o modal/){->
  assert true
 }
 
+E(~/o usuário informar a seguinte descrição:'(.*)'/){String editdesc->
+ at PageProj
+
+      waitFor(60){
+       page.campDesc.value(editdesc)  
+      } 
+       
+     Thread.sleep(5000) 
+}
+
+
+E(~/selecionar o botão Cancelar/){->
+ at PageProj
+
+    Thread.sleep(5000)
+
+      waitFor(60){
+       page.editcancel.click()  
+      } 
+       
+     Thread.sleep(2000)
+}
+
+
 E(~/nenhuma alteração deve ser feita/){->
+at PageProj
+
+   waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
+       } 
+
+    Thread.sleep(7000)
+
+}
+
+
+
+
+//CENARIO 7
+E(~/selecionar um dos projetos da lista de projetos/){->
+  at PageProj
+
+     Thread.sleep(5000) 
+
+     waitFor(60){
+     $(By.xpath("//*[contains(text(), 'ProjetoTeste')]")).click()
+    }
+} 
+
+E(~/o atual nome do projeto deve estar selecionado/){->
  assert true
 }
 
 
-//CENARIO 6
-E(~/selecionar um dos projetos da lista de projetos/){->
-  assert true
-} 
 E(~/manter a descrição atual do projeto/){->
 assert true
 }  
 
-E(~/clicar no botão confirmar/){->
+E(~/selecionar o botão Salvar/){->
    at PageProj
 
+   Thread.sleep(5000)
+
      waitFor(60){
-       page.btnConfirm.click()  
-       } 
-       Thread.sleep(2000)
+     $(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]")).click()
+     }
+
+     Thread.sleep(2000)
+}
+
+E(~/o sistema deverá informar que já existe um projeto com aquele nome/){->
+  at PageProj
+
+   Thread.sleep(5000)
+
+     waitFor(60){
+     $(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/button")).click()
+     }
+
+     Thread.sleep(5000)
 }
 
 
-//CENÁRIO 7
+//CENÁRIO 8
 
 E(~/deseja pesquisar um projeto pelo nome/){->
  assert true
@@ -315,7 +400,7 @@ E(~/se não houver nenhum projeto com o nome informado o sitema deve apresentar 
 }
 
 
-//CENARIO 8
+//CENARIO 9
 
 E(~/selecionar o botão "Reset"/){->
 at PageProj
@@ -339,7 +424,7 @@ E(~/o modal deve ser fechado/){->
 }
 
 
-//CENÁRIO 9
+//CENÁRIO 10
 
 E(~/deseja pesquisar um projeto pela Tag/){->
   assert true
@@ -433,7 +518,7 @@ Então(~/o sistema deverá exibir os projetos que possuem Experimento Implantado
 
 
 
-//CENÁRIO 10
+//CENÁRIO 11
 
 E(~/selecionar o botão "Resetar"/){->
  at PageProj
@@ -449,7 +534,7 @@ E(~/selecionar o botão "Resetar"/){->
 
 
 
-//CENÁRIO 11
+//CENÁRIO 12
 
 Quando(~/selecionar um dos projetos da lista/){->
 at PageProj
@@ -494,7 +579,7 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 }
 
 
-//CENÁRIO 12
+//CENÁRIO 13
 
 E(~/o usuário clicar no botão Não/){->
 at PageProj
@@ -517,7 +602,7 @@ E(~/o projeto não será excluído e permanecerá na lista de projetos/){->
  assert true
 }
 
-//CENÁRIO 13
+//CENÁRIO 14
 E(~/será apresentado sua lista de projetos existente/){->
 assert true
 }

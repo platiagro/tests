@@ -5,7 +5,7 @@ import pages.base.BasePage
 
 class PageProj extends BasePage {
   static at = {
-   title == "PlatIAgro - Plataforma de Inteligência Artficial para o Agronegócio" }
+   title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
     static content ={
       
        projetoMenu{$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
@@ -22,15 +22,17 @@ class PageProj extends BasePage {
 
      btnConfirm{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
-     btncancel{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
-     
+     btncancel{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+   
      returnProj{$(By.xpath("//*[@id='root']/section/header/ul/li[6]"))}
 
      btnclose{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/button/span"))}
-
-     btnedit{$(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/span/svg"))}
+     
+     btnedit{$(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/span"))}
 
      btnalt{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[5]/button[1]"))}
+     
+     editcancel{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]"))}
      
      btnexcluir{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[6]/button"))}
      
@@ -41,7 +43,7 @@ class PageProj extends BasePage {
      
      btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
      
-     campclear{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span/svg"))}
+     campclear{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span"))}
    
      btnproj{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]]"))}
    
