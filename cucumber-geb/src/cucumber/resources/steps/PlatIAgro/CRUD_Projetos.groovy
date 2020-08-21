@@ -637,6 +637,18 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 
 //CENÁRIO 14
 
+E(~/quando selecionar esse Projeto/){->
+ at PageProj
+   
+   Thread.sleep(2000)
+
+    waitFor(60){
+     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[1]")).click()
+    }
+
+    Thread.sleep(2000)
+}
+
 E(~/o usuário clicar no botão Não/){->
 at PageProj
 
@@ -646,7 +658,7 @@ Thread.sleep(1000)
        page.btnNao.click() 
       } 
       
-      Thread.sleep(5000) 
+      Thread.sleep(2000) 
 }
 
 Então(~/a operação será cancelada/){->
@@ -655,7 +667,15 @@ Então(~/a operação será cancelada/){->
 
 
 E(~/o projeto não será excluído e permanecerá na lista de projetos/){->
- assert true
+ at PageProj
+   
+   Thread.sleep(2000)
+
+    waitFor(60){
+     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[1]")).click()
+    }
+
+    Thread.sleep(2000)
 }
 
 //CENÁRIO 15
@@ -702,12 +722,26 @@ E(~/o usuário selecionar o botão "Não"/){->
 
 
 E(~/nenhum dos projetos selecionados será excluído/){->
- assert true
+ //Tirar a seleção dos projetos
+ at PageProj
+
+   Thread.sleep(2000)
+
+    waitFor(60){
+     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/label/span")).click()
+     }
+
 }
 
 
 Quando(~/o usuários selecionar vários projetos da lista novamente/){->
- assert true
+ at PageProj
+
+   Thread.sleep(3000)
+
+    waitFor(60){
+     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/label/span")).click()
+     }
 }
 
 E(~/selecionar o botão "Sim"/){->

@@ -39,7 +39,7 @@ class PageProj extends BasePage {
      btnsim{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
      
 
-     btnNao{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div/div[2]/button[1]"))}
+     btnNao{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[1]"))}
      
      btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
      

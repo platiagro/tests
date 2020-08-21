@@ -220,7 +220,16 @@ Então o projeto será excluído da lista de Projetos
 @CRUDPROJ
 Cenário:C14 - Excluir Projeto - Ação Excluir - Cancelar
 Dado que o usuário está na página Meus Projetos
-Quando selecionar um dos projetos da lista
+Quando clicar no botão Novo Projeto
+Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
+E nomear o projeto com:'ProjetoTeste'
+E informar a seguinte descrição:'Teste - Operação: Excluir'
+Quando clicar no botão Criar
+Então o novo projeto será criado 
+E o usuário será direcionado para a página do projeto
+E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
+Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
+E quando selecionar esse Projeto
 E na coluna ação selecionar a opção Excluir
 E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
 E o usuário clicar no botão Não
