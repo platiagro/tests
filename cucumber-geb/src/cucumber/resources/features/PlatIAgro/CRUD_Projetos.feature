@@ -144,19 +144,19 @@ E deseja pesquisar um projeto pela Tag
 Quando selecionar o icone ao lado da coluna Tags
 Então será aberto um modal com as opções de tags
 
-Quando o usuário selecionar a Tag "Experimentação" 
+Quando o usuário selecionar a Tag Experimentação 
 E selecionar o botão "OK"
 Então o sistema deverá exibir os projetos que possuem experimeto
 
 Quando selecionar o icone ao lado da coluna Tags
 Então novamente será aberto o modal com as opções de tags
-Quando o usuário selecionar a Tag "Pré implantação" 
+Quando o usuário selecionar a Tag Pré implantação
 E selecionar o botão "OK"
 Então o sistema deverá exibir os projetos que possuem Pré implantação
 
 Quando selecionar o icone ao lado da coluna Tags
 Então novamente será aberto o modal com as opções de tags
-Quando o usuário selecionar a Tag "Implantado" 
+Quando o usuário selecionar a Tag Implantado
 E selecionar o botão "OK"
 Então o sistema deverá exibir os projetos que possuem Experimento Implantado
 

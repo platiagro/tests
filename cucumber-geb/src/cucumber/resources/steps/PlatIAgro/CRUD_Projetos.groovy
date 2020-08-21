@@ -450,16 +450,16 @@ Então(~/será aberto um modal com as opções de tags/){->
   assert true
 }
 
-Quando(~/o usuário selecionar a Tag "Experimentação"/){->
+Quando(~/o usuário selecionar a Tag Experimentação/){->
  at PageProj
 
- Thread.sleep(5000)
+ Thread.sleep(2000)
 
   waitFor(60){
-    $(By.xpath("/html/body/div[4]/div/div/div/ul/li[1]/label/span")).click()
-  }
+     $(By.xpath("/html/body/div[2]/div/div/div/ul/li[1]/label")).click()
+    } 
 
- Thread.sleep(2000)
+   Thread.sleep(2000)
 
 } 
 
@@ -485,16 +485,23 @@ Então(~/novamente será aberto o modal com as opções de tags/){->
  assert true
 }
 
-Quando(~/o usuário selecionar a Tag "Pré implantação"/){->
+Quando(~/o usuário selecionar a Tag Pré implantação/){->
+ //Tirar a seleção da tag Experimentação
  at PageProj
 
- Thread.sleep(5000)
+    Thread.sleep(2000)
 
-  waitFor(60){
-    $(By.xpath("/html/body/div[4]/div/div/div/ul/li[2]/label/span")).click()
-  }
+    waitFor(60){
+     $(By.xpath("/html/body/div[2]/div/div/div/ul/li[1]/label")).click()
+     } 
+
+   Thread.sleep(5000)
+
+    waitFor(60){
+    $(By.xpath("/html/body/div[2]/div/div/div/ul/li[2]/label")).click()
+    }
  
- Thread.sleep(2000)
+   Thread.sleep(5000)
 
 } 
 
@@ -502,17 +509,23 @@ Então(~/o sistema deverá exibir os projetos que possuem Pré implantação/){-
   assert true
 }
 
-Quando(~/o usuário selecionar a Tag "Implantado"/){->
+Quando(~/o usuário selecionar a Tag Implantado/){->
+ //Tirar a seleção da tag Pré implantação
  at PageProj
-
- Thread.sleep(5000)
+  
+  Thread.sleep(5000)
 
   waitFor(60){
-    $(By.xpath("/html/body/div[4]/div/div/div/ul/li[3]/label/span")).click()
+    $(By.xpath("/html/body/div[2]/div/div/div/ul/li[2]/label")).click()
+  }
+   
+  Thread.sleep(2000)
+
+  waitFor(60){
+    $(By.xpath("/html/body/div[2]/div/div/div/ul/li[3]/label")).click()
   }
  
- Thread.sleep(2000)
-
+  Thread.sleep(5000)
 
 }
 
