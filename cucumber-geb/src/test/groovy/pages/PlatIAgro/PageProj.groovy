@@ -57,7 +57,7 @@ class PageProj extends BasePage {
    
      btnok{$(By.xpath("/html/body/div[2]/div/div/div/div/button[2]"))}
      
-     btnresetar{$(By.xpath("/html/body/div[6]/div/div/div/div/button[1]"))}
+     btnresetar{$(By.xpath("/html/body/div[2]/div/div/div/div/button[1]"))}
 
     }
 

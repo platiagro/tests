@@ -163,28 +163,27 @@ Então o sistema deverá exibir os projetos que possuem Experimento Implantado
 
 
 @CRUDPROJ
-Esquema do Cenário: C11 - Filtrar Projeto - Tags - Resetar
-Dado que o usuário está na página Meus Projetos
+Cenário: C11 - Filtrar Projeto - Tags - Resetar
 Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pela Tag
 Quando selecionar o icone ao lado da coluna Tags
 Então será aberto um modal com as opções de tags
 
-Quando o usuário selecionar a Tag "Experimentação" 
+Quando o usuário selecionar a Tag Experimentação 
 E selecionar o botão "Resetar"
-Então o modal será resetado e fechado
+Então o modal será fechado
 
 Quando selecionar o icone ao lado da coluna Tags
 Então novamente será aberto o modal com as opções de tags
-Quando o usuário selecionar a Tag "Pré implantação" 
+Quando o usuário selecionar Pré implantação 
 E selecionar o botão "Resetar"
-Então o modal será resetado e fechado
+Então o modal será fechado
 
 Quando selecionar o icone ao lado da coluna Tags
 Então novamente será aberto o modal com as opções de tags
-Quando o usuário selecionar a Tag "Implantado" 
+Quando o usuário selecionar Implantado 
 E selecionar o botão "Resetar"
-Então o modal será resetado e fechado
+Então o modal será fechado
 
 
 # @CRUDPROJ

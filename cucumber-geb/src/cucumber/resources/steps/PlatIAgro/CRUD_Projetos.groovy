@@ -537,21 +537,60 @@ Então(~/o sistema deverá exibir os projetos que possuem Experimento Implantado
 
 //CENÁRIO 11
 
+Quando(~/o usuário selecionar Experimentação/){->
+ at PageProj
+
+   Thread.sleep(2000)
+
+   waitFor(60){
+     $(By.xpath("/html/body/div[2]/div/div/div/ul/li[1]/label")).click()
+    } 
+
+   Thread.sleep(2000)
+}
+
+
+Quando(~/o usuário selecionar Pré implantação/){->
+ at PageProj
+
+   Thread.sleep(2000)
+
+   waitFor(60){
+     $(By.xpath("/html/body/div[2]/div/div/div/ul/li[2]/label")).click()
+    } 
+
+   Thread.sleep(2000)
+
+}
+
+Quando(~/o usuário selecionar Implantado/){->
+ at PageProj
+
+   Thread.sleep(2000)
+
+   waitFor(60){
+     $(By.xpath("/html/body/div[2]/div/div/div/ul/li[3]/label")).click()
+    } 
+
+   Thread.sleep(2000)
+
+} 
+
 E(~/selecionar o botão "Resetar"/){->
  at PageProj
 
- Thread.sleep(5000)
+   Thread.sleep(2000)
 
-  waitFor(60){
-   page.btnresetar.click()
-  }
+    waitFor(60){
+      page.btnresetar.click()
+    }
   
-  Thread.sleep(2000)
+    Thread.sleep(5000)
 }
 
 
 
-//CENÁRIO 12
+//CENÁRIO 13
 
 Quando(~/selecionar um dos projetos da lista/){->
 at PageProj
@@ -588,7 +627,7 @@ at PageProj
        page.btnsim.click()  
       } 
       
-      Thread.sleep(5000) 
+      Thread.sleep(6000) 
 }
 
 Então(~/o projeto será excluído da lista de Projetos/){->
@@ -596,7 +635,7 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 }
 
 
-//CENÁRIO 13
+//CENÁRIO 14
 
 E(~/o usuário clicar no botão Não/){->
 at PageProj
@@ -619,7 +658,7 @@ E(~/o projeto não será excluído e permanecerá na lista de projetos/){->
  assert true
 }
 
-//CENÁRIO 14
+//CENÁRIO 15
 E(~/será apresentado sua lista de projetos existente/){->
 assert true
 }
