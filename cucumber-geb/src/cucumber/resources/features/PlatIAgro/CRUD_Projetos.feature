@@ -222,7 +222,7 @@ Cenário:C14 - Excluir Projeto - Ação Excluir - Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
-E nomear o projeto com:'ProjetoTeste'
+E nomear o projeto com:'Teste_Projeto'
 E informar a seguinte descrição:'Teste - Operação: Excluir'
 Quando clicar no botão Criar
 Então o novo projeto será criado 

@@ -22,8 +22,8 @@ class PageProj extends BasePage {
 
      btnConfirm{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
-     btncancel{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]"))}
-   
+     btncancel{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+  
      returnProj{$(By.xpath("//*[@id='root']/section/header/ul/li[6]"))}
 
      btnclose{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/button/span"))}

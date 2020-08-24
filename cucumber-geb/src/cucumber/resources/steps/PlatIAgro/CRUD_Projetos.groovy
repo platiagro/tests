@@ -10,7 +10,7 @@ import static cucumber.api.groovy.PT.*
 //Contexto
 
  Dado(~/que o usuário acessa a plataforma PlatIAgro/){->
- to PageProj
+  to PageProj
  }
 
  E(~/está na tela inicial/){->
@@ -194,7 +194,7 @@ Então(~/o sistema deve abrir um modal, com o atual nome do projeto selecionado/
 
 
 Quando(~/o usuário limpar o campo/){->
-at PageProj
+ at PageProj
        
    Thread.sleep(6000)  
 

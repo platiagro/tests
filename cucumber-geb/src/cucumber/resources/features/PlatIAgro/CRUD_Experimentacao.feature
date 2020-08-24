@@ -17,7 +17,7 @@ E confirmar
 Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@CRUDPROJ
+@EXPERIMENTO
 Cenário: C01 - Criar e Executar Experimento
 Dado que o usuário está na página "Meus Projetos"
 Quando clicar no botão Novo Projeto
@@ -60,7 +60,7 @@ Então o usuário irá selecionar as tarefas
 E visualizar o resultado da execução
 
 
-@CRUDPROJ
+@EXPERIMENTO
 Cenário: C02 - Executar Experimento com erro
 Dado que o usuário está na página "Meus Projetos"
 Quando clicar no botão Novo Projeto
@@ -95,7 +95,7 @@ E o motivo do erro deverá ser exibido no campo Erro na execução
 
 
 
-@CRUDPROJ
+@EXPERIMENTO
 Cenário: C03 - Criar Experimento - Nome Repetido
 Dado que o usuário está na página Meus Projetos
 E selecionar um dos projetos da lista de projetos
@@ -109,7 +109,7 @@ E o sistema deverá informar que já existe um experimento com o nome informado
 
 
 
-@CRUDPROJ
+@EXPERIMENTO
 Cenário: C04 - Salvar Template
 Dado que o usuário está na página "Meus Projetos"
 Quando clicar no botão Novo Projeto
@@ -156,7 +156,7 @@ Então o template será salvo
 E será adicionado ao menu Template de Fluxos 
  
 
-@CRUDPROJ
+@EXPERIMENTO
 Cenário: C05 - Excluir Experimento
 Dado que o usuário está na página Meus Projetos
 E selecionar um Projeto da lista de projetos
