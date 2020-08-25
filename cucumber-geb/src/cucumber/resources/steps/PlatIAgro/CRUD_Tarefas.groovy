@@ -172,10 +172,8 @@ E(~/nenhuma tarefa deve ser criada/){->
 E(~/clicar no botão Cancelar/){->
  at PageTarefa
 
-Thread.sleep(5000)
-
      waitFor(60){
-     $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")).click()
+     page.btncalceltask.click()
     } 
 
    Thread.sleep(5000)
@@ -324,21 +322,21 @@ E(~/seleciona uma Tarefa da lista de tarefas/){->
 
 
 E(~/na coluna Ação clicar no botão Excluir/){->
-at PageTarefa
+ at PageTarefa
 
-    Thread.sleep(2000)
+     Thread.sleep(2000)
 
      waitFor(60){
-      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[4]/td[4]/div/div[3]/button")).click()     
+       $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[4]/td[4]/div/div[3]/button")).click()     
      }
 
      Thread.sleep(2000)
 
        waitFor(60){
-       $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
+         $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
        }
 
-    Thread.sleep(5000)
+     Thread.sleep(5000)
 }
 
 
@@ -367,13 +365,13 @@ Então(~/a terefa será excluida da lista/){->
 E(~/selecionar o botão Não/){->
  at PageTarefa
  
-    Thread.sleep(5000)
+     Thread.sleep(5000)
 
       waitFor(60){
        $(By.xpath("//*[contains(text(), 'Não')]")).click()
       }
 
-    Thread.sleep(6000)
+     Thread.sleep(6000)
 }
 
 E(~/nenhuma tarefa será excluída/){->
@@ -389,10 +387,10 @@ E(~/seleciona uma Tarefa da lista que esteja relacionada a um projeto/){->
 E(~/na coluna Ação clicar nos botões Mais e Excluir/){->
  at PageTarefa
  
-    Thread.sleep(2000)
+     Thread.sleep(2000)
 
       waitFor(60){
-       $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button")).click()
+       page.btnmais.click()
       }
 
      Thread.sleep(5000)
@@ -401,9 +399,13 @@ E(~/na coluna Ação clicar nos botões Mais e Excluir/){->
        $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
        }
 
-    Thread.sleep(5000)
+     Thread.sleep(5000)
 }
 
 E(~/o sistema deverá informar que aquela Tarefa está em uso/){->
   assert true 
 }
+
+Quando(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certez  a que deseja excluir essa Tarefa?"/){->
+ assert true
+} 

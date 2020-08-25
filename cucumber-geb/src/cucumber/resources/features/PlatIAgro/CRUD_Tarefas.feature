@@ -140,12 +140,12 @@ Então a operação será cancelada
 E nenhuma tarefa será excluída
 
 
-@CRUDTAREFA 
+@CRUDTAREFA
 Cenário: C09 - Excluir Tarefa - Relacionada a um Experimento
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista que esteja relacionada a um projeto
 E na coluna Ação clicar nos botões Mais e Excluir 
-Quando o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"
+Quando o sistema abrir uma pop-up com a seguinte mensagem "Você tem certez  a que deseja excluir essa Tarefa?"
 E o usuário confirmar a operação
 Então a operação será cancelada 
 E o sistema deverá informar que aquela Tarefa está em uso
