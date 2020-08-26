@@ -20,7 +20,7 @@ Dado(~/que o usuário está na página Tarefas/){->
 }
 
 Então(~/deverá observar que todas as tarefas existentes estarão listadas em ordem alfabética/){->
-at PageTarefa
+ at PageTarefa
 
     Thread.sleep(2000)
 
@@ -261,8 +261,10 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
 E(~/clicar no botão Confirmar/){->
   at PageTarefa
 
+   Thread.sleep(2000)
+
      waitFor(60){
-     $(By.xpath("//*[contains(text(), 'Confirmar')]")).click()
+       page.btneditconfirm.click()
      }
 
    Thread.sleep(5000)
@@ -280,10 +282,10 @@ E(~/uma mensagem de sucesso será exibida na tela/){->
 E(~/o usuário poderá observar que o nome e descrição da tarefa foram editados/){->
  at PageTarefa
 
-    Thread.sleep(2000)
-
+   Thread.sleep(5000)
+   
     waitFor(60){
-       page.btnnext3.click()
+     page.btnnext3.click()
     } 
 
     Thread.sleep(5000)
