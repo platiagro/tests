@@ -2,7 +2,7 @@ import pages.*
 import geb.*
 import db.*
 import cucumber.api.PendingException
-
+import org.openqa.selenium.Keys
 import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
 
@@ -261,10 +261,9 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
 E(~/clicar no botão Confirmar/){->
    at PageTarefa
 
-     waitFor(60){
-       page.editconfirm.click()
-     }
-
+   waitFor(60){
+     page.editconfirm.sendKeys(Keys.ENTER)
+   }
    Thread.sleep(5000)
 }
 

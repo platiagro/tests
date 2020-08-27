@@ -18,7 +18,7 @@ E está na tela inicial
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
   
-@CRUDTAREFA
+@CR
 Cenário: C01 - Lista de Tarefas
 Dado que o usuário está na página Tarefas
 Então deverá observar que todas as tarefas existentes estarão listadas em ordem alfabética 

@@ -15,7 +15,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 // Use firefox as the default
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
-driver = { new ChromeDriver() }
+ driver = { new ChromeDriver()}
+
 //driver = { new FirefoxDriver() }
 //driver = { new PhantomJSDriver() }
 //driver = { new InternetExplorerDriver()}
@@ -41,20 +42,19 @@ environments {
 	}
 
 	chrome {
-		driver =  { new ChromeDriver() }
-
-  }
+		driver =  {new ChromeDriver()}
+ }
 
 	ie {
     driver = {new InternetExplorerDriver()} }
 
 	chromeheadless {
-	  	//driver =  { new ChromeDriver() }
+	  	//driver =  { new ChromeDriver()}
+		
 	    ChromeOptions chromeOptions = new ChromeOptions();
 	    chromeOptions.addArguments("--headless");
 	    driver = {new ChromeDriver(chromeOptions)};
   }
-
 }
 
 baseUrl="http://10.50.11.77"

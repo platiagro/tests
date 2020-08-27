@@ -10,7 +10,10 @@ import static cucumber.api.groovy.PT.*
 //Contexto
 
  Dado(~/que o usuário acessa a plataforma PlatIAgro/){->
-  to PageProj
+   browser.driver.manage().window().maximize()
+   to PageProj
+   
+   
  }
 
  E(~/está na tela inicial/){->
