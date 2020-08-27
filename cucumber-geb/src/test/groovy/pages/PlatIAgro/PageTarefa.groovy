@@ -45,8 +45,6 @@ class PageTarefa extends BasePage {
 
     btnmais{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button"))}
    
-    btneditconfirm{$(By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div[3]/button[2]"))}
-
+    editconfirm{$(By.xpath("//*[contains(text(), 'Confirmar')]"))}
    }
 }
-  

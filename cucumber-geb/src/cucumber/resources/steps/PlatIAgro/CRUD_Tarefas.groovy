@@ -259,12 +259,10 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
 }
 
 E(~/clicar no botão Confirmar/){->
-  at PageTarefa
-
-   Thread.sleep(2000)
+   at PageTarefa
 
      waitFor(60){
-       page.btneditconfirm.click()
+       page.editconfirm.click()
      }
 
    Thread.sleep(5000)
@@ -282,8 +280,8 @@ E(~/uma mensagem de sucesso será exibida na tela/){->
 E(~/o usuário poderá observar que o nome e descrição da tarefa foram editados/){->
  at PageTarefa
 
-   Thread.sleep(5000)
-   
+   Thread.sleep(2000)
+
     waitFor(60){
      page.btnnext3.click()
     } 
