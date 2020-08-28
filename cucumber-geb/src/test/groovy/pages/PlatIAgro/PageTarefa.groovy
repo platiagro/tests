@@ -7,7 +7,7 @@ class PageTarefa extends BasePage {
   static at = {
    title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
     static content ={
-    btnnext{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[5]"))}
+    btnnext{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[7]/button"))}
 
     btnprevious{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[1]"))}
 
@@ -27,7 +27,7 @@ class PageTarefa extends BasePage {
 
     btncalceltask{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
 
-    btnnext3{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[4]"))}
+    btnnext5{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[6]"))}
 
     btnclose{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/button"))}
 
@@ -45,6 +45,7 @@ class PageTarefa extends BasePage {
 
     btnmais{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button"))}
    
-    editconfirm{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+    //btneditTask{$(By.xpath("//*[contains(text(), 'Confirmar')]"))}
    }
 }
+

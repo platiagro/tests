@@ -35,28 +35,46 @@ Então(~/deverá observar que todas as tarefas existentes estarão listadas em o
        } 
     
     Thread.sleep(5000) 
+   
+       waitFor(60){
+       page.btnnext.click()
+       } 
+
+    Thread.sleep(5000) 
+
+       waitFor(60){
+       page.btnnext.click()
+       } 
+    
+    Thread.sleep(5000)
+
+       waitFor(60){
+       page.btnnext.click()
+       } 
+    
+    Thread.sleep(2000)  
 }
 
 
 E(~/as informações das tarefas estarão divididas em três colunas: Nome da Tarefa, Origem,Descrição e Ação/){->
  at PageTarefa
 
-  Thread.sleep(5000)
-
-       waitFor(60){
-       $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[6]/div/div[1]/span[2]")).click()
-       } 
-     
        Thread.sleep(5000)
-       browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)") 
 
        waitFor(60){
-       $(By.xpath("//*[contains(text(), '50 / página')]")).click()
+         $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[8]/div")).click()
+       }
+
+       Thread.sleep(5000)
+      
+       waitFor(60){
+         $(By.xpath("//*[contains(text(), '50 / página')]")).click()
        } 
     
+       browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
+
        Thread.sleep(5000)
        
-     browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
 
   Thread.sleep(5000) 
 }
@@ -144,7 +162,7 @@ E(~/o usuário deverá observar que a tarefa criada foi adicionada na lista de t
  at PageTarefa
 
     waitFor(60){
-       page.btnnext3.click()
+       page.btnnext5.click()
     } 
 
     Thread.sleep(5000)
@@ -214,9 +232,9 @@ Quando(~/selecionar a Tarefa criada/){->
     Thread.sleep(2000)
 
      waitFor(60){
-      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/div/button")).click()
+      $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/button")).click()
       }
-    
+
       Thread.sleep(5000)
 }
 
@@ -258,13 +276,14 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
   Thread.sleep(2000)
 }
 
-E(~/clicar no botão Confirmar/){->
-   at PageTarefa
+E(~/confirmar a operação/){->
+ at PageTarefa
 
-   waitFor(60){
-     page.editconfirm.sendKeys(Keys.ENTER)
-   }
-   Thread.sleep(5000)
+    waitFor(60){
+     $(By.xpath("//*[contains(text(), 'Confirmar')]")).click()
+    }
+
+ 
 }
 
 
@@ -279,10 +298,8 @@ E(~/uma mensagem de sucesso será exibida na tela/){->
 E(~/o usuário poderá observar que o nome e descrição da tarefa foram editados/){->
  at PageTarefa
 
-   Thread.sleep(2000)
-
     waitFor(60){
-     page.btnnext3.click()
+     page.btnnext5.click()
     } 
 
     Thread.sleep(5000)

@@ -18,7 +18,7 @@ E está na tela inicial
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
   
-@CR
+@CRUDTAREFA
 Cenário: C01 - Lista de Tarefas
 Dado que o usuário está na página Tarefas
 Então deverá observar que todas as tarefas existentes estarão listadas em ordem alfabética 
@@ -78,27 +78,27 @@ Então o modal será resetado e fechado
 E nenhuma tarefa será criada
 
 
-@C
+@T
 Cenário: C05- Alterar nome e descrição da Tarefa
 Dado que o usuário está na página Tarefas
-# Quando selecionar o botão Nova Tarefa
-# E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
-# E o nome default Nova tarefa deve estar destacado no campo nome
-# E o Template em branco também deve estar definido como default
-# Quando o usuário limpar o campo nome da tarefa
-# E nomear a Tarefa: 'AltNome Tarefa'
-# E inserir a Descrição: 'Teste - Editar'
-# E clicar no botão Criar Notebooks
-# Então o modal será resetado e fechado
-# E tarefa será criada
-# E o usuário deverá observar que a tarefa criada foi adicionada a lista de Tarefas
+Quando selecionar o botão Nova Tarefa
+E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
+E o nome default Nova tarefa deve estar destacado no campo nome
+E o Template em branco também deve estar definido como default
+Quando o usuário limpar o campo nome da tarefa
+E nomear a Tarefa: 'AltNome Tarefa'
+E inserir a Descrição: 'Teste - Editar'
+E clicar no botão Criar Notebooks
+Então o modal será resetado e fechado
+E tarefa será criada
+E o usuário deverá observar que a tarefa criada foi adicionada a lista de Tarefas
 
 Quando selecionar a Tarefa criada
 Então será aberto um modal onde o usuário poderá editar o nome e a descrição da Tarefa
 Quando limpar o campo nome
 E informar um novo nome para a Tarefa: 'Tarefa_Teste2'
 E uma nova descrição: 'Teste - Alterar Nome e Descrição'
-E clicar no botão Confirmar
+E confirmar a operação
 Então o modal será fechado
 E uma mensagem de sucesso será exibida na tela
 E o usuário poderá observar que o nome e descrição da tarefa foram editados
