@@ -58,7 +58,7 @@ class PageTarefa extends BasePage {
 
     iconpesq {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[2]/span"))}
     
-    btnpesquisar{$(By.xpath("/html/body/div[6]/div/div/div/div/div/div[1]/button"))}
+    btnSearch{$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[1]/button"))}
 
     btnreset {$(By.xpath("/html/body/div[7]/div/div/div/div/div/div[2]/button"))}
 

@@ -355,9 +355,10 @@ at PageTarefa
 E(~/clicar no botão Search/){->
   at PageTarefa
 
+     Thread.sleep(2000)
 
      waitFor(60){
-       page.btnpesquisar.click()
+      page.btnSearch.click()
      }
 
      Thread.sleep(5000)
