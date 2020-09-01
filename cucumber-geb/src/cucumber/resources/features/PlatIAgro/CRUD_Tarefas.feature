@@ -122,39 +122,23 @@ Dado que o usuário está na página Tarefas
 E deseja pesquisar um Tarefa pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa
 Então será aberto um modal
-Quando o usuário inserir o nome da tarefa: '<taskname>'
+Quando o usuário inserir o nome da tarefa: '<task>'
 E clicar no botão Search
 Então o sistema deve apresentar a Tarefa que possui o nome inserido no campo de pesquisa
 E se não houver nenhum projeto com o nome informado o sitema deve apresentar a página em branco
+E o usuário deverá selecionar o botão "Reset" para a lista de Tarefas ser apresentada novamente
 
 Exemplos:
-|taskname           |
-|Scaler Robusto     |
-|Simulated Annealing|
-|Feature Tools      |
-
-
-@CRUDTAREFA
-Esquema do Cenário:C08 - Filtrar Projeto - Pesquisar nome - Resetar
-Dado que o usuário está na página Tarefas
-E deseja pesquisar um Tarefa pelo nome 
-Quando selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa
-Então será aberto um modal
-Quando o usuário inserir: '<taskname>'
-E selecionar o botão Reset
-Então o sistema deve cancelar a operação
-E o modal deve ser fechado
-
-Exemplos:
-|taskname           |
-|Classificador MLP  |
-|Análise Descritiva |
-|Feature Tools      |
+|task                 |
+|Scaler Robusto       |
+|Simulated Annealing  |
+|Feature Tools        |
+|Transformation Graph |
 
 
 
 @CRUDTAREFA
-Cenário: C09 - Excluir Tarefa
+Cenário: C08 - Excluir Tarefa
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -163,8 +147,9 @@ E o usuário confirmar a operação
 Então a terefa será excluida da lista
 
 
+
 @CRUDTAREFA
-Cenário: C10 - Excluir Tarefa - Cancelar
+Cenário: C09 - Excluir Tarefa - Cancelar
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -175,7 +160,7 @@ E nenhuma tarefa será excluída
 
 
 @CRUDTAREFA
-Cenário: C11 - Excluir Tarefa - Relacionada a um Experimento
+Cenário: C10 - Excluir Tarefa - Relacionada a um Experimento
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista que esteja relacionada a um projeto
 E na coluna Ação clicar nos botões Mais e Excluir 

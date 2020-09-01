@@ -335,17 +335,17 @@ Quando(~/selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa/){->
        page.iconpesq.click() 
      }
 
-     Thread.sleep(5000)
+     Thread.sleep(2000)
 
 }
 
-Quando(~/o usuário inserir o nome da tarefa: '(.*)'/){String taskname->
-at PageTarefa
+Quando(~/o usuário inserir o nome da tarefa: '(.*)'/){String task->
+ at PageTarefa
   
-  Thread.sleep(5000)
+  Thread.sleep(2000)
 
    waitFor(60){
-     page.camptask.value(taskname)
+     page.camptask.value(task)
    }
 
   Thread.sleep(2000)
@@ -358,7 +358,7 @@ E(~/clicar no botão Search/){->
      Thread.sleep(2000)
 
      waitFor(60){
-      page.btnSearch.click()
+       page.btnSearch.click()
      }
 
      Thread.sleep(5000)
@@ -369,24 +369,27 @@ Então(~/o sistema deve apresentar a Tarefa que possui o nome inserido no campo 
  assert true
 }
 
+ E(~/o usuário deverá selecionar o botão "Reset" para a lista de Tarefas ser apresentada novamente/){->
+   at PageTarefa
 
+    Thread.sleep(5000)
 
-//ESQUEMA DO CENARIO 8
+     waitFor(60){
+       page.iconpesq.click() 
+     }
 
-E(~/selecionar o botão Reset/){->
-at PageTarefa
-
-  Thread.sleep(5000)
+     Thread.sleep(2000)
 
      waitFor(60){
        page.btnreset.click() 
      }
+    
+    Thread.sleep(5000)
 
-     Thread.sleep(5000)
-}
+ }
 
 
-//CENÁRIO 9
+//CENÁRIO 8
 
 E(~/seleciona uma Tarefa da lista de tarefas/){->
   at PageTarefa
@@ -443,7 +446,7 @@ Então(~/a terefa será excluida da lista/){->
 
 
 
-//CENÁRIO 10
+//CENÁRIO 09
 
 E(~/selecionar o botão Não/){->
  at PageTarefa
@@ -461,7 +464,7 @@ E(~/nenhuma tarefa será excluída/){->
  assert true
 }
 
-//CENÁRIO 11
+//CENÁRIO 10
 
 E(~/seleciona uma Tarefa da lista que esteja relacionada a um projeto/){->
  assert true
