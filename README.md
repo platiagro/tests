@@ -19,7 +19,8 @@ gradle bdd
 ou
 
 ```
-gradle bdd -Ptag=@tagDesejada
+gradle bdd -Ptag=@CRUDPROJ
+gradle bdd -Ptag=@CRUDTAREFA
 ```
 
 ![Vídeo de uma execução de testes. Uma pessoa roda o comando gradle bdd, e o Google Chrome abre automaticamente na página de projetos da PlatIAgro. Em seguida, um novo projeto é criado. O teste finaliza com sucesso.](animation.gif)

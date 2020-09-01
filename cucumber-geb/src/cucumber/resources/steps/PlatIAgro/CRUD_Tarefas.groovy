@@ -35,24 +35,6 @@ Então(~/deverá observar que todas as tarefas existentes estarão listadas em o
        } 
     
     Thread.sleep(5000) 
-   
-       waitFor(60){
-       page.btnnext.click()
-       } 
-
-    Thread.sleep(5000) 
-
-       waitFor(60){
-       page.btnnext.click()
-       } 
-    
-    Thread.sleep(5000)
-
-       waitFor(60){
-       page.btnnext.click()
-       } 
-    
-    Thread.sleep(2000)  
 }
 
 
@@ -62,21 +44,21 @@ E(~/as informações das tarefas estarão divididas em três colunas: Nome da Ta
        Thread.sleep(5000)
 
        waitFor(60){
-         $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[8]/div")).click()
+         page.btnop10.click()
        }
 
        Thread.sleep(5000)
-      
+
+       browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
+
        waitFor(60){
-         $(By.xpath("//*[contains(text(), '50 / página')]")).click()
+         page.btnop50.click()
        } 
-    
+   
        browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
 
        Thread.sleep(5000)
-       
-
-  Thread.sleep(5000) 
+ 
 }
 
 //CENÁRIO 2
@@ -162,7 +144,7 @@ E(~/o usuário deverá observar que a tarefa criada foi adicionada na lista de t
  at PageTarefa
 
     waitFor(60){
-       page.btnnext5.click()
+       page.btnnext3.click()
     } 
 
     Thread.sleep(5000)
@@ -171,19 +153,27 @@ E(~/o usuário deverá observar que a tarefa criada foi adicionada na lista de t
 //CENÁRIO 3
 
 E(~/o sistema deverá informar que já existe uma tarefa com aquele nome/){->
-at PageTarefa
+ at PageTarefa
 
     Thread.sleep(2000)
 
      waitFor(60){
-       $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")).click()
+       page.btnselect2.click()
      }
     
     Thread.sleep(5000)
 }
 
 E(~/nenhuma tarefa deve ser criada/){->
-  assert true
+  at PageTarefa
+
+    Thread.sleep(2000)
+
+     waitFor(60){
+       page.btnselect2.click()
+     }
+    
+    Thread.sleep(5000)
 }
 
 //CENÁRIO 4
@@ -278,12 +268,21 @@ E(~/uma nova descrição: '(.*)'/){String editdesc->
 
 E(~/confirmar a operação/){->
  at PageTarefa
+   
+   Thread.sleep(2000)
 
-    waitFor(60){
-     $(By.xpath("//*[contains(text(), 'Confirmar')]")).click()
-    }
+   waitFor(60){
+     page.btneditTask.click()
+   }
 
- 
+   Thread.sleep(5000)
+
+     waitFor(60){
+       $(By.xpath("/html/body/div[5]/div/div[2]/div/div[2]/button")).click() 
+     }
+
+     Thread.sleep(2000)
+
 }
 
 
@@ -299,7 +298,7 @@ E(~/o usuário poderá observar que o nome e descrição da tarefa foram editado
  at PageTarefa
 
     waitFor(60){
-     page.btnnext5.click()
+     page.btnnext3.click()
     } 
 
     Thread.sleep(5000)
@@ -321,7 +320,72 @@ E(~/o nome e descrição da Tarefa não devem ser alterados/){->
   assert true
 }
 
-//CENÁRIO 7
+
+//ESQUEMA DO CENARIO 7
+E(~/deseja pesquisar um Tarefa pelo nome/){->
+ assert true
+}
+
+Quando(~/selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa/){->
+ at PageTarefa
+
+    Thread.sleep(5000)
+
+     waitFor(60){
+       page.iconpesq.click() 
+     }
+
+     Thread.sleep(5000)
+
+}
+
+Quando(~/o usuário inserir o nome da tarefa: '(.*)'/){String taskname->
+at PageTarefa
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+     page.camptask.value(taskname)
+   }
+
+  Thread.sleep(2000)
+
+}
+
+E(~/clicar no botão Search/){->
+  at PageTarefa
+
+
+     waitFor(60){
+       page.btnpesquisar.click()
+     }
+
+     Thread.sleep(5000)
+}
+
+
+Então(~/o sistema deve apresentar a Tarefa que possui o nome inserido no campo de pesquisa/){->
+ assert true
+}
+
+
+
+//ESQUEMA DO CENARIO 8
+
+E(~/selecionar o botão Reset/){->
+at PageTarefa
+
+  Thread.sleep(5000)
+
+     waitFor(60){
+       page.btnreset.click() 
+     }
+
+     Thread.sleep(5000)
+}
+
+
+//CENÁRIO 9
 
 E(~/seleciona uma Tarefa da lista de tarefas/){->
   at PageTarefa
@@ -363,20 +427,22 @@ Quando(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza q
 E(~/o usuário confirmar a operação/){->
   at PageTarefa
  
-    Thread.sleep(5000)
+    Thread.sleep(2000)
 
       waitFor(60){
-       $(By.xpath("//*[contains(text(), 'Sim')]")).click()
+       page.btnsim.click()
       }
 
-    Thread.sleep(6000)
+    Thread.sleep(5000)
 }
 
 Então(~/a terefa será excluida da lista/){->
  assert true
 }
 
-//CENÁRIO 8
+
+
+//CENÁRIO 10
 
 E(~/selecionar o botão Não/){->
  at PageTarefa
@@ -384,17 +450,17 @@ E(~/selecionar o botão Não/){->
      Thread.sleep(5000)
 
       waitFor(60){
-       $(By.xpath("//*[contains(text(), 'Não')]")).click()
+       page.btnnao.click()
       }
 
-     Thread.sleep(6000)
+     Thread.sleep(5000)
 }
 
 E(~/nenhuma tarefa será excluída/){->
  assert true
 }
 
-//CENÁRIO 9
+//CENÁRIO 11
 
 E(~/seleciona uma Tarefa da lista que esteja relacionada a um projeto/){->
  assert true
@@ -412,8 +478,8 @@ E(~/na coluna Ação clicar nos botões Mais e Excluir/){->
      Thread.sleep(5000)
     
       waitFor(60){
-       $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
-       }
+         $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
+      }
 
      Thread.sleep(5000)
 }

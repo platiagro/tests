@@ -7,7 +7,8 @@ class PageTarefa extends BasePage {
   static at = {
    title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
     static content ={
-    btnnext{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[7]/button"))}
+
+    btnnext{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[5]/button"))}
 
     btnprevious{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[1]"))}
 
@@ -15,7 +16,13 @@ class PageTarefa extends BasePage {
 
     btnselect{$(By.xpath("//*[@id='newTaskForm_template']/div/span"))}
 
-    btnoptb{$(By.xpath("//*[@id='a9a662e7-9e91-4dd3-9770-a4534f460944']/ul/li[25]"))}
+    btnop10{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[6]/div" ))}
+
+    btnop50{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[6]/div/div[2]/div/div/div/div[2]/div/div/div[5]/div"))}
+    
+    btnselect2 {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[3]"))}
+
+    btnfechar{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/button"))}
 
     btnlimp{$(By.xpath("//*[@id='newTaskForm']/div[2]/div[2]/div/div/span/span"))}
               
@@ -27,7 +34,7 @@ class PageTarefa extends BasePage {
 
     btncalceltask{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
 
-    btnnext5{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[6]"))}
+    btnnext3{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[4]"))}
 
     btnclose{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/button"))}
 
@@ -41,11 +48,22 @@ class PageTarefa extends BasePage {
     
     btnexcluir {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[3]/button[2]"))}
     
-    btnsim {$(By.xpath("/html/body/div[12]/div/div/div/div[2]/div/div[2]/button[2]"))}
+    btnsim{$(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[2]"))}
+     
+    btnnao {$(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[1]"))}
 
     btnmais{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button"))}
    
-    //btneditTask{$(By.xpath("//*[contains(text(), 'Confirmar')]"))}
+    btneditTask{$(By.xpath("//*[contains(text(), 'Confirmar')]"))}
+
+    iconpesq {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[2]/span"))}
+    
+    btnpesquisar{$(By.xpath("/html/body/div[6]/div/div/div/div/div/div[1]/button"))}
+
+    btnreset {$(By.xpath("/html/body/div[7]/div/div/div/div/div/div[2]/button"))}
+
+    camptask{$(By.xpath("/html/body/div[3]/div/div/div/div/input"))}
+
    }
 }
 

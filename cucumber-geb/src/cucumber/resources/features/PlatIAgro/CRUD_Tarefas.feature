@@ -54,7 +54,7 @@ E será aberto um modal onde o usuário poderá escolher um exemplo ou um templa
 E o nome default Nova tarefa deve estar destacado no campo nome
 E o Template em branco também deve estar definido como default
 Quando o usuário limpar o campo nome da tarefa
-E nomear a Tarefa: 'Isolation Forest'
+E nomear a Tarefa: 'Regressor MLP'
 E inserir a Descrição: 'Teste - Nome Repetido'
 Quando clicar no botão Criar Notebooks
 Então a operação deve ser cancelada
@@ -78,7 +78,7 @@ Então o modal será resetado e fechado
 E nenhuma tarefa será criada
 
 
-@T
+@CRUDTAREFA
 Cenário: C05- Alterar nome e descrição da Tarefa
 Dado que o usuário está na página Tarefas
 Quando selecionar o botão Nova Tarefa
@@ -116,8 +116,45 @@ Então o modal será fechado
 E o nome e descrição da Tarefa não devem ser alterados
 
 
+@C
+Esquema do Cenário:C07 - Filtrar Projeto - Pesquisar nome
+Dado que o usuário está na página Tarefas
+E deseja pesquisar um Tarefa pelo nome 
+Quando selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa
+Então será aberto um modal
+Quando o usuário inserir o nome da tarefa: '<taskname>'
+E selecionar o botão Search
+Então o sistema deve apresentar a Tarefa que possui o nome inserido no campo de pesquisa
+E se não houver nenhum projeto com o nome informado o sitema deve apresentar a página em branco
+
+Exemplos:
+|taskname           |
+|Scaler Robusto     |
+|Simulated Annealing|
+|Feature Tools      |
+
+
 @CRUDTAREFA
-Cenário: C07 - Excluir Tarefa
+Esquema do Cenário:C08 - Filtrar Projeto - Pesquisar nome - Resetar
+Dado que o usuário está na página Tarefas
+E deseja pesquisar um Tarefa pelo nome 
+Quando selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa
+Então será aberto um modal
+Quando o usuário inserir: '<taskname>'
+E selecionar o botão Reset
+Então o sistema deve cancelar a operação
+E o modal deve ser fechado
+
+Exemplos:
+|taskname           |
+|Classificador MLP  |
+|Análise Descritiva |
+|Feature Tools      |
+
+
+
+@CRUDTAREFA
+Cenário: C09 - Excluir Tarefa
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -127,7 +164,7 @@ Então a terefa será excluida da lista
 
 
 @CRUDTAREFA
-Cenário: C08 - Excluir Tarefa - Cancelar
+Cenário: C10 - Excluir Tarefa - Cancelar
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -138,7 +175,7 @@ E nenhuma tarefa será excluída
 
 
 @CRUDTAREFA
-Cenário: C09 - Excluir Tarefa - Relacionada a um Experimento
+Cenário: C11 - Excluir Tarefa - Relacionada a um Experimento
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista que esteja relacionada a um projeto
 E na coluna Ação clicar nos botões Mais e Excluir 
