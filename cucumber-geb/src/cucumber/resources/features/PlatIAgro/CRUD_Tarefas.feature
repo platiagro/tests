@@ -18,6 +18,7 @@ E está na tela inicial
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
   
+
 @CRUDTAREFA
 Cenário: C01 - Lista de Tarefas
 Dado que o usuário está na página Tarefas
@@ -62,6 +63,7 @@ E o sistema deverá informar que já existe uma tarefa com aquele nome
 E nenhuma tarefa deve ser criada
 
 
+
 @CRUDTAREFA
 Cenário: C04 - Criar Tarefa Operação: Cancelar
 Dado que o usuário está na página Tarefas
@@ -76,6 +78,7 @@ E inserir a Descrição: 'Teste - Operação: Cancelar'
 E clicar no botão Cancelar
 Então o modal será resetado e fechado
 E nenhuma tarefa será criada
+
 
 
 @CRUDTAREFA
@@ -134,6 +137,7 @@ Exemplos:
 |Simulated Annealing  |
 |Feature Tools        |
 |Transformation Graph |
+
 
 
 

@@ -158,7 +158,7 @@ E(~/o sistema deverá informar que já existe uma tarefa com aquele nome/){->
     Thread.sleep(2000)
 
      waitFor(60){
-       page.btnselect2.click()
+       page.btnfechar.click()
      }
     
     Thread.sleep(5000)
