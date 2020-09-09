@@ -51,9 +51,9 @@ E(~/será apresentado sua lista de projetos existentes/){->
 Quando(~/clicar no botão Novo Projeto/){->
  at PageProj
 
-       waitFor(60){
-       $(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]")).click()
-       } 
+    waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[2]/button")).click()
+     } 
 
      Thread.sleep(5000)
 }
