@@ -117,6 +117,17 @@ class PageProj extends BasePage {
      abametricas{$(By.xpath("/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[2]"))}
 
      abaparametros{$(By.xpath("/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[3]"))}
+
+     opclassifAml{$(By.xpath("//*[@id='PREDICTOR$Menu']/li[1]"))}
+
+     atributoCrim{$(By.xpath("/html/body/div[9]/div/div/div/div[2]/div/div/div[1]"))}
+
+     atributoIndus{$(By.xpath("/html/body/div[10]/div/div/div/div[2]/div/div/div[3]"))}
+
+     atributoage{$(By.xpath("/html/body/div[10]/div/div/div/div[2]/div/div/div[7]"))}
+
+     opautoml{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
+
     } 
 
 } 

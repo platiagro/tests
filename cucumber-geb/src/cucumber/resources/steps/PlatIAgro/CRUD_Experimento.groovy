@@ -398,3 +398,100 @@ E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métri
    Thread.sleep(5000)
 
 }
+
+
+//CENÁRIO 2
+
+E(~/selecionar a tarefa "Classificador AutoML"/){->
+ at PageProj
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.opclassifAml.click()
+    }
+  
+   Thread.sleep(5000)
+
+}
+
+Quando(~/selecionar a tarefa Classificador AutoML presente no fluxo/){->
+ at PageProj
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.opautoml.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+Então(~/o usuário irá selecionar o atributo "crim"/){->
+ at PageProj
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.atributoCrim.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+E(~/no campo Modo de seleção das features, deixar o campo com o valor default/){->
+  assert true
+}
+
+E(~/no campo Features para incluir-remover no modelo selecionar o atributo "indus"/){->
+ at PageProj
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.atributoIndus.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+
+E(~/no campo Features para fazer codificação ordinal selecionar o atributo "age"/){->
+ at PageProj
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.atributoage.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+Então(~/a execução não será finalizada/){->
+ assert true
+}
+
+E(~/a Tarefa será sinalizada com erro/){->
+ assert true
+}
+
+Quando(~/o usuário selecionar a Tarefa/){->
+ at PageProj
+  
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.opautoml.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+Então(~/será exibido no drawer de propriedades da tarefa, o campo Erro/){->
+  assert true
+}
+
+E(~/o usuário poderá visualizar o motivo do erro/){->
+ assert true
+}

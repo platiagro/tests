@@ -86,37 +86,54 @@ E o usuário poderá visualizar os gráficos do Resultados, o valor das Métrica
 
 @EXPERIMENTO
 Cenário: C02 - Executar Experimento com erro
-Dado que o usuário está na página "Meus Projetos"
+Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
-E o sistema abrir um modal, com o nome Novo Projeto selecionado
-E o usuário limpar o campo nome
-E nomear o projeto com: 'TesteExp2'
-E informar a seguinte descrição: 'Teste - Fluxo de Experimento com falha'
-Quando clicar no botão "Criar projeto"
+Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
+# Quando o usuário limpar o campo nome do projeto
+E nomear o projeto com:'TesteExp 2'
+E informar a seguinte descrição:'Teste - Executar Experimento com erro'
+Quando clicar no botão Criar
 Então o novo projeto será criado 
 E o usuário será direcionado para a página do projeto
-E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
-Quando o usuário eselecionar a opção Experimentação
-Então a tela de Experimentação será apresentada
-E o menu "Armazém de Tarefas" estará disponível
-E os botões acima da tela do fluxo de experimentação estarão desabilitados
+E um novo experimento será criado, nomeado como "Experimento 1"
+E os botões acima da tela do fluxo de experimentação estarão desabilitados, exceto o botão Excluir
 
-Quando o usuário estiver na tela de Experimentação
-E selecionar o menu Conjunto de Dados
-E selecionar a tarefa Arquivo.csv, que será adicionada ao fluxo
-E não importar um arquivo com dados de entrada
-E adicionar a tarefa Imputer ao fluxo
-E adicionar a tarefa: 'AutoML Classifier' 
-Quando ligar as tarefas uma a uma 
-E selecionar o botão Executar
-Então o sistema envia a seguinte mensagem: "Treinamento iniciado!"
-E as tarefas são sinalizadas como "Tarefa Pendente"
-E os botões "Salvar Template" e "Executar" serão desabilitados
-Quando a operação Executar for concluída
-E a tarefa apresentar erro de execução
-Então o usuário deve selecionar a tarefa
-E o motivo do erro deverá ser exibido no campo Erro na execução 
+Quando o usuário selecionar o operador Conjunto de Dados, presente no fluxo de experimento
+E no drawer de propriedades selecionar o botão "Importar"
+E poderá escolher arquivos .csv e .zip para importar os dados
+Então o usuário irá informar o arquivo 'boston.csv' para importar os dados de entrada
 
+Quando selecionar o botão Visualizar Dados
+E a tela de visualização de dados for aberta
+# E importar um arquivo TXT
+# E selecionar um atributo alvo
+Então o usuário irá voltar ao fluxo
+# E os botões "Salvar Template" e "Executar" estarão habilitados
+
+Quando selecionar o Menu Treinamento
+E selecionar a tarefa "Classificador AutoML"
+Então a Tarefa será adicionada ao fluxo
+
+Quando selecionar a tarefa Classificador AutoML presente no fluxo
+E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
+E será exibido os atributos do arquivo de entrada
+Então o usuário irá selecionar o atributo "crim"
+E no campo Modo de seleção das features, deixar o campo com o valor default
+E no campo Features para incluir-remover no modelo selecionar o atributo "indus"
+E no campo Features para fazer codificação ordinal selecionar o atributo "age"
+Então o usuário não irá alterar os demais campos da Tarefa
+
+Quando o usuário selecionar o botão Executar
+E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
+Então cada tarefa será sinalizada como "Tarefa Pendente"
+E os botões "Salvar como Template" e "Executar" serão desabilitados
+E o botão "Interromper" será exibido
+Então a execução não será finalizada
+E a Tarefa será sinalizada com erro
+
+Quando o usuário selecionar a Tarefa
+Então será exibido no drawer de propriedades da tarefa, o campo Erro
+E o usuário poderá visualizar o motivo do erro
 
 
 @EXPERIMENTO
