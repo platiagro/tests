@@ -139,73 +139,164 @@ E o usuário poderá visualizar o motivo do erro
 @EXPERIMENTO
 Cenário: C03 - Criar Experimento - Nome Repetido
 Dado que o usuário está na página Meus Projetos
-E selecionar um dos projetos da lista de projetos
-E for direcionado para página do projeto
-E esse projeto já possui um fluxo de experimento nomeado como "TesteExp"
-Quando o usuário clicar no botão Novo Fluxo
-E selecionar a opção Experimentação
-E nomear o experimento para:'TesteExp'
-Então a operação deve ser cancelada
-E o sistema deverá informar que já existe um experimento com o nome informado
+Quando selecionar um projeto da lista de Projetos
+Então o usuário será direcionado a página do projeto
+
+Quando selecionar o botão "Novo experimento", ícone "+" posicionado ao lado da aba do Experimento 1
+Então o modal Novo Experimento será aberto
+E o nome "Novo Experimento" deve estar destacado 
+
+Quando o usuário clicar no botão limpar
+E o campo nome do experimento for limpo
+Então a mensagem "Por favor insira um nome para o experimento!" deve ser exibida abaixo do campo nome
+
+Quando o usuário inserir o nome: 'Experimento 1'
+E selecionar o botão Criar
+Então a operação deve ser cancelada 
+E o sistema deverá informar que já existe um Experimento com o nome informado nesse Projeto
+
+Então o usuário deverá limpar o campo nome
+E informar um novo nome para o experimento, como: 'Experimento Teste'
+E um novo experimento deve ser criado
+E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela
+
+
+@EXPERIMENTO
+Cenário: C04 - Salvar Como Template
+Dado que o usuário está na página Meus Projetos
+Quando selecionar um projeto da lista de Projetos
+E esse Projeto possui experimentos associados
+Então o usuário será direcionado a página do projeto
+
+Quando o usuário selecionar o botão "Salvar como template"
+Então o modal Novo Template será aberto
+E o nome "Novo template" deve estar destacado
+
+Quando o usuário limpar o campo nome do template
+Então a mensagem "Por favor insira um nome para o template!" deve ser exibida abaixo do campo nome
+
+Quando inserir: 'Template - Teste'
+E selecionar o botão "Salvar"
+Então o Menu Templates será adicionado ao Armazém de Tarefas
+E o template será salvo nesse menu
+
+Quando o usuário selecionar o botão "Novo experimento"
+E nomear o experimento como: 'Experimento Teste - Template'
+Então um novo experimento deve ser criado
+
+Quando o usuário selecionar o Menu Templates
+E selecionar o template salvo anteriormente 
+Então as tarefas do template serão adicionadas ao fluxo
+E o usuário poderá iniciar seu novo experimento
+
+
+Dado que o usuário deseja criar um novo Projeto para testar o template
+Quando clicar no botão Novo Projeto
+E nomear o projeto com:'TesteExp 3'
+E informar a seguinte descrição:'Template - Teste'
+Quando clicar no botão Criar
+Então o usuário será direcionado a página do Projeto
+
+Quando o usuário selecionar o Menu Templates
+E selecionar o template salvo anteriormente 
+Então as tarefas do template serão adicionadas ao fluxo
+E o usuário poderá iniciar seu novo experimento
 
 
 
 @EXPERIMENTO
-Cenário: C04 - Salvar Template
-Dado que o usuário está na página "Meus Projetos"
+Cenário: C05 - Interromper Execução
+Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
-E o sistema abrir um modal, com o nome Novo Projeto selecionado
-E o usuário limpar o campo nome
-E nomear o projeto com: 'TesteExp3'
-E informar a seguinte descrição: 'Teste - Salvar Template'
-Quando clicar no botão "Criar projeto"
+Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
+# Quando o usuário limpar o campo nome do projeto
+E nomear o projeto com:'TesteExp 4'
+E informar a seguinte descrição:'Teste - Interromper Execução'
+Quando clicar no botão Criar
 Então o novo projeto será criado 
 E o usuário será direcionado para a página do projeto
-E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
+E um novo experimento será criado, nomeado como "Experimento 1"
+E os botões acima da tela do fluxo de experimentação estarão desabilitados, exceto o botão Excluir
 
-Quando o usuário eselecionar a opção Experimentação
-Então a tela de Experimentação será apresentada
-E o menu "Armazém de Tarefas" estará disponível
-E os botões acima da tela do fluxo de experimentação estarão desabilitados
-Quando o usuário selecionar o menu Conjunto de Dados
-E selecionar a tarefa Arquivo.csv, que será adicionada ao fluxo
-Então o usuário irá importar os dados de entrada do arquivo
+Quando o usuário selecionar o operador Conjunto de Dados, presente no fluxo de experimento
+E no drawer de propriedades selecionar o botão "Importar"
+E poderá escolher arquivos .csv e .zip para importar os dados
+Então o usuário irá informar o arquivo 'imdb.csv' para importar os dados de entrada
 
-Quando selecionar o botão Visualizar Dados
-E a tela de visualização de dados for aberta
-E importar um arquivo TXT
-E selecionar um atributo alvo
-Então o usuário irá voltar ao fluxo
-E os botões "Salvar Template" e "Executar" estarão habilitados
+Quando selecionar o Menu Treinamento
+E selecionar a tarefa "Classificador AutoML"
+Então a Tarefa será adicionada ao fluxo
 
-Quando selecionar o Menu Engenharia de atributos
-E selecionar a tarefa Imputer, que será adicionada ao fluxo
-E adicionar a tarefa: 'Linear Regression' localizada no menu Treinamento
-E ligar as tarefas uma a uma
-E selecionar o botão Executar
-Então o sistema envia a seguinte mensagem: "Treinamento iniciado!"
-E as tarefas são sinalizadas como "Tarefa Pendente"
+Quando selecionar a tarefa Classificador AutoML presente no fluxo
+E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
+E será exibido os atributos do arquivo de entrada
+Então o usuário irá selecionar o atributo "label"
+E no campo Modo de seleção das features, deixar o campo com o valor default
+E no campo Features para incluir-remover no modelo selecionar o atributo "text"
+E no campo Features para fazer codificação one-hot selecionar o atributo "is_valid"
+E deixar os demais campos com o valor default
 
-Quando a operação for concluída com sucesso
-E as tarefas serem sinalizadas como "Tarefa executada com sucesso"
-Então o usuário irá selecionar as tarefas 
-E visualizar o resultado da execução
-Quando o usuário selecionar o botão Salvar Template
-E nomear o Template como: 'template teste1'
-E confirmar a operação
-Então o template será salvo 
-E será adicionado ao menu Template de Fluxos 
- 
+Quando o usuário selecionar o botão Executar
+E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
+Então cada tarefa será sinalizada como "Tarefa Pendente"
+E os botões "Salvar como Template" e "Executar" serão desabilitados
+E o botão "Interromper" será exibido
+
+Quando selecionar o botão Interromper
+Então a mensagem "Interrompendo execução..." deve ser exibida no topo da tela
+
+Quando o processo de interrupção for finalizado
+E a mensagem "Treinamento interrompido!" for exibido no topo da tela
+Então as tarefas no fluxo de experimento deverão ser sinalizadas como "Tarefa Interrompida"
+E ao selecionar as tarefas o usuáriopoderá editar suas propriedades
+E executar o experimento novamente
+
 
 @EXPERIMENTO
-Cenário: C05 - Excluir Experimento
+Cenário: C06 - Preparar para Implantação
 Dado que o usuário está na página Meus Projetos
-E selecionar um Projeto da lista de projetos
-Quando for direcionado para a página de experimentos do projeto selecionado
-E selecionar o experimento que deseja excluir
-E clicar no botão Excluir
-E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Experimento?"
-E o usuário confirmar a operação clicando no botão Sim
+Quando selecionar um projeto da lista de Projetos
+E esse Projeto possui experimentos associados
+Então o usuário será direcionado a página do projeto
+
+Quando selecionar o botão "Preparar para Implantação"
+Então o usuário será direcionado a página Fluxos implantados
+
+Quando o usuário voltar para a página do Projeto
+Então deverá observar que o botão Preparar para Implantação estará em modo de execução
+E quando a implantação for finalizada
+Então o botão de implantação será desabilitado
+
+
+
+@EXPERIMENTO
+Cenário: C07 - Excluir Tarefa e Experimento
+Quando selecionar um projeto da lista de Projetos
+E esse Projeto possui experimentos associados
+Então o usuário será direcionado a página do projeto
+
+Quando selecionar a Tarefa presente no fluxo de experimento
+E selecionar o botão Excluir Tarefa
+Então o sistema irá abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa tarefa?"
+Quando o usuário selecionar o botão Sim
+Então a tarefa será retirada do fluxo de experimento
+E o usuário poderá adicionar outra Tarefa ao fluxo
+
+
+Quando o usuário selecionar o botão Excluir, ao lado do nome do Experimento
+E uma pop-up com a seguinte mensagem "Excluir Experimento?" for exibida
+E o usuário selecionar o botão Sim
 Então o experimento será excluído
+
+Quando o usuário selecionar o botão excluir
+E selecionar o botão Não 
+Então o pop-up será fechado 
+E o experimento não será excluído
+
+E se o usuário excluir todos os Experimentos do Projeto
+Então a página do Projeto ficará vazia
+
+
+
 
  

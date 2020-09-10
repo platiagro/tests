@@ -400,6 +400,8 @@ E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métri
 }
 
 
+
+
 //CENÁRIO 2
 
 E(~/selecionar a tarefa "Classificador AutoML"/){->
