@@ -57,7 +57,9 @@ environments {
   }
 }
 
-baseUrl="http://10.50.11.77"
+//baseUrl="http://10.50.11.77"
+
+baseUrl= "http://awsplatiagro04/"
 
 //baseUrl="http://10.50.11.112"
  

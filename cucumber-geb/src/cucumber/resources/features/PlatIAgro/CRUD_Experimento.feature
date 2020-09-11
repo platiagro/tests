@@ -25,7 +25,7 @@ Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 # Quando o usuário limpar o campo nome do projeto
 E nomear o projeto com:'TesteExp'
-E informar a seguinte descrição:'Teste - Executar Fluxo de Experimento'
+E informar a seguinte descrição:'Automação_Teste: Executar Fluxo de Experimento'
 Quando clicar no botão Criar
 Então o novo projeto será criado 
 E o usuário será direcionado para a página do projeto
@@ -84,14 +84,14 @@ E o usuário poderá visualizar os gráficos do Resultados, o valor das Métrica
 
 
 
-@EXPERIMENTO
+@E
 Cenário: C02 - Executar Experimento com erro
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 # Quando o usuário limpar o campo nome do projeto
 E nomear o projeto com:'TesteExp 2'
-E informar a seguinte descrição:'Teste - Executar Experimento com erro'
+E informar a seguinte descrição:'Automação_Teste: Executar Experimento com erro'
 Quando clicar no botão Criar
 Então o novo projeto será criado 
 E o usuário será direcionado para a página do projeto
@@ -111,7 +111,7 @@ Então o usuário irá voltar ao fluxo
 # E os botões "Salvar Template" e "Executar" estarão habilitados
 
 Quando selecionar o Menu Treinamento
-E selecionar a tarefa "Classificador AutoML"
+E selecionar a tarefa "Regressão Logística"
 Então a Tarefa será adicionada ao fluxo
 
 Quando selecionar a tarefa Classificador AutoML presente no fluxo
@@ -120,7 +120,7 @@ E será exibido os atributos do arquivo de entrada
 Então o usuário irá selecionar o atributo "crim"
 E no campo Modo de seleção das features, deixar o campo com o valor default
 E no campo Features para incluir-remover no modelo selecionar o atributo "indus"
-E no campo Features para fazer codificação ordinal selecionar o atributo "age"
+E no campo Features para fazer codificação one-hot selecionar o atributo "age"
 Então o usuário não irá alterar os demais campos da Tarefa
 
 Quando o usuário selecionar o botão Executar
@@ -132,8 +132,11 @@ Então a execução não será finalizada
 E a Tarefa será sinalizada com erro
 
 Quando o usuário selecionar a Tarefa
-Então será exibido no drawer de propriedades da tarefa, o campo Erro
+Então será exibido no drawer de propriedades da tarefa, o campo Erro na Execução
 E o usuário poderá visualizar o motivo do erro
+
+
+
 
 
 @EXPERIMENTO
@@ -159,6 +162,8 @@ Então o usuário deverá limpar o campo nome
 E informar um novo nome para o experimento, como: 'Experimento Teste'
 E um novo experimento deve ser criado
 E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela
+
+
 
 
 @EXPERIMENTO
@@ -188,7 +193,6 @@ Quando o usuário selecionar o Menu Templates
 E selecionar o template salvo anteriormente 
 Então as tarefas do template serão adicionadas ao fluxo
 E o usuário poderá iniciar seu novo experimento
-
 
 Dado que o usuário deseja criar um novo Projeto para testar o template
 Quando clicar no botão Novo Projeto
@@ -252,6 +256,9 @@ E ao selecionar as tarefas o usuáriopoderá editar suas propriedades
 E executar o experimento novamente
 
 
+
+
+
 @EXPERIMENTO
 Cenário: C06 - Preparar para Implantação
 Dado que o usuário está na página Meus Projetos
@@ -281,7 +288,6 @@ Então o sistema irá abrir uma pop-up com a seguinte mensagem "Você tem certez
 Quando o usuário selecionar o botão Sim
 Então a tarefa será retirada do fluxo de experimento
 E o usuário poderá adicionar outra Tarefa ao fluxo
-
 
 Quando o usuário selecionar o botão Excluir, ao lado do nome do Experimento
 E uma pop-up com a seguinte mensagem "Excluir Experimento?" for exibida

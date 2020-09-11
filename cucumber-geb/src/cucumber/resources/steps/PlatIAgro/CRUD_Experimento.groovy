@@ -11,6 +11,7 @@ String filePath = System.getProperty("user.dir")
 String caminho = "/src/cucumber/resources/files/"
 
 
+
 //Cenário 1
 
 E(~/um novo experimento será criado, nomeado como "Experimento 1"/){->
@@ -311,7 +312,7 @@ Quando(~/o usuário selecionar o botão Executar/){->
       page.btnexecut.click()
     }
 
-  Thread.sleep(120000)
+  Thread.sleep(70000)
 
 }
 
@@ -374,16 +375,12 @@ Então(~/um modal será aberto/){->
 
 E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métricas e dos Parâmetros/){->
  at PageProj
-  
+
   Thread.sleep(5000)
 
-   waitFor(60){
-      page.abaresult.click()
-    }
-    
-    browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
-
-    Thread.sleep(5000)
+   waitFor(10){$(By.xpath("//*[@id='rc-tabs-2-panel-1']/div[2]/div")).click()}
+   
+  Thread.sleep(5000)
      
     waitFor(60){
       page.abametricas.click()
@@ -397,6 +394,10 @@ E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métri
  
    Thread.sleep(5000)
 
+     waitFor(10){$(By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div[3]/button[2]")).click()}
+
+   Thread.sleep(5000)
+
 }
 
 
@@ -407,13 +408,13 @@ E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métri
 E(~/selecionar a tarefa "Classificador AutoML"/){->
  at PageProj
   
-  Thread.sleep(5000)
+  Thread.sleep(2000)
 
    waitFor(60){
       page.opclassifAml.click()
     }
   
-   Thread.sleep(5000)
+   Thread.sleep(2000)
 
 }
 
@@ -451,16 +452,28 @@ E(~/no campo Features para incluir-remover no modelo selecionar o atributo "indu
   Thread.sleep(5000)
 
    waitFor(60){
+      page.campoFeature.click()
+    }
+
+  Thread.sleep(5000)
+
+   waitFor(60){
       page.atributoIndus.click()
     }
   
-   Thread.sleep(5000)
+   Thread.sleep(2000)
 }
 
 
-E(~/no campo Features para fazer codificação ordinal selecionar o atributo "age"/){->
+E(~/no campo Features para fazer codificação one-hot selecionar o atributo "age"/){->
  at PageProj
   
+  Thread.sleep(5000)
+
+   waitFor(60){
+      page.campofcode.click()
+    }
+
   Thread.sleep(5000)
 
    waitFor(60){
@@ -468,6 +481,7 @@ E(~/no campo Features para fazer codificação ordinal selecionar o atributo "ag
     }
   
    Thread.sleep(5000)
+
 }
 
 Então(~/a execução não será finalizada/){->
@@ -490,7 +504,7 @@ Quando(~/o usuário selecionar a Tarefa/){->
    Thread.sleep(5000)
 }
 
-Então(~/será exibido no drawer de propriedades da tarefa, o campo Erro/){->
+Então(~/será exibido no drawer de propriedades da tarefa, o campo Erro na Execução/){->
   assert true
 }
 

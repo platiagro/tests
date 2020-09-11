@@ -77,11 +77,11 @@ class PageProj extends BasePage {
 
      btnvisufechar{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
-     menuEngAt{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[3]"))}
+     menuEngAt{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[4]"))}
 
      opImputer{$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
 
-     menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[4]"))}
+     menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]"))}
 
      opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
 
@@ -114,17 +114,17 @@ class PageProj extends BasePage {
 
      abaresult{$(By.xpath("/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[1]"))}
 
-     abametricas{$(By.xpath("/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[2]"))}
+     abametricas{$(By.xpath("//*[contains(text(), 'Métricas')]"))}
 
-     abaparametros{$(By.xpath("/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[3]"))}
+     abaparametros{$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
 
-     opclassifAml{$(By.xpath("//*[@id='PREDICTOR$Menu']/li[1]"))}
+     opclassifAml{$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
 
-     atributoCrim{$(By.xpath("/html/body/div[9]/div/div/div/div[2]/div/div/div[1]"))}
+     atributoCrim{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[1]"))}
 
-     atributoIndus{$(By.xpath("/html/body/div[10]/div/div/div/div[2]/div/div/div[3]"))}
+     atributoIndus{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[3]/div"))}
 
-     atributoage{$(By.xpath("/html/body/div[10]/div/div/div/div[2]/div/div/div[7]"))}
+     atributoage{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[7]/div"))}
 
      opautoml{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
 
