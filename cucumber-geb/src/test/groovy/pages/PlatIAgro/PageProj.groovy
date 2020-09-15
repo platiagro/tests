@@ -81,7 +81,8 @@ class PageProj extends BasePage {
 
      opImputer{$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
 
-     menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]"))}
+     //menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]"))}
+     menuTreinamento{$(By.xpath("//*[contains(text(), 'Treinamento')]"))}
 
      opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
 
@@ -118,16 +119,29 @@ class PageProj extends BasePage {
 
      abaparametros{$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
 
-     opclassifAml{$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
+     taskreglinear{$(By.xpath("//*[contains(text(), 'Regressão Linear')]"))}
 
-     atributoCrim{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[1]"))}
+     atributolabel{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[1]"))}
 
-     atributoIndus{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[3]/div"))}
+     atributotext{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[2]"))}
 
-     atributoage{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[7]/div"))}
+     atributoisvalid{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[3]"))}
 
-     opautoml{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
+     opreglinear{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
+     
+     btnjupyter{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/button[2]"))}
+    
+     campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
+     selectProj {$(By.xpath("//*[contains(text(), 'TesteExp 2')]"))}
+
+     newexp{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
+
+     btncleancamp{$(By.xpath("//*[@id='newExperimentForm']/div/div[2]/div/div/span/span"))}
+
+     campnamExp{$(By.xpath("//*[@id='name']"))}
+
+     btnNewExp{$(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]"))}
     } 
 
 } 

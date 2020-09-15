@@ -405,38 +405,38 @@ E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métri
 
 //CENÁRIO 2
 
-E(~/selecionar a tarefa "Classificador AutoML"/){->
+E(~/selecionar a tarefa "Regressão Linear"/){->
  at PageProj
   
   Thread.sleep(2000)
 
    waitFor(60){
-      page.opclassifAml.click()
+      page.taskreglinear.click()
     }
   
    Thread.sleep(2000)
 
 }
 
-Quando(~/selecionar a tarefa Classificador AutoML presente no fluxo/){->
+Quando(~/selecionar a tarefa Regressão Linear presente no fluxo/){->
  at PageProj
   
   Thread.sleep(5000)
 
    waitFor(60){
-      page.opautoml.click()
+      page.opreglinear.click()
     }
   
    Thread.sleep(5000)
 }
 
-Então(~/o usuário irá selecionar o atributo "crim"/){->
+Então(~/o usuário irá selecionar o atributo "label"/){->
  at PageProj
   
   Thread.sleep(5000)
 
    waitFor(60){
-      page.atributoCrim.click()
+      page.atributolabel.click()
     }
   
    Thread.sleep(5000)
@@ -446,7 +446,7 @@ E(~/no campo Modo de seleção das features, deixar o campo com o valor default/
   assert true
 }
 
-E(~/no campo Features para incluir-remover no modelo selecionar o atributo "indus"/){->
+E(~/no campo Features para incluir-remover no modelo selecionar o atributo "text"/){->
  at PageProj
   
   Thread.sleep(5000)
@@ -458,14 +458,14 @@ E(~/no campo Features para incluir-remover no modelo selecionar o atributo "indu
   Thread.sleep(5000)
 
    waitFor(60){
-      page.atributoIndus.click()
+      page.atributotext.click()
     }
   
    Thread.sleep(2000)
 }
 
 
-E(~/no campo Features para fazer codificação one-hot selecionar o atributo "age"/){->
+E(~/no campo Features para fazer codificação ordinal selecionar o atributo "is_valid"/){->
  at PageProj
   
   Thread.sleep(5000)
@@ -477,7 +477,7 @@ E(~/no campo Features para fazer codificação one-hot selecionar o atributo "ag
   Thread.sleep(5000)
 
    waitFor(60){
-      page.atributoage.click()
+      page.atributoisvalid.click()
     }
   
    Thread.sleep(5000)
@@ -498,16 +498,165 @@ Quando(~/o usuário selecionar a Tarefa/){->
   Thread.sleep(5000)
 
    waitFor(60){
-      page.opautoml.click()
+      page.opreglinear.click()
     }
   
    Thread.sleep(5000)
 }
 
 Então(~/será exibido no drawer de propriedades da tarefa, o campo Erro na Execução/){->
-  assert true
+ at PageProj 
+
+  waitFor(60){ 
+     $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[2]/div/div/p[31]")).click()}
+ 
+
+  Thread.sleep(6000)
+
 }
 
 E(~/o usuário poderá visualizar o motivo do erro/){->
  assert true
 }
+
+Quando(~/selecionar o botão "Ver código no Jupyter"/){->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.btnjupyter.click()
+    }
+  
+   Thread.sleep(10000)
+}
+
+Então(~/o usuário será direcionado a página JupyterLab/){->
+ assert true
+}
+
+// E(~/poderá ver mais detallhes do erro na execução/){->
+//  at PageProj
+  
+//   Thread.sleep(2000)
+
+//    waitFor(60){
+//       page.campError.click()
+//     }
+  
+//    Thread.sleep(7000)
+// }
+
+
+
+
+//CENÁRIO 3
+
+Quando(~/selecionar um projeto da lista de Projetos/){->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.selectProj.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+
+
+Então(~/o usuário será direcionado a página do projeto/){->
+ assert true
+}
+
+Quando(~/selecionar o botão "Novo experimento", ícone "+" posicionado ao lado da aba do Experimento 1/){->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.newexp.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+
+Então(~/o modal Novo Experimento será aberto/){-> assert true }
+
+E(~/o nome "Novo Experimento" deve estar destacado/){-> assert true } 
+
+Quando(~/o usuário clicar no botão limpar/){->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.btncleancamp.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+E(~/o campo nome do experimento for limpo/){-> assert true }
+
+Então(~/a mensagem "Por favor insira um nome para o experimento!" deve ser exibida abaixo do campo nome/){->
+ assert true
+}
+
+Quando(~/o usuário inserir o nome: '(.*)'/){String namexp->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.btncampnamExp.value(namexp) }
+
+  Thread.sleep(2000)
+
+}
+
+E(~/selecionar o botão Criar/){->
+ at PageProj
+
+  waitFor(60){
+    page.btnNewExp.click() }
+ 
+ Thread.sleep(5000)
+
+}
+
+Então(~/a operação deve ser cancelada/){-> assert true}
+
+E(~/o sistema deverá informar que já existe um Experimento com o nome informado nesse Projeto/){->
+ assert true
+}
+
+Então(~/o usuário deverá limpar o campo nome/){->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.btncleancamp.click()
+    }
+  
+   Thread.sleep(5000)
+}
+
+E(~/informar um novo nome para o experimento, como: '(.*)'/){String namexp2->
+ at PageProj
+  
+  Thread.sleep(2000)
+
+   waitFor(60){
+      page.btncampnamExp.value(namexp2) }
+
+  Thread.sleep(5000)
+
+}
+
+E(~/um novo experimento deve ser criado/){-> assert true }
+
+E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela/){-> assert true}

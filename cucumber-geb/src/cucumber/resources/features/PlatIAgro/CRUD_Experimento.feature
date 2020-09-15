@@ -101,7 +101,7 @@ E os botões acima da tela do fluxo de experimentação estarão desabilitados, 
 Quando o usuário selecionar o operador Conjunto de Dados, presente no fluxo de experimento
 E no drawer de propriedades selecionar o botão "Importar"
 E poderá escolher arquivos .csv e .zip para importar os dados
-Então o usuário irá informar o arquivo 'boston.csv' para importar os dados de entrada
+Então o usuário irá informar o arquivo 'imdb.csv' para importar os dados de entrada
 
 Quando selecionar o botão Visualizar Dados
 E a tela de visualização de dados for aberta
@@ -111,17 +111,16 @@ Então o usuário irá voltar ao fluxo
 # E os botões "Salvar Template" e "Executar" estarão habilitados
 
 Quando selecionar o Menu Treinamento
-E selecionar a tarefa "Regressão Logística"
+E selecionar a tarefa "Regressão Linear"
 Então a Tarefa será adicionada ao fluxo
 
-Quando selecionar a tarefa Classificador AutoML presente no fluxo
+Quando selecionar a tarefa Regressão Linear presente no fluxo
 E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
 E será exibido os atributos do arquivo de entrada
-Então o usuário irá selecionar o atributo "crim"
+Então o usuário irá selecionar o atributo "label"
 E no campo Modo de seleção das features, deixar o campo com o valor default
-E no campo Features para incluir-remover no modelo selecionar o atributo "indus"
-E no campo Features para fazer codificação one-hot selecionar o atributo "age"
-Então o usuário não irá alterar os demais campos da Tarefa
+E no campo Features para incluir-remover no modelo selecionar o atributo "text"
+E no campo Features para fazer codificação ordinal selecionar o atributo "is_valid"
 
 Quando o usuário selecionar o botão Executar
 E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
@@ -135,7 +134,9 @@ Quando o usuário selecionar a Tarefa
 Então será exibido no drawer de propriedades da tarefa, o campo Erro na Execução
 E o usuário poderá visualizar o motivo do erro
 
-
+Quando selecionar o botão "Ver código no Jupyter"
+Então o usuário será direcionado a página JupyterLab
+# E poderá ver mais detallhes do erro na execução
 
 
 
