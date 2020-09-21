@@ -277,12 +277,6 @@ E(~/confirmar a operação/){->
 
    Thread.sleep(5000)
 
-     waitFor(60){
-       $(By.xpath("/html/body/div[5]/div/div[2]/div/div[2]/button")).click() 
-     }
-
-     Thread.sleep(2000)
-
 }
 
 

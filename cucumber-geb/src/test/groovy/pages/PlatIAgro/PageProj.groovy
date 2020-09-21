@@ -60,8 +60,12 @@ class PageProj extends BasePage {
      btnresetar{$(By.xpath("/html/body/div[2]/div/div/div/div/button[1]"))}
 
      // Xpath - EXPERIMENTO
+     menuconjunto{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]"))}
 
-     opconjunto{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div/div/div"))} 
+     //uploadArq{$(By.xpath("//*[@id='DATASETS$Menu']/li[2]"))}
+     uploadArq{$(By.xpath("//*[contains(text(), 'Upload de arquivo')]"))}
+
+     operadorUpArq{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div/div/div"))}  
       
      btnimport {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/button"))}
 
@@ -133,7 +137,7 @@ class PageProj extends BasePage {
     
      campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
-     selectProj {$(By.xpath("//*[contains(text(), 'TesteExp 2')]"))}
+     selectProj {$(By.xpath("//*[contains(text(), 'Teste')]"))}
 
      newexp{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
 
@@ -141,7 +145,9 @@ class PageProj extends BasePage {
 
      campnamExp{$(By.xpath("//*[@id='name']"))}
 
-     btnNewExp{$(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+     btnNewExp{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+
+     selectaba{$(By.xpath("//*[@id='rc-tabs-0-tab-fa72229e-9706-41b3-aff1-3c428251e26e']/div/div"))}
     } 
 
 } 

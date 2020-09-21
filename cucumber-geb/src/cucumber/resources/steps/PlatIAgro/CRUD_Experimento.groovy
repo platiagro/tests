@@ -22,13 +22,48 @@ E(~/os botões acima da tela do fluxo de experimentação estarão desabilitados
  assert true
 }
 
-Quando(~/o usuário selecionar o operador Conjunto de Dados, presente no fluxo de experimento/){->
+Quando(~/o usuário selecionar o Menu Conjunto de Dados/){-> 
  at PageProj
    
   Thread.sleep(5000)
 
      waitFor(60){
-         page.opconjunto.click()
+         page.menuconjunto.click()
+       }
+
+ Thread.sleep(2000)
+}
+
+E(~/selecionar e arrastar o operador "Upload de arquivos" para o fluxo/){->
+ at PageProj
+   
+ Thread.sleep(5000)
+
+   waitFor(60){
+         page.uploadArq.click()
+       }
+
+  Thread.sleep(2000)
+    
+     interact {
+        println "Arrastar Operador"
+         moveToElement($(By.xpath("//*[contains(text(), 'Upload de arquivo')]")))
+          
+          //moveByOffset(0,0).click()
+                  
+           perform()  
+        }
+   
+   Thread.sleep(5000)
+}
+
+Quando(~/selecionar o operador novamente/){->
+ at PageProj
+   
+  Thread.sleep(5000)
+
+     waitFor(60){
+         page.operadorUpArq.click()
        }
 
  Thread.sleep(2000)
@@ -49,7 +84,7 @@ E(~/no drawer de propriedades selecionar o botão "Importar"/){->
 
 }
 
-E(~/poderá escolher arquivos .csv e .zip para importar os dados/){->
+E(~/poderá escolher arquivos .csv, .zip e imagem para importar os dados/){->
  assert true
 }
 
@@ -596,7 +631,7 @@ Quando(~/o usuário clicar no botão limpar/){->
       page.btncleancamp.click()
     }
   
-   Thread.sleep(5000)
+   Thread.sleep(2000)
 }
 
 E(~/o campo nome do experimento for limpo/){-> assert true }
@@ -611,7 +646,7 @@ Quando(~/o usuário inserir o nome: '(.*)'/){String namexp->
   Thread.sleep(2000)
 
    waitFor(60){
-      page.btncampnamExp.value(namexp) }
+      page.campnamExp.value(namexp) }
 
   Thread.sleep(2000)
 
@@ -620,6 +655,8 @@ Quando(~/o usuário inserir o nome: '(.*)'/){String namexp->
 E(~/selecionar o botão Criar/){->
  at PageProj
 
+ Thread.sleep(2000)
+
   waitFor(60){
     page.btnNewExp.click() }
  
@@ -627,7 +664,6 @@ E(~/selecionar o botão Criar/){->
 
 }
 
-Então(~/a operação deve ser cancelada/){-> assert true}
 
 E(~/o sistema deverá informar que já existe um Experimento com o nome informado nesse Projeto/){->
  assert true
@@ -651,12 +687,37 @@ E(~/informar um novo nome para o experimento, como: '(.*)'/){String namexp2->
   Thread.sleep(2000)
 
    waitFor(60){
-      page.btncampnamExp.value(namexp2) }
+      page.campnamExp.value(namexp2) }
 
   Thread.sleep(5000)
 
 }
 
-E(~/um novo experimento deve ser criado/){-> assert true }
+Então(~/um novo experimento deve ser criado/){-> assert true }
 
 E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela/){-> assert true}
+
+
+
+//CENÁRIO 4
+
+Quando(~/selecionar a aba de um experimento/){-> assert true}
+
+// E(~/clicar no botão direito/){->
+//  at PageProj
+  
+//   Thread.sleep(2000)
+
+//    waitFor(60){
+//       page.selectaba. }
+
+//   Thread.sleep(5000)
+
+
+// E selecionar a opção "Renomear"
+// Então um modal será aberto 
+// E o usuário deverá limpar o campo 
+// E inserir um novo nome para o experimento: 'AltName_Exp'
+// Quando clicar no botão OK
+// Então o nome do experimento será alterado 
+// E o modal será resetado
