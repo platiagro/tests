@@ -2,14 +2,13 @@ import pages.*
 import geb.*
 import db.*
 import cucumber.api.PendingException
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
 
 
 String filePath = System.getProperty("user.dir")
 String caminho = "/src/cucumber/resources/files/"
-
 
 
 //Cenário 1
@@ -36,25 +35,22 @@ Quando(~/o usuário selecionar o Menu Conjunto de Dados/){->
 
 E(~/selecionar e arrastar o operador "Upload de arquivos" para o fluxo/){->
  at PageProj
-   
+
+    waitFor(60){ page.uploadArq.clickAndHold() }
+
  Thread.sleep(5000)
 
-   waitFor(60){
-         page.uploadArq.click()
-       }
+  
+     inject {  
+                    println "Mover operador"
+                    moveToElement($(By.xpath("//*[@id='DATASETS$Menu']/li[2]")))
+                    moveByOffset(0,0).click()
+                    
+                    perform()                                                                                                              
+                    println "Click executado"
+         }
+ 
 
-  Thread.sleep(2000)
-    
-     interact {
-        println "Arrastar Operador"
-         moveToElement($(By.xpath("//*[contains(text(), 'Upload de arquivo')]")))
-          
-          //moveByOffset(0,0).click()
-                  
-           perform()  
-        }
-   
-   Thread.sleep(5000)
 }
 
 Quando(~/selecionar o operador novamente/){->
@@ -701,23 +697,294 @@ E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo d
 
 //CENÁRIO 4
 
-Quando(~/selecionar a aba de um experimento/){-> assert true}
+Quando(~/selecionar a aba de um experimento/){-> assert true }
 
-// E(~/clicar no botão direito/){->
-//  at PageProj
-  
-//   Thread.sleep(2000)
+E(~/clicar no botão direito/){->
+ at PageProj
 
-//    waitFor(60){
-//       page.selectaba. }
+  //  waitFor(60){
+  //     page.selectaba.click() }
 
-//   Thread.sleep(5000)
+     waitFor(60){
+       page.selectaba.contextClick(productLink).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform()
+       }
+
+  Thread.sleep(5000)
+
+}
+
+E(~/selecionar a opção "Renomear"/){->
+ at PageProj
+
+   waitFor(60){
+      page.btnrename.click() }
+
+  Thread.sleep(5000)
+}
 
 
-// E selecionar a opção "Renomear"
-// Então um modal será aberto 
-// E o usuário deverá limpar o campo 
-// E inserir um novo nome para o experimento: 'AltName_Exp'
-// Quando clicar no botão OK
-// Então o nome do experimento será alterado 
-// E o modal será resetado
+E(~/o usuário deverá limpar o campo/){->
+ at PageProj
+
+   waitFor(60) {
+     page.clearcamp.click()
+     }
+
+  Thread.sleep(2000)  
+
+}
+
+E(~/inserir um novo nome para o experimento: '(.*)'/){String rename->
+ at PageProj
+
+   waitFor(60) {
+     page.clearcamp.value(rename)
+     }
+
+  Thread.sleep(5000)  
+}
+
+Quando(~/clicar no botão OK/){->
+ at PageProj
+
+   waitFor(60) {
+     page.btnoknam.click()
+     }
+
+  Thread.sleep(5000)  
+}
+
+Então(~/o nome do experimento será alterado/){-> assert true}
+
+Então(/o modal será resetado/) {  ->
+    throw new PendingException()
+}
+
+//CENÁRIO 5
+
+Quando(~/selecionar um projeto da lista de Projetos/){-> assert true }
+
+E(~/esse Projeto possui experimentos associados/){-> assert true }
+
+Então(~/o usuário será direcionado a página do projeto/){-> assert true }
+
+Quando(~/o usuário selecionar o botão "Salvar como template"/){->
+ at PageProj
+
+   waitFor(60) {
+     page.btnsalvartemp.click()
+     }
+
+  Thread.sleep(5000)
+}
+
+
+Então(~/o modal Novo Template será aberto/){-> assert true}
+
+E(~/o nome "Novo template" deve estar destacado/){-> assert true}
+
+Quando(~/o usuário limpar o campo nome do template/){->
+  at PageProj
+
+   waitFor(60) {
+     page.btnlimptemplate.click()
+     }
+
+  Thread.sleep(2000)
+}
+
+
+Então(~/a mensagem "Por favor insira um nome para o template!" deve ser exibida abaixo do campo nome/){-> assert true}
+
+Quando(~/inserir: '(.*)'/){String template->
+ at PageProj
+
+   waitFor(60) {
+     page.camptemplate.value(template)
+     }
+
+  Thread.sleep(2000)
+
+}
+
+E(~/selecionar o botão "Salvar"/){->
+ at PageProj
+
+   waitFor(60) {
+     page.btnsalvar.click()
+     }
+
+  Thread.sleep(2000)
+}
+
+Então(~/o Menu Templates ficará visível no Armazém de Tarefas/){-> assert true }
+
+E(~/o template será salvo nesse menu/){-> 
+ at PageProj
+
+  Thread.sleep(5000)
+
+   waitFor(60) {
+     page.menutemplates.click()
+     }
+
+  Thread.sleep(2000)
+
+}
+
+Quando(~/o usuário selecionar o botão "Novo experimento"/){->
+ at PageProj
+
+  Thread.sleep(5000)
+
+   waitFor(60) {
+     page.newExperimento.click()
+     }
+
+  Thread.sleep(2000)
+}
+
+E(~/nomear o experimento como: 'Experimento Teste - Template'/){
+ at PageProj
+
+  Thread.sleep(2000)
+
+   waitFor(60) {
+     page.newExperimento.click()
+     }
+
+  Thread.sleep(2000)
+}
+
+Então(~/um novo experimento deve ser criado/){-> assert true }
+
+Quando(~/o usuário selecionar o Menu Templates/){->
+ at PageProj
+
+  Thread.sleep(2000)
+
+   waitFor(60) {
+     page.menutemplates.click()
+     }
+
+  Thread.sleep(2000)
+}
+
+E(~/selecionar o template salvo anteriormente/){->
+ at PageProj
+
+  Thread.sleep(2000)
+
+   waitFor(60) {
+     page.selectTemplate.click()
+     }
+
+  Thread.sleep(2000)
+} 
+
+Então(~/as tarefas do template serão adicionadas ao fluxo/){->
+ at PageProj
+
+ Thread.sleep(5000)
+
+     inject {  
+                    println "Mover operador"
+                    moveToElement($(By.xpath("//*[@id='DATASETS$Menu']/li[2]")))
+                    moveByOffset(0,0).click()
+                    
+                    perform()                                                                                                              
+                    println "Click executado"
+         }
+ 
+}
+
+
+E(~/o usuário poderá iniciar seu novo experimento/){-> assert true}
+
+
+//CENÁRIO 6
+
+Quando(~/selecionar o botão Interromper/){->
+ at PageProj
+
+  Thread.sleep(2000)
+
+   waitFor(60) {
+     page.selectTemplate.click()
+     }
+
+  Thread.sleep(2000)
+
+}
+
+Então(~/a mensagem "Interrompendo execução..." deve ser exibida no topo da tela/){-> assert true}
+
+Quando(~/o processo de interrupção for finalizado/){-> assert true}
+
+E(~/a mensagem "Treinamento interrompido!" for exibido no topo da tela/){-> assert true }
+
+Então(~/as tarefas no fluxo de experimento deverão ser sinalizadas como "Tarefa Interrompida"/){-> assert true }
+
+E(~/ao selecionar as tarefas o usuário poderá editar suas propriedades/){-> assert true}
+
+E(~/executar o experimento novamente/){-> assert true}
+
+
+//CENÁRIO 7
+
+Quando(~/selecionar o botão "Preparar para Implantação"/){->
+ at PageProj
+
+  Thread.sleep(2000)
+
+   waitFor(60) {
+     page.btnImplantar.click()
+     }
+
+  Thread.sleep(2000)
+}
+
+Então(~/o usuário será direcionado a página Fluxos implantados/){-> assert true}
+
+Quando(~/o usuário voltar para a página do Projeto/){->
+ at PageProj
+
+  Thread.sleep(2000)
+
+   waitFor(60) {
+     {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()
+     }
+
+  Thread.sleep(2000)
+
+     waitFor(60) {
+          $(By.xpath("//*[contains(text(), 'Teste')]")).click() }
+
+  Thread.sleep(5000)
+
+}
+Então(~/deverá observar que o botão Preparar para Implantação estará em modo de execução/){-> assert true}
+
+E(~/quando a implantação for finalizada/){-> assert true }
+
+Então(~/o botão de implantação será desabilitado/){->  
+ at PageProj
+
+  Thread.sleep(2000)
+
+         waitFor(60) {
+          $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]")).click() }
+
+       Thread.sleep(6000)
+
+
+          waitFor(60) {
+           {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()}
+
+       Thread.sleep(2000)
+
+            waitFor(60) {
+              $(By.xpath("//*[contains(text(), 'Teste')]")).click() }
+
+   Thread.sleep(5000)
+}

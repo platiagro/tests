@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@E
+@EXPERIMENTO
 Cenário: C01 - Criar e Executar Experimento
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -39,50 +39,50 @@ E no drawer de propriedades selecionar o botão "Importar"
 E poderá escolher arquivos .csv, .zip e imagem para importar os dados
 Então o usuário irá informar o arquivo 'Iris.csv' para importar os dados de entrada
 
-# Quando selecionar o botão Visualizar Dados
-# E a tela de visualização de dados for aberta
-# # E importar um arquivo TXT
-# # E selecionar um atributo alvo
-# Então o usuário irá voltar ao fluxo
-# # E os botões "Salvar Template" e "Executar" estarão habilitados
+Quando selecionar o botão Visualizar Dados
+E a tela de visualização de dados for aberta
+# E importar um arquivo TXT
+# E selecionar um atributo alvo
+Então o usuário irá voltar ao fluxo
+# E os botões "Salvar Template" e "Executar" estarão habilitados
 
-# Quando selecionar o Menu Engenharia de atributos
-# E selecionar a tarefa "Imputação de Valores Faltantes"
-# Então a Tarefa será adicionada ao fluxo
+Quando selecionar o Menu Engenharia de atributos
+E selecionar a tarefa "Imputação de Valores Faltantes"
+Então a Tarefa será adicionada ao fluxo
 
-# Quando selecionar o Menu Treinamento
-# E selecionar a tarefa "Regressão Logística"
-# Então a Tarefa será adicionada ao fluxo
+Quando selecionar o Menu Treinamento
+E selecionar a tarefa "Regressão Logística"
+Então a Tarefa será adicionada ao fluxo
 
-# Quando o usuário selecionar a tarefa "Imputação de Valores Faltantes"
-# E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
-# E será exibido os atributos do arquivo de entrada
-# Então o usuário irá selecionar o atributo "Species"
-# E no último campo de preenchimento de valores nulos, o usuário irá inserir: 'Teste'
+Quando o usuário selecionar a tarefa "Imputação de Valores Faltantes"
+E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
+E será exibido os atributos do arquivo de entrada
+Então o usuário irá selecionar o atributo "Species"
+E no último campo de preenchimento de valores nulos, o usuário irá inserir: 'Teste'
 
-# Quando selecionar a tarefa "Regressão Logística" presente no fluxo
-# E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
-# E será exibido os atributos do arquivo de entrada
-# Então o usuário irá selecionar o atributo "Species"
-# E no campo Modo de seleção das features, o usuário irá selecionar a opção "Incluir"
-# E no campo Features para incluir-remover no modelo selecionar o atributo "SepalLengthCm"
-# E no campo Features para fazer codificação ordinal selecionar o atributo "PetalWidthCm"
-# Então o usuário não irá alterar os demais campos da Tarefa
+Quando selecionar a tarefa "Regressão Logística" presente no fluxo
+E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
+E será exibido os atributos do arquivo de entrada
+Então o usuário irá selecionar o atributo "Species"
+E no campo Modo de seleção das features, o usuário irá selecionar a opção "Incluir"
+E no campo Features para incluir-remover no modelo selecionar o atributo "SepalLengthCm"
+E no campo Features para fazer codificação ordinal selecionar o atributo "PetalWidthCm"
+Então o usuário não irá alterar os demais campos da Tarefa
 
-# Quando o usuário selecionar o botão Executar
-# E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
-# Então cada tarefa será sinalizada como "Tarefa Pendente"
-# E os botões "Salvar como Template" e "Executar" serão desabilitados
-# E o botão "Interromper" será exibido
+Quando o usuário selecionar o botão Executar
+E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
+Então cada tarefa será sinalizada como "Tarefa Pendente"
+E os botões "Salvar como Template" e "Executar" serão desabilitados
+E o botão "Interromper" será exibido
 
-# Quando a operação for concluída com sucesso
-# Então cada tarefa será sinalizada como "Tarefa executada com sucesso"
-# E os botões acima do fluxo de experimento serão habilitados
+Quando a operação for concluída com sucesso
+Então cada tarefa será sinalizada como "Tarefa executada com sucesso"
+E os botões acima do fluxo de experimento serão habilitados
 
-# Quando o usuário selecionar a tarefa "Regressão Logística"
-# E selecionar o botão Visualizar Resultados
-# Então um modal será aberto 
-# E o usuário poderá visualizar os gráficos do Resultados, o valor das Métricas e dos Parâmetros 
+Quando o usuário selecionar a tarefa "Regressão Logística"
+E selecionar o botão Visualizar Resultados
+Então um modal será aberto 
+E o usuário poderá visualizar os gráficos do Resultados, o valor das Métricas e dos Parâmetros 
 
 
 
@@ -177,13 +177,13 @@ Então o usuário será direcionado a página do projeto
 
 Quando selecionar a aba de um experimento
 E clicar no botão direito
-# E selecionar a opção "Renomear"
-# Então um modal será aberto 
-# E o usuário deverá limpar o campo 
-# E inserir um novo nome para o experimento: 'AltName_Exp'
-# Quando clicar no botão OK
-# Então o nome do experimento será alterado 
-# E o modal será resetado
+E selecionar a opção "Renomear"
+Então um modal será aberto 
+E o usuário deverá limpar o campo 
+E inserir um novo nome para o experimento: 'AltName_Exp'
+Quando clicar no botão OK
+Então o nome do experimento será alterado 
+E o modal será resetado
 
 
 
@@ -203,7 +203,7 @@ Então a mensagem "Por favor insira um nome para o template!" deve ser exibida a
 
 Quando inserir: 'Template - Teste'
 E selecionar o botão "Salvar"
-Então o Menu Templates será adicionado ao Armazém de Tarefas
+Então o Menu Templates ficará visível no Armazém de Tarefas
 E o template será salvo nesse menu
 
 Quando o usuário selecionar o botão "Novo experimento"
@@ -273,9 +273,8 @@ Então a mensagem "Interrompendo execução..." deve ser exibida no topo da tela
 Quando o processo de interrupção for finalizado
 E a mensagem "Treinamento interrompido!" for exibido no topo da tela
 Então as tarefas no fluxo de experimento deverão ser sinalizadas como "Tarefa Interrompida"
-E ao selecionar as tarefas o usuáriopoderá editar suas propriedades
+E ao selecionar as tarefas o usuário poderá editar suas propriedades
 E executar o experimento novamente
-
 
 
 

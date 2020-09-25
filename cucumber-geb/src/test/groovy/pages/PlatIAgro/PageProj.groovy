@@ -62,7 +62,8 @@ class PageProj extends BasePage {
      // Xpath - EXPERIMENTO
      menuconjunto{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]"))}
 
-     //uploadArq{$(By.xpath("//*[@id='DATASETS$Menu']/li[2]"))}
+     //uploadArq {$(By.xpath("//*[@id='DATASETS$Menu']/li[2]"))}
+     
      uploadArq{$(By.xpath("//*[contains(text(), 'Upload de arquivo')]"))}
 
      operadorUpArq{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div/div/div"))}  
@@ -147,7 +148,33 @@ class PageProj extends BasePage {
 
      btnNewExp{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
-     selectaba{$(By.xpath("//*[@id='rc-tabs-0-tab-fa72229e-9706-41b3-aff1-3c428251e26e']/div/div"))}
+     selectaba{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/div/div[1]/div[1]/div/div[1]"))}
+
+     btnrename{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[1]/div/div"))}
+
+     clearcamp{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[1]/span"))}
+
+     inputname{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[1]/input"))}
+
+     btnokname{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[2]/button"))}
+
+     btnsalvartemp{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[1]"))}
+    
+     btnlimptemplate{$(By.xpath("//*[@id='newTemplateForm']/div/div[2]/div/div/span/span/span"))}
+
+     camptemplate {$(By.xpath("//*[@id='name']"))}
+
+     btnsalvar {$(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+
+     menutemplates{$(By.xpath("//*[contains(text(), 'Templates')]"))}
+
+     newExperimento{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
+
+     selectTemplate{$(By.xpath("//*[@id='TEMPLATES$Menu']/li/div/div[1]/span"))}
+
+     btninterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
+    
+     btnImplantar {$(By.xpath("//*[@id="root"]/section/section/div/div/span/div[1]/div/div[2]/button"))}
     } 
 
 } 
