@@ -1024,7 +1024,9 @@ Quando(~/o usuário selecionar o botão Excluir, ao lado do nome do Experimento/
  
    Thread.sleep(5000)
 
-     waitFor(60) { page.btnremoverExp.click() }
+     waitFor(60) { 
+       $(By.xpath("//*[@id='rc-tabs-0-tab-ddc540f8-0f6c-4179-b1b2-cc5cf3b2afd2']/div/div/span")).click() 
+       }
 
   Thread.sleep(5000)
 }
@@ -1044,21 +1046,26 @@ Então(~/o experimento será excluído/){-> assert true }
 Quando(~/o usuário selecionar o botão excluir/){->
  at PageProj
  
-   waitFor(60){ 
-     $(By.xpath("//*[@id='rc-tabs-2-tab-fdeb81d5-49bb-45d3-b075-c4ff9e9a495a']/div/div/span/svg")).click()
-    }
+   Thread.sleep(5000) 
+
+     waitFor(60){ 
+       $(By.xpath("//*[@id='rc-tabs-0-tab-abd9374f-335c-4d56-bd99-6f9f777b21f9']/div/div/span")).click()
+      }
  
- Thread.sleep(5000)
+   Thread.sleep(5000)
+
 }
 
 E(~/clicar no botão Não/){->
  at PageProj
  
-    waitFor(60){ 
-      page.btnremoverNo.click() 
-     }
+   Thread.sleep(5000)
 
- Thread.sleep(5000)
+      waitFor(60){ 
+        page.btnremoverNo.click() 
+       }
+
+   Thread.sleep(2000)
 
 } 
 
@@ -1070,16 +1077,16 @@ E(~/se o usuário excluir todos os Experimentos do Projeto/){->
  at PageProj
  
      waitFor(60){ 
-       $(By.xpath("//*[@id='rc-tabs-2-tab-fdeb81d5-49bb-45d3-b075-c4ff9e9a495a']/div/div/span/svg")).click() 
-     }
+       $(By.xpath("//*[@id='rc-tabs-0-tab-abd9374f-335c-4d56-bd99-6f9f777b21f9']/div/div/span")).click()
+      }
  
    Thread.sleep(5000)
   
      waitFor(60){
-       $(By.xpath("/html/body/div[19]/div/div/div/div[2]/div/div[2]/button[2]")).click() 
+       $(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]")).click() 
        }
 
-   Thread.sleep(5000)
+   Thread.sleep(6000)
      
 }
 

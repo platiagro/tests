@@ -184,11 +184,11 @@ class PageProj extends BasePage {
     
      btnsimremover {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
     
-     btnremoverExp{$(By.xpath("//*[@id='rc-tabs-0-tab-c3405215-acda-4c28-9a4a-c22b5140a44e']/div/div/span/svg"))}
+     btnremoverExp{$(By.xpath("//*[@id='rc-tabs-7-tab-b40d5b1e-bd59-45f7-b500-5360f52729c4']/div/div/span/svg/path"))}
 
-     btnRemoverconfirm{$(By.xpath("/html/body/div[20]/div/div/div/div[2]/div/div[2]/button[2]"))}
+     btnRemoverconfirm{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
 
-     btnremoverNo{$(By.xpath("/html/body/div[19]/div/div/div/div[2]/div/div[2]/button[1]"))}
+     btnremoverNo{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
 
     } 
 
