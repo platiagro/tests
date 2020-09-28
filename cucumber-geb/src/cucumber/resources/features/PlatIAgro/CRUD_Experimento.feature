@@ -208,10 +208,10 @@ E o template será salvo nesse menu
 
 Quando o usuário selecionar o botão "Novo experimento"
 E nomear o experimento como: 'Experimento Teste - Template'
+E clicar no botão "Criar"
 Então um novo experimento deve ser criado
 
-Quando o usuário selecionar o Menu Templates
-E selecionar o template salvo anteriormente 
+Quando selecionar o template salvo anteriormente 
 Então as tarefas do template serão adicionadas ao fluxo
 E o usuário poderá iniciar seu novo experimento
 
@@ -295,7 +295,7 @@ Então o botão de implantação será desabilitado
 
 
 
-@EXPERIMENTO
+@E
 Cenário: C08 - Excluir Tarefa e Experimento
 Quando selecionar um projeto da lista de Projetos
 E esse Projeto possui experimentos associados
@@ -310,11 +310,11 @@ E o usuário poderá adicionar outra Tarefa ao fluxo
 
 Quando o usuário selecionar o botão Excluir, ao lado do nome do Experimento
 E uma pop-up com a seguinte mensagem "Excluir Experimento?" for exibida
-E o usuário selecionar o botão Sim
+E selecionar o botão Sim
 Então o experimento será excluído
 
 Quando o usuário selecionar o botão excluir
-E selecionar o botão Não 
+E clicar no botão Não
 Então o pop-up será fechado 
 E o experimento não será excluído
 

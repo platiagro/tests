@@ -164,7 +164,7 @@ class PageProj extends BasePage {
 
      camptemplate {$(By.xpath("//*[@id='name']"))}
 
-     btnsalvar {$(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+     btnsalvar{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
      menutemplates{$(By.xpath("//*[contains(text(), 'Templates')]"))}
 
@@ -174,7 +174,22 @@ class PageProj extends BasePage {
 
      btninterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
     
-     btnImplantar {$(By.xpath("//*[@id="root"]/section/section/div/div/span/div[1]/div/div[2]/button"))}
+     btnImplantar {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[2]/button"))}
+
+     btncriar{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+
+     selectTask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]"))}
+
+     btnremovetask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[5]"))}
+    
+     btnsimremover {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
+    
+     btnremoverExp{$(By.xpath("//*[@id='rc-tabs-0-tab-c3405215-acda-4c28-9a4a-c22b5140a44e']/div/div/span/svg"))}
+
+     btnRemoverconfirm{$(By.xpath("/html/body/div[20]/div/div/div/div[2]/div/div[2]/button[2]"))}
+
+     btnremoverNo{$(By.xpath("/html/body/div[19]/div/div/div/div[2]/div/div[2]/button[1]"))}
+
     } 
 
 } 

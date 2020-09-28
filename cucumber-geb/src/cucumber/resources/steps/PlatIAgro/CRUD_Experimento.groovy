@@ -761,12 +761,7 @@ Então(/o modal será resetado/) {  ->
 }
 
 //CENÁRIO 5
-
-Quando(~/selecionar um projeto da lista de Projetos/){-> assert true }
-
 E(~/esse Projeto possui experimentos associados/){-> assert true }
-
-Então(~/o usuário será direcionado a página do projeto/){-> assert true }
 
 Quando(~/o usuário selecionar o botão "Salvar como template"/){->
  at PageProj
@@ -844,39 +839,35 @@ Quando(~/o usuário selecionar o botão "Novo experimento"/){->
   Thread.sleep(2000)
 }
 
-E(~/nomear o experimento como: 'Experimento Teste - Template'/){
+E(~/nomear o experimento como: '(.*)'/){String nameExp->
  at PageProj
 
   Thread.sleep(2000)
 
    waitFor(60) {
-     page.newExperimento.click()
+     page.camptemplate.value(nameExp)
+     }
+
+  Thread.sleep(2000)
+}
+E(~/clicar no botão "Criar"/){->
+ at PageProj
+
+   waitFor(60) {
+     page.btncriar.click()
      }
 
   Thread.sleep(2000)
 }
 
-Então(~/um novo experimento deve ser criado/){-> assert true }
 
-Quando(~/o usuário selecionar o Menu Templates/){->
+Quando(~/selecionar o template salvo anteriormente/){->
  at PageProj
 
   Thread.sleep(2000)
 
    waitFor(60) {
-     page.menutemplates.click()
-     }
-
-  Thread.sleep(2000)
-}
-
-E(~/selecionar o template salvo anteriormente/){->
- at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60) {
-     page.selectTemplate.click()
+     page.selectTemplate.selectionchange()
      }
 
   Thread.sleep(2000)
@@ -889,18 +880,23 @@ Então(~/as tarefas do template serão adicionadas ao fluxo/){->
 
      inject {  
                     println "Mover operador"
-                    moveToElement($(By.xpath("//*[@id='DATASETS$Menu']/li[2]")))
+                    moveToElement($(By.xpath("//*[@id='TEMPLATES$Menu']/li/div/div[1]/span")))
                     moveByOffset(0,0).click()
                     
                     perform()                                                                                                              
-                    println "Click executado"
-         }
+             }
  
 }
 
 
 E(~/o usuário poderá iniciar seu novo experimento/){-> assert true}
 
+
+Dado(/que o usuário deseja criar um novo Projeto para testar o template/) {-> throw new PendingException() }
+
+Então(/o usuário será direcionado a página do Projeto/) {-> throw new PendingException()}
+
+Quando(/o usuário selecionar o Menu Templates/) { -> throw new PendingException()}
 
 //CENÁRIO 6
 
@@ -952,7 +948,7 @@ Quando(~/o usuário voltar para a página do Projeto/){->
   Thread.sleep(2000)
 
    waitFor(60) {
-     {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()
+      $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()
      }
 
   Thread.sleep(2000)
@@ -979,7 +975,7 @@ Então(~/o botão de implantação será desabilitado/){->
 
 
           waitFor(60) {
-           {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()}
+           $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()}
 
        Thread.sleep(2000)
 
@@ -988,3 +984,107 @@ Então(~/o botão de implantação será desabilitado/){->
 
    Thread.sleep(5000)
 }
+
+//CENÁRIO 8
+
+Quando(~/selecionar a Tarefa presente no fluxo de experimento/){->
+ at PageProj
+ 
+   waitFor(60) { page.selectTask.click() } 
+   
+  Thread.sleep(5000)
+}
+
+E(~/selecionar o botão Excluir Tarefa/){->
+  at PageProj
+ 
+   waitFor(60) { page.btnremovetask.click() } 
+   
+  Thread.sleep(5000)
+}
+
+Então(~/o sistema irá abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa tarefa?"/){-> assert true}
+
+Quando(~/o usuário selecionar o botão Sim/){->
+ at PageProj
+ 
+   waitFor(60) { page.btnsimremover.click() }
+
+  Thread.sleep(5000)
+ 
+}
+
+
+Então(~/a tarefa será retirada do fluxo de experimento/){-> assert true }
+
+E(~/o usuário poderá adicionar outra Tarefa ao fluxo/){-> assert true }
+
+Quando(~/o usuário selecionar o botão Excluir, ao lado do nome do Experimento/){->
+  at PageProj
+ 
+   Thread.sleep(5000)
+
+     waitFor(60) { page.btnremoverExp.click() }
+
+  Thread.sleep(5000)
+}
+
+E(~/uma pop-up com a seguinte mensagem "Excluir Experimento?" for exibida/){-> assert true}
+
+E(~/selecionar o botão Sim/){-> 
+ at PageProj
+ 
+   waitFor(60) { page.btnRemoverconfirm.click() }
+
+  Thread.sleep(5000) 
+}
+
+Então(~/o experimento será excluído/){-> assert true }
+
+Quando(~/o usuário selecionar o botão excluir/){->
+ at PageProj
+ 
+   waitFor(60){ 
+     $(By.xpath("//*[@id='rc-tabs-2-tab-fdeb81d5-49bb-45d3-b075-c4ff9e9a495a']/div/div/span/svg")).click()
+    }
+ 
+ Thread.sleep(5000)
+}
+
+E(~/clicar no botão Não/){->
+ at PageProj
+ 
+    waitFor(60){ 
+      page.btnremoverNo.click() 
+     }
+
+ Thread.sleep(5000)
+
+} 
+
+Então(/o pop-up será fechado/) {  -> assert true }
+
+Então(/o experimento não será excluído/) {  -> assert true }
+
+E(~/se o usuário excluir todos os Experimentos do Projeto/){->
+ at PageProj
+ 
+     waitFor(60){ 
+       $(By.xpath("//*[@id='rc-tabs-2-tab-fdeb81d5-49bb-45d3-b075-c4ff9e9a495a']/div/div/span/svg")).click() 
+     }
+ 
+   Thread.sleep(5000)
+  
+     waitFor(60){
+       $(By.xpath("/html/body/div[19]/div/div/div/div[2]/div/div[2]/button[2]")).click() 
+       }
+
+   Thread.sleep(5000)
+     
+}
+
+Então(~/a página do Projeto ficará vazia/){-> 
+ assert true 
+
+}
+ 
