@@ -295,23 +295,23 @@ Então o botão de implantação será desabilitado
 
 
 
-@E
+@EXPERIMENTO
 Cenário: C08 - Excluir Tarefa e Experimento
 Quando selecionar um projeto da lista de Projetos
 E esse Projeto possui experimentos associados
 Então o usuário será direcionado a página do projeto
 
-# Quando selecionar a Tarefa presente no fluxo de experimento
-# E selecionar o botão Excluir Tarefa
-# Então o sistema irá abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa tarefa?"
-# Quando o usuário selecionar o botão Sim
-# Então a tarefa será retirada do fluxo de experimento
-# E o usuário poderá adicionar outra Tarefa ao fluxo
+Quando selecionar a Tarefa presente no fluxo de experimento
+E selecionar o botão Excluir Tarefa
+Então o sistema irá abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa tarefa?"
+Quando o usuário selecionar o botão Sim
+Então a tarefa será retirada do fluxo de experimento
+E o usuário poderá adicionar outra Tarefa ao fluxo
 
-# Quando o usuário selecionar o botão Excluir, ao lado do nome do Experimento
-# E uma pop-up com a seguinte mensagem "Excluir Experimento?" for exibida
-# E selecionar o botão Sim
-# Então o experimento será excluído
+Quando o usuário selecionar o botão Excluir, ao lado do nome do Experimento
+E uma pop-up com a seguinte mensagem "Excluir Experimento?" for exibida
+E selecionar o botão Sim
+Então o experimento será excluído
 
 Quando o usuário selecionar o botão excluir
 E clicar no botão Não
@@ -321,7 +321,7 @@ E o experimento não será excluído
 E se o usuário excluir todos os Experimentos do Projeto
 Então a página do Projeto ficará vazia
 
-
+# Aparentemente o XPATH das abas de experimento mudam, a cada experimento criado
 
 
  
