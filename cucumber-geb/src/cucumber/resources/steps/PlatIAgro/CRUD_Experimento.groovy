@@ -2,7 +2,6 @@ import pages.*
 import geb.*
 import db.*
 import cucumber.api.PendingException
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
 
@@ -13,7 +12,7 @@ String caminho = "/src/cucumber/resources/files/"
 
 //Cenário 1
 
-E(~/um novo experimento será criado, nomeado como "Experimento 1"/){->
+E(~/um novo experimento será criado, nomeado como Experimento 1/){->
  assert true
 }
 
@@ -33,24 +32,24 @@ Quando(~/o usuário selecionar o Menu Conjunto de Dados/){->
  Thread.sleep(2000)
 }
 
-E(~/selecionar e arrastar o operador "Upload de arquivos" para o fluxo/){->
+E(~/selecionar e arrastar o operador Upload de arquivos para o fluxo/){->
  at PageProj
+ 
+ Thread.sleep(3000)
 
-    waitFor(60){ page.uploadArq.clickAndHold() }
+   println "Objeto"
+   println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))
+   page.interact {
+ 
+     println "OK"
+
+       clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
+       moveByOffset(111,144).click()
+       release() 
+
+    }
 
  Thread.sleep(5000)
-
-  
-     inject {  
-                    println "Mover operador"
-                    moveToElement($(By.xpath("//*[@id='DATASETS$Menu']/li[2]")))
-                    moveByOffset(0,0).click()
-                    
-                    perform()                                                                                                              
-                    println "Click executado"
-         }
- 
-
 }
 
 Quando(~/selecionar o operador novamente/){->
@@ -67,7 +66,7 @@ Quando(~/selecionar o operador novamente/){->
 }
 
 
-E(~/no drawer de propriedades selecionar o botão "Importar"/){->
+E(~/no drawer de propriedades selecionar o botão Importar/){->
  at PageProj
    
    Thread.sleep(2000)
@@ -152,7 +151,7 @@ Quando(~/selecionar o Menu Engenharia de atributos/){->
   Thread.sleep(5000)
 }
 
-E(~/selecionar a tarefa "Imputação de Valores Faltantes"/){->
+E(~/selecionar a tarefa Imputação de Valores Faltantes/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -185,7 +184,7 @@ Quando(~/selecionar o Menu Treinamento/){->
 
 }
 
-E(~/selecionar a tarefa "Regressão Logística"/){->
+E(~/selecionar a tarefa Regressão Logística/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -197,7 +196,7 @@ E(~/selecionar a tarefa "Regressão Logística"/){->
   Thread.sleep(5000)
 }
 
-Quando(~/o usuário selecionar a tarefa "Imputação de Valores Faltantes"/){->
+Quando(~/o usuário selecionar a tarefa Imputação de Valores Faltantes/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -210,7 +209,7 @@ Quando(~/o usuário selecionar a tarefa "Imputação de Valores Faltantes"/){->
 
 }
  
-E(~/no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"/){->
+E(~/no drawer de propriedades da tarefa selecionar o campo Atributo Alvo/){->
   at PageProj
 
   Thread.sleep(2000)
@@ -227,7 +226,7 @@ E(~/será exibido os atributos do arquivo de entrada/){->
 
 }
 
-Então(~/o usuário irá selecionar o atributo "Species"/){->
+Então(~/o usuário irá selecionar o atributo Species/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -252,7 +251,7 @@ E(~/no último campo de preenchimento de valores nulos, o usuário irá inserir:
 
 }
 
-Quando(~/selecionar a tarefa "Regressão Logística" presente no fluxo/){->
+Quando(~/selecionar a tarefa Regressão Logística presente no fluxo/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -271,7 +270,7 @@ Quando(~/selecionar a tarefa "Regressão Logística" presente no fluxo/){->
 
 }
 
-E(~/no campo Modo de seleção das features, o usuário irá selecionar a opção "Incluir"/){->
+E(~/no campo Modo de seleção das features, o usuário irá selecionar a opção Incluir/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -289,7 +288,7 @@ E(~/no campo Modo de seleção das features, o usuário irá selecionar a opçã
    Thread.sleep(2000)
 }
 
-E(~/no campo Features para incluir-remover no modelo selecionar o atributo "SepalLengthCm"/){->
+E(~/no campo Features para incluir-remover no modelo selecionar o atributo SepalLengthCm/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -309,7 +308,7 @@ E(~/no campo Features para incluir-remover no modelo selecionar o atributo "Sepa
 }
 
 
-E(~/no campo Features para fazer codificação ordinal selecionar o atributo "PetalWidthCm"/){->
+E(~/no campo Features para fazer codificação ordinal selecionar o atributo PetalWidthCm/){->
  at PageProj
 
   Thread.sleep(2000)
@@ -348,15 +347,15 @@ Quando(~/o usuário selecionar o botão Executar/){->
 }
 
 
-E(~/o sistema enviar a seguinte mensagem "Treinamento iniciado!"/){->
+E(~/o sistema enviar a seguinte mensagem Treinamento iniciado!/){->
   assert true
 }
 
-Então(~/cada tarefa será sinalizada como "Tarefa Pendente"/){->
+Então(~/cada tarefa será sinalizada como Tarefa Pendente/){->
   assert true
 }
 
-E(~/os botões "Salvar como Template" e "Executar" serão desabilitados/){->
+E(~/os botões Salvar como Template e Executar serão desabilitados/){->
  assert true
 }
 
@@ -701,16 +700,19 @@ Quando(~/selecionar a aba de um experimento/){-> assert true }
 
 E(~/clicar no botão direito/){->
  at PageProj
+ 
+  Thread.sleep(2000)
 
-  //  waitFor(60){
-  //     page.selectaba.click() }
+     page.interact {
+ 
+     println "OK"
 
-     waitFor(60){
-       page.selectaba.contextClick(productLink).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform()
-       }
+          contextClick($(By.xpath("//*[@id='rc-tabs-24-tab-e558b62f-9eb6-4046-b7d4-d7bb057f0762']/div/div/div")))
+          
+         release()
+      }
 
-  Thread.sleep(5000)
-
+    Thread.sleep(5000)
 }
 
 E(~/selecionar a opção "Renomear"/){->

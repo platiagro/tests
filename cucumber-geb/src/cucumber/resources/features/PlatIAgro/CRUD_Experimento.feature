@@ -18,71 +18,71 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@EXPERIMENTO
+@E
 Cenário: C01 - Criar e Executar Experimento
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
 # Quando o usuário limpar o campo nome do projeto
 E nomear o projeto com:'TesteExp'
-E informar a seguinte descrição:'Automação_Teste: Executar Fluxo de Experimento'
+# E informar a seguinte descrição:'Automação_Teste: Executar Fluxo de Experimento'
 Quando clicar no botão Criar
 Então o novo projeto será criado 
 E o usuário será direcionado para a página do projeto
-E um novo experimento será criado, nomeado como "Experimento 1"
+E um novo experimento será criado, nomeado como Experimento 1
 E os botões acima da tela do fluxo de experimentação estarão desabilitados, exceto o botão Excluir
 
 Quando o usuário selecionar o Menu Conjunto de Dados
-E selecionar e arrastar o operador "Upload de arquivos" para o fluxo
-Quando selecionar o operador novamente
-E no drawer de propriedades selecionar o botão "Importar"
-E poderá escolher arquivos .csv, .zip e imagem para importar os dados
-Então o usuário irá informar o arquivo 'Iris.csv' para importar os dados de entrada
+E selecionar e arrastar o operador Upload de arquivos para o fluxo
+# Quando selecionar o operador novamente
+# E no drawer de propriedades selecionar o botão Importar
+# E poderá escolher arquivos .csv, .zip e imagem para importar os dados
+# Então o usuário irá informar o arquivo 'Iris.csv' para importar os dados de entrada
 
-Quando selecionar o botão Visualizar Dados
-E a tela de visualização de dados for aberta
-# E importar um arquivo TXT
-# E selecionar um atributo alvo
-Então o usuário irá voltar ao fluxo
-# E os botões "Salvar Template" e "Executar" estarão habilitados
+# Quando selecionar o botão Visualizar Dados
+# E a tela de visualização de dados for aberta
+# # E importar um arquivo TXT
+# # E selecionar um atributo alvo
+# Então o usuário irá voltar ao fluxo
+# # E os botões "Salvar Template" e "Executar" estarão habilitados
 
-Quando selecionar o Menu Engenharia de atributos
-E selecionar a tarefa "Imputação de Valores Faltantes"
-Então a Tarefa será adicionada ao fluxo
+# Quando selecionar o Menu Engenharia de atributos
+# E selecionar a tarefa Imputação de Valores Faltantes
+# Então a Tarefa será adicionada ao fluxo
 
-Quando selecionar o Menu Treinamento
-E selecionar a tarefa "Regressão Logística"
-Então a Tarefa será adicionada ao fluxo
+# Quando selecionar o Menu Treinamento
+# E selecionar a tarefa Regressão Logística
+# Então a Tarefa será adicionada ao fluxo
 
-Quando o usuário selecionar a tarefa "Imputação de Valores Faltantes"
-E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
-E será exibido os atributos do arquivo de entrada
-Então o usuário irá selecionar o atributo "Species"
-E no último campo de preenchimento de valores nulos, o usuário irá inserir: 'Teste'
+# Quando o usuário selecionar a tarefa Imputação de Valores Faltantes
+# E no drawer de propriedades da tarefa selecionar o campo Atributo Alvo
+# E será exibido os atributos do arquivo de entrada
+# Então o usuário irá selecionar o atributo Species
+# E no último campo de preenchimento de valores nulos, o usuário irá inserir: 'Teste'
 
-Quando selecionar a tarefa "Regressão Logística" presente no fluxo
-E no drawer de propriedades da tarefa selecionar o campo "Atributo Alvo"
-E será exibido os atributos do arquivo de entrada
-Então o usuário irá selecionar o atributo "Species"
-E no campo Modo de seleção das features, o usuário irá selecionar a opção "Incluir"
-E no campo Features para incluir-remover no modelo selecionar o atributo "SepalLengthCm"
-E no campo Features para fazer codificação ordinal selecionar o atributo "PetalWidthCm"
-Então o usuário não irá alterar os demais campos da Tarefa
+# Quando selecionar a tarefa Regressão Logística presente no fluxo
+# E no drawer de propriedades da tarefa selecionar o campo Atributo Alvo
+# E será exibido os atributos do arquivo de entrada
+# Então o usuário irá selecionar o atributo Species
+# E no campo Modo de seleção das features, o usuário irá selecionar a opção Incluir
+# E no campo Features para incluir-remover no modelo selecionar o atributo SepalLengthCm
+# E no campo Features para fazer codificação ordinal selecionar o atributo PetalWidthCm
+# Então o usuário não irá alterar os demais campos da Tarefa
 
-Quando o usuário selecionar o botão Executar
-E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
-Então cada tarefa será sinalizada como "Tarefa Pendente"
-E os botões "Salvar como Template" e "Executar" serão desabilitados
-E o botão "Interromper" será exibido
+# Quando o usuário selecionar o botão Executar
+# E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
+# Então cada tarefa será sinalizada como "Tarefa Pendente"
+# E os botões "Salvar como Template" e "Executar" serão desabilitados
+# E o botão "Interromper" será exibido
 
-Quando a operação for concluída com sucesso
-Então cada tarefa será sinalizada como "Tarefa executada com sucesso"
-E os botões acima do fluxo de experimento serão habilitados
+# Quando a operação for concluída com sucesso
+# Então cada tarefa será sinalizada como "Tarefa executada com sucesso"
+# E os botões acima do fluxo de experimento serão habilitados
 
-Quando o usuário selecionar a tarefa "Regressão Logística"
-E selecionar o botão Visualizar Resultados
-Então um modal será aberto 
-E o usuário poderá visualizar os gráficos do Resultados, o valor das Métricas e dos Parâmetros 
+# Quando o usuário selecionar a tarefa "Regressão Logística"
+# E selecionar o botão Visualizar Resultados
+# Então um modal será aberto 
+# E o usuário poderá visualizar os gráficos do Resultados, o valor das Métricas e dos Parâmetros 
 
 
 
@@ -169,7 +169,7 @@ E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da 
 
 
 
-@EXPERIMENTO
+@tst
 Cenário: C04 - Alterar Nome de um Experimento
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista de Projetos

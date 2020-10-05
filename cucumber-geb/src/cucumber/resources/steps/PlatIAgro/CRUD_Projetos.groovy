@@ -2,7 +2,7 @@ import pages.*
 import geb.*
 import db.*
 import cucumber.api.PendingException
-
+import java.util.Random;
 import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
 
@@ -80,9 +80,15 @@ Então(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
 
 E(~/nomear o projeto com:'(.*)'/){String nome->
    at PageProj
-        
+       
+
+   Random rand = new Random();
+
+   // criar nomes de projetos com numeros aleatórios de 0 a 100
+   int n = rand.nextInt(100);
+
         waitFor(60){
-       page.campnome.value(nome)  
+       page.campnome.value("${nome}${n}")  
         }
 
       Thread.sleep(5000) 

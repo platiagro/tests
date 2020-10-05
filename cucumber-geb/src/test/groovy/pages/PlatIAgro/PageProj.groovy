@@ -59,12 +59,14 @@ class PageProj extends BasePage {
      
      btnresetar{$(By.xpath("/html/body/div[2]/div/div/div/div/button[1]"))}
 
+
      // Xpath - EXPERIMENTO
+
      menuconjunto{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]"))}
 
      //uploadArq {$(By.xpath("//*[@id='DATASETS$Menu']/li[2]"))}
      
-     uploadArq{$(By.xpath("//*[contains(text(), 'Upload de arquivo')]"))}
+     uploadArq{$(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))}
 
      operadorUpArq{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div/div/div"))}  
       
@@ -148,7 +150,7 @@ class PageProj extends BasePage {
 
      btnNewExp{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
-     selectaba{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/div/div[1]/div[1]/div/div[1]"))}
+     selectaba{$(By.xpath("//*[@id='rc-tabs-24-tab-e558b62f-9eb6-4046-b7d4-d7bb057f0762']/div/div/div"))}
 
      btnrename{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[1]/div/div"))}
 
