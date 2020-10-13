@@ -168,7 +168,6 @@ Então um novo experimento deve ser criado
 E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela
 
 
-
 @EXPERIMENTO
 Cenário: C04 - Alterar Nome de um Experimento
 Dado que o usuário está na página Meus Projetos
@@ -186,9 +185,24 @@ Então o nome do experimento será alterado
 E o modal será resetado
 
 
+@EXPERIMENTO
+Cenário: C05 - Duplicar Experimento
+Dado que o usuário está na página Meus Projetos
+Quando selecionar um projeto da lista
+Então o usuário será direcionado a página do projeto
+
+Quando selecionar a aba de um experimento
+E clicar no botão direito
+E selecionar a opção Duplicar
+Então um modal será aberto 
+E o usuário deverá inserir o nome: 'Dup_Teste' para a duplicata 
+Quando clicar no botão OK
+Então o Experimento será duplicado 
+E o modal será resetado
+
 
 @EXPERIMENTO
-Cenário: C05 - Salvar Como Template
+Cenário: C06 - Salvar Como Template
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista de Projetos
 E esse Projeto possui experimentos associados
@@ -230,7 +244,7 @@ E o usuário poderá iniciar seu novo experimento
 
 
 @EXPERIMENTO
-Cenário: C06 - Interromper Execução
+Cenário: C07 - Interromper Execução
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
@@ -278,8 +292,8 @@ E executar o experimento novamente
 
 
 
-@A
-Cenário: C07 - Preparar para Implantação
+@EXPERIMENTO
+Cenário: C08 - Preparar para Implantação
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista de Projetos
 E esse Projeto possui experimentos associados
@@ -296,7 +310,7 @@ Então o botão de implantação será desabilitado
 
 
 @EXPERIMENTO
-Cenário: C08 - Excluir Tarefa e Experimento
+Cenário: C09 - Excluir Tarefa e Experimento
 Quando selecionar um projeto da lista de Projetos
 E esse Projeto possui experimentos associados
 Então o usuário será direcionado a página do projeto

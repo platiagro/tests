@@ -767,6 +767,43 @@ E(/o modal será resetado/) {  ->
 }
 
 //CENÁRIO 5
+
+Quando(~/selecionar um projeto da lista/){->
+ at PageProj
+
+   Thread.sleep(2000)
+
+   waitFor(60){
+     page.projeselect.click()
+   }
+
+   Thread.sleep(5000)
+}
+
+
+E (~/selecionar a opção Duplicar/){->
+ at PageProj
+  
+  waitFor(60){
+    page.btndup.click()
+  }
+
+}
+
+E(~/o usuário deverá inserir o nome: '(.*)' para a duplicata/){String namedup->
+ at PageProj
+
+ waitFor(60){
+   page.inputname.value(namedup)
+ }
+
+  Thread.sleep(5000)
+} 
+
+Então(~/o Experimento será duplicado/){-> assert true}
+
+
+//CENÁRIO 6
 E(~/esse Projeto possui experimentos associados/){-> assert true }
 
 Quando(~/o usuário selecionar o botão "Salvar como template"/){->
@@ -904,7 +941,9 @@ Então(/o usuário será direcionado a página do Projeto/) {-> throw new Pendin
 
 Quando(/o usuário selecionar o Menu Templates/) { -> throw new PendingException()}
 
-//CENÁRIO 6
+
+
+//CENÁRIO 7
 
 Quando(~/selecionar o botão Interromper/){->
  at PageProj
@@ -991,7 +1030,7 @@ Então(~/o botão de implantação será desabilitado/){->
    Thread.sleep(5000)
 }
 
-//CENÁRIO 8
+//CENÁRIO 9
 
 Quando(~/selecionar a Tarefa presente no fluxo de experimento/){->
  at PageProj

@@ -192,6 +192,9 @@ class PageProj extends BasePage {
 
      btnremoverNo{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
 
+     btndup {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[2]/div"))}
+     
+     projeselect{$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
     } 
 
 } 
