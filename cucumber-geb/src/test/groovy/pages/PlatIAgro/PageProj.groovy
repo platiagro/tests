@@ -16,7 +16,7 @@ class PageProj extends BasePage {
 
      campnome{$(By.xpath("//*[@id='name']"))}
 
-     //limparcamp{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span"))}
+     limparcamp{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span"))}
 
      campDesc{$(By.xpath("//*[@id='description']"))}
 

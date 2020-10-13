@@ -39,17 +39,20 @@ E(~/selecionar e arrastar o operador Upload de arquivos para o fluxo/){->
 
    println "Objeto"
    println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))
-   page.interact {
- 
-     println "OK"
 
+     page.interact {
+      println "OK"
        clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
-       moveByOffset(111,144).click()
-       release() 
+       moveByOffset(50, 0)        
+          perform()                                     
+          println "moveu coordenada zero"
 
-    }
+                    click()
 
- Thread.sleep(5000)
+      }
+
+ Thread.sleep(5000) 
+
 }
 
 Quando(~/selecionar o operador novamente/){->
@@ -431,8 +434,6 @@ E(~/o usuário poderá visualizar os gráficos do Resultados, o valor das Métri
 }
 
 
-
-
 //CENÁRIO 2
 
 E(~/selecionar a tarefa "Regressão Linear"/){->
@@ -585,7 +586,7 @@ Então(~/o usuário será direcionado a página JupyterLab/){->
 Quando(~/selecionar um projeto da lista de Projetos/){->
  at PageProj
   
-  Thread.sleep(2000)
+  Thread.sleep(5000)
 
    waitFor(60){
       page.selectProj.click()
@@ -701,18 +702,19 @@ Quando(~/selecionar a aba de um experimento/){-> assert true }
 E(~/clicar no botão direito/){->
  at PageProj
  
-  Thread.sleep(2000)
+  Thread.sleep(5000)
 
-     page.interact {
+      println "Aba"
+      println $(By.xpath("//*[contains(text(), 'Experimento 1')]"))
+      page.interact { 
  
-     println "OK"
+       println "OK"
 
-          contextClick($(By.xpath("//*[@id='rc-tabs-24-tab-e558b62f-9eb6-4046-b7d4-d7bb057f0762']/div/div/div")))
-          
-         release()
+          contextClick($(By.xpath("//*[contains(text(), 'Experimento 1')]")))
+          release()
       }
 
-    Thread.sleep(5000)
+    Thread.sleep(5000) 
 }
 
 E(~/selecionar a opção "Renomear"/){->
@@ -732,34 +734,36 @@ E(~/o usuário deverá limpar o campo/){->
      page.clearcamp.click()
      }
 
-  Thread.sleep(2000)  
+   Thread.sleep(2000)  
 
 }
 
 E(~/inserir um novo nome para o experimento: '(.*)'/){String rename->
  at PageProj
 
-   waitFor(60) {
-     page.clearcamp.value(rename)
-     }
+     waitFor(60) {
+        page.inputname.value(rename)
+      }
 
-  Thread.sleep(5000)  
+   Thread.sleep(5000)  
 }
 
 Quando(~/clicar no botão OK/){->
  at PageProj
 
+   Thread.sleep(2000) 
+
    waitFor(60) {
-     page.btnoknam.click()
+      $(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[2]/button")).click()
      }
 
-  Thread.sleep(5000)  
+   Thread.sleep(2000)  
 }
 
 Então(~/o nome do experimento será alterado/){-> assert true}
 
-Então(/o modal será resetado/) {  ->
-    throw new PendingException()
+E(/o modal será resetado/) {  ->
+    assert true
 }
 
 //CENÁRIO 5
@@ -958,7 +962,7 @@ Quando(~/o usuário voltar para a página do Projeto/){->
      waitFor(60) {
           $(By.xpath("//*[contains(text(), 'Teste')]")).click() }
 
-  Thread.sleep(5000)
+  Thread.sleep(20000)
 
 }
 Então(~/deverá observar que o botão Preparar para Implantação estará em modo de execução/){-> assert true}
@@ -973,16 +977,16 @@ Então(~/o botão de implantação será desabilitado/){->
          waitFor(60) {
           $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]")).click() }
 
-       Thread.sleep(6000)
+       Thread.sleep(60000)
 
 
-          waitFor(60) {
-           $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()}
+            waitFor(60) {
+              $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]")).click()}
 
        Thread.sleep(2000)
 
-            waitFor(60) {
-              $(By.xpath("//*[contains(text(), 'Teste')]")).click() }
+              waitFor(60) {
+                $(By.xpath("//*[contains(text(), 'Teste')]")).click() }
 
    Thread.sleep(5000)
 }

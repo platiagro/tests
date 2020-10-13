@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@E
+@EXPERIMENTO
 Cenário: C01 - Criar e Executar Experimento
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -169,7 +169,7 @@ E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da 
 
 
 
-@tst
+@EXPERIMENTO
 Cenário: C04 - Alterar Nome de um Experimento
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista de Projetos
@@ -278,7 +278,7 @@ E executar o experimento novamente
 
 
 
-@EXPERIMENTO
+@A
 Cenário: C07 - Preparar para Implantação
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista de Projetos

@@ -66,10 +66,10 @@ Então(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
 // Quando(~/o usuário limpar o campo nome do projeto/){->
 //  at PageProj
 
-//     Thread.sleep(5000)
+//     Thread.sleep(2000)
 
 //     waitFor(60){
-//       $(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span")).click()
+//       page.limparcamp.click()
 //     }
 
 //     Thread.sleep(5000)
