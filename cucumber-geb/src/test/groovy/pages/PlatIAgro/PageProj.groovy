@@ -116,7 +116,7 @@ class PageProj extends BasePage {
     
      atributoPetal{$(By.xpath("/html/body/div[6]/div/div/div/div[2]/div/div/div[4]"))}
      
-     btnexecut{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/button[2]"))}
+     btnexecut{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
  
      btnvisuresult{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div/button[1]"))}
 
@@ -193,7 +193,7 @@ class PageProj extends BasePage {
      btnremoverNo{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
 
      btndup {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[2]/div"))}
-     
+
      projeselect{$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
     } 
 

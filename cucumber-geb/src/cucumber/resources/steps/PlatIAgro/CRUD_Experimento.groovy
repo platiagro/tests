@@ -1,6 +1,10 @@
 import pages.*
 import geb.*
 import db.*
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Action
+import org.openqa.selenium.interactions.Actions
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
@@ -40,19 +44,13 @@ E(~/selecionar e arrastar o operador Upload de arquivos para o fluxo/){->
    println "Objeto"
    println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))
 
-     page.interact {
-      println "OK"
-       clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
-       moveByOffset(50, 0)        
-          perform()                                     
-          println "moveu coordenada zero"
-
-                    click()
-
-      }
-
- Thread.sleep(5000) 
-
+   page.interact {
+     println "OK"
+                                   
+     clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
+     moveByOffset(300, 150)
+     release()
+     }
 }
 
 Quando(~/selecionar o operador novamente/){->
@@ -801,6 +799,9 @@ E(~/o usuário deverá inserir o nome: '(.*)' para a duplicata/){String namedup-
 } 
 
 Então(~/o Experimento será duplicado/){-> assert true}
+
+Dado(/que o usuário está na aba da duplicata do experimento/){-> assert true}
+
 
 
 //CENÁRIO 6

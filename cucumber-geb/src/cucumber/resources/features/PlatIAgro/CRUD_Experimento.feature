@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@EXPERIMENTO
+@E
 Cenário: C01 - Criar e Executar Experimento
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
@@ -185,7 +185,7 @@ Então o nome do experimento será alterado
 E o modal será resetado
 
 
-@EXPERIMENTO
+@tst
 Cenário: C05 - Duplicar Experimento
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista
@@ -199,6 +199,17 @@ E o usuário deverá inserir o nome: 'Dup_Teste' para a duplicata
 Quando clicar no botão OK
 Então o Experimento será duplicado 
 E o modal será resetado
+
+    Dado que o usuário está na aba da duplicata do experimento
+    Quando o usuário selecionar o botão Executar
+    E o sistema enviar a seguinte mensagem Treinamento iniciado!
+    Então cada tarefa será sinalizada como Tarefa Pendente
+    E os botões Salvar como Template e Executar serão desabilitados
+    E o botão "Interromper" será exibido
+
+    Quando a operação for concluída com sucesso
+    Então cada tarefa será sinalizada como "Tarefa executada com sucesso"
+    E os botões acima do fluxo de experimento serão habilitados
 
 
 @EXPERIMENTO
