@@ -168,6 +168,19 @@ Então um novo experimento deve ser criado
 E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela
 
 
+
+@A
+Cenário: C03.1 - Conectar Tarefas no fluxo de Experimento
+Dado que o usuário está na página Meus Projetos
+Quando selecionar um projeto da lista de Projetos
+Então o usuário será direcionado a página do projeto
+
+ Dado que o projeto contém tarefas no fluxo
+ Quando o usuário selecionar a Tarefa para puxar o conector 
+ E conectar uma tarefa na outra
+
+
+
 @EXPERIMENTO
 Cenário: C04 - Alterar Nome de um Experimento
 Dado que o usuário está na página Meus Projetos
@@ -188,7 +201,7 @@ E o modal será resetado
 @tst
 Cenário: C05 - Duplicar Experimento
 Dado que o usuário está na página Meus Projetos
-Quando selecionar um projeto da lista
+Quando selec.ionar um projeto da lista
 Então o usuário será direcionado a página do projeto
 
 Quando selecionar a aba de um experimento

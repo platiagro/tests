@@ -85,7 +85,7 @@ E(~/nomear o projeto com:'(.*)'/){String nome->
    Random rand = new Random();
 
    // criar nomes de projetos com numeros aleatórios de 0 a 100
-   int n = rand.nextInt(100);
+   int n = rand.nextInt(1000);
 
         waitFor(60){
        page.campnome.value("${nome}${n}")  

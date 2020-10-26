@@ -195,6 +195,11 @@ class PageProj extends BasePage {
      btndup {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[2]/div"))}
 
      projeselect{$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
+
+     elemento1{$(By.xpath("//*[@id='fbae04f2-a623-4927-8706-405bd432dee8']/div/div[3]/div"))}
+
+     elemento2 {$(By.xpath("//*[@id='fb9c363f-10eb-4622-b6de-022f27d3ce2e']/div/div[1]/div[1]"))} 
+     //*[@id="root"]/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/gs
     } 
 
 } 

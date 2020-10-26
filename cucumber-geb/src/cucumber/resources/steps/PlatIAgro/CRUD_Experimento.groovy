@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Action
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.remote.DesiredCapabilities
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
@@ -38,23 +39,28 @@ Quando(~/o usuário selecionar o Menu Conjunto de Dados/){->
 
 E(~/selecionar e arrastar o operador Upload de arquivos para o fluxo/){->
  at PageProj
+
+      Thread.sleep(5000)
+
+      println "Objeto"
+      println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))
+      page.interact { 
  
- Thread.sleep(3000)
+       println "OK"
 
-   println "Objeto"
-   println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))
+          clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
+          moveByOffset(15, 3)
+          mouseButtonDown('rigth')
+          release()
+ 
+      }
 
-   page.interact {
-     println "OK"
-                                   
-     clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
-     moveByOffset(300, 150)
-     release()
-     }
-}
+    Thread.sleep(5000) 
+}  
+
 
 Quando(~/selecionar o operador novamente/){->
- at PageProj
+ at PageProj 
    
   Thread.sleep(5000)
 
@@ -692,6 +698,46 @@ Então(~/um novo experimento deve ser criado/){-> assert true }
 E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela/){-> assert true}
 
 
+
+//CENÁRIO 3.1
+
+ Dado(~/que o projeto contém tarefas no fluxo/){-> assert true }
+
+ Quando(~/o usuário selecionar a Tarefa para puxar o conector/){->
+   at PageProj
+
+      Thread.sleep(5000)
+
+     println "Objeto"
+      println $(By.xpath("//*[@id='f43f733f-3116-46a8-ba88-8f0a24fb49a6']/div/div[3]/div"))
+      
+ 
+       println "OK"
+       
+       //clickAndHold($(By.xpath("//*[@id='f43f733f-3116-46a8-ba88-8f0a24fb49a6']/div/div[3]/div"))) 
+        Actions ac  = Actions(driverObj);
+        ac.keyDown(Keys.CONTROL).click($(By.xpath("//*[@id='f43f733f-3116-46a8-ba88-8f0a24fb49a6']/div/div[3]/div")).keyUp(Keys.CONTROL).build().perform()
+       
+        Thread.sleep(5000)
+  }
+ 
+
+    E(~/conectar uma tarefa na outra/) {->
+
+     assert true
+      // at PageProj
+
+      //  Thread.sleep(5000)
+
+      //  println "Objeto"
+      //  println $(By.xpath("//*[@id='ef7df3e3-aee6-4c3f-bd88-1b75a1d1517b']/div/div[1]/div[1]"))
+      //  page.interact {
+      //   println "OK"
+
+      //   moveToElement($(By.xpath("//*[@id='ef7df3e3-aee6-4c3f-bd88-1b75a1d1517b']/div/div[1]/div[1]"))).click()
+      //   release()
+
+    }
 
 //CENÁRIO 4
 
