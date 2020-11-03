@@ -42,19 +42,28 @@ E(~/selecionar e arrastar o operador Upload de arquivos para o fluxo/){->
 
       Thread.sleep(5000)
 
-      println "Objeto"
-      println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))
-      page.interact { 
+       println "Objeto"
+       println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]"))
+       // page.interact { 
  
-       println "OK"
+       //  println "OK"
 
-          clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span")))
-          moveByOffset(15, 3)
-          mouseButtonDown('rigth')
-          release()
+       //     clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]")))
+       //     moveByOffset(142, 107)
+       //     release()
  
-      }
+       // }
 
+       page.interact{
+
+         println "OK"
+         moveToElement($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]"))).clickAndHold()  
+         moveByOffset(30, 15).click()  
+         perform()                                                                                                                                                                                                                               
+         
+
+        }
+           
     Thread.sleep(5000) 
 }  
 
@@ -706,20 +715,34 @@ E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo d
  Quando(~/o usuário selecionar a Tarefa para puxar o conector/){->
    at PageProj
 
-      Thread.sleep(5000)
+      Thread.sleep(2000)
 
      println "Objeto"
-      println $(By.xpath("//*[@id='f43f733f-3116-46a8-ba88-8f0a24fb49a6']/div/div[3]/div"))
-      
- 
+      println $(By.xpath("//*[@id='b385b1a0-1992-4c23-8491-858815b154be']/div/div[3]/div"))
+
+      page.interact{
        println "OK"
-       
-       //clickAndHold($(By.xpath("//*[@id='f43f733f-3116-46a8-ba88-8f0a24fb49a6']/div/div[3]/div"))) 
-        Actions ac  = Actions(driverObj);
-        ac.keyDown(Keys.CONTROL).click($(By.xpath("//*[@id='f43f733f-3116-46a8-ba88-8f0a24fb49a6']/div/div[3]/div")).keyUp(Keys.CONTROL).build().perform()
-       
-        Thread.sleep(5000)
-  }
+
+        clickAndHold($(By.xpath("//*[@id='b385b1a0-1992-4c23-8491-858815b154be']/div/div[3]/div")))
+         println "OK2"
+         moveToElement($(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/g"))).clickAndHold()
+         release()
+      //               println "Primeiro click ponto 1"
+      //  click($(By.xpath("//*[@id='ee3bdac5-f7a1-4d5e-9dd3-9200685893dd']/div/div[1]/div[1]"))) 
+      //               perform()  
+      //               release()                       
+
+                    // println "moveu coordenada ponto 2"
+
+                    // moveByOffset(10, 0).click() //100, 0click()  
+                    // perform()                                     
+                    // println "click no ponto 2 pra finalizar"
+          
+      }
+    
+    Thread.sleep(5000)
+
+ }
  
 
     E(~/conectar uma tarefa na outra/) {->
@@ -851,6 +874,96 @@ Dado(/que o usuário está na aba da duplicata do experimento/){-> assert true}
 
 
 //CENÁRIO 6
+
+ Dado(~/que o projeto selecionado possuí N experimentos/){->
+   assert true
+ } 
+
+ Quando(~/o usuário selecionar o botão Comparar Resultados/){->
+   at PageProj
+
+   waitFor(60) {
+     page.btncomp.click()
+     }
+
+  Thread.sleep(5000)
+ }
+
+ E(~/o sistema abrir a tela "Comparar resultados"/){-> assert true}
+
+ E(~/selecionar o botão Adicionar Resultado/){->
+   at PageProj
+
+   waitFor(60) {
+     page.btnaddresult.click()
+     }
+
+  Thread.sleep(5000)
+ }
+ 
+ E(~/selecionar os experimentos que deseja comparar/){->
+   at PageProj
+
+    Thread.sleep(5000)
+
+   waitFor(60) {
+     page.btnaddresult.click()
+     }
+
+   Thread.sleep(2000)
+ }
+
+ Então(~/deverá ser apresentado o histórico de execução de cada experimento selecionado/){->
+   at PageProj
+
+    Thread.sleep(5000)
+
+   waitFor(60) {
+     page.experimento1.click()
+     }
+
+   Thread.sleep(2000)
+ }
+ 
+ Quando(~/o usuário selecionar uma das opções do histórico de execução/){->
+   at PageProj
+
+   waitFor(60) {
+     page.experimento1.click()
+     }
+
+   Thread.sleep(5000)
+ }
+
+
+ E(~/selecionar uma tarefa/){->
+  at PageProj
+
+    Thread.sleep(2000)
+
+   waitFor(60) {
+     page.selecttask.click()
+     }
+
+   Thread.sleep(5000)
+     
+     waitFor(60) {
+     page.selectoptask.click()
+     }
+
+     Thread.sleep(5000)
+ }
+
+ Então(~/será exibido os resultados, as métricas e os parâmetros da tarefa selecionada/){->
+  assert true
+ }
+
+
+
+
+
+
+//CENÁRIO 7
 E(~/esse Projeto possui experimentos associados/){-> assert true }
 
 Quando(~/o usuário selecionar o botão "Salvar como template"/){->
@@ -990,7 +1103,7 @@ Quando(/o usuário selecionar o Menu Templates/) { -> throw new PendingException
 
 
 
-//CENÁRIO 7
+//CENÁRIO 8
 
 Quando(~/selecionar o botão Interromper/){->
  at PageProj
@@ -1018,7 +1131,7 @@ E(~/ao selecionar as tarefas o usuário poderá editar suas propriedades/){-> as
 E(~/executar o experimento novamente/){-> assert true}
 
 
-//CENÁRIO 7
+//CENÁRIO 9
 
 Quando(~/selecionar o botão "Preparar para Implantação"/){->
  at PageProj
@@ -1077,7 +1190,7 @@ Então(~/o botão de implantação será desabilitado/){->
    Thread.sleep(5000)
 }
 
-//CENÁRIO 9
+//CENÁRIO 10
 
 Quando(~/selecionar a Tarefa presente no fluxo de experimento/){->
  at PageProj

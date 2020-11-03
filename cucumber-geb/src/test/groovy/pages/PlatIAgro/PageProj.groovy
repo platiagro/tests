@@ -140,7 +140,7 @@ class PageProj extends BasePage {
     
      campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
-     selectProj {$(By.xpath("//*[contains(text(), 'Teste')]"))}
+     selectProj{$(By.xpath("//*[contains(text(), 'Teste')]"))}
 
      newexp{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
 
@@ -200,6 +200,20 @@ class PageProj extends BasePage {
 
      elemento2 {$(By.xpath("//*[@id='fb9c363f-10eb-4622-b6de-022f27d3ce2e']/div/div[1]/div[1]"))} 
      //*[@id="root"]/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/gs
+
+     btncomp {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[1]/button"))}
+
+     btnaddresult{$(By.xpath("/html/body/div[13]/div/div[2]/div/div[2]/div[2]/div/div/div/div/button"))}
+
+     btnselectexp {$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]/span/input"))}
+
+     experimento1 {$(By.xpath("/html/body/div[4]/div/div/div/ul[1]/li[1]"))}
+
+     btnopc{$(By.xpath("/html/body/div[4]/div/div/div/ul[2]/li[1]"))}
+
+     selecttask{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div[1]"))}
+
+     selectoptask {$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div"))}
     } 
 
 } 
