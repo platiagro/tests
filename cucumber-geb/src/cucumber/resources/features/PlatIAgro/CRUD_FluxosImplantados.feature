@@ -103,22 +103,12 @@ Cenário: C04 - Fluxos Implantados - Visualizar Logs
 
 @FLUXOIMP
 Cenário: C05 - Praparar para Implantação - Como usar Fluxo implantado
- Dado que o usuário está na página Meus Projetos
- Quando selecionar um projeto
- Então o usuário será direcionado a página do projeto
- E deverá observar que o projeto possuí Experimentos executados
- E esses experimentos possuem arquivo csv
- Quando selecionar o botão "Preparar para Implantação"
- Então o usuário será direcionado a página Fluxos implantados
- E a lista de Fluxos Implantados ficará visível
- E o nome da implantação deve conter o nome do projeto e do experimento do fluxo implantado
-
- Quando a implantação for finalizada 
- E o status definido com Succeeded
- E o usuário deseja ter informações de como usar o fluxo implantado
+ Dado que o usuário está na página Fluxos Implantados
+ E deseja ter informações de como usar o fluxo implantado
 
  Quando selecionar o botão Como usar Fluxo Implantado
  Então será aberto um modal com as dicas do que o usuário deve fazer para usar a implantação
+ 
  
 
 

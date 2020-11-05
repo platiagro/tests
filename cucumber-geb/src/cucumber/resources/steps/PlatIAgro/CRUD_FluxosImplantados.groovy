@@ -149,6 +149,8 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
 
  //CENÁRIO 4
 
+  E(/esses experimentos possuem arquivo csv/){-> assert true}
+
  Quando(~/selecionar o botão Logs, localizado na coluna Ação/){->
   at PageFluxoImp
 
@@ -165,10 +167,7 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
 
 
  //CENÁRIO 5
-
-  E(~/esses experimentos possuem arquivo csv/){->assert true}
-
- E(/o usuário deseja ter informações de como usar o fluxo implantado/){->assert true}
+ E(/deseja ter informações de como usar o fluxo implantado/){->assert true}
 
  Quando(/selecionar o botão Como usar Fluxo Implantado/){->
   at PageFluxoImp

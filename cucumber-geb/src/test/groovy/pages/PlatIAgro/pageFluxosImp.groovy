@@ -12,11 +12,11 @@ class PageFluxoImp extends BasePage {
       
       inputFile{$("input[type='file']")}
 
-      btndelete {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[5]/button[1]"))}
-
+      btndelete {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]"))}
+      
       btnsim {$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
 
-      btnlogs {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[5]/button[2]"))}
+      btnlogs {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[2]"))}
 
       btnUseImp {$(By.xpath("//*[@id='root']/section/section/div[2]/button"))}
 
