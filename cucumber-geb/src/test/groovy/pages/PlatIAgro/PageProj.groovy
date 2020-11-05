@@ -10,6 +10,7 @@ class PageProj extends BasePage {
       
        projetoMenu{$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
        tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[3]"))}
+       fluxosImpMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
 
 
      //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
@@ -203,17 +204,31 @@ class PageProj extends BasePage {
 
      btncomp {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[1]/button"))}
 
-     btnaddresult{$(By.xpath("/html/body/div[13]/div/div[2]/div/div[2]/div[2]/div/div/div/div/button"))}
+     selectprojteste{$(By.xpath("//*[contains(text(), 'Teste')]"))}
 
-     btnselectexp {$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]/span/input"))}
+     btnaddresult{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/button"))}
+     
+     btnaddresult2{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/button"))}
 
-     experimento1 {$(By.xpath("/html/body/div[4]/div/div/div/ul[1]/li[1]"))}
+     btnselectexp {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]"))}
+    
+     btnselectexp2 {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[1]/div/div/div/div[2]"))}
+     
+     btnexpe{$(By.xpath("/html/body/div[3]/div/div/div/ul/li[1]"))}
 
-     btnopc{$(By.xpath("/html/body/div[4]/div/div/div/ul[2]/li[1]"))}
+     btnexpe2{$(By.xpath("/html/body/div[4]/div/div/div/ul/li[2]"))}
+     
+     btnopc{$(By.xpath("/html/body/div[3]/div/div/div/ul[2]/li[1]"))}
+     
+     btnopc2 {$(By.xpath(" /html/body/div[4]/div/div/div/ul[2]/li"))}
+    
+     selecttask{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div[1]"))}
+  
+     selectoptask{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div/div/div/div"))}
 
-     selecttask{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div[1]"))}
+     selecttask2 {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]"))}
 
-     selectoptask {$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div"))}
-    } 
+     selectoptask2 {$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div"))}
+    }
+  } 
 
-} 

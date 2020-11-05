@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@EXPERIMENTO
+@E
 Cenário: C01 - Criar e Executar Experimento
  Dado que o usuário está na página Meus Projetos
  Quando clicar no botão Novo Projeto
@@ -226,14 +226,12 @@ Cenário: C05 - Duplicar Experimento
 
 
 
-@tst
+@EXPERIMENTO
 Cenário: C06 - Comparar Resultados 
  Dado que o usuário está na página Meus Projetos
- Quando selecionar um projeto da lista
+ Quando selecionar um projeto com N Experimentos
  Então o usuário será direcionado a página do projeto
-
- Dado que o projeto selecionado possuí N experimentos 
- Quando o usuário selecionar o botão Comparar Resultados
+ Quando selecionar o botão Comparar Resultados
  E o sistema abrir a tela "Comparar resultados"
  E selecionar o botão Adicionar Resultado
  E selecionar os experimentos que deseja comparar
@@ -243,8 +241,6 @@ Cenário: C06 - Comparar Resultados
  E selecionar uma tarefa
  Então será exibido os resultados, as métricas e os parâmetros da tarefa selecionada
   
-
-
 
 
 @EXPERIMENTO

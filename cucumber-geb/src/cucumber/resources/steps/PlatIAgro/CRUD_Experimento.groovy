@@ -40,31 +40,59 @@ Quando(~/o usuário selecionar o Menu Conjunto de Dados/){->
 E(~/selecionar e arrastar o operador Upload de arquivos para o fluxo/){->
  at PageProj
 
-      Thread.sleep(5000)
-
-       println "Objeto"
-       println $(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]"))
-       // page.interact { 
- 
-       //  println "OK"
-
-       //     clickAndHold($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]")))
-       //     moveByOffset(142, 107)
-       //     release()
- 
-       // }
-
-       page.interact{
-
-         println "OK"
-         moveToElement($(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]"))).clickAndHold()  
-         moveByOffset(30, 15).click()  
-         perform()                                                                                                                                                                                                                               
-         
-
+   Thread.sleep(5000)
+      def simulateDragDrop = '''
+        function createCustomEvent(type) {
+            var event = new CustomEvent("CustomEvent");
+            event.initCustomEvent(type, true, true, null);
+            event.dataTransfer = {
+                data: {
+                },
+                setData: function(type, val) {
+                    this.data[type] = val;
+                },
+                getData: function(type) {
+                    return this.data[type];
+                }
+            };
+            return event;
         }
-           
-    Thread.sleep(5000) 
+
+        function dispatchEvent(node, type, event) {
+            if (node.dispatchEvent) {
+                return node.dispatchEvent(event);
+            }
+            if (node.fireEvent) {
+                return node.fireEvent("on" + type, event);
+            }
+        }
+
+        function simulateDragDrop(sourceNode, destinationNode) {
+            var EVENT_TYPES = {
+                DRAG_END: 'dragend',
+                DRAG_START: 'dragstart',
+                DROP: 'drop'
+            };
+
+            var event = createCustomEvent(EVENT_TYPES.DRAG_START);
+            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event);
+
+            var dropEvent = createCustomEvent(EVENT_TYPES.DROP);
+            dropEvent.dataTransfer = event.dataTransfer;
+            dispatchEvent(destinationNode, EVENT_TYPES.DROP, dropEvent);
+
+            var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END);
+            dragEndEvent.dataTransfer = event.dataTransfer;
+            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent);
+        }
+
+        var source = document.getElementsByClassName('drag-icon')[1];
+        var destination = document.getElementsByClassName('react-flow')[0];
+        simulateDragDrop(source, destination);
+      '''
+      browser.driver.executeScript(simulateDragDrop)
+
+      Thread.sleep(8000)
 }  
 
 
@@ -875,11 +903,19 @@ Dado(/que o usuário está na aba da duplicata do experimento/){-> assert true}
 
 //CENÁRIO 6
 
- Dado(~/que o projeto selecionado possuí N experimentos/){->
-   assert true
+ Dado(~/selecionar um projeto com N Experimentos/){->
+    at PageProj
+ 
+   Thread.sleep(5000)
+
+   waitFor(60) {
+     page.selectprojteste.click()
+     }
+
+   Thread.sleep(5000)
  } 
 
- Quando(~/o usuário selecionar o botão Comparar Resultados/){->
+ Quando(/selecionar o botão Comparar Resultados/){->
    at PageProj
 
    waitFor(60) {
@@ -898,7 +934,13 @@ Dado(/que o usuário está na aba da duplicata do experimento/){-> assert true}
      page.btnaddresult.click()
      }
 
-  Thread.sleep(5000)
+   Thread.sleep(5000)
+
+    waitFor(60){
+      page.btnaddresult2.click()
+    }
+
+    Thread.sleep(2000)
  }
  
  E(~/selecionar os experimentos que deseja comparar/){->
@@ -907,32 +949,61 @@ Dado(/que o usuário está na aba da duplicata do experimento/){-> assert true}
     Thread.sleep(5000)
 
    waitFor(60) {
-     page.btnaddresult.click()
+     page.btnselectexp.click()
+     }
+
+   Thread.sleep(5000)
+
+    waitFor(60) {
+     page.btnexpe.click()
      }
 
    Thread.sleep(2000)
+
+   waitFor(60) {
+     page.btnopc.click()
+     }
+
+   Thread.sleep(5000)
+
+      waitFor(60) {
+       page.selecttask.click()
+     }
+
+   Thread.sleep(5000)
+     
+       waitFor(60) {
+       $(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div/div/div/div")).click()
+      }
+
+     Thread.sleep(5000)
+    
  }
 
  Então(~/deverá ser apresentado o histórico de execução de cada experimento selecionado/){->
    at PageProj
 
-    Thread.sleep(5000)
-
-   waitFor(60) {
-     page.experimento1.click()
-     }
-
-   Thread.sleep(2000)
- }
- 
- Quando(~/o usuário selecionar uma das opções do histórico de execução/){->
-   at PageProj
-
-   waitFor(60) {
-     page.experimento1.click()
+    waitFor(60) {
+     page.btnselectexp2.click()
      }
 
    Thread.sleep(5000)
+
+    waitFor(60) {
+     page.btnexpe2.click()
+     }
+
+   Thread.sleep(2000)
+
+   waitFor(60) {
+     page.btnopc2.click()
+     }
+
+   Thread.sleep(5000)
+ }
+ 
+ Quando(~/o usuário selecionar uma das opções do histórico de execução/){->
+   assert true
  }
 
 
@@ -942,24 +1013,53 @@ Dado(/que o usuário está na aba da duplicata do experimento/){-> assert true}
     Thread.sleep(2000)
 
    waitFor(60) {
-     page.selecttask.click()
+     page.selecttask2.click()
      }
 
    Thread.sleep(5000)
      
      waitFor(60) {
-     page.selectoptask.click()
+      page.selectoptask2.click()
+      
      }
 
-     Thread.sleep(5000)
+     Thread.sleep(7000)
  }
 
  Então(~/será exibido os resultados, as métricas e os parâmetros da tarefa selecionada/){->
-  assert true
+  at PageProj
+
+    Thread.sleep(5000)
+
+   //selecionar aba: parâmetros do primeiro experimento - Tarefa selecionada: Análise Descritiva
+   waitFor(60){
+     $(By.xpath("//*[@id='rc-tabs-1-tab-3']")).click() 
+   }
+    
+     Thread.sleep(5000)
+
+    //selecionar aba: métricas do segundo experimento
+     waitFor(60){
+     $(By.xpath("//*[@id='rc-tabs-2-tab-2']")).click()
+    }
+
+    Thread.sleep(5000)
+
+    //selecionar aba: parâmetros do segundo experimento
+     waitFor(60){
+     $(By.xpath("//*[@id='rc-tabs-2-tab-3']")).click()
+
+    }
+
+     Thread.sleep(5000)
+
+     //fechar janela
+      waitFor(60){
+        $(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/button")).click()
+      }
+
+      Thread.sleep(5000)
  }
-
-
-
 
 
 
