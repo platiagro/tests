@@ -125,7 +125,7 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
  }
 
  E(/o botão Preparar para a implantação será habilitado novamente na página do experimento/){->
-  at PageFluxoImp
+  at PageProj
 
    Thread.sleep(2000)
 
@@ -148,8 +148,6 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
 
 
  //CENÁRIO 4
-
- E(/deseja visualizar os logs da implantação/){->assert true}
 
  Quando(~/selecionar o botão Logs, localizado na coluna Ação/){->
   at PageFluxoImp
@@ -188,7 +186,7 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
 
   Thread.sleep(2000)
 
-    waitFor(60){ page.$(By.xpath("/html/body/div[7]/div/div[2]/div/div[2]/div[3]/button[2]")).click() }
+    waitFor(60){$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]")).click() }
 
     Thread.sleep(5000)
   

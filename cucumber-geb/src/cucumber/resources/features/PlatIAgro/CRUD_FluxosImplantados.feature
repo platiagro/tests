@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@F
+@FLUXOIMP
 Cenário: C01 - Praparar para Implantação - Testar Fluxo arquivo csv
  Dado que o usuário está na página Meus Projetos
  Quando selecionar um projeto
@@ -84,8 +84,18 @@ Cenário: C03 - Fluxos Implantados - Deletar Fluxo
 
 @FLUXOIMP
 Cenário: C04 - Fluxos Implantados - Visualizar Logs
- Dado que o usuário está na página Fluxos Implantados
- E deseja visualizar os logs da implantação
+ Dado que o usuário está na página Meus Projetos
+ Quando selecionar um projeto
+ Então o usuário será direcionado a página do projeto
+ E deverá observar que o projeto possuí Experimentos executados
+ E esses experimentos possuem arquivo csv
+ Quando selecionar o botão "Preparar para Implantação"
+ Então o usuário será direcionado a página Fluxos implantados
+ E a lista de Fluxos Implantados ficará visível
+ E o nome da implantação deve conter o nome do projeto e do experimento do fluxo implantado
+
+ Quando a implantação for finalizada 
+ E o status definido com Succeeded
  Quando selecionar o botão Logs, localizado na coluna Ação
  Então será aberto a tela Logs 
  E as informações estarão divididas em três colunas: Data, Nível, Mensagem 
