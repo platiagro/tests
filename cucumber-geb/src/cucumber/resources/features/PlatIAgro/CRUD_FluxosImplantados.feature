@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@FLUXOIMP
+@F
 Cenário: C01 - Praparar para Implantação - Testar Fluxo arquivo csv
  Dado que o usuário está na página Meus Projetos
  Quando selecionar um projeto

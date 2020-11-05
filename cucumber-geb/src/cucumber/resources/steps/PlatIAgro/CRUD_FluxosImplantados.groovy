@@ -46,16 +46,11 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
   E(/selecionar um arquivo csv/){->
    at PageFluxoImp
 
-   Thread.sleep(2000)
+    Thread.sleep(2000)
 
     String path = new File("../src/cucumber/resources/files/Teste1.csv").getCanonicalPath();
 
-    waitFor(60){
-         page.inputFile.click()
-    }
-
-
-   Thread.sleep(7000)
+    Thread.sleep(7000)
   }  
 
   E(/os dados do arquivo serão apresentados/){-> assert true}
