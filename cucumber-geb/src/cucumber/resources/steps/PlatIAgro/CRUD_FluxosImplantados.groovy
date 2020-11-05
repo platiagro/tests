@@ -50,10 +50,13 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
 
     String path = new File("../src/cucumber/resources/files/Teste1.csv").getCanonicalPath();
 
+    waitFor(60){
+         page.inputFile.click()
+    }
+
+
    Thread.sleep(7000)
   }  
-
-  Então(/um modal será aberto/){-> assert true}
 
   E(/os dados do arquivo serão apresentados/){-> assert true}
 
@@ -161,3 +164,33 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
  Então(~/será aberto a tela Logs/){->assert true}
 
  E(~/as informações estarão divididas em três colunas: Data, Nível, Mensagem/){-> assert true}
+
+
+ //CENÁRIO 5
+
+  E(~/esses experimentos possuem arquivo csv/){->assert true}
+
+ E(/o usuário deseja ter informações de como usar o fluxo implantado/){->assert true}
+
+ Quando(/selecionar o botão Como usar Fluxo Implantado/){->
+  at PageFluxoImp
+
+   Thread.sleep(2000)
+
+    waitFor(60){ page.btnUseImp.click() }
+
+    Thread.sleep(5000)
+
+ }
+ 
+ Então(/será aberto um modal com as dicas do que o usuário deve fazer para usar a implantação/){->
+  at PageFluxoImp
+
+  Thread.sleep(2000)
+
+    waitFor(60){ page.$(By.xpath("/html/body/div[7]/div/div[2]/div/div[2]/div[3]/button[2]")).click() }
+
+    Thread.sleep(5000)
+  
+ }
+ 

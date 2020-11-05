@@ -18,5 +18,7 @@ class PageFluxoImp extends BasePage {
 
       btnlogs {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[5]/button[2]"))}
 
+      btnUseImp {$(By.xpath("//*[@id='root']/section/section/div[2]/button"))}
+
     }
 }
