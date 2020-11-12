@@ -9,7 +9,7 @@ import static cucumber.api.groovy.PT.*
 
 
 String filePath = System.getProperty("user.dir")
-String caminho = "/src/cucumber/resources/files/"
+String arquivo = "/src/cucumber/resources/files/"
 
 //CENÁRIO 1
 
@@ -49,6 +49,7 @@ Então(/o nome da implantação deve conter o nome do projeto e do experimento d
     Thread.sleep(2000)
 
     String path = new File("../src/cucumber/resources/files/Teste1.csv").getCanonicalPath();
+    
 
     Thread.sleep(7000)
   }  

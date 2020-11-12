@@ -745,50 +745,33 @@ E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo d
 
       Thread.sleep(2000)
 
-     println "Objeto"
-      println $(By.xpath("//*[@id='b385b1a0-1992-4c23-8491-858815b154be']/div/div[3]/div"))
 
-      page.interact{
-       println "OK"
+       println "Objeto"
+       println $(By.xpath("//*[@id='d30740d2-87f5-4f86-aa9b-8850e5d97ed7']/div/div[3]/div"))
+       println "Objeto2"
+       println $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/g/g"))
 
-        clickAndHold($(By.xpath("//*[@id='b385b1a0-1992-4c23-8491-858815b154be']/div/div[3]/div")))
-         println "OK2"
-         moveToElement($(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/g"))).clickAndHold()
-         release()
-      //               println "Primeiro click ponto 1"
-      //  click($(By.xpath("//*[@id='ee3bdac5-f7a1-4d5e-9dd3-9200685893dd']/div/div[1]/div[1]"))) 
-      //               perform()  
-      //               release()                       
+       page.interact {
+        println "OK"
+         clickAndHold($(By.xpath("//*[@id='d30740d2-87f5-4f86-aa9b-8850e5d97ed7']/div/div[3]/div")))
+         perform()
+         
 
-                    // println "moveu coordenada ponto 2"
+           println "OK2"
+           moveToElement($(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/g/g")))
+                    moveByOffset(1, 1) 
+                    release()
 
-                    // moveByOffset(10, 0).click() //100, 0click()  
-                    // perform()                                     
-                    // println "click no ponto 2 pra finalizar"
-          
-      }
-    
-    Thread.sleep(5000)
+       }
 
- }
+   }
  
+    
+   
 
-    E(~/conectar uma tarefa na outra/) {->
-
-     assert true
-      // at PageProj
-
-      //  Thread.sleep(5000)
-
-      //  println "Objeto"
-      //  println $(By.xpath("//*[@id='ef7df3e3-aee6-4c3f-bd88-1b75a1d1517b']/div/div[1]/div[1]"))
-      //  page.interact {
-      //   println "OK"
-
-      //   moveToElement($(By.xpath("//*[@id='ef7df3e3-aee6-4c3f-bd88-1b75a1d1517b']/div/div[1]/div[1]"))).click()
-      //   release()
-
-    }
+    E(~/conectar uma tarefa na outra/) {-> assert true }
+   
+       
 
 //CENÁRIO 4
 

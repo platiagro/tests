@@ -31,35 +31,29 @@ Cenário: C01 - Criar e Executar Experimento
  E o usuário será direcionado para a página do projeto
  E um novo experimento será criado, nomeado como Experimento 1
  E os botões acima da tela do fluxo de experimentação estarão desabilitados, exceto o botão Excluir
-
  Quando o usuário selecionar o Menu Conjunto de Dados
  E selecionar e arrastar o operador Upload de arquivos para o fluxo
  # Quando selecionar o operador novamente
  # E no drawer de propriedades selecionar o botão Importar
  # E poderá escolher arquivos .csv, .zip e imagem para importar os dados
  # Então o usuário irá informar o arquivo 'Iris.csv' para importar os dados de entrada
-
  # Quando selecionar o botão Visualizar Dados
  # E a tela de visualização de dados for aberta
  # # E importar um arquivo TXT
  # # E selecionar um atributo alvo
  # Então o usuário irá voltar ao fluxo
  # # E os botões "Salvar Template" e "Executar" estarão habilitados
-
  # Quando selecionar o Menu Engenharia de atributos
  # E selecionar a tarefa Imputação de Valores Faltantes
  # Então a Tarefa será adicionada ao fluxo
-
  # Quando selecionar o Menu Treinamento
  # E selecionar a tarefa Regressão Logística
  # Então a Tarefa será adicionada ao fluxo
-
  # Quando o usuário selecionar a tarefa Imputação de Valores Faltantes
  # E no drawer de propriedades da tarefa selecionar o campo Atributo Alvo
  # E será exibido os atributos do arquivo de entrada
  # Então o usuário irá selecionar o atributo Species
  # E no último campo de preenchimento de valores nulos, o usuário irá inserir: 'Teste'
-
  # Quando selecionar a tarefa Regressão Logística presente no fluxo
  # E no drawer de propriedades da tarefa selecionar o campo Atributo Alvo
  # E será exibido os atributos do arquivo de entrada
@@ -68,17 +62,14 @@ Cenário: C01 - Criar e Executar Experimento
  # E no campo Features para incluir-remover no modelo selecionar o atributo SepalLengthCm
  # E no campo Features para fazer codificação ordinal selecionar o atributo PetalWidthCm
  # Então o usuário não irá alterar os demais campos da Tarefa
-
  # Quando o usuário selecionar o botão Executar
  # E o sistema enviar a seguinte mensagem "Treinamento iniciado!"
  # Então cada tarefa será sinalizada como "Tarefa Pendente"
  # E os botões "Salvar como Template" e "Executar" serão desabilitados
  # E o botão "Interromper" será exibido
-
  # Quando a operação for concluída com sucesso
  # Então cada tarefa será sinalizada como "Tarefa executada com sucesso"
  # E os botões acima do fluxo de experimento serão habilitados
-
  # Quando o usuário selecionar a tarefa "Regressão Logística"
  # E selecionar o botão Visualizar Resultados
  # Então um modal será aberto 

@@ -120,7 +120,7 @@ E o nome e descrição da Tarefa não devem ser alterados
 
 
 @CRUDTAREFA
-Esquema do Cenário:C07 - Filtrar Projeto - Pesquisar nome
+Esquema do Cenário:C07 - Filtrar Tarefa - Pesquisar nome
 Dado que o usuário está na página Tarefas
 E deseja pesquisar um Tarefa pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa
@@ -128,7 +128,7 @@ Então será aberto um modal
 Quando o usuário inserir o nome da tarefa: '<task>'
 E clicar no botão Search
 Então o sistema deve apresentar a Tarefa que possui o nome inserido no campo de pesquisa
-E se não houver nenhum projeto com o nome informado o sitema deve apresentar a página em branco
+E se não houver nenhuma Tarefa com o nome informado o sitema deve apresentar a página em branco
 E o usuário deverá selecionar o botão "Reset" para a lista de Tarefas ser apresentada novamente
 
 Exemplos:

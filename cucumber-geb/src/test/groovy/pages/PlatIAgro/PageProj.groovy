@@ -24,6 +24,10 @@ class PageProj extends BasePage {
      btnConfirm{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
 
      btncancel{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+
+     cardExp{$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[1]/div[2]"))}
+
+     cardFluxos{$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[2]/div[2]"))}
   
      returnProj{$(By.xpath("//*[@id='root']/section/header/ul/li[6]"))}
 
@@ -34,13 +38,18 @@ class PageProj extends BasePage {
      btnalt{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[5]/button[1]"))}
      
      editcancel{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+
+     btndeleteProj{$(By.xpath("//*[@id='root']/section/section/div/div/span/button"))}
      
+     deleteYes{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
+
+     deleteNo{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
+
      btnexcluir{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[6]/button"))}
      
      btnsim{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
      
-
-     btnNao{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[1]"))}
+     btnNao{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
      
      btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
      
@@ -197,11 +206,6 @@ class PageProj extends BasePage {
 
      projeselect{$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
 
-     elemento1{$(By.xpath("//*[@id='fbae04f2-a623-4927-8706-405bd432dee8']/div/div[3]/div"))}
-
-     elemento2 {$(By.xpath("//*[@id='fb9c363f-10eb-4622-b6de-022f27d3ce2e']/div/div[1]/div[1]"))} 
-     //*[@id="root"]/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/gs
-
      btncomp {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[1]/button"))}
 
      selectprojteste{$(By.xpath("//*[contains(text(), 'Teste')]"))}
@@ -229,6 +233,8 @@ class PageProj extends BasePage {
      selecttask2 {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]"))}
 
      selectoptask2 {$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div"))}
+
+     btnelement{$(By.xpath("//*[@id='c42f7c3b-365a-4a00-b265-55b6d52f0e45']/div/div[3]/div"))}
     }
   } 
 

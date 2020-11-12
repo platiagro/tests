@@ -12,8 +12,6 @@ import static cucumber.api.groovy.PT.*
  Dado(~/que o usuário acessa a plataforma PlatIAgro/){->
    browser.driver.manage().window().maximize()
    to PageProj
-   
-   
  }
 
  E(~/está na tela inicial/){->
@@ -63,18 +61,18 @@ Então(~/o sistema deve abrir um modal, com o nome Novo Projeto selecionado/){->
 } 
 
 
-// Quando(~/o usuário limpar o campo nome do projeto/){->
-//  at PageProj
+Quando(~/o usuário limpar o campo nome do projeto/){->
+ at PageProj
 
-//     Thread.sleep(2000)
+    Thread.sleep(2000)
 
-//     waitFor(60){
-//       page.limparcamp.click()
-//     }
+    waitFor(60){
+      page.limparcamp.click()
+    }
 
-//     Thread.sleep(5000)
+    Thread.sleep(5000)
 
-// }       
+}       
 
 
 
@@ -118,23 +116,41 @@ Então(~/o novo projeto será criado/){->
   assert true
 } 
 
-E(~/o usuário será direcionado para a página do projeto/){->
-  assert true
-}
+E(~/o usuário será direcionado para a página Detalhes do projeto/){-> assert true}
 
+E(~/será apresentado os seguintes dados: Descrição, Última modificação e Criado por/){-> assert true}
 
 E(~/nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação/){->
   assert true
 }
 
+Quando(~/selecionar o card Experimento/){-> 
+ at PageProj
+
+   waitFor(60){
+       page.cardExp.click()
+       } 
+
+    Thread.sleep(5000)  
+}
+
+Então(/o usuário será direcionado para a págino do projeto onde poderá iniciar um novo fluxo de experimento/){-> assert true}
+
 Quando(~/o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos/){->
   at PageProj
-
+    
+    //selecionar seta de retornar
    waitFor(60){
        $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
        } 
 
-    Thread.sleep(5000)   
+    Thread.sleep(5000)  
+
+    waitFor(60){
+       $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/div/div/span")).click()
+       }  
+
+       Thread.sleep(5000)  
 }
 
 
@@ -181,12 +197,10 @@ Então(~/um novo projeto será criado/){->
  assert true
 }
 
-Quando(~/o usuário estiver na página do Projeto/){->
- assert true
-}
+ Dado(/que o usuário está na página Detalhes do Projeto/){-> assert true}
 
-E(~/selecionar o botão Editar, ao lado do nome do projeto/){->
- at PageProj
+ Quando(~/selecionar o botão Editar, ao lado do nome do projeto/){-> 
+   at PageProj
         
    Thread.sleep(5000)  
 
@@ -195,15 +209,13 @@ E(~/selecionar o botão Editar, ao lado do nome do projeto/){->
       }
 
     Thread.sleep(2000) 
-}
-
-Então(~/o sistema deve abrir um modal, com o atual nome do projeto selecionado/){->
- assert true
-}
+  }
 
 
-Quando(~/o usuário limpar o campo/){->
- at PageProj
+ E(/o sistema abrir um modal, com o atual nome do projeto selecionado/){-> assert true}
+
+ Quando(~/o usuário limpar o campo/){->
+  at PageProj
        
    Thread.sleep(6000)  
 
@@ -222,8 +234,7 @@ E(~/clicar no botão Salvar/){->
        page.btnConfirm.click()  
        } 
 
-       Thread.sleep(5000) 
-       
+       Thread.sleep(5000)   
 }
 
 
@@ -249,10 +260,6 @@ Quando(~/selecionar o projeto que deseja Editar/){->
      waitFor(60){
      $(By.xpath("//*[contains(text(), 'TesteProj3')]")).click()
     }
-}
-
-E(~/o sitema direcionar o usuário para a página do projeto/){->
- assert true
 }
 
 
@@ -597,6 +604,35 @@ E(~/selecionar o botão "Resetar"/){->
     Thread.sleep(5000)
 }
 
+//CENÁRIO 12
+
+Quando(~/selecionar o botão Excluir/){->
+ at PageProj
+
+   Thread.sleep(2000)
+
+    waitFor(60){
+      page.btndeleteProj.click()
+    }
+  
+    Thread.sleep(5000)
+}
+
+E(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"/){-> assert true }
+
+E(~/confirmar a operação clicando no botão Sim/){->
+ at PageProj
+
+    waitFor(60){
+      page.deleteYes.click()
+    }
+  
+    Thread.sleep(5000)
+}
+
+Então(~/o projeto será excluído/){-> assert true}
+
+E(~/o usuário será direcionado para a página Meus Projetos/){-> assert true}
 
 
 //CENÁRIO 13
@@ -623,10 +659,6 @@ E(~/na coluna ação selecionar a opção Excluir/){->
 
 }
 
-E(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"/){->
-   assert true
-}
-
 E(~/o usuário confirmar a operação clicando no botão Sim/){->
 at PageProj
 
@@ -645,18 +677,6 @@ Então(~/o projeto será excluído da lista de Projetos/){->
 
 
 //CENÁRIO 14
-
-E(~/quando selecionar esse Projeto/){->
- at PageProj
-   
-   Thread.sleep(2000)
-
-    waitFor(60){
-     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[1]")).click()
-    }
-
-    Thread.sleep(2000)
-}
 
 E(~/o usuário clicar no botão Não/){->
 at PageProj
@@ -685,6 +705,44 @@ E(~/o projeto não será excluído e permanecerá na lista de projetos/){->
     }
 
     Thread.sleep(2000)
+}
+
+Dado(~/que o usuário seleciona outro projeto/){->
+ at PageProj
+   
+   Thread.sleep(2000)
+ 
+    //Selecionar segundo projeto da lista
+    waitFor(60){ $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button")).click() }
+
+   Thread.sleep(5000)
+}
+
+
+E(~/acessar a página Detalhes do projeto selecionado/){-> assert true}
+
+E(~/o usuário selecionar no botão Não/){->
+ at PageProj
+   
+   Thread.sleep(2000)
+ 
+    waitFor(60){ page.deleteNo.click() }
+
+   Thread.sleep(5000)
+}
+
+
+E(~/o projeto não será excluído/){->  
+at PageProj
+   
+   Thread.sleep(2000)
+
+    waitFor(60){
+     $(By.xpath("//*[@id='root']/section/section/div/div/div/div/div")).click()
+    }
+
+    Thread.sleep(2000)
+
 }
 
 //CENÁRIO 15

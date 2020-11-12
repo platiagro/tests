@@ -29,14 +29,18 @@ Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
-# Quando o usuário limpar o campo nome do projeto
+#Quando o usuário limpar o campo nome do projeto
 E nomear o projeto com:'ProjetoTeste'
 E informar a seguinte descrição:'Teste - Funcionalidade: Criar projeto'
 Quando clicar no botão Criar
 Então o novo projeto será criado 
-E o usuário será direcionado para a página do projeto
+E o usuário será direcionado para a página Detalhes do projeto
+E será apresentado os seguintes dados: Descrição, Última modificação e Criado por
 E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
-Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
+Quando selecionar o card Experimento
+Então o usuário será direcionado para a págino do projeto onde poderá iniciar um novo fluxo de experimento 
+Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos
+  
 
 
 @CRUDPROJ
@@ -73,21 +77,21 @@ E informar a seguinte descrição:'Teste - Alterar Nome'
 E clicar no botão Criar 
 Então um novo projeto será criado
 
-Quando o usuário estiver na página do Projeto
-E selecionar o botão Editar, ao lado do nome do projeto
-Então o sistema deve abrir um modal, com o atual nome do projeto selecionado
-Quando o usuário limpar o campo
-E nomear o projeto com:'TesteProj3'
-E informar a seguinte descrição:'Teste - Alterar Nome e Descrição'
-E clicar no botão Salvar
-Então o nome e a descrição do projeto serão atualizados
+ Dado que o usuário está na página Detalhes do Projeto
+ Quando selecionar o botão Editar, ao lado do nome do projeto
+ E o sistema abrir um modal, com o atual nome do projeto selecionado
+ Quando o usuário limpar o campo
+ E nomear o projeto com:'TesteProj3'
+ E informar a seguinte descrição:'Teste - Alterar Nome e Descrição'
+ E clicar no botão Salvar
+ Então o nome e a descrição do projeto serão atualizados
 
 
 @CRUDPROJ
 Cenário:C06- Alterar nome do Projeto - Operação: Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando selecionar o projeto que deseja Editar
-E o sitema direcionar o usuário para a página do projeto
+E o usuário será direcionado para a página Detalhes do projeto
 Quando selecionar o botão Editar
 E o sitema abrir o modal
 E o usuário informar a seguinte descrição:'Teste - operação: Cancelar'
@@ -186,23 +190,22 @@ E selecionar o botão "Resetar"
 Então o modal será fechado
 
 
-# @CRUDPROJ
-# Cenário: C12 - Excluir Projeto
-# Dado que o usuário está na página Meus Projetos
-# Quando clicar no botão Novo Projeto
-# Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
-# E o usuário limpar o campo nome
-# E renomear o projeto para: 'TesteProj4'
-# E informar a seguinte descrição: 'Teste - Operação: Excluir'
-# Quando clicar no botão Criar projeto
-# Então o novo projeto será criado 
-# E o usuário será direcionado para a página do projeto
-# Quando o usuário estiver na página do novo projeto
-# E selecionar o botão Excluir 
-# E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
-# E confirmar a operação clicando no botão Sim
-# Então o projeto será excluído
-# E o usuário será direcionado para a página Meus Projetos
+@CRUDPROJ
+Cenário: C12 - Excluir Projeto - Página Detalhes do Projeto
+Dado que o usuário está na página Meus Projetos
+Quando clicar no botão Novo Projeto
+Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
+#Quando o usuário limpar o campo nome do projeto
+E nomear o projeto com:'TesteProj4'
+E informar a seguinte descrição:'Teste - Operação: Excluir'
+Quando clicar no botão Criar
+Então o novo projeto será criado 
+E o usuário será direcionado para a página Detalhes do projeto
+Quando selecionar o botão Excluir
+E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
+E confirmar a operação clicando no botão Sim
+Então o projeto será excluído
+E o usuário será direcionado para a página Meus Projetos
 
 
 
@@ -217,32 +220,23 @@ Então o projeto será excluído da lista de Projetos
 
 
 
-@CRUDPROJ
+@C
 Cenário:C14 - Excluir Projeto - Ação Excluir - Cancelar
 Dado que o usuário está na página Meus Projetos
-Quando clicar no botão Novo Projeto
-Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
-E nomear o projeto com:'Teste_Projeto'
-E informar a seguinte descrição:'Teste - Operação: Excluir'
-Quando clicar no botão Criar
-Então o novo projeto será criado 
-E o usuário será direcionado para a página do projeto
-E nessa página poderá escolher se deseja iniciar um fluxo de Experimentação ou Pré -implantação
-Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos 
-E quando selecionar esse Projeto
+Quando selecionar um dos projetos da lista
 E na coluna ação selecionar a opção Excluir
 E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
 E o usuário clicar no botão Não
 Então a operação será cancelada
 E o projeto não será excluído e permanecerá na lista de projetos
 
-# Dado que o usuário seleciona outro projeto
-# E acessar a página do projeto selecionado
-# E selecionar o botão Excluir 
-# E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
-# E o usuário clicar no botão Não
-# Então a operação será cancelada
-# E o projeto não será excluído
+Dado que o usuário seleciona outro projeto
+E acessar a página Detalhes do projeto selecionado
+E selecionar o botão Excluir 
+E o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir esse Projeto?"
+E o usuário selecionar no botão Não
+Então a operação será cancelada
+E o projeto não será excluído
 
 
 
