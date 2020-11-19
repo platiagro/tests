@@ -385,8 +385,8 @@ Quando(~/o usuário inserir:'(.*)'/){String psqnome->
     Thread.sleep(5000)
 
      waitFor(60){
-       $(By.xpath("/html/body/div[2]/div/div/div/div/input")).value(psqnome)
-     }
+       $(By.xpath("/html/body/div[3]/div/div/div/div/input")).value(psqnome)
+     } 
     
     Thread.sleep(2000)
        

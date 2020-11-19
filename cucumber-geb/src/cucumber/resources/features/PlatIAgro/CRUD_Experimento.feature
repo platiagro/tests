@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@EXPERIMENTO
+@E
 Cenário: C01 - Criar e Executar Experimento
  Dado que o usuário está na página Meus Projetos
  Quando clicar no botão Novo Projeto

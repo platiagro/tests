@@ -14,7 +14,15 @@ import static cucumber.api.groovy.PT.*
 Quando(/o usuário retornar para a página Detalhes do Projeto/){->
  at PageProj
 
-     waitFor(60){ {$(By.xpath("//*[@id='root']/section/section/div/div/div/div")).click() }
+     waitFor(60){ $(By.xpath("//*[@id='root']/section/section/div/div/div/div")).click() }
 
  Thread.sleep(5000)
 }
+
+E(~/o usuário deverá retornar para a página Meus Projetos/){-> 
+ at PageProj
+
+ waitFor(60){ $(By.xpath("//*[@id='root']/section/section/div/div/div/div")).click() }
+ 
+ Thread.sleep(5000)
+} 

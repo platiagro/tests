@@ -58,7 +58,7 @@ class PageProj extends BasePage {
    
      btnsearch{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[2]/span"))}
   
-     btnpesq{$(By.xpath("/html/body/div[2]/div/div/div/div/div/div[1]/button"))}
+     btnpesq{$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[1]/button"))}
 
      btnreset {$(By.xpath("/html/body/div[2]/div/div/div/div/div/div[2]/button"))}
 

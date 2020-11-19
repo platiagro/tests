@@ -30,20 +30,18 @@ E nomear o projeto com:'TesteProj3'
 E informar a seguinte descrição:'Teste - Alterar Nome e Descrição'
 E clicar no botão Salvar
 Então o nome e a descrição do projeto serão atualizados
-Quando o usuário retornar para a página Meus Projetos deverá observar se o novo projeto foi adicionado à lista de projetos
+E o usuário deverá retornar para a página Meus Projetos 
 
 Dado que o usuário está na página Meus Projetos
 E deseja pesquisar um projeto pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome do Projeto
 Então será aberto um modal
-Quando o usuário inserir:'TesteProj3'
+Quando o usuário inserir:'Teste'
 E selecionar o botão Search
 Então o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa
 E se não houver nenhum projeto com o nome informado o sitema deve apresentar a página em branco
 
-
-
-Cenário: C02 - Tarefas
+#Criar Tarefa
 Dado que o usuário está na página Tarefas
 Quando selecionar o botão Nova Tarefa
 E será aberto um modal onde o usuário poderá escolher um exemplo ou um template em branco para criar nova tarefa
@@ -56,7 +54,7 @@ E inserir a Descrição: 'Teste - Funcionalidade: Criar Tarefa'
 E clicar no botão Criar Notebooks
 Então o modal será resetado e fechado
 E a tarefa será criada
-E o usuário deverá observar que a tarefa criada foi adicionada na lista de tarefas de acordo com a ordenação alfabétic
+E o usuário deverá observar que a tarefa criada foi adicionada na lista de tarefas de acordo com a ordenação alfabética
 Dado que o usuário está na página Tarefas
 E escolher uma das Tarefas da lista de tarefas para Copiar
 Quando selecionar o botão Fazer uma Cópia, localizado na coluna Ação - Mais
@@ -65,7 +63,6 @@ E o campo template e descrição serão os mesmos da tarefa selecionada para có
 E o campo nome estará preenchido com o nome da tarefa seguido por "cópia"
 Quando o usuário selecionar o botão Criar Notebooks
 Então a cópia da tarefa será criada
-
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -73,6 +70,7 @@ Quando o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que
 E o usuário confirmar a operação
 Então a terefa será excluida da lista
 
+@AP3
 Cenário: C03 - Experimento
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um projeto da lista de Projetos
@@ -124,9 +122,17 @@ Quando selecionar a tarefa Regressão Logística presente no fluxo
  Então o botão de implantação será desabilitado
 
 
-
-
-
+ Dado que o usuário está na página Meus Projetos
+ Quando selecionar um projeto com N Experimentos
+ Então o usuário será direcionado a página do projeto
+ Quando selecionar o botão Comparar Resultados
+ E o sistema abrir a tela "Comparar resultados"
+ E selecionar o botão Adicionar Resultado
+ E selecionar os experimentos que deseja comparar
+ Então deverá ser apresentado o histórico de execução de cada experimento selecionado
+ Quando o usuário selecionar uma das opções do histórico de execução
+ E selecionar uma tarefa
+ Então será exibido os resultados, as métricas e os parâmetros da tarefa selecionada
 
 
 

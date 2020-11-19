@@ -24,7 +24,7 @@ E será apresentado sua lista de projetos existentes
 Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última Modificação e Ação
 
 
-@P
+@CRUDPROJ
 Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
