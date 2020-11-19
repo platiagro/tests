@@ -7,7 +7,6 @@ import org.openqa.selenium.By
 import static cucumber.api.groovy.PT.*
 
 //CENÁRIO 1
-
 Dado(~/que o usuário está na página Tarefas/){->
  at PageProj
 
@@ -37,7 +36,6 @@ Então(~/deverá observar que todas as tarefas existentes estarão listadas em o
     Thread.sleep(5000) 
 }
 
-
 E(~/as informações das tarefas estarão divididas em três colunas: Nome da Tarefa, Origem,Descrição e Ação/){->
  at PageTarefa
 
@@ -48,8 +46,6 @@ E(~/as informações das tarefas estarão divididas em três colunas: Nome da Ta
        }
 
        Thread.sleep(5000)
-
-       browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
 
        waitFor(60){
          page.btnop50.click()
@@ -62,7 +58,6 @@ E(~/as informações das tarefas estarão divididas em três colunas: Nome da Ta
 }
 
 //CENÁRIO 2
-
 Quando(~/selecionar o botão Nova Tarefa/){->
   at PageTarefa
 
@@ -100,14 +95,12 @@ Quando(~/o usuário limpar o campo nome da tarefa/){->
 E(~/nomear a Tarefa: '(.*)'/){String name->
  at PageTarefa
 
-
      waitFor(60){
        page.campnametask.value(name)  
       }
 
       Thread.sleep(2000)
 }
-
 
 E(~/inserir a Descrição: '(.*)'/){String descTarefa->
  at PageTarefa
@@ -118,7 +111,6 @@ E(~/inserir a Descrição: '(.*)'/){String descTarefa->
 
       Thread.sleep(1000) 
 }
-
 
 E(~/clicar no botão Criar Notebooks/){->
  at PageTarefa
@@ -139,7 +131,6 @@ E(~/a tarefa será criada/){->
  assert true
 }
 
-
 E(~/o usuário deverá observar que a tarefa criada foi adicionada na lista de tarefas de acordo com a ordenação alfabética/){->
  at PageTarefa
 
@@ -151,7 +142,6 @@ E(~/o usuário deverá observar que a tarefa criada foi adicionada na lista de t
 }
 
 //CENÁRIO 3
-
 E(~/o sistema deverá informar que já existe uma tarefa com aquele nome/){->
  at PageTarefa
 
@@ -210,11 +200,9 @@ E(~/tarefa será criada/){->
  assert true
 }
 
-
 E(~/o usuário deverá observar que a tarefa criada foi adicionada a lista de Tarefas/){->
   assert true
 }
-
 
 Quando(~/selecionar a Tarefa criada/){->
   at PageTarefa
@@ -227,8 +215,6 @@ Quando(~/selecionar a Tarefa criada/){->
 
       Thread.sleep(5000)
 }
-
-
 
 Então(~/será aberto um modal onde o usuário poderá editar o nome e a descrição da Tarefa/){->
  assert true
@@ -279,7 +265,6 @@ E(~/confirmar a operação/){->
 
 }
 
-
 Então(~/o modal será fechado/){->
     assert true
 }
@@ -299,9 +284,8 @@ E(~/o usuário poderá observar que o nome e descrição da tarefa foram editado
 } 
 
 //CENARIO 6
-
-E(~/escolhe uma das Tarefas da lista de tarefas para editar/){->
-at PageTarefa
+E(~/escolher uma das Tarefas da lista de tarefas para editar/){->
+ at PageTarefa
 
      waitFor(60){
       $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[1]/div/button")).click()
@@ -314,8 +298,55 @@ E(~/o nome e descrição da Tarefa não devem ser alterados/){->
   assert true
 }
 
+//CENARIO 7
+E(~/escolher uma das Tarefas da lista de tarefas para Copiar/){->
+ at PageTarefa
+    
+    Thread.sleep(5000)
+     
+     //selecionar página 2 de Tarefas
+     waitFor(60){
+        $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/ul/li[3]")).click()
+     } 
 
-//ESQUEMA DO CENARIO 7
+     Thread.sleep(5000)
+
+    //selecionar menu "Mais" - Tarefa Regressor AutoML
+     waitFor(60){
+        $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[5]/td[4]/div/div[3]/button")).click()
+     } 
+
+    Thread.sleep(5000)
+}
+
+Quando(~/selecionar o botão Fazer uma Cópia, localizado na coluna Ação - Mais/){->
+ at PageTarefa
+
+     //selecionar botão "Fazer uma Cópia"
+     waitFor(60){
+        $(By.xpath("//*[contains(text(), 'Fazer uma cópia')]")).click()
+     } 
+
+    Thread.sleep(2000)
+}
+
+E(~/o campo template e descrição serão os mesmos da tarefa selecionada para cópia/){-> assert true}
+E(~/o campo nome estará preenchido com o nome da tarefa seguido por "cópia"/){-> assert true}
+
+Quando(~/o usuário selecionar o botão Criar Notebooks/){->
+at PageTarefa
+
+  Thread.sleep(5000)
+  
+     waitFor(60){ page.btncriarTask.click() }
+ 
+    Thread.sleep(5000)
+}
+
+Então(~/a cópia da tarefa será criada/){-> to PageTarefa Thread.sleep(5000) }
+
+
+//ESQUEMA DO CENARIO 8
 E(~/deseja pesquisar um Tarefa pelo nome/){->
  assert true
 }
@@ -358,7 +389,6 @@ E(~/clicar no botão Search/){->
      Thread.sleep(5000)
 }
 
-
 Então(~/o sistema deve apresentar a Tarefa que possui o nome inserido no campo de pesquisa/){->
  assert true
 }
@@ -383,8 +413,7 @@ Então(~/o sistema deve apresentar a Tarefa que possui o nome inserido no campo 
  }
 
 
-//CENÁRIO 8
-
+//CENÁRIO 9
 E(~/seleciona uma Tarefa da lista de tarefas/){->
   at PageTarefa
 
@@ -396,8 +425,6 @@ E(~/seleciona uma Tarefa da lista de tarefas/){->
 
     Thread.sleep(5000)
 }
-
-
 
 E(~/na coluna Ação clicar no botão Excluir/){->
  at PageTarefa
@@ -416,7 +443,6 @@ E(~/na coluna Ação clicar no botão Excluir/){->
 
      Thread.sleep(5000)
 }
-
 
 Quando(~/o sistema abrir uma pop-up com a seguinte mensagem "Você tem certeza que deseja excluir essa Tarefa?"/){->
  assert true
@@ -438,10 +464,7 @@ Então(~/a terefa será excluida da lista/){->
  assert true
 }
 
-
-
-//CENÁRIO 09
-
+//CENÁRIO 10
 E(~/selecionar o botão Não/){->
  at PageTarefa
  
@@ -458,8 +481,7 @@ E(~/nenhuma tarefa será excluída/){->
  assert true
 }
 
-//CENÁRIO 10
-
+//CENÁRIO 11
 E(~/seleciona uma Tarefa da lista que esteja relacionada a um projeto/){->
  assert true
 }

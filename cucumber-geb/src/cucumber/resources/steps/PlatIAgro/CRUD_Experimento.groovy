@@ -17,22 +17,16 @@ String caminho = "/src/cucumber/resources/files/"
 
 //Cenário 1
 
-E(~/um novo experimento será criado, nomeado como Experimento 1/){->
- assert true
-}
+E(~/um novo experimento será criado, nomeado como Experimento 1/){-> assert true }
 
-E(~/os botões acima da tela do fluxo de experimentação estarão desabilitados, exceto o botão Excluir/){->
- assert true
-}
+E(~/os botões acima da tela do fluxo de experimentação estarão desabilitados/){-> assert true }
 
 Quando(~/o usuário selecionar o Menu Conjunto de Dados/){-> 
  at PageProj
    
   Thread.sleep(5000)
 
-     waitFor(60){
-         page.menuconjunto.click()
-       }
+     waitFor(60){ page.menuconjunto.click() }
 
  Thread.sleep(2000)
 }
@@ -100,11 +94,14 @@ Quando(~/selecionar o operador novamente/){->
  at PageProj 
    
   Thread.sleep(5000)
+   waitFor(60){$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]/div")).click() }
+
+   Thread.sleep(2000)
 
      waitFor(60){
-         page.operadorUpArq.click()
+        page.operadorUpArq.click()
        }
-
+      
  Thread.sleep(2000)
 
 }
@@ -142,6 +139,10 @@ Então(~/o usuário irá informar o arquivo '(.*)' para importar os dados de ent
 Quando(~/selecionar o botão Visualizar Dados/){->
   at PageProj
 
+    waitFor(60){
+        page.operadorUpArq.click()
+       }
+       
   Thread.sleep(2000)
 
     waitFor(60){
@@ -182,39 +183,6 @@ Então(~/o usuário irá voltar ao fluxo/){->
   Thread.sleep(5000)
 }
 
-
-Quando(~/selecionar o Menu Engenharia de atributos/){->
- at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60){
-      page.menuEngAt.click()
-    }
-
-  Thread.sleep(5000)
-}
-
-E(~/selecionar a tarefa Imputação de Valores Faltantes/){->
- at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60){
-      page.opImputer.click()
-    }
-
-  Thread.sleep(5000)
-
-   browser.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)")
-
-}
-
-
-Então(~/a Tarefa será adicionada ao fluxo/){->
- assert true
-}
-
 Quando(~/selecionar o Menu Treinamento/){->
  at PageProj
 
@@ -225,76 +193,68 @@ Quando(~/selecionar o Menu Treinamento/){->
     }
 
   Thread.sleep(5000)
-
 }
 
 E(~/selecionar a tarefa Regressão Logística/){->
  at PageProj
 
-  Thread.sleep(2000)
+   Thread.sleep(5000)
+      def simulateDragDrop = '''
+        function createCustomEvent(type) {
+            var event = new CustomEvent("CustomEvent");
+            event.initCustomEvent(type, true, true, null);
+            event.dataTransfer = {
+                data: {
+                },
+                setData: function(type, val) {
+                    this.data[type] = val;
+                },
+                getData: function(type) {
+                    return this.data[type];
+                }
+            };
+            return event;
+        }
 
-   waitFor(60){
-      page.opReglog.click()
-    }
+        function dispatchEvent(node, type, event) {
+            if (node.dispatchEvent) {
+                return node.dispatchEvent(event);
+            }
+            if (node.fireEvent) {
+                return node.fireEvent("on" + type, event);
+            }
+        }
+
+        function simulateDragDrop(sourceNode, destinationNode) {
+            var EVENT_TYPES = {
+                DRAG_END: 'dragend',
+                DRAG_START: 'dragstart',
+                DROP: 'drop'
+            };
+
+            var event = createCustomEvent(EVENT_TYPES.DRAG_START);
+            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event);
+
+            var dropEvent = createCustomEvent(EVENT_TYPES.DROP);
+            dropEvent.dataTransfer = event.dataTransfer;
+            dispatchEvent(destinationNode, EVENT_TYPES.DROP, dropEvent);
+
+            var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END);
+            dragEndEvent.dataTransfer = event.dataTransfer;
+            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent);
+        }
+
+        var source = document.getElementsByClassName('drag-icon')[8];
+        var destination = document.getElementsByClassName('react-flow')[0]
+        simulateDragDrop(source, destination); 
+      '''
+      browser.driver.executeScript(simulateDragDrop)
 
   Thread.sleep(5000)
 }
 
-Quando(~/o usuário selecionar a tarefa Imputação de Valores Faltantes/){->
- at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60){
-      page.tarefaImputer.click()
-    }
-
-  Thread.sleep(5000)
-
-}
+Então(~/a Tarefa será adicionada ao fluxo/){-> assert true}
  
-E(~/no drawer de propriedades da tarefa selecionar o campo Atributo Alvo/){->
-  at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60){
-      page.selectAtrib.click()
-    }
-
-  Thread.sleep(5000)
-}
-
-E(~/será exibido os atributos do arquivo de entrada/){->
- assert true
-
-}
-
-Então(~/o usuário irá selecionar o atributo Species/){->
- at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60){
-      page.atributoSpecies.click()
-    }
-
-  Thread.sleep(5000)
-}
-
-E(~/no último campo de preenchimento de valores nulos, o usuário irá inserir: '(.*)'/){String valor->
-  at PageProj
-
-  Thread.sleep(2000)
-
-   waitFor(60){
-      page.campinput.value(valor)
-    }
-
-  Thread.sleep(5000)
-
-}
-
 Quando(~/selecionar a tarefa Regressão Logística presente no fluxo/){->
  at PageProj
 
@@ -747,20 +707,24 @@ E(~/uma mensagem de sucesso com o nome do experimento deve ser exibida no topo d
 
 
        println "Objeto"
-       println $(By.xpath("//*[@id='d30740d2-87f5-4f86-aa9b-8850e5d97ed7']/div/div[3]/div"))
+       println $(By.xpath("//*[@id='ceeb0112-66e0-438e-931c-63e5c5d28f78']/div/div[3]/div"))
+       
        println "Objeto2"
-       println $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/g/g"))
-
+       println $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]"))
        page.interact {
-        println "OK"
-         clickAndHold($(By.xpath("//*[@id='d30740d2-87f5-4f86-aa9b-8850e5d97ed7']/div/div[3]/div")))
+        println "OK" //Selecionar primeira bolinha
+         clickAndHold($(By.xpath("//*[@id='ceeb0112-66e0-438e-931c-63e5c5d28f78']/div/div[3]/div")))
          perform()
          
 
-           println "OK2"
-           moveToElement($(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]/svg/g/g")))
-                    moveByOffset(1, 1) 
-                    release()
+           println "OK2" //arrastar a setinha
+           moveToElement($(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div[1]")))
+          
+
+           println "OK3" //Selecionar segunda bolinha
+           moveToElement($(By.xpath("//*[@id='d2296711-6de7-461a-8bc4-3bda91a98d76']/div/div[1]/div[1]")))
+        
+                release()
 
        }
 

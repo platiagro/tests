@@ -95,7 +95,6 @@ E clicar no botão Criar Notebooks
 Então o modal será resetado e fechado
 E tarefa será criada
 E o usuário deverá observar que a tarefa criada foi adicionada a lista de Tarefas
-
 Quando selecionar a Tarefa criada
 Então será aberto um modal onde o usuário poderá editar o nome e a descrição da Tarefa
 Quando limpar o campo nome
@@ -110,7 +109,7 @@ E o usuário poderá observar que o nome e descrição da tarefa foram editados
 @CRUDTAREFA
 Cenário: C06- Alterar nome e descrição da Tarefa - Cancelar
 Dado que o usuário está na página Tarefas
-E escolhe uma das Tarefas da lista de tarefas para editar
+E escolher uma das Tarefas da lista de tarefas para editar
 Quando limpar o campo nome
 E nomear a Tarefa: 'Tarefa_Teste 3'
 E inserir a Descrição: 'Alterar Nome e Descrição - CANCELAR'
@@ -119,8 +118,20 @@ Então o modal será fechado
 E o nome e descrição da Tarefa não devem ser alterados
 
 
+@C
+Cenário: C07- Copiar Tarefa
+Dado que o usuário está na página Tarefas
+E escolher uma das Tarefas da lista de tarefas para Copiar
+Quando selecionar o botão Fazer uma Cópia, localizado na coluna Ação - Mais
+Então um modal será aberto
+E o campo template e descrição serão os mesmos da tarefa selecionada para cópia
+E o campo nome estará preenchido com o nome da tarefa seguido por "cópia"
+Quando o usuário selecionar o botão Criar Notebooks
+Então a cópia da tarefa será criada
+
+
 @CRUDTAREFA
-Esquema do Cenário:C07 - Filtrar Tarefa - Pesquisar nome
+Esquema do Cenário:C08 - Filtrar Tarefa - Pesquisar nome
 Dado que o usuário está na página Tarefas
 E deseja pesquisar um Tarefa pelo nome 
 Quando selecionar o icone de pesquisa ao lado da coluna Nome da Tarefa
@@ -142,7 +153,7 @@ Exemplos:
 
 
 @CRUDTAREFA
-Cenário: C08 - Excluir Tarefa
+Cenário: C09 - Excluir Tarefa
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -153,7 +164,7 @@ Então a terefa será excluida da lista
 
 
 @CRUDTAREFA
-Cenário: C09 - Excluir Tarefa - Cancelar
+Cenário: C10 - Excluir Tarefa - Cancelar
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista de tarefas
 E na coluna Ação clicar no botão Excluir 
@@ -164,7 +175,7 @@ E nenhuma tarefa será excluída
 
 
 @CRUDTAREFA
-Cenário: C10 - Excluir Tarefa - Relacionada a um Experimento
+Cenário: C11 - Excluir Tarefa - Relacionada a um Experimento
 Dado que o usuário está na página Tarefas
 E seleciona uma Tarefa da lista que esteja relacionada a um projeto
 E na coluna Ação clicar nos botões Mais e Excluir 

@@ -24,12 +24,12 @@ E será apresentado sua lista de projetos existentes
 Então deverá observar que as informações dos projetos estarão divididos em cinco colunas: Nome do Projeto, Descrição, Tags, Última Modificação e Ação
 
 
-@CRUDPROJ
+@P
 Cenário: C02 - Criar Projeto - Operação: Criar
 Dado que o usuário está na página Meus Projetos
 Quando clicar no botão Novo Projeto
 Então o sistema deve abrir um modal, com o nome Novo Projeto selecionado
-#Quando o usuário limpar o campo nome do projeto
+# Quando o usuário limpar o campo nome do projeto
 E nomear o projeto com:'ProjetoTeste'
 E informar a seguinte descrição:'Teste - Funcionalidade: Criar projeto'
 Quando clicar no botão Criar
@@ -220,7 +220,7 @@ Então o projeto será excluído da lista de Projetos
 
 
 
-@C
+@CRUDPROJ
 Cenário:C14 - Excluir Projeto - Ação Excluir - Cancelar
 Dado que o usuário está na página Meus Projetos
 Quando selecionar um dos projetos da lista

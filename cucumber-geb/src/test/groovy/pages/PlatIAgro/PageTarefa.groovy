@@ -64,6 +64,8 @@ class PageTarefa extends BasePage {
 
     camptask{$(By.xpath("/html/body/div[3]/div/div/div/div/input"))}
 
+    btncriarTask{$(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+
    }
 }
 

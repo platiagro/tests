@@ -9,15 +9,14 @@ class PageProj extends BasePage {
     static content ={
       
        projetoMenu{$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
-       tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[3]"))}
-       fluxosImpMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
+       tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
 
 
      //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
 
      campnome{$(By.xpath("//*[@id='name']"))}
 
-     limparcamp{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span/span"))}
+     limparcampo{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/"))}
 
      campDesc{$(By.xpath("//*[@id='description']"))}
 
@@ -74,11 +73,9 @@ class PageProj extends BasePage {
 
      menuconjunto{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]"))}
 
-     //uploadArq {$(By.xpath("//*[@id='DATASETS$Menu']/li[2]"))}
-     
      uploadArq{$(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))}
 
-     operadorUpArq{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div/div/div"))}  
+     operadorUpArq{$(By.className("task-elements"))}  
       
      btnimport {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/button"))}
 
@@ -99,7 +96,7 @@ class PageProj extends BasePage {
      opImputer{$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
 
      //menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]"))}
-     menuTreinamento{$(By.xpath("//*[contains(text(), 'Treinamento')]"))}
+     menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]/div[1]"))}
 
      opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
 
