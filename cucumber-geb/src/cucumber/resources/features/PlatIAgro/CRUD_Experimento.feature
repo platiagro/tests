@@ -18,7 +18,7 @@ Contexto: Acessar Plataforma
 # Então será apresentado a página "Meus Projetos", com a lista de projetos existentes daquele usuário
 
 
-@E
+@EXPERIMENTO
 Cenário: C01 - Criar e Executar Experimento
  Dado que o usuário está na página Meus Projetos
  Quando clicar no botão Novo Projeto
@@ -152,9 +152,9 @@ Cenário: C03 - Criar Experimento - Nome Repetido
  E uma mensagem de sucesso com o nome do experimento deve ser exibida no topo da tela
 
 
-
+# esse cenário é apenas para teste - deve ser incluido nos cenários 1,2 e 8
 @A
-Cenário: C03.1 - Conectar Tarefas no fluxo de Experimento
+Cenário: C03.1 - Conectar Tarefas no fluxo de Experimento 
  Dado que o usuário está na página Meus Projetos
  Quando selecionar um projeto da lista de Projetos
  Então o usuário será direcionado a página do projeto

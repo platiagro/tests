@@ -118,7 +118,7 @@ Então o modal será fechado
 E o nome e descrição da Tarefa não devem ser alterados
 
 
-@C
+@CRUDTAREFA
 Cenário: C07- Copiar Tarefa
 Dado que o usuário está na página Tarefas
 E escolher uma das Tarefas da lista de tarefas para Copiar
