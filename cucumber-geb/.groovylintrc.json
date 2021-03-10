@@ -1,0 +1,11 @@
+{
+    "extends": "recommended",
+    "rules": {
+        "TrailingWhitespace": {
+            "enabled": false
+        },
+        "UnnecessarySetter": {
+            "enabled": false
+        }
+    }
+}
