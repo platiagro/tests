@@ -39,10 +39,10 @@ gradle bdd -Ptag=@CRUDTAREFA
 ![](https://bitbucket.cpqd.com.br/projects/PLATIA/repos/testes_automaticos/raw/Chrome%20Driver%20Recente.png?at=refs%2Fheads%2Fmaster)
 
 
-### 5° Terminando o download, extrair arquivo.
+### 4° Terminando o download, extrair arquivo.
 
 
-### 4° Na Automação, indo em build.gradle, alterar o número da versão do driver do chrome conforme o download feito.
+### 5° Na Automação, indo em build.gradle, alterar o número da versão do driver do chrome conforme o download feito.
 ![](https://bitbucket.cpqd.com.br/projects/PLATIA/repos/testes_automaticos/raw/ChromeDriverVersion.png?at=refs%2Fheads%2Fmaster)
 
 
