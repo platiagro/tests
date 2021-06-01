@@ -48,7 +48,7 @@ Before { scenario ->
 After { scenario ->
 
 	// embed screenshot into cucumber report
-	if(scenario.failed) {
+	/*if(scenario.failed) {
 		try {
 			if(theBrowser){
 				scenario.embed(theBrowser.driver.getScreenshotAs(OutputType.BYTES), "image/png")
@@ -58,7 +58,7 @@ After { scenario ->
 		} catch(MissingMethodException e) {
 			// HTMLUnit doesn't support screenshots
 		}
-	}
+	}*/
 
 	CachingDriverFactory.clearCacheAndQuitDriver()
 }
@@ -83,24 +83,24 @@ def bindVariables(){
 AfterStep { scenario ->
 
 	//embed screenshot into cucumber report
-		try {
-			if(theBrowser){
-				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss")
-                Date date = new Date()
-				String screenshot_file = "${scenario.name}-${dateFormat.format(date)}.png"
-				String reportsDir = System.getProperty("ReportsDir")
-				String dest = reportsDir + "/" + screenshot_file			
-				byte[] encoded_img =  theBrowser.driver.getScreenshotAs(OutputType.BYTES)								            				
-				//Faz um screenshot a cada execução
-				IOUtils.write(encoded_img, new FileOutputStream(dest));			          	
-				scenario.embed(encoded_img,'image/png')
-				scenario.write("Screenshot anexo ${dest}");	
-			}
-		} catch(WebDriverException e) {
-			// sometime firefox runs out of memory trying to take a screenshot, not a big deal so ignore
-		} catch(MissingMethodException e) {
-			// HTMLUnit doesn't support screenshots
+	/*try {
+		if(theBrowser){
+			DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss")
+            Date date = new Date()
+			String screenshot_file = "${scenario.name}-${dateFormat.format(date)}.png"
+			String reportsDir = System.getProperty("ReportsDir")
+			String dest = reportsDir + "/" + screenshot_file			
+			byte[] encoded_img =  theBrowser.driver.getScreenshotAs(OutputType.BYTES)								            				
+			//Faz um screenshot a cada execução
+			IOUtils.write(encoded_img, new FileOutputStream(dest));			          	
+			scenario.embed(encoded_img,'image/png')
+			scenario.write("Screenshot anexo ${dest}");	
 		}
+	} catch(WebDriverException e) {
+		// sometime firefox runs out of memory trying to take a screenshot, not a big deal so ignore
+	} catch(MissingMethodException e) {
+		// HTMLUnit doesn't support screenshots
+	}*/
 
 }
 

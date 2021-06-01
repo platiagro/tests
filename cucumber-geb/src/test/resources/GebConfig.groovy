@@ -18,9 +18,6 @@ import org.openqa.selenium.firefox.FirefoxOptions
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 
 
- 
-
-
 driver = { new ChromeDriver() }
 
     
@@ -63,15 +60,8 @@ environments {
     ie {
         driver = { new InternetExplorerDriver() }
     }
-    }
+}
 
-
-// baseUrl="http://10.50.11.77"
-
-//baseUrl="http://10.50.11.116"
-
-baseUrl = 'https://awsplatiagro04/'
-
-//baseUrl="http://10.50.11.112"
+baseUrl = 'https://awsplatiagro02.aquarius.cpqd.com.br/'
 
 baseNavigatorWaiting = true
