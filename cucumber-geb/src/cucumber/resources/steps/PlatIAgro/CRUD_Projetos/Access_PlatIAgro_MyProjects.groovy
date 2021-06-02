@@ -16,6 +16,7 @@ Quando(/acessar a plataforma PlatIAgro/){ ->
 }
 
 Então(/a tela inicial da página {string} será exibida com sucesso/) { String pagProj ->
+  at PageProj
 
   def pagMeusProj
 
