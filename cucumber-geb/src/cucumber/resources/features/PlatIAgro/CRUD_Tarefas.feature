@@ -35,22 +35,22 @@ Cenário: C02 - Criar Tarefa - Nome Repetido
 @CRUDTAREFA
 Cenário: C03 - Criar Tarefa Operação: Cancelar
 Dado que o usuário acione o botão Nova Tarefa
-E um modal seja aberto onde o Template em branco deve estar definido como default
-E entrar com o nome para a Tarefa: 'Tarefa Teste'
-E inserir a descrição: 'Teste - Operação: Cancelar'
-Quando clicar no botão Cancelar
-Então o sistema fará com que o modal seja resetado e fechado
-E nenhuma tarefa será criada
+ E um modal seja aberto onde o Template em branco deve estar definido como default
+ E entrar com o nome para a Tarefa: 'Tarefa Teste'
+ E inserir a descrição: 'Teste - Operação: Cancelar'
+ Quando clicar no botão Cancelar
+ Então o sistema fará com que o modal seja resetado e fechado
+ E nenhuma tarefa será criada
 
 @CRUDTAREFA
 Cenário: C04- Alterar nome e descrição da Tarefa - Cancelar
 Dado que o usuário escolha uma das Tarefas da lista para editar
-E limpar o campo nome
-E renomear a Tarefa: 'Tarefa Teste'
-E inserir uma nova descrição: 'Alterar Nome e Descrição - CANCELAR'
-Quando efetuar o clique no botão Cancelar
-Então o sistema deve fechar modal
-E o nome e a descrição da tarefa não devem ser alterados
+ E limpar o campo nome
+ E renomear a Tarefa: 'Tarefa Teste'
+ E inserir uma nova descrição: 'Alterar Nome e Descrição - CANCELAR'
+ Quando efetuar o clique no botão Cancelar
+ Então o sistema deve fechar modal
+ E o nome e a descrição da tarefa não devem ser alterados
 
 @CRUDTAREFA
 Cenário: C05 - Alterar nome e descrição da Tarefa

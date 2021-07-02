@@ -5,19 +5,19 @@ Como usuário da plataforma, desejo criar um novo Experimento.
 
 
 
-Contexto: Acessar Plataforma
-Dado que o usuário acessa a Plataforma PlatIAgro
-E está na tela inicial
-
+Contexto: Acessar a página Meus Projetos na Plataforma
+  Dado que o usuário abra o browser
+  Quando acessar a plataforma PlatIAgro
+  Então a tela inicial da página 'Meus projetos' será exibida com sucesso
 
 
 @1
 Cenário: C01 - Visualização de Dados
-Dado que o usuário está na página Meus Projetos
-E clicar no botão Novo Projeto
-E o sistema deve abrir um modal, com o nome Novo Projeto selecionado
-E o usuário limpar o campo nome do projeto
-E nomear o projeto com:'Teste J '
+#Dado que o usuário está na página Meus Projetos
+Dado que o usuário clique no botão Novo Projeto
+ E o sistema abra um modal com o nome 'Novo Projeto' selecionado
+ E limpe o campo nome do projeto
+ E nomear o projeto com o nome inicial de: 'Teste'
 E clicar no botão Criar
 E o novo projeto será criado
 E o usuário será direcionado para a página Detalhes do projeto

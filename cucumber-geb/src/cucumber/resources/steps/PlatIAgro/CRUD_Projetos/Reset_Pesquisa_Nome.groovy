@@ -31,8 +31,8 @@ E(/seja aberto um modal/) { ->
 Quando(/inserir o nome do projeto alterado anteriormente/) { ->
 
   waitFor(10) {
-    def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(13).substring(28).split("\\|")[0].trim();
-    $(By.xpath('/html/body/div[2]/div/div/div/div/input')).value(nomeProj)
+    def nomeProjeto = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
+    $(By.xpath('/html/body/div[2]/div/div/div/div/input')).value(nomeProjeto)
   }
 
   Thread.sleep(1000)

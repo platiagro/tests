@@ -18,7 +18,7 @@ class PageProj extends BasePage {
 
     //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
 
-    campnome {$(By.xpath("//*[@id='name']"))}
+    campnome {$(By.xpath('/html/body/div[2]/div/div/div/div/input'))} 
 
     limparcampo {$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/"))}
 
@@ -241,6 +241,8 @@ class PageProj extends BasePage {
     selectoptask2 {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div'))}
 
     btnelement {$(By.xpath("//*[@id='c42f7c3b-365a-4a00-b265-55b6d52f0e45']/div/div[3]/div"))}
+
+    btnBuscar {$(By.xpath('/html/body/div[2]/div/div/div/div/div/div[1]/button/span[2]'))}
 
   }
 
