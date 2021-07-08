@@ -62,6 +62,6 @@ environments {
     }
 }
 
-baseUrl = 'https://awsplatiagro02.aquarius.cpqd.com.br/'
+baseUrl = 'https://awsplatiagro03.aquarius.cpqd.com.br/'
 
 baseNavigatorWaiting = true
