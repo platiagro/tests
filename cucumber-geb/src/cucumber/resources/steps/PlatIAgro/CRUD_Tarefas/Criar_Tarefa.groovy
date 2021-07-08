@@ -118,14 +118,28 @@ E(/inserir a Descrição: {string}/) { String desc ->
 Quando (/clicar no botão Criar Notebooks/) { ->
 
   waitFor(10) {
-    page.btnConfirm.click()
+    page.btnCriarTask.click()
   }
+
+  /*screen.type(Key.TAB);
+  screen.type(Key.TAB);
+  screen.type(Key.ENTER);*/
 
   Thread.sleep(1000)
 
 }
 
-Então(/o modal será resetado e fechado/) { ->
+Então(/o sistema exibirá a seguinte mensagem: {string}/) { String msgSuccess ->
+
+  assert $(By.className("ant-message-success")).isDisplayed()
+
+  assert $(By.xpath("//*[contains(text(), '"+msgSuccess+"')]")).isDisplayed()
+
+  Thread.sleep(1000)
+   
+}
+
+E(/o modal será resetado e fechado/) { ->
 
   List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
   browser.driver.switchTo().window(abas.get(0));
@@ -133,16 +147,6 @@ Então(/o modal será resetado e fechado/) { ->
   def modal = $(By.className("ant-modal-content")).isDisplayed()
   assert modal == false
 
-}
-
-E(/o sistema exibirá a seguinte mensagem: {string}/) { String msgSuccess ->
-
-  assert $(By.className("ant-message-success")).isDisplayed()
-
-  assert $(By.xpath("//*[contains(text(), '"+msgSuccess+"')]")).isDisplayed()
-
-  Thread.sleep(2000)
-   
 }
 
 E(/irá abrir uma nova tela do JupyterLab: {string}/) { String jupyter ->

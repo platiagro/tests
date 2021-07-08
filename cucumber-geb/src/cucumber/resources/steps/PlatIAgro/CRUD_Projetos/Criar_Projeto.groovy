@@ -161,9 +161,9 @@ E(/selecionar o card Experimento/) { ->
 
 }
 
-E(/o usuário será direcionado para a página do projeto onde poderá iniciar um novo fluxo de experimento: {string}/) { String implantation -> 
+E(/o usuário será direcionado para a página do projeto onde poderá iniciar um novo fluxo de experimento: {string}/) { String experiment -> 
   
-  assert $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span[2]/div/button/span[text()='"+implantation+"']")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div/div/div/span[2]/div/button/span[text()='"+experiment+"']")).isDisplayed()
 
   Thread.sleep(2000)
 
@@ -173,7 +173,7 @@ Então(/o usuário ao retornar para a página {string} deverá observar se o nov
 
   browser.driver.get("https://awsplatiagro02.aquarius.cpqd.com.br/projetos");
 
-  Thread.sleep(3000)
+  Thread.sleep(2000)
 
   String meuProjeto = $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3")).text();
   assert meuProjeto.contains(myProj)

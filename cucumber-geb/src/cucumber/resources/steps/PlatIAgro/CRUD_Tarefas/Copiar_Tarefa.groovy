@@ -62,10 +62,14 @@ E(/no campo nome estará preenchido com o nome da tarefa seguido por {string}/) 
 Quando(/o usuário selecionar o botão Criar Notebooks/) { ->
 
   waitFor(10){
-    page.btncriarTask.click()
+    page.btnCriarTask.click()
   }
 
-  Thread.sleep(1000)
+  /*screen.type(Key.TAB);
+  screen.type(Key.TAB);
+  screen.type(Key.ENTER);*/
+
+  Thread.sleep(1500)
 
 }
 

@@ -21,7 +21,7 @@ Cenário: C01 - Criar Projeto - Operação: Criar
  E será apresentado os seguintes dados: 'Descrição', 'Última modificação' e 'Criado por'
  E nessa página poderá escolher se deseja iniciar um fluxo de 'Experimentação' ou 'Pré-implantação'
  E selecionar o card Experimento
- E o usuário será direcionado para a página do projeto onde poderá iniciar um novo fluxo de experimento: 'Pré-implantação'
+ E o usuário será direcionado para a página do projeto onde poderá iniciar um novo fluxo de experimento: 'Experimentação'
  Então o usuário ao retornar para a página 'Meus projetos' deverá observar se o novo projeto foi adicionado à lista de projetos
  E deverá estar divididos em cinco colunas: 'Nome do Projeto', 'Descrição', 'Tags', 'Última modificação' e 'Ação'
 

@@ -8,7 +8,7 @@ class PageTarefa extends BasePage {
   static at = { title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
   static content ={
 
-    titleTasks {$(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3"))}
+    titleTasks {$(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/div/div/h3"))}
 
     menuTarefa {$(By.xpath("/html/body/div[1]/section/aside/div[1]/ul/li[2]/span[1]"))}
 
@@ -18,7 +18,7 @@ class PageTarefa extends BasePage {
 
     btnprevious {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[1]"))}
 
-    btntarefa {$(By.xpath("//*[@id='root']/section/section/div[2]/button"))}
+    btntarefa {$(By.xpath("//*[@id='root']/section/section/div/div[2]/button"))}
 
     btnselect {$(By.xpath("//*[@id='newTaskForm_template']/div/span"))}
 
@@ -70,8 +70,8 @@ class PageTarefa extends BasePage {
 
     camptask {$(By.xpath("/html/body/div[3]/div/div/div/div/input"))}
 
-    //btncriarTask {$(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]"))}
-    btncriarTask {$(By.xpath("//*[text()='Criar Notebooks']"))}
+    //btnCriarTask {$(By.xpath("/html/body/div[5]/div/div[2]/div/div[2]/div[3]/button[2]/span"))}
+    btnCriarTask {$(By.xpath("//*[text()='Criar Notebooks']"))}
 
    }
 }

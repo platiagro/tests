@@ -77,7 +77,6 @@ dependencies {
 
 	compile group: 'org.sikuli', name: 'sikuli-api', version: '1.2.0'
 
-	//compile files('C:/Bitbucket/PlatIAgro/testes_automaticos/cucumber-geb/lib/sikuli-ide.jar')
 	compile files("${pathSikuli}/sikuli-ide.jar")
 }
 

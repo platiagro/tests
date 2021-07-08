@@ -30,6 +30,8 @@ E(/o sistema deve abrir uma pop-up com a seguinte mensagem: {string}/) { String 
 
   assert $(By.xpath("//*[contains(text(), '"+msg+"')]")).isDisplayed()
 
+  Thread.sleep(1000)
+
 }
 
 Quando(/selecionar o botão Não/) { ->

@@ -17,8 +17,8 @@ Cenário: C01 - Criar Tarefa
  E nomear a Tarefa com o nome inicial de: 'Tarefa - Teste'
  E inserir a Descrição: 'Teste - Funcionalidade: Criar Tarefa'
  Quando clicar no botão Criar Notebooks
- Então o modal será resetado e fechado
- E o sistema exibirá a seguinte mensagem: 'Tarefa adicionada com sucesso.'
+ Então o sistema exibirá a seguinte mensagem: 'Tarefa criada com sucesso.'
+ E o modal será resetado e fechado
  E irá abrir uma nova tela do JupyterLab: 'Aguarde, o JupyterLab está sendo preparado...'
  E a tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
  E as informações das tarefas estarão divididas em quatro colunas: 'Nome da Tarefa', 'Descrição', 'Origem' e 'Ação'
@@ -71,7 +71,7 @@ Cenário: C06- Copiar Tarefa
  E os valores nos campos template e descrição serão os mesmos da tarefa selecionada para cópia
  E no campo nome estará preenchido com o nome da tarefa seguido por 'cópia'
  Quando o usuário selecionar o botão Criar Notebooks
- Então terá a cópia da 'Tarefa adicionada com sucesso.'
+ Então terá a cópia da 'Tarefa criada com sucesso.'
  E abrirá uma nova tela do JupyterLab: 'Aguarde, o JupyterLab está sendo preparado...'
  E a cópia da tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
 

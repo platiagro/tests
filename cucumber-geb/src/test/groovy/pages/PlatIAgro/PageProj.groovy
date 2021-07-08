@@ -16,8 +16,6 @@ class PageProj extends BasePage {
        
     tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
 
-    //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
-
     campnome {$(By.xpath("//*[@id='name']"))}
 
     limparcampo {$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/"))}
@@ -28,7 +26,7 @@ class PageProj extends BasePage {
 
     btnCancel {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]'))}
 
-    cardExp {$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[1]/div[2]"))}
+    cardExp {$(By.xpath("/html/body/div[1]/section/section/section/main/section/div/div[1]/div[1]/button/div[1]/div/img"))}
 
     cardFluxos {$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[2]/div[2]"))}
 
@@ -72,18 +70,11 @@ class PageProj extends BasePage {
 
     btnresetar {$(By.xpath('/html/body/div[2]/div/div/div/div/button[1]'))}
 
-    // Xpath - EXPERIMENTO
-    menuconjunto {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[2]"))} 
-
     uploadArq {$(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))}
-
-    operadorUpArq {$(By.className('task-elements'))}
 
     btnimport {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/button"))}
 
     select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]"))}
-
-    inputFile {$("input[type='file']") }
 
     btnvisualizar {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/button"))}
 
@@ -97,50 +88,19 @@ class PageProj extends BasePage {
 
     opImputer {$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
 
-    //menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]"))}
-    menuTreinamento {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[6]/div/span/span[2]"))}
-
-    //*[@id="root"]/section/section/section/aside/div/div/ul/li[6]/div/span/span[2]
-
     opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
 
     tarefaImputer {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
 
     selectAtrib {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[1]"))}
 
-    //atributoSpecies{$(By.xpath("//*[contains(text(), 'Species')]"))}
     atributoSpecies {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[6]/div'))}
 
     campinput {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[6]/div[2]/input"))}
 
-    // tarefaReg {$(By.xpath("//*[@id='fb6604e9-222c-4da6-b1c2-ef474bfe538b']/div/div[2]"))}
-
     tarefaReg {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[3]/div/div"))}
-    //*[@id="DEFAULT$Menu"]/li[2]/div
-
-    //*[@id="fb6604e9-222c-4da6-b1c2-ef474bfe538b"]/div/div[2]
-
-    campomsf {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[3]/div[2]/div/div"))}
-
-    opincluir {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[1]/div'))}
-
-    campoFeature {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]"))}
-
-    campofcode {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[5]/div[2]/div"))}
-
-    atributoSepalL {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[2]'))}
-
-    atributoPetal {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[4]'))}
-
-    btnexecut {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
-
-    btnvisuresult {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div/button[1]"))}
 
     abaresult {$(By.xpath('/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[1]'))}
-
-    abametricas {$(By.xpath("//*[contains(text(), 'Métricas')]"))}
-
-    abaparametros {$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
 
     taskreglinear {$(By.xpath("//*[contains(text(), 'Regressão Linear')]"))}
 
@@ -151,10 +111,6 @@ class PageProj extends BasePage {
     atributoisvalid {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div[3]'))}
 
     opreglinear {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
-
-    btnjupyter {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/button[2]"))}
-
-    campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
     selectProj {$(By.xpath("//*[contains(text(), 'TESTE J')]"))}
 

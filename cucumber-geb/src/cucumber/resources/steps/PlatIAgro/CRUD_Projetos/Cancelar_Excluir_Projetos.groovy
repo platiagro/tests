@@ -21,18 +21,18 @@ Dado(/que o usuário selecione vários projetos da lista/) { ->
 
   for (int i=1; i<=5 ; i++){
      waitFor(30) {
-        $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
     }
 
     waitFor(10) {
-        String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
-        page.campnome.value(del)
+      String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+      page.campnome.value(del)
     }
 
     def nomeProj = "Teste " + NumberGerador.number()
 
     waitFor(10) {
-        page.campnome.value(nomeProj)
+      page.campnome.value(nomeProj)
     }
 
     //Armazena o nome do projeto gerado para conferência na exclusão
@@ -43,13 +43,13 @@ Dado(/que o usuário selecione vários projetos da lista/) { ->
 	  reg.close();
 
     waitFor(10) {
-        page.campDesc.value("Projeto de teste " + i)
+      page.campDesc.value("Projeto de teste " + i)
     }
 
     Thread.sleep(2000)
 
     waitFor(10) {
-        page.btnConfirm.click()
+      page.btnConfirm.click()
     }
 
     Thread.sleep(2000)
