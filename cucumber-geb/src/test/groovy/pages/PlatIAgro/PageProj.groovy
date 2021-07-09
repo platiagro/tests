@@ -16,13 +16,7 @@ class PageProj extends BasePage {
        
     tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
 
-<<<<<<< HEAD
     campnome {$(By.xpath("//*[@id='name']"))}
-=======
-    //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
-
-    campnome {$(By.xpath('/html/body/div[2]/div/div/div/div/input'))} 
->>>>>>> 710a2d21b9e41e0ee3eb4a872253cd06a51fe621
 
     limparcampo {$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/"))}
 

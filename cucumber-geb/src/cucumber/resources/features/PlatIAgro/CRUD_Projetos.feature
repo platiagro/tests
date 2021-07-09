@@ -69,7 +69,7 @@ Cenário: C07 - Pesquisar Nome do Projeto - Cancelar
  E selecionar o botão Reset
  Então o sistema deve cancelar a operação fechando o modal
 
-@CRUDPROJ1
+@CRUDPROJ
 Cenário: C08 - Filtrar Projeto - Tags
  Dado que o usuário selecione o ícone ao lado da coluna Tags
  E seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
