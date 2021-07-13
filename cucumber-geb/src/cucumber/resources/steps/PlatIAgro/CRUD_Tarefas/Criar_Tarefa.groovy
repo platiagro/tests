@@ -97,8 +97,8 @@ E(/nomear a Tarefa com o nome inicial de: {string}/) { String nomeEd ->
   //Armazena o nome do projeto gerado para ser utilizado por outros cenários
 	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt"), true);
 	reg.write("+---------------------------------------------------------+\n"
-			+ "| Nome da tarefa criada: " + nomeTarefa + "           |\n"
-			+ "+---------------------------------------------------------+\n");
+			    + "| Nome da tarefa criada: " + nomeTarefa + "           |\n"
+			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
 }
@@ -120,10 +120,6 @@ Quando (/clicar no botão Criar Notebooks/) { ->
   waitFor(10) {
     page.btnCriarTask.click()
   }
-
-  /*screen.type(Key.TAB);
-  screen.type(Key.TAB);
-  screen.type(Key.ENTER);*/
 
   Thread.sleep(1000)
 

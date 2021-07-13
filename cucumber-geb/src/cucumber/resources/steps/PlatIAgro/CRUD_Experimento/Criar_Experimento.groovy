@@ -175,7 +175,7 @@ E(/selecione o botão Executar/) { ->
 
   at PageExperimento
 
-  waitFor(60) {
+  waitFor(30) {
     page.btnExecut.click()
   }
 

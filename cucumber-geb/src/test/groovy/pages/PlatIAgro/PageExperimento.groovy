@@ -56,11 +56,13 @@ class PageExperimento extends BasePage {
 
     abaParametros {$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
 
-    btnJupyter {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/button[2]"))}
+    btnJupyter {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div/button[2]/span[2]"))}
 
     campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
     histErrMsg {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/span/button"))}
+
+    btnOK {$(By.xpath("//*[contains(text(), 'Ok')]"))}
 
   }
 

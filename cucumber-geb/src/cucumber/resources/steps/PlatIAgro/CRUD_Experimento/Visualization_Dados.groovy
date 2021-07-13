@@ -92,8 +92,8 @@ E(/nomear o projeto inicialmente com: {string}/) { String nomeEd ->
   //Armazena o nome do projeto gerado para ser utilizado por outros cenários
 	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt"), true);
 	reg.write("+---------------------------------------------------------+\n"
-			+ "| Nome do projeto criado: " + nomeProj + "                   |\n"
-			+ "+---------------------------------------------------------+\n");
+			    + "| Nome do projeto criado: " + nomeProj + "                   |\n"
+			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
 }

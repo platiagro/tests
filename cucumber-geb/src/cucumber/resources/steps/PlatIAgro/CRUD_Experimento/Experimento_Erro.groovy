@@ -49,6 +49,13 @@ Dado(/que o usuário demande a criação de um novo Projeto/) { ->
     page.campnome.value(nomeProj)
   }
 
+  //Armazena o nome do projeto portador do fluxo de experimento com erro
+	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt"), true);
+	reg.write("+---------------------------------------------------------+\n"
+				  + "| Erro no fluxo de experimento : " + nomeProj + "            |\n"
+				  + "+---------------------------------------------------------+\n");
+	reg.close();
+
   waitFor(30) {
     page.btnConfirm.click()
   }
@@ -241,13 +248,13 @@ Quando(/clicar no botão Executar/) { ->
     page.btnExecut.click()
   }
 
-  Thread.sleep(60000)
+  Thread.sleep(50000)
 
 }
 
 Então(/a execução não será finalizada, com a platforma sinalizadando a Tarefa com erro/) { ->
 
-  screen.type(Key.F5, Key.CTRL);
+  //screen.type(Key.F5, Key.CTRL);
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 60);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/span/sup"))).isDisplayed();
@@ -271,19 +278,30 @@ E(/o usuário poderá visualizar o motivo no Histórico de Erros e Mensagens/) {
 
 }
 
-/*E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução/) { ->
+E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução/) { ->
   at PageExperimento
+
+  waitFor(30) {
+    $(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div")).click()
+  }
 
   waitFor(30) {
     page.btnJupyter.click()
   }
 
-  Thread.sleep(2000)
+  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
+  browser.driver.switchTo().window(abas.get(1));
 
-  waitFor(30){
-    page.campError.click()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 60);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[1]/div[2]/div[2]/div[3]/p/span")));
+
+  for (int i=0; i<=17; i++){
+    screen.type(Key.DOWN);
   }
-
+  
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[19]/div[2]/div[2]/div[3]/p/span")));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[19]/div[2]/div[2]/div[3]/p/span"), 'Execution using papermill encountered an exception here and stopped:'));
+  
   Thread.sleep(2000)
 
-}*/
+}

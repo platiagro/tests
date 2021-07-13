@@ -62,4 +62,34 @@ Cenário: C03 - Criar um Experimento com Erro
  Quando clicar no botão Executar
  Então a execução não será finalizada, com a platforma sinalizadando a Tarefa com erro
  E o usuário poderá visualizar o motivo no Histórico de Erros e Mensagens
- #E ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução
+ E ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução
+
+@CRUDEXP
+Cenário: C04 - Alterar Nome de um Experimento
+ Dado que o usuário selecione um projeto presente na listagem
+ E selecione o card experimento
+ E clicar com o botão direito em cima do nome
+ E selecionar a opção Renomear
+ E haverá a abertura de um modal
+ E o usuário deverá limpar o campo
+ E alterar o nome do experimento acrescentando ao final: 'Alter'
+ Quando clicar no botão OK
+ Então o modal será resetado
+ E o nome do experimento será alterado com sucesso
+
+@CRUDEXP
+Cenário: C05 - Duplicar Experimento
+Dado que o usuário selecione um projeto da lista
+E efetue o clique no card experimento
+E clique com o botão direito na aba do experimento
+E selecione a opção Duplicar
+E um modal seja aberto
+E insira o seguinte nome para a duplicata: 'Teste_Exp_Duplicado'
+E realizar o clique no botão OK
+E para o modal haverá o reset
+E o Experimento será duplicado
+Quando o usuário selecionar o botão Executar na aba da duplicata do experimento
+Então o sistema enviará a seguinte mensagem: 'Treinamento iniciado!'
+E o botão Salvar como Template será desabilitado e aparecerá a função para 'Interromper'
+E após efetivação cada tarefa será sinalizada como 'Treinamento concluído'
+E os botões acima do fluxo de experimento serão habilitados
