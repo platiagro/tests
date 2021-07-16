@@ -36,8 +36,6 @@ class PageTarefa extends BasePage {
 
     campdesctask {$(By.xpath("//*[@id='description']"))}
 
-    //btnnewtask {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
-
     btncalceltask {$(By.xpath("//*[text()='Cancelar']"))}
 
     btnnext3 {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[4]"))}
@@ -70,7 +68,6 @@ class PageTarefa extends BasePage {
 
     camptask {$(By.xpath("/html/body/div[3]/div/div/div/div/input"))}
 
-    //btnCriarTask {$(By.xpath("/html/body/div[5]/div/div[2]/div/div[2]/div[3]/button[2]/span"))}
     btnCriarTask {$(By.xpath("//*[text()='Criar Notebooks']"))}
 
    }

@@ -96,7 +96,7 @@ E(/informar a seguinte descrição: {string}/) { String desc ->
   
 }
 
-Quando (/clicar no botão Criar/) { ->
+Quando(/clicar no botão Criar/) { ->
 
   waitFor(30) {
     page.btnConfirm.click()

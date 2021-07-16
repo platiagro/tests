@@ -35,7 +35,7 @@ E(/na coluna ação seletar a opção Excluir/) { ->
 
 E(/o sistema apresentar uma pop-up com a seguinte mensagem: {string}/) { String msg ->
 
-   assert $(By.className("ant-popover-content")).isDisplayed()
+  assert $(By.className("ant-popover-content")).isDisplayed()
 
   assert $(By.xpath("//*[contains(text(), '"+msg+"')]")).isDisplayed()
 

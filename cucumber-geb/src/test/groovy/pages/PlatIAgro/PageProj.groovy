@@ -134,25 +134,9 @@ class PageProj extends BasePage {
 
     btnsalvartemp {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[1]"))}
 
-    btnlimptemplate {$(By.xpath("//*[@id='newTemplateForm']/div/div[2]/div/div/span/span/span"))}
-
-    camptemplate {$(By.xpath("//*[@id='name']"))}
-
     btnSalvar {$(By.xpath("//*[contains(text(), 'Salvar')]"))}
 
-    menutemplates {$(By.xpath("//*[contains(text(), 'Templates')]"))}
-
-    newExperimento {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
-
-    selectTemplate {$(By.xpath("//*[@id='TEMPLATES']/li/div/div[1]/span"))}
-
     btninterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
-
-    btnImplantar {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[2]/button"))}
-
-    btncriar {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]'))}
-
-    selectTask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]"))}
 
     btnremovetask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[5]"))}
 
@@ -160,25 +144,11 @@ class PageProj extends BasePage {
 
     btnremoverExp {$(By.xpath("//*[@id='rc-tabs-7-tab-b40d5b1e-bd59-45f7-b500-5360f52729c4']/div/div/span/svg/path"))}
 
-    btnRemoverconfirm {$(By.xpath('/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]'))}
-
-    btnremoverNo {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]'))}
-
     btndup {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[2]/div"))}
 
     projeselect {$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
 
-    btncomp {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[1]/button"))}
-
     selectprojteste {$(By.xpath("//*[contains(text(), 'Teste')]"))}
-
-    btnaddresult {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/button'))}
-
-    btnaddresult2 {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/button'))}
-
-    btnselectexp {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]'))}
-
-    btnselectexp2 {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[1]/div/div/div/div[2]'))}
 
     btnexpe {$(By.xpath('/html/body/div[3]/div/div/div/ul/li[1]'))}
 
@@ -188,11 +158,9 @@ class PageProj extends BasePage {
 
     btnopc2 {$(By.xpath(' /html/body/div[4]/div/div/div/ul[2]/li'))}
 
-    selecttask {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div[1]'))}
+    selectTask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]"))}
 
     selectoptask {$(By.xpath('/html/body/div[3]/div/div/div/div[2]/div/div/div/div/div'))}
-
-    selecttask2 {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]'))}
 
     selectoptask2 {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div'))}
 

@@ -65,10 +65,6 @@ Quando(/o usuário selecionar o botão Criar Notebooks/) { ->
     page.btnCriarTask.click()
   }
 
-  /*screen.type(Key.TAB);
-  screen.type(Key.TAB);
-  screen.type(Key.ENTER);*/
-
   Thread.sleep(1500)
 
 }

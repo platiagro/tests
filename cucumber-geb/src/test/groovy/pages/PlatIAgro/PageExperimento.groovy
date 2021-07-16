@@ -64,6 +64,40 @@ class PageExperimento extends BasePage {
 
     btnOK {$(By.xpath("//*[contains(text(), 'Ok')]"))}
 
+    btnComp {$(By.xpath("//*[contains(text(), 'Comparar resultados')]"))}
+
+    btnAddResult {$(By.xpath("//*[contains(text(), 'Adicionar resultado')]"))}
+
+    btnSelectExp_I {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]"))}
+
+    btnSelectExp_II {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[1]/div/div/div/div[2]"))}
+
+    btnSaveTempl {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[1]/span[2]"))}
+
+    btnLimpTemplate {$(By.xpath("//*[@id='newTemplateForm']/div/div[2]/div/div/span/span/span"))}
+
+    campTemplate {$(By.xpath("//*[@id='name']"))}
+
+    menuTemplates {$(By.xpath("//*[contains(text(), 'Templates')]"))}
+
+    newExperimento {$(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[1]/div[1]/div/button/span[2]"))}
+
+    btnCriar {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]'))}
+
+    selectTemplate {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]"))}
+
+    clearCampoExp {$(By.xpath("//*[@id='newExperimentForm']/div/div[2]/div/div/span/span"))}
+
+    btnInterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]/span[2]"))}
+
+    remover {$(By.xpath("//*[contains(text(), 'Remover')]"))}
+
+    removerNo {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]'))}
+
+    removerYes {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]'))}
+
+    btnImplantar {$(By.xpath("//*[contains(text(), 'Preparar para a implantação')]"))}
+
   }
 
 }
