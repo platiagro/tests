@@ -40,8 +40,6 @@ E(/selecionar a Tag Experimentação/) { ->
     $(By.xpath('/html/body/div[2]/div/div/div/ul/li[1]/label')).click()
   }
 
-  Thread.sleep(1000)
-
 }
 
 Quando(/selecionar o botão Resetar/) { ->

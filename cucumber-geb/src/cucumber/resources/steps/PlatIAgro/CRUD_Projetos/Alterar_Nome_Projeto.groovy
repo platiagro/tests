@@ -13,7 +13,7 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
   }
 
   waitFor(10) {
-    def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
+    def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
   }
 
@@ -37,7 +37,7 @@ E(/o sistema abrir um modal, com o atual nome do projeto selecionado/) { ->
   def modal = $(By.className("ant-modal-content")).isDisplayed()
   assert modal == true
   
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
+  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
   assert $(By.xpath("//*[@value='"+nomeProj+"']")).isDisplayed()
 
 }
@@ -53,7 +53,7 @@ Quando(/o usuário limpar o campo/) { ->
 
 E(/renomear o projeto acrescentando ao final: {string}/) { String nameAlter ->
 
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
+  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
   def nomeProjAlter = nomeProj + " " + nameAlter
 
   waitFor(10) {
@@ -65,8 +65,8 @@ E(/renomear o projeto acrescentando ao final: {string}/) { String nameAlter ->
   //Armazena o nome do projeto alterado para controle
 	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt"), true);
 	reg.write("+---------------------------------------------------------+\n"
-		    + "| Nome do projeto alterado: " + nomeProjAlter + "           |\n"
-			+ "+---------------------------------------------------------+\n");
+		      + "| Nome do projeto alterado: " + nomeProjAlter + "           |\n"
+			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
 }

@@ -4,6 +4,9 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
@@ -41,15 +44,35 @@ Dado(/que o usuário clique no botão Novo Projeto/) { ->
 	        + "+---------------------------------------------------------+\n");
 	reg.close();
 
-  waitFor(30) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+  List<WebElement> search = browser.driver.findElements(By.className("myProjectsEmptyPlaceholder"));
+  int check = search.size();
+  if (check!=0) {
+    waitFor(30) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+  } else {
+    waitFor(10) {
+      $(By.xpath("/html/body/div[1]/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/label/span/input")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button[2]/span[2]")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[contains(text(), 'Sim')]")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+    WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
   }
-
-  Thread.sleep(2000)
 
 }
 
 E(/o sistema abra um modal com o nome {string} selecionado/) { String nameProj ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-modal-content"))).isDisplayed();
 
   String nomeProj = $(By.xpath("//*[@value='Novo Projeto']")).toString();
   assert nomeProj.contains(nameProj)
@@ -78,7 +101,7 @@ E(/nomear o projeto com o nome inicial de: {string}/) { String nomeEd ->
   //Armazena o nome do projeto gerado para ser utilizado por outros cenários
 	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt"), true);
 	reg.write("+---------------------------------------------------------+\n"
-				  + "| Nome do projeto criado: " + nomeProj + "                   |\n"
+				  + "| Projeto de teste 1: " + nomeProj + "                       |\n"
 				  + "+---------------------------------------------------------+\n");
 	reg.close();
 
@@ -91,8 +114,6 @@ E(/informar a seguinte descrição: {string}/) { String desc ->
   }
 
   repo.add("Descrição", desc)
-
-  Thread.sleep(2000)
   
 }
 
@@ -102,13 +123,12 @@ Quando(/clicar no botão Criar/) { ->
     page.btnConfirm.click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 E(/o novo projeto será criado/) { ->
 
-  assert $(By.className("ant-message-success")).isDisplayed()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
   String displaySucess = $(By.xpath("//*[contains(text(), '"+projNome+"')]")).text()
@@ -165,23 +185,57 @@ E(/o usuário será direcionado para a página do projeto onde poderá iniciar u
   
   assert $(By.xpath("//*[@id='root']/section/section/div/div/div/span[2]/div/button/span[text()='"+experiment+"']")).isDisplayed()
 
-  Thread.sleep(2000)
-
 }
 
 Então(/o usuário ao retornar para a página {string} deverá observar se o novo projeto foi adicionado à lista de projetos/) { String myProj ->
 
   browser.driver.get("https://awsplatiagro02.aquarius.cpqd.com.br/projetos");
 
-  Thread.sleep(2000)
-
-  String meuProjeto = $(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3")).text();
-  assert meuProjeto.contains(myProj)
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3"), myProj));
 
   def projNome = repo.get("Nome Projeto")
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+projNome+"']")).isDisplayed()
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span"), projNome));
 
-  Thread.sleep(2000)
+  for (int i=2; i<=5 ; i++){
+     waitFor(30) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+
+    waitFor(10) {
+      String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+      page.campnome.value(del)
+    }
+
+    def nomeProj = "Teste " + NumberGerador.number()
+
+    waitFor(10) {
+      page.campnome.value(nomeProj)
+    }
+
+    //Armazena o nome do projeto gerado para conferência na exclusão
+	  reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt"), true);
+	  reg.write("+---------------------------------------------------------+\n"
+			      + "| Projeto de teste " + i + ": " + nomeProj + "                       |\n"
+			      + "+---------------------------------------------------------+\n");
+	  reg.close();
+
+    waitFor(10) {
+      page.campDesc.value("Teste - Funcionalidade: Criar projeto")
+    }
+
+    waitFor(10) {
+      page.btnConfirm.click()
+    }
+
+    Thread.sleep(2000)
+
+    assert $(By.className("ant-message-success")).isDisplayed()
+
+    Thread.sleep(1000)
+
+    browser.driver.get("https://awsplatiagro02.aquarius.cpqd.com.br/projetos");
+  }
 
 }
 

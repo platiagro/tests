@@ -4,6 +4,8 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
 
 import java.io.FileWriter
@@ -54,8 +56,8 @@ E(/inserir um nome para o projeto: {string}/) { String nomeDel ->
   //Armazena o nome do projeto gerado para ser excluído
   reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt"), true);
   reg.write("+---------------------------------------------------------+\n"
-		  + "| Nome do projeto deletado: " + nomeProj + "           |\n"
-		  + "+---------------------------------------------------------+\n");
+		      + "| Nome do projeto deletado: " + nomeProj + "           |\n"
+		      + "+---------------------------------------------------------+\n");
   reg.close();
 
 }
@@ -123,15 +125,12 @@ Quando(/confirmar a operação clicando no botão Sim/) { ->
     page.deleteYes.click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 Então(/o projeto será excluído/) { ->
 
-  assert $(By.className("ant-message-notice")).isDisplayed()
-  
-  Thread.sleep(2000)
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice"))).isDisplayed();
 
 }
 

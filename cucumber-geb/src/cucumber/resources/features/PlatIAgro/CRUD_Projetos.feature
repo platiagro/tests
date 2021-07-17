@@ -55,10 +55,10 @@ Cenário:C05 - Alterar nome do Projeto - Operação: Salvar Alteração
 
 @CRUDPROJ
 Cenário: C06 - Pesquisar Nome do Projeto
- Dado que o usuário selecione o ícone de pesquisa ao lado da coluna Nome do Projeto
- E seja aberto um modal
- Quando o usuário inserir o nome do projeto existente:
- E selecionar o botão Buscar
+ Dado que o usuário faça a seleção do ícone de pesquisa ao lado da coluna Nome do Projeto
+ E que seja aberto um modal
+ E inserir o nome de um projeto existente na lista
+ Quando selecionar o botão Buscar
  Então o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa
 
 @CRUDPROJ
@@ -71,11 +71,11 @@ Cenário: C07 - Pesquisar Nome do Projeto - Cancelar
 
 @CRUDPROJ
 Cenário: C08 - Filtrar Projeto - Tags
- Dado que o usuário selecione o ícone ao lado da coluna Tags
- E seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
- E selecionar a Tag Implantado
+ Dado que o usuário faça a seleção do ícone ao lado da coluna Tags
+ E que seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
+ E demandar a seleção da Tag Experimentação
  Quando selecionar o botão OK
- Então o sistema deverá exibir os projetos que possuem experimento
+ Então o sistema deverá exibir os projetos que possuem 'Experimentação'
 
 @CRUDPROJ
 Cenário: C09 - Filtrar Projeto - Tags - Resetar

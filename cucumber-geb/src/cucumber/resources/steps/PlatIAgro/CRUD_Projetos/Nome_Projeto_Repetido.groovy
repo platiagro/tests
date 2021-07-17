@@ -38,7 +38,7 @@ E(/seja apagado o conteúdo do campo nome do projeto/) { ->
 
 E(/nomeie o projeto com o mesmo nome do projeto criado anteriormente/) { ->
 
-  String nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
+  String nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
 
   waitFor(10) {
     page.campnome.value(nomeProj)
