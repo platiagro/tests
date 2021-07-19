@@ -8,6 +8,9 @@ color 07
 date /t
 
 echo Computador: %computername%        Usuario: %username%
+cd /
+cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\lib\
+start javaw -jar ambiente.jar
 echo.
 echo ==============================================
 echo.
@@ -74,9 +77,6 @@ goto menu
 cls
 @echo off
 echo.
-echo    =======================================
-echo    *      Ambiente - awsplatiagro02      *
-echo    =======================================
 echo.
 echo =============================================
 echo.
@@ -96,9 +96,6 @@ goto menu
 cls
 @echo off
 echo.
-echo    =======================================
-echo    *      Ambiente - awsplatiagro02      *
-echo    =======================================
 echo.
 echo =============================================
 echo.
@@ -118,9 +115,6 @@ goto menu
 cls
 @echo off
 echo.
-echo    =======================================
-echo    *      Ambiente - awsplatiagro02      *
-echo    =======================================
 echo.
 echo =============================================
 echo.
@@ -140,9 +134,6 @@ goto menu
 cls
 @echo off
 echo.
-echo    =======================================
-echo    *      Ambiente - awsplatiagro02      *
-echo    =======================================
 echo.
 echo =============================================
 echo.
@@ -153,7 +144,7 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@CRUDPROJ@CRUDTAREFA@CRUDEXP
+call gradle bdd -Ptag=@CRUDPROJ@CRUDEXP
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 pause
 goto menu

@@ -14,6 +14,8 @@ import org.openqa.selenium.remote.CapabilityType
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.firefox.FirefoxOptions
 
+import org.apache.commons.io.FileUtils
+
 // Use firefox as the default
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 
@@ -62,6 +64,9 @@ environments {
     }
 }
 
-baseUrl = 'https://awsplatiagro03.aquarius.cpqd.com.br/'
+//baseUrl = 'https://awsplatiagro02.aquarius.cpqd.com.br/'
+
+String url = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/dataInput/ambiente.txt")).get(10).substring(7).split("\\|")[0].trim();
+baseUrl = url
 
 baseNavigatorWaiting = true

@@ -63,6 +63,7 @@ Dado(/que o usuário clique no botão Novo Projeto/) { ->
     waitFor(10) {
       $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
     }
+    Thread.sleep(1000)
     WebDriverWait wait = new WebDriverWait(browser.driver, 30);
     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
   }
@@ -131,9 +132,14 @@ E(/o novo projeto será criado/) { ->
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), '"+projNome+"')]"), projNome));
+
+  /*Thread.sleep(2000)
+
+  String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
   String displaySucess = $(By.xpath("//*[contains(text(), '"+projNome+"')]")).text()
 
-  Assert.assertEquals(projNome, displaySucess);
+  Assert.assertEquals(projNome, displaySucess);*/
 
 }
 
@@ -189,7 +195,8 @@ E(/o usuário será direcionado para a página do projeto onde poderá iniciar u
 
 Então(/o usuário ao retornar para a página {string} deverá observar se o novo projeto foi adicionado à lista de projetos/) { String myProj ->
 
-  browser.driver.get("https://awsplatiagro02.aquarius.cpqd.com.br/projetos");
+  String url = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/dataInput/ambiente.txt")).get(10).substring(7).split("\\|")[0].trim();
+  browser.driver.get(url);
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 30);
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3"), myProj));
@@ -234,7 +241,8 @@ Então(/o usuário ao retornar para a página {string} deverá observar se o nov
 
     Thread.sleep(1000)
 
-    browser.driver.get("https://awsplatiagro02.aquarius.cpqd.com.br/projetos");
+    String urlInitial = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/dataInput/ambiente.txt")).get(10).substring(7).split("\\|")[0].trim();
+    browser.driver.get(urlInitial);
   }
 
 }

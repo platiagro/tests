@@ -41,6 +41,7 @@ repositories {
 }
 
 def pathSikuli = System.getProperty("user.dir") + "/lib/"
+def pathAmbiente = System.getProperty("user.dir") + "/lib/"
 
 dependencies {
 	testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
@@ -78,6 +79,8 @@ dependencies {
 	compile group: 'org.sikuli', name: 'sikuli-api', version: '1.2.0'
 
 	compile files("${pathSikuli}/sikuli-ide.jar")
+
+	compile files("${pathAmbiente}/ambiente.jar")
 }
 
 cucumber {
