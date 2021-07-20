@@ -107,7 +107,7 @@ task unzipIEDriver(type: Copy) {
     into(outputDir)
 }
 
-task downloadFirefoxDriver {
+/*task downloadFirefoxDriver {
 	//enabled = !ciBuild
 	
 	def outputFile = file("$buildDir/webdriver/firefoxdriver.zip")
@@ -138,4 +138,4 @@ task unzipFirefoxDriver(type: Copy) {
 
 	from(zipTree(downloadFirefoxDriver.outputs.files.singleFile))
 	into(outputDir)
-}
+}*/
