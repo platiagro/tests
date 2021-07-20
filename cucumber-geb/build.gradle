@@ -116,7 +116,7 @@ tasks.cucumber {
 		System.setProperty("geb.env", "${env}")
 	}
 
-	dependsOn unzipChromeDriver, unzipPhantomJs, unzipIEDriver//, unzipFirefoxDriver
+	dependsOn unzipChromeDriver//, unzipPhantomJs, unzipIEDriver, unzipFirefoxDriver
 
 	def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromeDriver.exe" : "chromedriver"
 	def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
@@ -126,8 +126,8 @@ tasks.cucumber {
 
 	jvmOptions.systemProperties([
 		"webdriver.chrome.driver": new File(unzipChromeDriver.outputs.files.singleFile, chromeDriverFilename).absolutePath,
-		"phantomjs.binary.path": new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath,
-		"webdriver.ie.driver": new File(unzipIEDriver.outputs.files.singleFile, iedriverFilename).absolutePath,
+		//"phantomjs.binary.path": new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath,
+		//"webdriver.ie.driver": new File(unzipIEDriver.outputs.files.singleFile, iedriverFilename).absolutePath,
 		//"webdriver.gecko.driver": new File(unzipFirefoxDriver.outputs.files.singleFile, firefoxDriverFilename).absolutePath,		
 		"geb.cucumber.step.packages": "pages",
 		"geb.env": System.getProperty("geb.env"),
