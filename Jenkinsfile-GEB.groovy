@@ -34,13 +34,13 @@ pipeline {
         string(
             name: 'GRADLE_BDD_PARAM',
             description: "Parâmetros para a chamada do 'gradle bdd'",
-            defaultValue: '-Ptag=@AllTests -Penv=chromeheadless',
+            defaultValue: '-Ptag=@CRUDPROJ@CRUDEXP -Penv=chromeheadless',
             trim: true,
         )               
         string(
             name: 'EMAIL',
             description: 'Email para divulgação',
-            defaultValue: 'nomail@cpqd.com.br',
+            defaultValue: 'emelo@cpqd.com.br',
             trim: true,
         )       
     }
