@@ -8,7 +8,7 @@ Contexto: Acessar a página Meus Projetos na Plataforma
   Quando acessar a plataforma PlatIAgro
   Então a tela inicial da página 'Meus projetos' será exibida com sucesso
 
-@CRUDPROJ
+@CRUDPROJ_TST
 Cenário: C01 - Criar Projeto - Operação: Criar
  Dado que o usuário clique no botão Novo Projeto
  E o sistema abra um modal com o nome 'Novo Projeto' selecionado
