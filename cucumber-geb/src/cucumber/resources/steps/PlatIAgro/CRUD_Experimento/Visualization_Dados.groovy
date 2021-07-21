@@ -7,6 +7,8 @@ import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
@@ -55,15 +57,36 @@ Dado(/que o usuário demande o clique no botão Novo Projeto/) { ->
 	        + "+---------------------------------------------------------+\n");
 	reg.close();
 
-  waitFor(30) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+  List<WebElement> search = browser.driver.findElements(By.className("myProjectsEmptyPlaceholder"));
+  int check = search.size();
+  if (check!=0) {
+    waitFor(30) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+  } else {
+    waitFor(10) {
+      $(By.xpath("/html/body/div[1]/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/label/span/input")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button[2]/span[2]")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[contains(text(), 'Sim')]")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+    Thread.sleep(1000)
+    WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
   }
-
-  Thread.sleep(2000)
 
 }
 
 E(/o sistema abra um modal, com o nome {string} selecionado/) { String nameProj ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-modal-content"))).isDisplayed();
 
   String nomeProj = $(By.xpath("//*[@value='Novo Projeto']")).toString();
   assert nomeProj.contains(nameProj)

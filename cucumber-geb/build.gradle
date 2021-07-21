@@ -81,6 +81,9 @@ dependencies {
 	compile files("${pathSikuli}/sikuli-ide.jar")
 
 	compile files("${pathAmbiente}/ambiente.jar")
+
+	compile group: 'com.jtransc', name: 'jtransc-rt', version: '0.5.0-ALPHA2'
+
 }
 
 cucumber {
