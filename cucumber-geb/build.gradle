@@ -20,7 +20,7 @@ ext {
 	gebVersion = '3.4' //'2.3.1' //gebVersion = '1.1.1'
 	seleniumVersion = '3.141.59' //'3.14.0' //seleniumVersion = '2.51.0'
 	cucumberJvmVersion = '4.2.0' //cucumberJvmVersion = '1.2.5'
-	chromeDriverVersion = '90.0.4430.24'
+	chromeDriverVersion = '2.37'
 	phantomJsVersion =  '2.0.0' //'1.9.8'
 	ieDriverVersion = '2.49.0'
 	firefoxDriverVersion = '0.27.0' //'0.22.0'
@@ -122,9 +122,9 @@ tasks.cucumber {
 	dependsOn unzipChromeDriver//, unzipPhantomJs, unzipIEDriver, unzipFirefoxDriver
 
 	def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromeDriver.exe" : "chromedriver"
-	def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
+	/*def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
 	def iedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "IEDriverServer.exe" : "IEDriverServer"
-	def firefoxDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "geckodriver.exe" : "firefoxdriver"
+	def firefoxDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "geckodriver.exe" : "firefoxdriver"*/
 	
 
 	jvmOptions.systemProperties([

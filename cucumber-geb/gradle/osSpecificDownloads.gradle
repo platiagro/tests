@@ -41,7 +41,7 @@ task unzipChromeDriver(type: Copy) {
 	into(outputDir)
 }
 
-/*task downloadPhantomJs {
+task downloadPhantomJs {
 	def osFilenamePart
 	if (Os.isFamily(Os.FAMILY_WINDOWS)) {
 		osFilenamePart = "windows.zip"
@@ -138,4 +138,4 @@ task unzipFirefoxDriver(type: Copy) {
 
 	from(zipTree(downloadFirefoxDriver.outputs.files.singleFile))
 	into(outputDir)
-}*/
+}
