@@ -119,7 +119,7 @@ E(/nomear o projeto inicialmente com: {string}/) { String nomeEd ->
 			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
-  Thread.sleep(2000)
+  Thread.sleep(4000)
 
 }
 
