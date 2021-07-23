@@ -119,12 +119,15 @@ E(/nomear o projeto inicialmente com: {string}/) { String nomeEd ->
 			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
+  Thread.sleep(2000)
+
 }
 
 E(/efetuar o clique no botão Criar/) { ->
+  at PageExperimento
 
   waitFor(30) {
-    page.btnConfirm.click()
+    page.btnConf.click()
   }
 
   Thread.sleep(2000)

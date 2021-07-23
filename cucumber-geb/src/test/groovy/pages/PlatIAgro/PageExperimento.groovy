@@ -16,6 +16,8 @@ class PageExperimento extends BasePage {
 
     inputFile {$("input[type='file']")}
 
+    btnConf {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))}
+
     btnVisualizar {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/button/span[2]"))}
 
     menuEngAtributos {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]/div/span/span[2]"))}
