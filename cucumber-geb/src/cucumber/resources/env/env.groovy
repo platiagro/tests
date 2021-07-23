@@ -48,7 +48,7 @@ Before { scenario ->
 After { scenario ->
 
 	// embed screenshot into cucumber report
-	/*if(scenario.failed) {
+	if(scenario.failed) {
 		try {
 			if(theBrowser){
 				scenario.embed(theBrowser.driver.getScreenshotAs(OutputType.BYTES), "image/png")
@@ -58,7 +58,7 @@ After { scenario ->
 		} catch(MissingMethodException e) {
 			// HTMLUnit doesn't support screenshots
 		}
-	}*/
+	}
 
 	CachingDriverFactory.clearCacheAndQuitDriver()
 }
@@ -83,7 +83,7 @@ def bindVariables(){
 AfterStep { scenario ->
 
 	//embed screenshot into cucumber report
-	/*try {
+	try {
 		if(theBrowser){
 			DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss")
             Date date = new Date()
@@ -100,7 +100,7 @@ AfterStep { scenario ->
 		// sometime firefox runs out of memory trying to take a screenshot, not a big deal so ignore
 	} catch(MissingMethodException e) {
 		// HTMLUnit doesn't support screenshots
-	}*/
+	}
 
 }
 
