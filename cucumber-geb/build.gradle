@@ -76,9 +76,9 @@ dependencies {
 
 	compile fileTree(dir: 'lib', include: '*.jar')
 
-	//compile group: 'org.sikuli', name: 'sikuli-api', version: '1.2.0'
+	compile group: 'org.sikuli', name: 'sikuli-api', version: '1.2.0'
 
-	//compile files("${pathSikuli}/sikuli-ide.jar")
+	compile files("${pathSikuli}/sikuli-ide.jar")
 
 	compile files("${pathAmbiente}/ambiente.jar")
 
