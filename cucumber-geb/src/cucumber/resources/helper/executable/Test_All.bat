@@ -55,9 +55,6 @@ if %opcao% GEQ 7 goto opcao7
 cls
 @echo off
 echo.
-echo    =======================================
-echo    *      Ambiente - awsplatiagro02      *
-echo    =======================================
 echo.
 echo =============================================
 echo.
