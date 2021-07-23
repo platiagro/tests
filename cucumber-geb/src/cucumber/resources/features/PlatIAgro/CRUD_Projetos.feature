@@ -8,7 +8,7 @@ Contexto: Acessar a página Meus Projetos na Plataforma
   Quando acessar a plataforma PlatIAgro
   Então a tela inicial da página 'Meus projetos' será exibida com sucesso
 
-@CRUDPROJ_TST
+@CRUDPROJ
 Cenário: C01 - Criar Projeto - Operação: Criar
  Dado que o usuário clique no botão Novo Projeto
  E o sistema abra um modal com o nome 'Novo Projeto' selecionado
@@ -25,7 +25,7 @@ Cenário: C01 - Criar Projeto - Operação: Criar
  Então o usuário ao retornar para a página 'Meus projetos' deverá observar se o novo projeto foi adicionado à lista de projetos
  E deverá estar divididos em cinco colunas: 'Nome do Projeto', 'Descrição', 'Tags', 'Última modificação' e 'Ação'
 
-@CRUDPROJ
+@CRUDPROJ_TST
 Cenário:C02 - Criar Projeto - Operação: Cancelar
  Dado que o usuário efetue o clique no botão Novo Projeto
  E o sistema abrir um modal com o nome 'Novo Projeto' selecionado

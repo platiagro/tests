@@ -21,11 +21,6 @@ import org.apache.commons.io.FileUtils
 
 
 driver = { new ChromeDriver() }
-
-    
-ChromeOptions chromeOptions = new ChromeOptions()
-chromeOptions.addArguments('--ignore-certificate-errors')
-driver = { new ChromeDriver(chromeOptions) };
     
 //driver = { new FirefoxDriver() }
 //driver = { new PhantomJSDriver() }
@@ -62,6 +57,14 @@ environments {
     ie {
         driver = { new InternetExplorerDriver() }
     }
+
+    chromeheadless {
+	  	//driver =  { new ChromeDriver() }
+	    ChromeOptions chromeOptions = new ChromeOptions();
+	    chromeOptions.addArguments("--headless");
+	    driver = {new ChromeDriver(chromeOptions)};
+    }
+
 }
 
 //baseUrl = 'https://awsplatiagro02.aquarius.cpqd.com.br/'
