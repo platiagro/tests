@@ -14,6 +14,7 @@ Cenário: C01 - Visualização de Dados do Upload
  E o sistema abra um modal, com o nome 'Novo Projeto' selecionado
  E o usuário limpar o campo nome do projeto
  E nomear o projeto inicialmente com: 'Teste'
+ E inserir a seguinte informação na descrição: 'Projeto - Fluxo de Experimentação'
  E efetuar o clique no botão Criar
  E o novo projeto será registrado
  E o usuário será direcionado para a página de detalhes do projeto

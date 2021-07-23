@@ -121,13 +121,20 @@ E(/nomear o projeto inicialmente com: {string}/) { String nomeEd ->
 
 }
 
-E(/efetuar o clique no botão Criar/) { ->
-  at PageExperimento
-
-  Thread.sleep(2000)
+E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
 
   waitFor(30) {
-    page.btnConf.click()
+    page.campDesc.value(desc)
+  }
+
+  repo.add("Descrição", desc)
+  
+}
+
+E(/efetuar o clique no botão Criar/) { ->
+
+  waitFor(30) {
+    page.btnConfirm.click()
   }
 
 }

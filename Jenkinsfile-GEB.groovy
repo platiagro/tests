@@ -4,7 +4,7 @@ import static groovy.json.JsonOutput.*
 
 pipeline {
     
-    agent { label "jenkinsAWS" }
+    agent { label "jenkinsPlatIAgro" }
     
     options {
         disableConcurrentBuilds()
