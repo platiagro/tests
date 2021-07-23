@@ -119,24 +119,23 @@ E(/nomear o projeto inicialmente com: {string}/) { String nomeEd ->
 			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
-  Thread.sleep(4000)
-
 }
 
 E(/efetuar o clique no botão Criar/) { ->
   at PageExperimento
 
+  Thread.sleep(2000)
+
   waitFor(30) {
     page.btnConf.click()
   }
-
-  Thread.sleep(2000)
 
 }
 
 E(/o novo projeto será registrado/) { ->
 
-  assert $(By.className("ant-message-success")).isDisplayed()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
   String displaySucess = $(By.xpath("//*[contains(text(), '"+projNome+"')]")).text()
