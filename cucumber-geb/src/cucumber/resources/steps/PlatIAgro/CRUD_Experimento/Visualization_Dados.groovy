@@ -126,23 +126,19 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
   waitFor(30) {
     page.campDesc.value(desc)
   }
-
-  Thread.sleep(2000)
   
 }
 
 E(/efetuar o clique no botão Criar/) { ->
 
-  for (int i=0; i<=1; i++){
+  /*for (int i=0; i<=1; i++){
     screen.type(Key.TAB);
   }
-  screen.type(Key.ENTER);
+  screen.type(Key.ENTER);*/
 
-  Thread.sleep(2000)
-
-  /*waitFor(30) {
+  waitFor(30) {
     page.btnConfirm.click()
-  }*/
+  }
 
 }
 
