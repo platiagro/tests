@@ -126,6 +126,8 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
   waitFor(30) {
     page.campDesc.value(desc)
   }
+
+  Thread.sleep(2000)
   
 }
 
