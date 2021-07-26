@@ -20,7 +20,7 @@ ext {
 	gebVersion = '3.4' //'2.3.1' //gebVersion = '1.1.1'
 	seleniumVersion = '3.141.59' //'3.14.0' //seleniumVersion = '2.51.0'
 	cucumberJvmVersion = '4.2.0' //cucumberJvmVersion = '1.2.5'
-	chromeDriverVersion = '86.0.4240.22'
+	chromeDriverVersion = '2.37'
 	phantomJsVersion =  '2.0.0' //'1.9.8'
 	ieDriverVersion = '2.49.0'
 	firefoxDriverVersion = '0.27.0' //'0.22.0'
@@ -40,6 +40,9 @@ repositories {
 	jcenter()
 }
 
+def pathSikuli = System.getProperty("user.dir") + "/lib/"
+def pathAmbiente = System.getProperty("user.dir") + "/lib/"
+
 dependencies {
 	testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
 	testCompile "org.gebish:geb-core:$gebVersion"
@@ -58,8 +61,7 @@ dependencies {
 	testCompile 'org.apache.logging.log4j:log4j-core:2.8.2'
 
 	// https://mvnrepository.com/artifact/commons-io/commons-io
-  compile "commons-io:commons-io:2.5"
-
+    compile "commons-io:commons-io:2.5"
 
 	// pick whichever drivers you want. We test against most of them here.
 	// see src/test/resources/GebConfig.groovy for how to switch between them
@@ -73,6 +75,15 @@ dependencies {
 	compile "org.seleniumhq.selenium:selenium-ie-driver:$seleniumVersion"
 
 	compile fileTree(dir: 'lib', include: '*.jar')
+
+	compile group: 'org.sikuli', name: 'sikuli-api', version: '1.2.0'
+
+	compile files("${pathSikuli}/sikuli-ide.jar")
+
+	compile files("${pathAmbiente}/ambiente.jar")
+
+	compile group: 'com.jtransc', name: 'jtransc-rt', version: '0.5.0-ALPHA2'
+
 }
 
 cucumber {
@@ -108,19 +119,19 @@ tasks.cucumber {
 		System.setProperty("geb.env", "${env}")
 	}
 
-	dependsOn unzipChromeDriver, unzipPhantomJs, unzipIEDriver, unzipFirefoxDriver 
+	dependsOn unzipChromeDriver//, unzipPhantomJs, unzipIEDriver, unzipFirefoxDriver
 
 	def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromeDriver.exe" : "chromedriver"
-	def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
+	/*def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
 	def iedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "IEDriverServer.exe" : "IEDriverServer"
-	def firefoxDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "geckodriver.exe" : "firefoxdriver"
+	def firefoxDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "geckodriver.exe" : "firefoxdriver"*/
 	
 
 	jvmOptions.systemProperties([
 		"webdriver.chrome.driver": new File(unzipChromeDriver.outputs.files.singleFile, chromeDriverFilename).absolutePath,
-		"phantomjs.binary.path": new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath,
-		"webdriver.ie.driver": new File(unzipIEDriver.outputs.files.singleFile, iedriverFilename).absolutePath,
-		"webdriver.gecko.driver": new File(unzipFirefoxDriver.outputs.files.singleFile, firefoxDriverFilename).absolutePath,		
+		//"phantomjs.binary.path": new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath,
+		//"webdriver.ie.driver": new File(unzipIEDriver.outputs.files.singleFile, iedriverFilename).absolutePath,
+		//"webdriver.gecko.driver": new File(unzipFirefoxDriver.outputs.files.singleFile, firefoxDriverFilename).absolutePath,		
 		"geb.cucumber.step.packages": "pages",
 		"geb.env": System.getProperty("geb.env"),
 		"log4j.configurationFile": System.getProperty("log4j.configurationFile"), 

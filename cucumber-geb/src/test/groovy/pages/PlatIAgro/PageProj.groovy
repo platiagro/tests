@@ -4,234 +4,170 @@ import org.openqa.selenium.By
 import pages.base.BasePage
 
 class PageProj extends BasePage {
-  static at = {
-   title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
-    static content ={
-      
-       projetoMenu{$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
-       tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
 
+  static at = { title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
+  static content = {
 
-     //btnNewproj{$(By.xpath("//*[@id='root']/section/section/div[1]/div/span/div/button/span[1]"))}
+    titleMeusProjetos {$(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3"))}
 
-     campnome{$(By.xpath("//*[@id='name']"))}
+    buttonClear {$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/form/div[1]/div[2]/div/div/span/span/span/svg/path"))}
+       
+    projetoMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
+       
+    tarefaMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[2]"))}
 
-     limparcampo{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/"))}
+    campnome {$(By.xpath("//*[@id='name']"))}
 
-     campDesc{$(By.xpath("//*[@id='description']"))}
+    limparcampo {$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/"))}
 
-     btnConfirm{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+    campDesc {$(By.xpath("//*[@id='description']"))}
 
-     btncancel{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+    btnConfirm {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))}
 
-     cardExp{$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[1]/div[2]"))}
+    btnCancel {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]'))}
 
-     cardFluxos{$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[2]/div[2]"))}
-  
-     returnProj{$(By.xpath("//*[@id='root']/section/header/ul/li[6]"))}
+    cardExp {$(By.xpath("/html/body/div[1]/section/section/section/main/section/div/div[1]/div[1]/button/div[1]/div/img"))}
 
-     btnclose{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/button/span"))}
-     
-     btnedit{$(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/span"))}
+    cardFluxos {$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[2]/div[2]"))}
 
-     btnalt{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[5]/button[1]"))}
-     
-     editcancel{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]"))}
+    returnProj {$(By.xpath("//*[@id='root']/section/header/ul/li[6]"))}
 
-     btndeleteProj{$(By.xpath("//*[@id='root']/section/section/div/div/span/button"))}
-     
-     deleteYes{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
+    btnclose {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/button/span'))}
 
-     deleteNo{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
+    btnedit {$(By.xpath('/html/body/div[1]/section/section/div/div/div/span/div/div/span'))}
 
-     btnexcluir{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[6]/button"))}
-     
-     btnsim{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
-     
-     btnNao{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
-     
-     btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
-     
-     campclear{$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span"))}
-   
-     btnproj{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]]"))}
-   
-     btnsearch{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[2]/span"))}
-  
-     btnpesq{$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[1]/button"))}
+    btnalt {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[3]/td[5]/button[1]"))}
 
-     btnreset {$(By.xpath("/html/body/div[2]/div/div/div/div/div/div[2]/button"))}
+    editcancel {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]'))}
 
-     btntag{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[4]/div/span[2]/span"))}
-   
-     btnok{$(By.xpath("/html/body/div[2]/div/div/div/div/button[2]"))}
-     
-     btnresetar{$(By.xpath("/html/body/div[2]/div/div/div/div/button[1]"))}
+    btndeleteProj {$(By.xpath("//*[@id='root']/section/section/div/div/span/button"))}
 
+    deleteYes {$(By.xpath('/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]'))}
 
-     // Xpath - EXPERIMENTO
+    deleteNo {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]'))}
 
-     menuconjunto{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]"))}
+    btnexcluir {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[3]/td[6]/button"))}
 
-     uploadArq{$(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))}
+    btnsim {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]'))}
 
-     operadorUpArq{$(By.className("task-elements"))}  
-      
-     btnimport {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/button"))}
+    btnNao {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]'))}
 
-     select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]"))}
-    
-     inputFile{$("input[type='file']")}
+    btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
 
-     btnvisualizar {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/button"))}
+    campclear {$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span"))}
 
-     abaobs {$(By.xpath("//*[@id='rc-tabs-1-tab-2']"))}
+    btnproj {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]]"))}
 
-     abaatb{$(By.xpath("//*[@id='rc-tabs-1-tab-1']"))}
+    btnsearch {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[2]/span"))}
 
-     btnvisufechar{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+    btnpesq {$(By.xpath('/html/body/div[2]/div/div/div/div/div/div[1]/button'))}
 
-     menuEngAt{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[4]"))}
+    btnReset {$(By.xpath("//*[contains(text(), 'Reset')]"))}
 
-     opImputer{$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
+    btntag {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[4]/div/span[2]/span"))}
 
-     //menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]"))}
-     menuTreinamento{$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]/div[1]"))}
+    btnok {$(By.xpath('/html/body/div[2]/div/div/div/div/button[2]'))}
 
-     opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
+    btnresetar {$(By.xpath('/html/body/div[2]/div/div/div/div/button[1]'))}
 
-     tarefaImputer{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
+    uploadArq {$(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))}
 
-     selectAtrib{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[1]"))}
+    btnimport {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/button"))}
 
-     //atributoSpecies{$(By.xpath("//*[contains(text(), 'Species')]"))}
-     atributoSpecies{$(By.xpath("/html/body/div[6]/div/div/div/div[2]/div/div/div[6]/div"))}
+    select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]"))}
 
-     campinput{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[6]/div[2]/input"))}
-    
-     tarefaReg{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[3]/div/div"))}
-    
-     campomsf{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[3]/div[2]/div/div"))}
-     
-     opincluir{$(By.xpath("/html/body/div[6]/div/div/div/div[2]/div/div/div[1]/div"))}
+    btnvisualizar {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/button"))}
 
-     campoFeature{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]"))}
+    abaobs {$(By.xpath("//*[@id='rc-tabs-1-tab-2']"))}
 
-     campofcode{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[5]/div[2]/div"))}
+    abaatb {$(By.xpath("//*[@id='rc-tabs-1-tab-1']"))}
 
-     atributoSepalL{$(By.xpath("/html/body/div[6]/div/div/div/div[2]/div/div/div[2]"))}
-    
-     atributoPetal{$(By.xpath("/html/body/div[6]/div/div/div/div[2]/div/div/div[4]"))}
-     
-     btnexecut{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
- 
-     btnvisuresult{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div/button[1]"))}
+    btnvisufechar {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]'))}
 
-     abaresult{$(By.xpath("/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[1]"))}
+    menuEngAt {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[4]"))}
 
-     abametricas{$(By.xpath("//*[contains(text(), 'Métricas')]"))}
+    opImputer {$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
 
-     abaparametros{$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
+    opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
 
-     taskreglinear{$(By.xpath("//*[contains(text(), 'Regressão Linear')]"))}
+    tarefaImputer {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
 
-     atributolabel{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[1]"))}
+    selectAtrib {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[1]"))}
 
-     atributotext{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[2]"))}
+    atributoSpecies {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[6]/div'))}
 
-     atributoisvalid{$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div[3]"))}
+    campinput {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[6]/div[2]/input"))}
 
-     opreglinear{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
-     
-     btnjupyter{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/button[2]"))}
-    
-     campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
+    tarefaReg {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[3]/div/div"))}
 
-     selectProj{$(By.xpath("//*[contains(text(), 'Teste')]"))}
+    abaresult {$(By.xpath('/html/body/div[11]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/div[1]'))}
 
-     newexp{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
+    taskreglinear {$(By.xpath("//*[contains(text(), 'Regressão Linear')]"))}
 
-     btncleancamp{$(By.xpath("//*[@id='newExperimentForm']/div/div[2]/div/div/span/span"))}
+    atributolabel {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div[1]'))}
 
-     campnamExp{$(By.xpath("//*[@id='name']"))}
+    atributotext {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div[2]'))}
 
-     btnNewExp{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+    atributoisvalid {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div[3]'))}
 
-     selectaba{$(By.xpath("//*[@id='rc-tabs-24-tab-e558b62f-9eb6-4046-b7d4-d7bb057f0762']/div/div/div"))}
+    opreglinear {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
 
-     btnrename{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[1]/div/div"))}
+    selectProj {$(By.xpath("//*[contains(text(), 'TESTE J')]"))}
 
-     clearcamp{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[1]/span"))}
+    newexp {$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[1]/div[1]/button"))}
 
-     inputname{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[1]/input"))}
+    btncleancamp {$(By.xpath("//*[@id='newExperimentForm']/div/div[2]/div/div/span/span"))}
 
-     btnokname{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/span/span/span[2]/button"))}
+    campnamExp {$(By.xpath("//*[@id='name']"))}
 
-     btnsalvartemp{$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[1]"))}
-    
-     btnlimptemplate{$(By.xpath("//*[@id='newTemplateForm']/div/div[2]/div/div/span/span/span"))}
+    btnNewExp {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]'))}
 
-     camptemplate {$(By.xpath("//*[@id='name']"))}
+    selectaba {$(By.xpath("//*[@id='rc-tabs-24-tab-e558b62f-9eb6-4046-b7d4-d7bb057f0762']/div/div/div"))}
 
-     btnsalvar{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+    btnrename {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[1]/div/div"))}
 
-     menutemplates{$(By.xpath("//*[contains(text(), 'Templates')]"))}
+    clearcamp {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/span/span/span[1]/span'))}
 
-     newExperimento{$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/button"))}
+    inputname {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/span/span/span[1]/input'))}
 
-     selectTemplate{$(By.xpath("//*[@id='TEMPLATES$Menu']/li/div/div[1]/span"))}
+    btnokname {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/span/span/span[2]/button'))}
 
-     btninterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
-    
-     btnImplantar {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[2]/button"))}
+    btnsalvartemp {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[1]"))}
 
-     btncriar{$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))}
+    btnSalvar {$(By.xpath("//*[contains(text(), 'Salvar')]"))}
 
-     selectTask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]"))}
+    btninterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
 
-     btnremovetask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[5]"))}
-    
-     btnsimremover {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"))}
-    
-     btnremoverExp{$(By.xpath("//*[@id='rc-tabs-7-tab-b40d5b1e-bd59-45f7-b500-5360f52729c4']/div/div/span/svg/path"))}
+    btnremovetask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[5]"))}
 
-     btnRemoverconfirm{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
+    btnsimremover {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]'))}
 
-     btnremoverNo{$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]"))}
+    btnremoverExp {$(By.xpath("//*[@id='rc-tabs-7-tab-b40d5b1e-bd59-45f7-b500-5360f52729c4']/div/div/span/svg/path"))}
 
-     btndup {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[2]/div"))}
+    btndup {$(By.xpath("//*[@id='root']/section/section/section/main/section/footer/div/nav/span[2]/div"))}
 
-     projeselect{$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
+    projeselect {$(By.xpath("//*[contains(text(), 'ProjTeste')]"))}
 
-     btncomp {$(By.xpath("//*[@id='root']/section/section/div/div/span/div[1]/div/div[1]/button"))}
+    selectprojteste {$(By.xpath("//*[contains(text(), 'Teste')]"))}
 
-     selectprojteste{$(By.xpath("//*[contains(text(), 'Teste')]"))}
+    btnexpe {$(By.xpath('/html/body/div[3]/div/div/div/ul/li[1]'))}
 
-     btnaddresult{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/button"))}
-     
-     btnaddresult2{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/button"))}
+    btnexpe2 {$(By.xpath('/html/body/div[4]/div/div/div/ul/li[2]'))}
 
-     btnselectexp {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]"))}
-    
-     btnselectexp2 {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[1]/div/div/div/div[2]"))}
-     
-     btnexpe{$(By.xpath("/html/body/div[3]/div/div/div/ul/li[1]"))}
+    btnopc {$(By.xpath('/html/body/div[3]/div/div/div/ul[2]/li[1]'))}
 
-     btnexpe2{$(By.xpath("/html/body/div[4]/div/div/div/ul/li[2]"))}
-     
-     btnopc{$(By.xpath("/html/body/div[3]/div/div/div/ul[2]/li[1]"))}
-     
-     btnopc2 {$(By.xpath(" /html/body/div[4]/div/div/div/ul[2]/li"))}
-    
-     selecttask{$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div[1]"))}
-  
-     selectoptask{$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div/div/div/div"))}
+    btnopc2 {$(By.xpath(' /html/body/div[4]/div/div/div/ul[2]/li'))}
 
-     selecttask2 {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]"))}
+    selectTask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]"))}
 
-     selectoptask2 {$(By.xpath("/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div"))}
+    selectoptask {$(By.xpath('/html/body/div[3]/div/div/div/div[2]/div/div/div/div/div'))}
 
-     btnelement{$(By.xpath("//*[@id='c42f7c3b-365a-4a00-b265-55b6d52f0e45']/div/div[3]/div"))}
-    }
-  } 
+    selectoptask2 {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div/div/div'))}
 
+    btnelement {$(By.xpath("//*[@id='c42f7c3b-365a-4a00-b265-55b6d52f0e45']/div/div[3]/div"))}
+
+    btnBuscar {$(By.xpath('/html/body/div[2]/div/div/div/div/div/div[1]/button/span[2]'))}
+
+  }
+
+}
