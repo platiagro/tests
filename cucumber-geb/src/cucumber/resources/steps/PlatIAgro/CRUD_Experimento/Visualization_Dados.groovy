@@ -136,6 +136,8 @@ E(/efetuar o clique no botão Criar/) { ->
   }
   screen.type(Key.ENTER);
 
+  Thread.sleep(1000)
+
   /*waitFor(30) {
     page.btnConfirm.click()
   }*/
