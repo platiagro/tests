@@ -126,16 +126,19 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
   waitFor(30) {
     page.campDesc.value(desc)
   }
-
-  repo.add("Descrição", desc)
   
 }
 
 E(/efetuar o clique no botão Criar/) { ->
 
-  waitFor(30) {
-    page.btnConfirm.click()
+  for (int i=0; i<=1; i++){
+    screen.type(Key.TAB);
   }
+  screen.type(Key.ENTER);
+
+  /*waitFor(30) {
+    page.btnConfirm.click()
+  }*/
 
 }
 
