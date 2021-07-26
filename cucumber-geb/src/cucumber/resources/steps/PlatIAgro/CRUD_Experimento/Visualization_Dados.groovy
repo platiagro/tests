@@ -146,13 +146,16 @@ E(/efetuar o clique no botão Criar/) { ->
 
 E(/o novo projeto será registrado/) { ->
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
+  //WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  //wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), '"+projNome+"')]"), projNome));
+
+  /*String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
   String displaySucess = $(By.xpath("//*[contains(text(), '"+projNome+"')]")).text()
 
-  Assert.assertEquals(projNome, displaySucess);
+  Assert.assertEquals(projNome, displaySucess);*/
 
 }
 
