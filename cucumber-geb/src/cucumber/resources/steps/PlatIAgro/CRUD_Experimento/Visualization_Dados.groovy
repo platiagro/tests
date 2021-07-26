@@ -167,11 +167,12 @@ E(/o usuário será direcionado para a página de detalhes do projeto/) { ->
    
 }
 
-E(/clicar no card Experimento/) { ->
-  at PageExperimento
+E(/clicar no card Experimento/) { ->  
+  //at PageExperimento
 
   waitFor(30) {
-    page.cardExperimento.click()
+    //page.cardExperimento.click()
+    page.cardExp.click()
   }
    
 }
