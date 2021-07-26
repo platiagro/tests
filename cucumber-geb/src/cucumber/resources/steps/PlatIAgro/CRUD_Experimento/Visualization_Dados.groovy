@@ -136,8 +136,9 @@ E(/efetuar o clique no botão Criar/) { ->
   }
   screen.type(Key.ENTER);*/
 
-  waitFor(30) {
-    page.btnConfirm.click()
+  waitFor(60) {
+    //page.btnConfirm.click()
+    $(By.xpath("//*[contains(text(), 'Criar')]")).click()
   }
 
 }
