@@ -131,25 +131,18 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
 
 E(/efetuar o clique no botão Criar/) { ->
 
-  /*for (int i=0; i<=1; i++){
-    screen.type(Key.TAB);
-  }
-  screen.type(Key.ENTER);*/
-
-  waitFor(60) {
-    //page.btnConfirm.click()
-    $(By.xpath("//*[contains(text(), 'Criar')]")).click()
-  }
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))).click();
 
 }
 
 E(/o novo projeto será registrado/) { ->
 
-  /*WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), '"+projNome+"')]"), projNome));*/
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), '"+projNome+"')]"), projNome));
 
   /*String projNome = "Projeto " + repo.get("Nome Projeto") + " criado!"
   String displaySucess = $(By.xpath("//*[contains(text(), '"+projNome+"')]")).text()
@@ -160,9 +153,9 @@ E(/o novo projeto será registrado/) { ->
 
 E(/o usuário será direcionado para a página de detalhes do projeto/) { ->
 
-  //assert $(By.className("project-details")).isDisplayed()
+  assert $(By.className("project-details")).isDisplayed()
 
-  //Thread.sleep(1000)
+  Thread.sleep(1000)
    
 }
 
