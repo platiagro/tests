@@ -126,13 +126,17 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
   waitFor(30) {
     page.campDesc.value(desc)
   }
+
+  Thread.sleep(1000)
   
 }
 
 E(/efetuar o clique no botão Criar/) { ->
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))).click();
+  //WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span"))).click();
+
+  browser.driver.executeScript("document.querySelector('body > div:nth-child(7) > div > div.ant-modal-wrap > div > div.ant-modal-content > div.ant-modal-footer > button.ant-btn.ant-btn-primary').click()")
 
 }
 
