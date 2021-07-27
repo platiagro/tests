@@ -8,7 +8,7 @@ Contexto: Acessar a página Meus Projetos na Plataforma
   Quando a plataforma PlatIAgro for acessada
   Então será exibida com sucesso a tela inicial da página 'Meus projetos'
 
-@CRUDEXP_TXT
+@CRUDEXP
 Cenário: C01 - Visualização de Dados do Upload
  Dado que o usuário demande o clique no botão Novo Projeto
  E o sistema abra um modal, com o nome 'Novo Projeto' selecionado
