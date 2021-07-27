@@ -132,7 +132,7 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
 E(/efetuar o clique no botão Criar/) { ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 30);
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"))).click();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))).click();
 
 }
 
