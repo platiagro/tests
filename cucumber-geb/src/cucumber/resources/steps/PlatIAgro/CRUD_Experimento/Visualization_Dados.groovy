@@ -6,6 +6,7 @@ import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -148,9 +149,14 @@ E(/efetuar o clique no botão Criar/) { ->
   }
   screen.type(Key.ENTER);*/
 
-  waitFor(20) {
+  /*waitFor(20) {
     $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span")).click()
-  }
+  }*/
+
+  WebElement element = browser.driver.findElement(By.className("ant-modal-footer"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  //String assets = (String) jse.executeScript("return arguments[0].getElementsByTagName('button')[1].textContent;", ele);
+  jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
 
 }
 
