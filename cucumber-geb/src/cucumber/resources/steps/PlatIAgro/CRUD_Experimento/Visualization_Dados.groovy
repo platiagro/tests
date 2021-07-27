@@ -28,8 +28,8 @@ import java.util.TimeZone
 import helper.utility.NumberGerador
 
 FileWriter reg;
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;
+//Screen screen = new Screen();
+//Settings.ActionLogs = null != null;
 Date now = new Date();
 SimpleDateFormat fmtDate = new SimpleDateFormat("dd/MM/yyyy");
 SimpleDateFormat fmtHour = new SimpleDateFormat("HH:mm");
