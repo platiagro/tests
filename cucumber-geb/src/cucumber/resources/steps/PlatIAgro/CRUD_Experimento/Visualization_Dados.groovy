@@ -148,8 +148,8 @@ E(/efetuar o clique no botão Criar/) { ->
   }
   screen.type(Key.ENTER);*/
 
-  waitFor(10) {
-    page.btnConfirm.click()
+  waitFor(20) {
+    $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span")).click()
   }
 
 }
