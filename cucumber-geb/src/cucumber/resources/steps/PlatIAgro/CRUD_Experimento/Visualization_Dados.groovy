@@ -13,11 +13,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
+/*import org.sikuli.script.Key
 import org.sikuli.script.Match
 import org.sikuli.script.Pattern
 import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
+import org.sikuli.basics.Settings*/
 
 import java.io.FileWriter
 import java.text.SimpleDateFormat
@@ -131,31 +131,10 @@ E(/inserir a seguinte informação na descrição: {string}/) { String desc ->
 }
 
 E(/efetuar o clique no botão Criar/) { ->
-
-  //WebDriverWait wait = new WebDriverWait(browser.driver, 30);
-  //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span"))).click();
-
-  //browser.driver.executeScript("document.querySelector('body > div:nth-child(7) > div > div.ant-modal-wrap > div > div.ant-modal-content > div.ant-modal-footer > button.ant-btn.ant-btn-primary').click()")
-
-  /*WebElement webElement = browser.driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/form/div[2]/div[2]/div/div/textarea"));
-  webElement.click();
-  for (int i=0; i<=1; i++){
-    webElement.sendKeys(Keys.TAB);
-	}
-  webElement.sendKeys(Keys.ENTER);*/
-
-  /*for (int i=0; i<=1; i++){
-    screen.type(Key.TAB);
-  }
-  screen.type(Key.ENTER);*/
-
-  /*waitFor(20) {
-    $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span")).click()
-  }*/
-
+  
   WebElement element = browser.driver.findElement(By.className("ant-modal-footer"));
   JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
-  //String assets = (String) jse.executeScript("return arguments[0].getElementsByTagName('button')[1].textContent;", ele);
+  //String assets = (String) jse.executeScript("return arguments[0].getElementsByTagName('button')[1].textContent;", element);
   jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
 
 }
@@ -302,7 +281,7 @@ E(/selecionar e arrastar o operador Upload de arquivos para o fluxo/) { ->
   Actions action = new Actions(browser.driver);
   action.clickAndHold(elementoBase).build().perform();
  
-  Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image1.png");
+  /*Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image1.png");
   Pattern image2 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image2.png");
   Pattern image3 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image3.png");
 
@@ -318,7 +297,7 @@ E(/selecionar e arrastar o operador Upload de arquivos para o fluxo/) { ->
     if (m3 != null) {
       break;
     }
-	}
+	}*/
 
 }
 
