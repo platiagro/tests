@@ -136,7 +136,19 @@ E(/efetuar o clique no botão Criar/) { ->
   //WebDriverWait wait = new WebDriverWait(browser.driver, 30);
   //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span"))).click();
 
-  browser.driver.executeScript("document.querySelector('body > div:nth-child(7) > div > div.ant-modal-wrap > div > div.ant-modal-content > div.ant-modal-footer > button.ant-btn.ant-btn-primary').click()")
+  //browser.driver.executeScript("document.querySelector('body > div:nth-child(7) > div > div.ant-modal-wrap > div > div.ant-modal-content > div.ant-modal-footer > button.ant-btn.ant-btn-primary').click()")
+
+  /*WebElement webElement = browser.driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/form/div[2]/div[2]/div/div/textarea"));
+  webElement.click();
+  for (int i=0; i<=1; i++){
+    webElement.sendKeys(Keys.TAB);
+	}
+  webElement.sendKeys(Keys.ENTER);*/
+
+  for (int i=0; i<=1; i++){
+    screen.type(Key.TAB);
+  }
+  screen.type(Key.ENTER);
 
 }
 
