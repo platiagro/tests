@@ -121,10 +121,6 @@ E(/informar a seguinte descrição: {string}/) { String desc ->
 
 Quando(/clicar no botão Criar/) { ->
 
-  /*waitFor(30) {
-    page.btnConfirm.click()
-  }*/
-
   WebElement element = browser.driver.findElement(By.className("ant-modal-footer"));
   JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
   jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
@@ -235,10 +231,6 @@ Então(/o usuário ao retornar para a página {string} deverá observar se o nov
     waitFor(10) {
       page.campDesc.value("Teste - Funcionalidade: Criar projeto")
     }
-
-    /*waitFor(10) {
-      page.btnConfirm.click()
-    }*/
 
     WebElement element = browser.driver.findElement(By.className("ant-modal-footer"));
     JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
