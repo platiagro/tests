@@ -14,13 +14,6 @@ import org.apache.commons.io.FileUtils
 import java.awt.Robot
 import java.awt.event.KeyEvent
 
-/*import org.sikuli.script.Key
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;*/
-
 Robot robot = new Robot();
 
 Dado(/que o usuário selecione um projeto da lista de Projetos/) { ->

@@ -2,7 +2,6 @@ import pages.*
 
 import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
-import java.awt.Robot
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
