@@ -72,19 +72,19 @@ Então(/todos os projetos selecionados serão excluídos/) { ->
 E(/removidos da lista de projetos/) { ->
 
   def nomeProjI = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
-  def projDeleteI = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProjI+"']")).isDisplayed()
+  def projDeleteI = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProjI+"']")).isDisplayed()
   assert projDeleteI == false
 
   def nomeProjII = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(13).substring(22).split("\\|")[0].trim();
-  def projDeleteII = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProjII+"']")).isDisplayed()
+  def projDeleteII = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProjII+"']")).isDisplayed()
   assert projDeleteII == false
 
   def nomeProjIII = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(16).substring(22).split("\\|")[0].trim();
-  def projDeleteIII = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProjIII+"']")).isDisplayed()
+  def projDeleteIII = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProjIII+"']")).isDisplayed()
   assert projDeleteIII == false
 
   def nomeProjIV = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(19).substring(22).split("\\|")[0].trim();
-  def projDeleteIV = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProjIV+"']")).isDisplayed()
+  def projDeleteIV = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProjIV+"']")).isDisplayed()
   assert projDeleteIV == false
 
 }

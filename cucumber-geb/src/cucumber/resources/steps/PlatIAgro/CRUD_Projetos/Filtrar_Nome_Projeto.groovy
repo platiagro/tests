@@ -53,6 +53,6 @@ Quando(/selecionar o botão Buscar/) { ->
 Então (/o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa/) { -> 
 
   def nomeProjeto = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(13).substring(22).split("\\|")[0].trim(); 
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProjeto+"']")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProjeto+"']")).isDisplayed()
 
 }

@@ -5,6 +5,7 @@ import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
@@ -120,9 +121,13 @@ E(/informar a seguinte descrição: {string}/) { String desc ->
 
 Quando(/clicar no botão Criar/) { ->
 
-  waitFor(30) {
+  /*waitFor(30) {
     page.btnConfirm.click()
-  }
+  }*/
+
+  WebElement element = browser.driver.findElement(By.className("ant-modal-footer"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
 
 }
 
@@ -202,7 +207,7 @@ Então(/o usuário ao retornar para a página {string} deverá observar se o nov
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3"), myProj));
 
   def projNome = repo.get("Nome Projeto")
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span"), projNome));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span"), projNome));
 
   for (int i=2; i<=5 ; i++){
      waitFor(30) {
@@ -231,9 +236,13 @@ Então(/o usuário ao retornar para a página {string} deverá observar se o nov
       page.campDesc.value("Teste - Funcionalidade: Criar projeto")
     }
 
-    waitFor(10) {
+    /*waitFor(10) {
       page.btnConfirm.click()
-    }
+    }*/
+
+    WebElement element = browser.driver.findElement(By.className("ant-modal-footer"));
+    JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+    jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
 
     Thread.sleep(2000)
 

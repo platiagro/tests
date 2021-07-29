@@ -140,7 +140,7 @@ E(/o usuário será direcionado para a página {string}/) { String myProj ->
   assert meuProjeto.contains(myProj)
 
   def projNomeDel = repo.get("Nome Projeto")
-  def projDelete = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+projNomeDel+"']")).isDisplayed()
+  def projDelete = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+projNomeDel+"']")).isDisplayed()
   assert projDelete == false
 
   Thread.sleep(2000)

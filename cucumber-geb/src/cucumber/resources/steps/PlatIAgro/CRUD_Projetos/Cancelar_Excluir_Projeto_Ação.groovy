@@ -17,8 +17,6 @@ Dado(/que o usuário efetue a seleção de um dos projetos da lista/) { ->
     $(By.xpath("/html/body/div/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/label/span/input")).click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 E(/na coluna ação seletar a opção Excluir/) { ->
@@ -54,7 +52,7 @@ Quando(/o usuário clicar no botão Não/) { ->
 Então (/o projeto não será excluído e permanecerá na lista de projetos/) { ->
 
   def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(13).substring(22).split("\\|")[0].trim();
-  def projDelete = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).isDisplayed()                           
+  def projDelete = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).isDisplayed()                           
   assert projDelete == true
 
 }

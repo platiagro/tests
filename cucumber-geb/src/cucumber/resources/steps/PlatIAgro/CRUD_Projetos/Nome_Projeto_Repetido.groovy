@@ -52,8 +52,6 @@ E(/na descrição inserir a seguinte informação: {string}/) { String desc ->
     page.campDesc.value(desc)
   }
 
-  Thread.sleep(2000)
-
 }
 
 Quando(/for demandado o clique no botão Criar/) { ->
