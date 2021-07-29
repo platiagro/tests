@@ -3,6 +3,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 buildscript {
 	repositories {
 		jcenter()
+		flatDir { dir "${System.env.JAVA_HOME}/jre/lib" }
 	}
 	dependencies {
 		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.9"
@@ -35,11 +36,15 @@ apply from: "gradle/idea/idea.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 apply plugin: 'ru.alfalab.cucumber-reporting'
 
+apply plugin: "java-library"
+
 repositories {
 	mavenCentral()
 	jcenter()
+	flatDir { dir "${System.env.JAVA_HOME}/jre/lib" }
 }
 
+def jdkHome = System.getenv("JAVA_HOME")
 def pathSikuli = System.getProperty("user.dir") + "/lib/"
 def pathAmbiente = System.getProperty("user.dir") + "/lib/"
 
@@ -72,6 +77,12 @@ dependencies {
 		// phantomjs driver pulls in a different selenium version
 		transitive = false
 	}
+
+	compile 'com.jcraft:jsch:0.1.55'
+
+	compile files("$jdkHome/lib/rt.jar")
+	compile fileTree(dir: 'lib', include: ['*.jar'])
+
 	compile "org.seleniumhq.selenium:selenium-ie-driver:$seleniumVersion"
 
 	compile fileTree(dir: 'lib', include: '*.jar')
@@ -82,7 +93,8 @@ dependencies {
 
 	compile files("${pathAmbiente}/ambiente.jar")
 
-	compile group: 'com.jtransc', name: 'jtransc-rt', version: '0.5.0-ALPHA2'
+	//compile group: 'com.jtransc', name: 'jtransc-rt', version: '0.5.0-ALPHA2'
+	implementation group: 'com.jtransc', name: 'jtransc-rt', version: '0.6.8'
 
 }
 

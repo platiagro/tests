@@ -11,14 +11,19 @@ import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
+import java.awt.Robot
+import java.awt.event.KeyEvent
+
+/*import org.sikuli.script.Key
 import org.sikuli.script.Match
 import org.sikuli.script.Screen
 import org.sikuli.script.Pattern
 import org.sikuli.basics.Settings
 
 Screen screen = new Screen();
-Settings.ActionLogs = null != null;
+Settings.ActionLogs = null != null;*/
+
+Robot robot = new Robot();
 
 Dado(/que o usuário selecione um projeto com N Experimentos/) { ->
 
@@ -28,10 +33,8 @@ Dado(/que o usuário selecione um projeto com N Experimentos/) { ->
 
   waitFor(10) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
-
-  Thread.sleep(2000)
 
 }
 
@@ -54,18 +57,18 @@ E(/o sistema abrir a tela {string}/) { String compResul ->
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-modal-content"))).isDisplayed();
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("#rcDialogTitle0 > div > div:nth-child(1) > span > strong"), compResul));
 
-  Thread.sleep(2000)
-
 }
 
 E(/selecionar o botão Adicionar Resultado/) { ->
   at PageExperimento
 
-  page.btnAddResult.click()
+  waitFor(30) {
+    page.btnAddResult.click()
+  }
 
-  Thread.sleep(1000)
-
-  page.btnAddResult.click()
+  waitFor(30) {
+    page.btnAddResult.click()
+  }
 
 }
 
@@ -77,21 +80,21 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
   }
 
   for (int i=0; i<=1; i++){
-    screen.type(Key.DOWN);
+    robot.keyPress(KeyEvent.VK_DOWN);
   }
   Thread.sleep(1000)
-  screen.type(Key.RIGHT);
-  screen.type(Key.ENTER);
+  robot.keyPress(KeyEvent.VK_RIGHT);
+	robot.keyPress(KeyEvent.VK_ENTER);
 
   Thread.sleep(2000)
 
   for (int i=0; i<=1; i++){
-    screen.type(Key.TAB);
+    robot.keyPress(KeyEvent.VK_TAB);
   }
   for (int i=0; i<=1; i++){
-    screen.type(Key.DOWN);
+    robot.keyPress(KeyEvent.VK_DOWN);
   }
-  screen.type(Key.ENTER);
+  robot.keyPress(KeyEvent.VK_ENTER);
 
   Thread.sleep(2000)
 
@@ -99,20 +102,20 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
     page.btnSelectExp_II.click()
   }
 
-  screen.type(Key.DOWN);
+  robot.keyPress(KeyEvent.VK_DOWN);
   Thread.sleep(1000)
-  screen.type(Key.RIGHT);
-  screen.type(Key.ENTER);
+  robot.keyPress(KeyEvent.VK_RIGHT);
+	robot.keyPress(KeyEvent.VK_ENTER);
 
   Thread.sleep(2000)
 
   for (int i=0; i<=1; i++){
-    screen.type(Key.TAB);
+    robot.keyPress(KeyEvent.VK_TAB);
   }
   for (int i=0; i<=2; i++){
-    screen.type(Key.DOWN);
+    robot.keyPress(KeyEvent.VK_DOWN);
   }
-  screen.type(Key.ENTER);
+  robot.keyPress(KeyEvent.VK_ENTER);
 
   Thread.sleep(2000)
 
@@ -120,7 +123,7 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
 
 Então(/será exibido os resultados, as métricas e os parâmetros da tarefa selecionada/) { ->
 
-  Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image9.png");
+  /*Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image9.png");
   Pattern image2 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image10.png");
 
   Match m1 = screen.exists (image1);
@@ -131,6 +134,9 @@ Então(/será exibido os resultados, as métricas e os parâmetros da tarefa sel
 		} else {
       return false
 		}
-	}
+	}*/
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("resultsDrawer"))).isDisplayed();
 
 }

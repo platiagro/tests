@@ -7,12 +7,10 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
+import java.awt.Robot
+import java.awt.event.KeyEvent
 
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;
+Robot robot = new Robot();
 
 Dado(/que o usuário selecione um projeto presente na listagem/) { ->
 
@@ -22,10 +20,8 @@ Dado(/que o usuário selecione um projeto presente na listagem/) { ->
 
   waitFor(10) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
-
-  Thread.sleep(2000)
 
 }
 
@@ -65,10 +61,10 @@ E(/haverá a abertura de um modal/) { ->
 }
 
 E(/o usuário deverá limpar o campo/) { ->
-  at PageExperimento
 
-  screen.type("a", Key.CTRL);
-  screen.type(Key.DELETE);
+  robot.keyPress(KeyEvent.VK_CONTROL);
+  robot.keyPress(KeyEvent.VK_A);
+  robot.keyPress(KeyEvent.VK_DELETE);
 
 }
 
@@ -76,7 +72,9 @@ E(/alterar o nome do experimento acrescentando ao final: {string}/) { String nam
 
   def nomeExpAlter = "Experimento " + nameAlter
 
-  screen.paste(nomeExpAlter);
+  waitFor(30) {
+    $(By.className("ant-input")).value(nomeExpAlter)
+  }
 
   repo.add("Nome Experimento Alterado", nomeExpAlter)
 
@@ -90,6 +88,7 @@ E(/alterar o nome do experimento acrescentando ao final: {string}/) { String nam
 }
 
 Quando(/clicar no botão OK/) { ->
+  at PageExperimento
 
   waitFor(30) {
     page.btnOK.click()

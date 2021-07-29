@@ -11,13 +11,6 @@ import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;
-
 Dado(/que o usuário selecione um projeto da lista/) { ->
 
   for (int i=0; i<2; i++){
@@ -26,10 +19,8 @@ Dado(/que o usuário selecione um projeto da lista/) { ->
 
   waitFor(10) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
-
-  Thread.sleep(2000)
 
 }
 
@@ -70,7 +61,9 @@ E(/um modal seja aberto/) { ->
 
 E(/insira o seguinte nome para a duplicata: {string}/) { String nameDupl ->
 
-  screen.paste(nameDupl);
+  waitFor(30) {
+    $(By.className("ant-input")).value(nameDupl)
+  }
 
   repo.add("Nome Experimento Duplicado", nameDupl)
 
@@ -117,8 +110,6 @@ Quando(/o usuário selecionar o botão Executar na aba da duplicata do experimen
   waitFor(30) {
     page.btnExecut.click()
   }
-
-  Thread.sleep(2000)
 
 }
 

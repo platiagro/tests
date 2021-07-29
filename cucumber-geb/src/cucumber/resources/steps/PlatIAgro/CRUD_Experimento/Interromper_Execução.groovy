@@ -21,10 +21,8 @@ Dado(/que o usuário tenha um projeto com tarefas no fluxo da experimentação/)
 
   waitFor(10) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(25).substring(25).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
-
-  Thread.sleep(2000)
 
   at PageExperimento
 
@@ -68,8 +66,6 @@ E(/o usuário selecionar o botão Executar/) { ->
   waitFor(30) {
     page.btnExecut.click()
   }
-
-  Thread.sleep(1000)
 
 }
 

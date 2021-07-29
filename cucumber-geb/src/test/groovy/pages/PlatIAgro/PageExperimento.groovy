@@ -38,6 +38,12 @@ class PageExperimento extends BasePage {
 
     species {$(By.xpath("//*[contains(text(), 'Species')]"))}
 
+    label {$(By.xpath("//*[contains(@title, 'label')]"))}
+
+    text {$(By.xpath("//*[contains(@title, 'text')]"))}
+
+    isValid {$(By.xpath("//*[contains(@title, 'is_valid')]"))}
+
     campoMSF {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[2]"))}
 
     opIncluir {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]/div"))}

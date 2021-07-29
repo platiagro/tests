@@ -6,20 +6,21 @@ import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
+/*import org.sikuli.script.Key
 import org.sikuli.script.Match
 import org.sikuli.script.Pattern
 import org.sikuli.script.Screen
 import org.sikuli.basics.Settings
 
 Screen screen = new Screen();
-Settings.ActionLogs = null != null;
+Settings.ActionLogs = null != null;*/
 
 String filePath = System.getProperty ('user.dir')
 String caminho = '/src/cucumber/resources/files/'
@@ -32,10 +33,8 @@ Dado(/que o usuário volte ao fluxo/) { ->
 
   waitFor(10) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
-
-  Thread.sleep(2000)
 
   at PageExperimento
 
@@ -46,13 +45,16 @@ Dado(/que o usuário volte ao fluxo/) { ->
 }
 
 E(/abra o menu Engenharia de Atributos/) { ->
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
+  
   at PageExperimento
 
   waitFor(30) {
     page.menuEngAtributos.click()
   }
-
-  Thread.sleep(2000)
 
 }
 
@@ -113,7 +115,7 @@ E(/selecione a tarefa Seleção Manual de Atributos para adicionar ao fluxo/) { 
       '''
       browser.driver.executeScript(simulateDragDrop)*/
 
-  screen.type(Key.PAGE_DOWN);
+  /*screen.type(Key.PAGE_DOWN);
 
   WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[5]/ul/li[11]/div/div[2]/span"));
   Actions action = new Actions(browser.driver);
@@ -134,7 +136,14 @@ E(/selecione a tarefa Seleção Manual de Atributos para adicionar ao fluxo/) { 
     if (m2 != null) {
       break;
     }
-	}
+	}*/
+
+  Thread.sleep(1000)
+
+  WebElement source = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[5]/ul/li[11]/div/div[2]/span"));
+  WebElement destination = browser.driver.findElement(By.className("react-flow"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("function createEvent(typeOfEvent) {\n" +"var event =document.createEvent(\"CustomEvent\");\n" +"event.initCustomEvent(typeOfEvent,true, true, null);\n" +"event.dataTransfer = {\n" +"data: {},\n" +"setData: function (key, value) {\n" +"this.data[key] = value;\n" +"},\n" +"getData: function (key) {\n" +"return this.data[key];\n" +"}\n" +"};\n" +"return event;\n" +"}\n" +"\n" +"function dispatchEvent(element, event,transferData) {\n" +"if (transferData !== undefined) {\n" +"event.dataTransfer = transferData;\n" +"}\n" +"if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n" +"} else if (element.fireEvent) {\n" +"element.fireEvent(\"on\" + event.type, event);\n" +"}\n" +"}\n" +"\n" +"function simulateHTML5DragAndDrop(element, destination) {\n" +"var dragStartEvent =createEvent('dragstart');\n" +"dispatchEvent(element, dragStartEvent);\n" +"var dropEvent = createEvent('drop');\n" +"dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n" +"var dragEndEvent = createEvent('dragend');\n" +"dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" +"}\n" +"\n" +"var source = arguments[0];\n" +"var destination = arguments[1];\n" +"simulateHTML5DragAndDrop(source,destination);",source, destination);
 
 }
 
@@ -160,11 +169,15 @@ E(/no drawer de propriedade da tarefa selecione no campo Features para Filtragem
     page.species.click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 E(/selecione o botão Executar/) { ->
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
+
+  Thread.sleep(1000)
 
   WebElement sourceEle  = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[1]/div/div/div[3]/div"));
   WebElement targetEle = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[1]/div[1]"));
@@ -207,7 +220,7 @@ E(/confira se a função de salvar template estará desabilitada e o botão {str
 
 E(/após a operação sendo concluída verificará que será sinalizada como {string}/) { String success ->
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 70);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 120);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   assert $(By.xpath("//*[contains(text(), '"+success+"')]")).text()

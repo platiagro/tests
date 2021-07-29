@@ -11,12 +11,17 @@ import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
+import java.awt.Robot
+import java.awt.event.KeyEvent
+
+/*import org.sikuli.script.Key
 import org.sikuli.script.Screen
 import org.sikuli.basics.Settings
 
 Screen screen = new Screen();
-Settings.ActionLogs = null != null;
+Settings.ActionLogs = null != null;*/
+
+Robot robot = new Robot();
 
 Dado(/que o usuário selecione um projeto da lista de Projetos/) { ->
 
@@ -26,10 +31,8 @@ Dado(/que o usuário selecione um projeto da lista de Projetos/) { ->
 
   waitFor(10) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(10).substring(26).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span[text()='"+nomeProj+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
-
-  Thread.sleep(2000)
 
   at PageExperimento
 
@@ -100,16 +103,16 @@ E(/inserir o seguinte nome: {string}/) { String nomeTemplate ->
 			+ "+---------------------------------------------------------+\n");
 	reg.close();
 
-    Thread.sleep(1000)
+  Thread.sleep(1000)
 
 }
 
 Quando(/selecionar o botão Salvar/) { ->
 
   for (int i=0; i<=1; i++){
-    screen.type(Key.DOWN);
+    robot.keyPress(KeyEvent.VK_DOWN);
   }
-  screen.type(Key.ENTER);
+  robot.keyPress(KeyEvent.VK_ENTER);
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 30);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();

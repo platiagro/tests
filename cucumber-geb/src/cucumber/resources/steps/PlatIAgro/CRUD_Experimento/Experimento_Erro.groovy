@@ -6,22 +6,25 @@ import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-import org.sikuli.script.Key
+import java.awt.Robot
+
+import helper.utility.NumberGerador
+
+/*import org.sikuli.script.Key
 import org.sikuli.script.Match
 import org.sikuli.script.Pattern
 import org.sikuli.script.Screen
 import org.sikuli.basics.Settings
 
-import helper.utility.NumberGerador
-
 Screen screen = new Screen();
-Settings.ActionLogs = null != null;
+Settings.ActionLogs = null != null;*/
 
 String filePath = System.getProperty ('user.dir')
 String caminho = '/src/cucumber/resources/files/'
@@ -60,13 +63,13 @@ Dado(/que o usuário demande a criação de um novo Projeto/) { ->
     page.btnConfirm.click()
   }
 
-  Thread.sleep(2000)
-
   at PageExperimento
 
   waitFor(30) {
     page.cardExperimento.click()
   }
+
+  Thread.sleep(2000)
 
 }
 
@@ -90,7 +93,7 @@ E(/for selecionado o menu Conjunto de Dados/) { ->
 
 E(/arrastado o operador Upload de arquivos para o fluxo/) { ->
 
-  WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[2]/ul/li[2]/div/div[2]/span"));
+  /*WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[2]/ul/li[2]/div/div[2]/span"));
   Actions action = new Actions(browser.driver);
   action.clickAndHold(elementoBase).build().perform();
  
@@ -110,7 +113,12 @@ E(/arrastado o operador Upload de arquivos para o fluxo/) { ->
       if (m3 != null) {
         break;
       }
-	}
+	}*/
+
+  WebElement source = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[2]/ul/li[2]/div/div[2]/span"));
+  WebElement destination = browser.driver.findElement(By.cssSelector("#root > section > section > section > main > section > main > div.custom-flow > div.experiment-flow > div > div.OperatorsEmptyContainer.experiment-flow-empty-operators > img"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("function createEvent(typeOfEvent) {\n" +"var event =document.createEvent(\"CustomEvent\");\n" +"event.initCustomEvent(typeOfEvent,true, true, null);\n" +"event.dataTransfer = {\n" +"data: {},\n" +"setData: function (key, value) {\n" +"this.data[key] = value;\n" +"},\n" +"getData: function (key) {\n" +"return this.data[key];\n" +"}\n" +"};\n" +"return event;\n" +"}\n" +"\n" +"function dispatchEvent(element, event,transferData) {\n" +"if (transferData !== undefined) {\n" +"event.dataTransfer = transferData;\n" +"}\n" +"if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n" +"} else if (element.fireEvent) {\n" +"element.fireEvent(\"on\" + event.type, event);\n" +"}\n" +"}\n" +"\n" +"function simulateHTML5DragAndDrop(element, destination) {\n" +"var dragStartEvent =createEvent('dragstart');\n" +"dispatchEvent(element, dragStartEvent);\n" +"var dropEvent = createEvent('drop');\n" +"dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n" +"var dragEndEvent = createEvent('dragend');\n" +"dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" +"}\n" +"\n" +"var source = arguments[0];\n" +"var destination = arguments[1];\n" +"simulateHTML5DragAndDrop(source,destination);",source, destination);
 
 }
 
@@ -131,8 +139,6 @@ E(/no drawer de propriedades acionar o botão Importar/) { ->
   Actions action = new Actions(browser.driver);
   action.moveToElement(elementoBase).build().perform();
 
-  Thread.sleep(2000)
-
 }
 
 E(/informar o arquivo {string} para importar os dados de entrada/) { String arquivo ->
@@ -151,14 +157,12 @@ E(/selecionar o menu Treinamento/) { ->
   waitFor(30) {
     page.menuTreinamento.click()
   }
-
-  Thread.sleep(2000)
    
 }
 
 E(/adicionar a tarefa Regressão Linear ao fluxo/) { ->
 
-  screen.type(Key.PAGE_DOWN);
+  /*screen.type(Key.PAGE_DOWN);
 
   WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[7]/ul/li[7]/div/div[2]/span"));
   Actions action = new Actions(browser.driver);
@@ -178,15 +182,24 @@ E(/adicionar a tarefa Regressão Linear ao fluxo/) { ->
       if (m2 != null) {
         break;
       }
-	}
+	}*/
 
-    at PageExperimento
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
 
-    waitFor(30) {
-      page.selRegLinear.click()
-    }
+  Thread.sleep(1000)
 
-    Thread.sleep(2000)
+  WebElement source = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[7]/ul/li[7]/div/div[2]/span"));
+  WebElement destination = browser.driver.findElement(By.className("react-flow"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("function createEvent(typeOfEvent) {\n" +"var event =document.createEvent(\"CustomEvent\");\n" +"event.initCustomEvent(typeOfEvent,true, true, null);\n" +"event.dataTransfer = {\n" +"data: {},\n" +"setData: function (key, value) {\n" +"this.data[key] = value;\n" +"},\n" +"getData: function (key) {\n" +"return this.data[key];\n" +"}\n" +"};\n" +"return event;\n" +"}\n" +"\n" +"function dispatchEvent(element, event,transferData) {\n" +"if (transferData !== undefined) {\n" +"event.dataTransfer = transferData;\n" +"}\n" +"if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n" +"} else if (element.fireEvent) {\n" +"element.fireEvent(\"on\" + event.type, event);\n" +"}\n" +"}\n" +"\n" +"function simulateHTML5DragAndDrop(element, destination) {\n" +"var dragStartEvent =createEvent('dragstart');\n" +"dispatchEvent(element, dragStartEvent);\n" +"var dropEvent = createEvent('drop');\n" +"dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n" +"var dragEndEvent = createEvent('dragend');\n" +"dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" +"}\n" +"\n" +"var source = arguments[0];\n" +"var destination = arguments[1];\n" +"simulateHTML5DragAndDrop(source,destination);",source, destination);
+
+  at PageExperimento
+
+  waitFor(30) {
+    page.selRegLinear.click()
+  }
 
 }
 
@@ -197,9 +210,9 @@ E(/no drawer de propriedade da tarefa selecione no campo Atributo Alvo o atribut
     page.campoAtrAlvo.click()
   }
 
-  screen.type(Key.ENTER);
-
-  Thread.sleep(2000)
+  waitFor(30) {
+    page.label.click()
+  }
 
 }
 
@@ -210,10 +223,9 @@ E(/no campo Features para incluir-remover no modelo selecionar o atributo text/)
     page.campoFeature.click()
   }
 
-  screen.type(Key.DOWN);
-  screen.type(Key.ENTER);
-
-  Thread.sleep(2000)
+  waitFor(30) {
+    page.text.click()
+  }
 
 }
 
@@ -223,24 +235,25 @@ E(/no campo Features para fazer codificação ordinal selecionar o atributo is_v
   waitFor(30) {
     page.campoCodeOrd.click()
   }
-  
-  for (int i=0; i<=1; i++){
-    screen.type(Key.DOWN);
-  }
-  screen.type(Key.ENTER);
 
-  Thread.sleep(2000)
+  waitFor(30) {
+    page.isValid.click()
+  }
 
 }
 
 Quando(/clicar no botão Executar/) { ->
 
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
+
+  Thread.sleep(1000)
+
   WebElement sourceEle  = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[1]/div/div/div[3]/div"));
   WebElement targetEle = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[1]/div[1]"));
   Actions action = new Actions(browser.driver);
   action.dragAndDrop(sourceEle, targetEle).build().perform();
-
-  Thread.sleep(2000)
 
   at PageExperimento
 
@@ -248,15 +261,12 @@ Quando(/clicar no botão Executar/) { ->
     page.btnExecut.click()
   }
 
-  Thread.sleep(50000)
-
 }
 
 Então(/a execução não será finalizada, com a platforma sinalizadando a Tarefa com erro/) { ->
 
-  //screen.type(Key.F5, Key.CTRL);
-
-  WebDriverWait wait = new WebDriverWait(browser.driver, 60);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 120);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@data-icon, 'exclamation-circle')]"))).isDisplayed();
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/span/sup"))).isDisplayed();
 
 }
@@ -294,10 +304,6 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 60);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[1]/div[2]/div[2]/div[3]/p/span")));
-
-  for (int i=0; i<=17; i++){
-    screen.type(Key.DOWN);
-  }
   
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[19]/div[2]/div[2]/div[3]/p/span")));
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[19]/div[2]/div[2]/div[3]/p/span"), 'Execution using papermill encountered an exception here and stopped:'));
