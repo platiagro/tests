@@ -100,11 +100,17 @@ E(/o Experimento será duplicado/) { ->
   String myExperimentDuplicate = $(By.xpath("/html/body/div[1]/section/section/section/main/section/footer/div/div/div[1]/div[1]/div/div[2]/div/div/div/div")).text();
   assert meuExperimentoDuplicado.contains(myExperimentDuplicate)
 
-  Thread.sleep(2000)
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
 
 }
 
 Quando(/o usuário selecionar o botão Executar na aba da duplicata do experimento/) { ->
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
+  
   at PageExperimento
 
   waitFor(30) {

@@ -29,6 +29,10 @@ Dado(/que o usuário tenha um projeto com tarefas no fluxo da experimentação/)
   waitFor(30) {
     page.cardExperimento.click()
   }
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
   
   waitFor(30) {
     $(By.xpath("//*[@class='ellipsis'][text()='Upload de arquivo']")).click()
