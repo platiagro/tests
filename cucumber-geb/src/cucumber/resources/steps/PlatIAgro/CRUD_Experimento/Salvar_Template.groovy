@@ -103,7 +103,7 @@ E(/inserir o seguinte nome: {string}/) { String nomeTemplate ->
 Quando(/selecionar o botão Salvar/) { ->
 
   for (int i=0; i<=1; i++){
-    robot.keyPress(KeyEvent.VK_DOWN);
+    robot.keyPress(KeyEvent.VK_TAB);
   }
   robot.keyPress(KeyEvent.VK_ENTER);
 

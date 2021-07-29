@@ -79,6 +79,8 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
     page.btnSelectExp_I.click()
   }
 
+  Thread.sleep(2000)
+
   for (int i=0; i<=1; i++){
     robot.keyPress(KeyEvent.VK_DOWN);
   }
