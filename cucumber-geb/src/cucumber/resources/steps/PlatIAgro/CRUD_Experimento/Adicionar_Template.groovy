@@ -147,6 +147,10 @@ Quando(/selecionar o template salvo anteriormente para adicionar ao fluxo/) { ->
 }
 
 Então(/o usuário poderá iniciar seu novo experimento/) { ->
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
   
   WebDriverWait wait = new WebDriverWait(browser.driver, 30);
   WebElement element = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]/span[2]"));
