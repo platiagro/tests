@@ -27,6 +27,8 @@ Dado(/que o usuário selecione no armazém de tarefas o template salvo/) { ->
     page.cardExperimento.click()
   }
 
+  Thread.sleep(1000)
+
 }
 
 Quando(/for requisitada a remoção do template/) { ->

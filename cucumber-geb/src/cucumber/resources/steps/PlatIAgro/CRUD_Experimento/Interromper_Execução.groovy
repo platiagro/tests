@@ -51,7 +51,7 @@ Dado(/que o usuário tenha um projeto com tarefas no fluxo da experimentação/)
   }
   
   waitFor(30) {
-      $(By.xpath("//*[@class='ellipsis'][text()='Seleção Manual de Atributos']")).click()
+    $(By.xpath("//*[@class='ellipsis'][text()='Seleção Manual de Atributos']")).click()
   }
 
   waitFor(30) {
@@ -78,9 +78,11 @@ E(/o sistema exibir a seguinte mensagem: {string}/) { String msg ->
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
+  Thread.sleep(2000)
+
   assert $(By.xpath("//*[contains(text(), '"+msg+"')]")).text()
 
-  Thread.sleep(5000)
+  Thread.sleep(3000)
 
 }
 
@@ -100,16 +102,12 @@ Então(/a mensagem {string} deve ser exibida no topo da tela/) { String msgIntEx
 
   assert $(By.xpath("//*[contains(text(), '"+msgIntExec+"')]")).text()
 
-  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
-
 }
 
 E(/será exibida na finalização do processo de interrupção a mensagem: {string}/) { String msgTreinInt ->
   
-  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
-
-  assert $(By.xpath("//*[contains(text(), '"+msgTreinInt+"')]")).text()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 60);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), 'Treinamento interrompido!')]"), msgTreinInt));
 
   Thread.sleep(2000)
 

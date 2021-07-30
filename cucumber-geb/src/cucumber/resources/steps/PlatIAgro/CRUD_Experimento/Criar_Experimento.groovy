@@ -46,6 +46,8 @@ Dado(/que o usuário volte ao fluxo/) { ->
 
 E(/abra o menu Engenharia de Atributos/) { ->
 
+  Thread.sleep(2000)
+
   waitFor(30) {
     $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
   }

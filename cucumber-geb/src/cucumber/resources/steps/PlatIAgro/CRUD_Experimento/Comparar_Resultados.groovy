@@ -14,6 +14,8 @@ import org.apache.commons.io.FileUtils
 import java.awt.Robot
 import java.awt.event.KeyEvent
 
+import java.util.List
+
 /*import org.sikuli.script.Key
 import org.sikuli.script.Match
 import org.sikuli.script.Screen
@@ -79,44 +81,50 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
     page.btnSelectExp_I.click()
   }
 
-  Thread.sleep(2000)
+  Thread.sleep(1000)
 
   for (int i=0; i<=1; i++){
     robot.keyPress(KeyEvent.VK_DOWN);
   }
   Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_RIGHT);
+  Thread.sleep(1000)
 	robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(2000)
+  Thread.sleep(1000)
 
-  for (int i=0; i<=1; i++){
-    robot.keyPress(KeyEvent.VK_TAB);
+  waitFor(10) {
+    page.selTask_I.click()
   }
-  for (int i=0; i<=1; i++){
+
+  for (int i=0; i<1; i++){
     robot.keyPress(KeyEvent.VK_DOWN);
   }
+  Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(2000)
+  Thread.sleep(1000)
 
   waitFor(30) {
     page.btnSelectExp_II.click()
   }
-
+  Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_DOWN);
   Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_RIGHT);
+  Thread.sleep(1000)
 	robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(2000)
+  Thread.sleep(1000)
 
-  for (int i=0; i<=1; i++){
-    robot.keyPress(KeyEvent.VK_TAB);
+  waitFor(10) {
+    page.selTask_II.click()
   }
+
   for (int i=0; i<=2; i++){
     robot.keyPress(KeyEvent.VK_DOWN);
   }
+  Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_ENTER);
 
   Thread.sleep(2000)

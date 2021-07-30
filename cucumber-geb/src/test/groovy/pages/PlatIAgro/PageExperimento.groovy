@@ -44,6 +44,10 @@ class PageExperimento extends BasePage {
 
     isValid {$(By.xpath("//*[contains(@title, 'is_valid')]"))}
 
+    selTask_I {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div"))}
+
+    selTask_II {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[2]/div[1]/div"))}
+
     campoMSF {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[2]"))}
 
     opIncluir {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]/div"))}

@@ -163,12 +163,37 @@ E(/o usuário será direcionado para a página de detalhes do projeto/) { ->
    
 }
 
-E(/clicar no card Experimento/) { ->  
-  //at PageExperimento
+E(/clicar no card Experimento/) { ->
 
   waitFor(30) {
-    //page.cardExperimento.click()
     page.cardExp.click()
+  }
+
+  Thread.sleep(2000)
+
+  String search = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]/div[1]/span/span[2]")).getAttribute("innerHTML");
+  if (search.equals("Templates")) {
+    at PageExperimento
+
+    waitFor(30) {
+      page.selectTemplate.click()
+    }
+
+    Thread.sleep(2000)
+  
+    WebElement template = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[1]/ul/li/div/div[2]/span"));
+    Actions action = new Actions(browser.driver);
+    action.contextClick(template).build().perform();
+
+    waitFor(30) {
+      page.remover.click()
+    }
+    Thread.sleep(1000)
+    WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
+  } else {
+    WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class='tab-title-custom']"), 'Experimento 1'));
   }
    
 }
