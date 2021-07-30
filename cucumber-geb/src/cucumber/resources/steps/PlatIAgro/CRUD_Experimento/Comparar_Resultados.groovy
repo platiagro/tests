@@ -68,6 +68,8 @@ E(/selecionar o botão Adicionar Resultado/) { ->
     page.btnAddResult.click()
   }
 
+  Thread.sleep(2000)
+
   waitFor(30) {
     page.btnAddResult.click()
   }
