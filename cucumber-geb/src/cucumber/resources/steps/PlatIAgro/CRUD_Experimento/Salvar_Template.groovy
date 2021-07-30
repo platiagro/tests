@@ -5,16 +5,12 @@ import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
-
-import java.awt.Robot
-import java.awt.event.KeyEvent
-
-Robot robot = new Robot();
 
 Dado(/que o usuário selecione um projeto da lista de Projetos/) { ->
 
@@ -96,16 +92,13 @@ E(/inserir o seguinte nome: {string}/) { String nomeTemplate ->
 			+ "+---------------------------------------------------------+\n");
 	reg.close();
 
-  Thread.sleep(1000)
-
 }
 
 Quando(/selecionar o botão Salvar/) { ->
 
-  for (int i=0; i<=1; i++){
-    robot.keyPress(KeyEvent.VK_TAB);
+  waitFor(10) {
+    $(By.xpath("//*[contains(@type, 'submit')]")).click()
   }
-  robot.keyPress(KeyEvent.VK_ENTER);
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 30);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();

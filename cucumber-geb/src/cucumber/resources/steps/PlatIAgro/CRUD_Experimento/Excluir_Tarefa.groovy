@@ -33,6 +33,10 @@ Dado(/que seja selecionado um projeto na listagem que possua experimento associa
 
 Quando(/selecionar a Tarefa presente no fluxo de experimento para remover/) { ->
 
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
+
   WebElement remove = browser.driver.findElement(By.xpath("//*[@class='ellipsis'][text()='Regressão Linear']"));
   Actions action = new Actions(browser.driver);
   action.contextClick(remove).build().perform();

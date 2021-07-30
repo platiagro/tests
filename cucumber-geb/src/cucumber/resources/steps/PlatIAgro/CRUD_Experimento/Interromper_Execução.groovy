@@ -19,7 +19,7 @@ Dado(/que o usuário tenha um projeto com tarefas no fluxo da experimentação/)
     println " "
   }
 
-  waitFor(10) {
+  waitFor(20) {
     def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Experimento_dataBase/Registros.txt")).get(25).substring(25).split("\\|")[0].trim();
     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
@@ -28,10 +28,6 @@ Dado(/que o usuário tenha um projeto com tarefas no fluxo da experimentação/)
 
   waitFor(30) {
     page.cardExperimento.click()
-  }
-
-  waitFor(30) {
-    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
   }
   
   waitFor(30) {
@@ -49,6 +45,10 @@ Dado(/que o usuário tenha um projeto com tarefas no fluxo da experimentação/)
   }
 
   Thread.sleep(2000)
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
   
   waitFor(30) {
       $(By.xpath("//*[@class='ellipsis'][text()='Seleção Manual de Atributos']")).click()

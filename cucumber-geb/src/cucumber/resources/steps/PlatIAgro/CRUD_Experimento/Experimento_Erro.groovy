@@ -149,6 +149,10 @@ E(/informar o arquivo {string} para importar os dados de entrada/) { String arqu
 
   Thread.sleep(5000)
 
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
+  }
+
 }
 
 E(/selecionar o menu Treinamento/) { ->
@@ -184,10 +188,6 @@ E(/adicionar a tarefa Regressão Linear ao fluxo/) { ->
       }
 	}*/
 
-  waitFor(30) {
-    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
-  }
-
   Thread.sleep(1000)
 
   WebElement source = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[7]/ul/li[7]/div/div[2]/span"));
@@ -199,6 +199,10 @@ E(/adicionar a tarefa Regressão Linear ao fluxo/) { ->
 
   waitFor(30) {
     page.selRegLinear.click()
+  }
+
+  waitFor(30) {
+    $(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[3]/span")).click()
   }
 
 }
