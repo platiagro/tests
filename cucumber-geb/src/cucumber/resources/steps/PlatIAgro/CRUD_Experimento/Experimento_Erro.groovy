@@ -298,7 +298,7 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
   at PageExperimento
 
   waitFor(30) {
-    $(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div")).click()
+    $(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div/div/div/div[1]/div[2]/div/div/div[2]/div")).click()
   }
 
   waitFor(30) {
