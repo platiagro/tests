@@ -17,6 +17,8 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
 
+  Thread.sleep(2000)
+
 }
 
 E(/selecione o botão Editar, ao lado do nome do projeto/) { ->

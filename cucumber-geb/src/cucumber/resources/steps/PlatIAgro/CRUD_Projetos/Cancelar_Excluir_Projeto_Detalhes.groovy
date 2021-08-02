@@ -18,6 +18,8 @@ Dado(/que o usuário acesse a página Detalhes do projeto selecionado/) { ->
     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
 
+  Thread.sleep(2000)
+
 }
 
 E(/acionar o botão Excluir/) { ->

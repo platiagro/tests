@@ -24,7 +24,7 @@ E(/seja aberto um modal/) { ->
   
   assert $(By.className("ant-table-filter-dropdown")).isDisplayed()
   
-  Thread.sleep(1000)
+  Thread.sleep(2000)
 
 }
 
@@ -35,7 +35,7 @@ Quando(/inserir o nome do projeto alterado anteriormente/) { ->
     $(By.xpath('/html/body/div[2]/div/div/div/div/input')).value(nomeProjeto)
   }
 
-  Thread.sleep(1000)
+  Thread.sleep(2000)
 
 }
 
