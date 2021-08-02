@@ -13,12 +13,10 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
   }
 
   waitFor(30) {
-    //def nomeProj = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).text()
-    def nomeProj = $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > button > span > span")).text()
+    def nomeProj = $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > button > span > span")).text()
     repo.add("Nome Projeto Atual", nomeProj)
 
-    //$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).click()
-    $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > button > span > span")).click()
+    $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > button > span > span")).click()
   }
 
   Thread.sleep(2000)
