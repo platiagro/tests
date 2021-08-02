@@ -4,7 +4,6 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
-import org.openqa.selenium.WebDriver
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
@@ -16,7 +15,7 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
   waitFor(30) {
     //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
     //$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
-    String nomeProj = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).getAttribute("innerText")
+    def nomeProj = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).text()
     println ""
     println " --> Nome do projeto: " + nomeProj
     println ""
@@ -46,7 +45,7 @@ E(/o sistema abrir um modal, com o atual nome do projeto selecionado/) { ->
   
   //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
 
-  String nomeProjAtual = repo.get("Nome Projeto Atual");
+  def nomeProjAtual = repo.get("Nome Projeto Atual");
   assert $(By.xpath("//*[@value='"+nomeProjAtual+"']")).isDisplayed()
 
 }
