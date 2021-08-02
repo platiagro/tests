@@ -71,4 +71,6 @@ Então(/o sistema deverá informar que {string}/) { String repeatName ->
   String nomeRepete = $(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/form/div[1]/div[2]/div[2]/div")).text();
   assert nomeRepete.contains(repeatName)
 
+  Thread.sleep(2000)
+
 }
