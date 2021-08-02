@@ -296,10 +296,11 @@ E(/o usuário poderá visualizar o motivo no Histórico de Erros e Mensagens/) {
 
 E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução/) { ->
   at PageExperimento
-
+  
   waitFor(30) {
-    $(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div/div/div/div[1]/div[2]/div/div/div[2]/div")).click()
+    page.selRegLinear.click()
   }
+
 
   waitFor(30) {
     page.btnJupyter.click()
