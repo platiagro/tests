@@ -6,11 +6,12 @@ import org.openqa.selenium.By
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário selecione o ícone de pesquisa ao lado da coluna Nome do Projeto/) { ->
-  at PageProj
 
   for (int i=0; i<2; i++){
     println " "
   }
+
+  at PageProj
 
   waitFor(10) {
     page.btnsearch.click()
