@@ -29,7 +29,6 @@ E(/que seja aberto um modal/) { ->
 }
 
 E(/inserir o nome de um projeto existente na lista/) { ->
-  at PageProj
  
   def nomeProjeto = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(13).substring(22).split("\\|")[0].trim();
 

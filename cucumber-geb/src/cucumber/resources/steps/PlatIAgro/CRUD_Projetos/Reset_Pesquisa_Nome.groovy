@@ -24,14 +24,15 @@ E(/seja aberto um modal/) { ->
   
   assert $(By.className("ant-table-filter-dropdown")).isDisplayed()
   
-  Thread.sleep(2000)
+  Thread.sleep(1000)
 
 }
 
 Quando(/inserir o nome do projeto alterado anteriormente/) { ->
 
+  def nomeProjeto = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(25).substring(28).split("\\|")[0].trim();
+
   waitFor(10) {
-    def nomeProjeto = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(25).substring(28).split("\\|")[0].trim();
     $(By.xpath("//input[@class='ant-input']")).value(nomeProjeto)
   }
 
