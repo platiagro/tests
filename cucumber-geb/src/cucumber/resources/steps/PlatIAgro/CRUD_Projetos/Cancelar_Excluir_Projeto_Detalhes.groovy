@@ -13,8 +13,10 @@ Dado(/que o usuário acesse a página Detalhes do projeto selecionado/) { ->
   }
 
   waitFor(30) {
-    def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(16).substring(22).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
+    def nomeProj = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button/span/span")).text()
+    repo.add("Nome Projeto", nomeProj)
+
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button/span/span")).click()
   }
 
   Thread.sleep(2000)
@@ -51,7 +53,7 @@ Quando(/o usuário efetuar o clique no botão Não/) { ->
 
 Então (/o projeto não será excluído/) { ->
 
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(16).substring(22).split("\\|")[0].trim();
+  def nomeProj = repo.get("Nome Projeto");
   def projDelete = $(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/div/h3[text()='"+nomeProj+"']")).isDisplayed()                             
   assert projDelete == true
 

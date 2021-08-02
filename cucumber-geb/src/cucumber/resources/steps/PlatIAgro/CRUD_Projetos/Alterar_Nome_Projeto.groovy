@@ -13,13 +13,9 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
   }
 
   waitFor(30) {
-    //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
-    //$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
     def nomeProj = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).text()
-    println ""
-    println " --> Nome do projeto: " + nomeProj
-    println ""
     repo.add("Nome Projeto Atual", nomeProj)
+
     $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).click()
   }
 
@@ -42,8 +38,6 @@ E(/o sistema abrir um modal, com o atual nome do projeto selecionado/) { ->
 
   def modal = $(By.className("ant-modal-content")).isDisplayed()
   assert modal == true
-  
-  //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
 
   def nomeProjAtual = repo.get("Nome Projeto Atual");
   assert $(By.xpath("//*[@value='"+nomeProjAtual+"']")).isDisplayed()
@@ -61,8 +55,6 @@ Quando(/o usuário limpar o campo/) { ->
 
 E(/renomear o projeto acrescentando ao final: {string}/) { String nameAlter ->
 
-  //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
-  //String nomeProj = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).getAttribute("innerHTML");
   String nomeProjAtual = repo.get("Nome Projeto Atual");
   String nomeProjAlter = nomeProjAtual + " " + nameAlter
 
