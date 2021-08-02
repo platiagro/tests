@@ -32,7 +32,7 @@ Quando(/inserir o nome do projeto alterado anteriormente/) { ->
 
   waitFor(10) {
     def nomeProjeto = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(25).substring(28).split("\\|")[0].trim();
-    $(By.xpath('/html/body/div[2]/div/div/div/div/input')).value(nomeProjeto)
+    $(By.xpath("//input[@class='ant-input']")).value(nomeProjeto)
   }
 
   Thread.sleep(2000)
