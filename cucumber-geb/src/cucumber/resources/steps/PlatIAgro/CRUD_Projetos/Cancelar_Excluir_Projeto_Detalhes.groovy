@@ -7,7 +7,6 @@ import org.openqa.selenium.Keys
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário acesse a página Detalhes do projeto selecionado/) { ->
-  at PageProj
 
   for (int i=0; i<2; i++){
     println " "
