@@ -4,6 +4,7 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.WebDriver
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
@@ -13,8 +14,14 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
   }
 
   waitFor(30) {
-    def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(22).substring(22).split("\\|")[0].trim();
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
+    //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
+    //$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
+    String nomeProj = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).getAttribute("innerText")
+    println ""
+    println " --> Nome do projeto: " + nomeProj
+    println ""
+    repo.add("Nome Projeto Atual", nomeProj)
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).click()
   }
 
   Thread.sleep(2000)
@@ -37,8 +44,10 @@ E(/o sistema abrir um modal, com o atual nome do projeto selecionado/) { ->
   def modal = $(By.className("ant-modal-content")).isDisplayed()
   assert modal == true
   
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
-  assert $(By.xpath("//*[@value='"+nomeProj+"']")).isDisplayed()
+  //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
+
+  String nomeProjAtual = repo.get("Nome Projeto Atual");
+  assert $(By.xpath("//*[@value='"+nomeProjAtual+"']")).isDisplayed()
 
 }
 
@@ -53,8 +62,10 @@ Quando(/o usuário limpar o campo/) { ->
 
 E(/renomear o projeto acrescentando ao final: {string}/) { String nameAlter ->
 
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
-  def nomeProjAlter = nomeProj + " " + nameAlter
+  //def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
+  //String nomeProj = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/button/span/span")).getAttribute("innerHTML");
+  String nomeProjAtual = repo.get("Nome Projeto Atual");
+  String nomeProjAlter = nomeProjAtual + " " + nameAlter
 
   waitFor(10) {
     page.campnome.value(nomeProjAlter)

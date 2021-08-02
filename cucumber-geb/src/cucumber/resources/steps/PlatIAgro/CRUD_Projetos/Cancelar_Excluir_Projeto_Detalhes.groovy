@@ -51,7 +51,7 @@ Quando(/o usuário efetuar o clique no botão Não/) { ->
 
 Então (/o projeto não será excluído/) { ->
 
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(13).substring(22).split("\\|")[0].trim();
+  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(16).substring(22).split("\\|")[0].trim();
   def projDelete = $(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/div/h3[text()='"+nomeProj+"']")).isDisplayed()                             
   assert projDelete == true
 
