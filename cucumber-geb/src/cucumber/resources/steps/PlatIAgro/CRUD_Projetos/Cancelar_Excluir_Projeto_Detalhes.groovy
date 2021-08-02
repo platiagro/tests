@@ -13,10 +13,12 @@ Dado(/que o usuário acesse a página Detalhes do projeto selecionado/) { ->
   }
 
   waitFor(30) {
-    def nomeProj = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button/span/span")).text()
+    //def nomeProj = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button/span/span")).text()
+    def nomeProj = $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > button > span > span")).text()
     repo.add("Nome Projeto", nomeProj)
 
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button/span/span")).click()
+    //$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/button/span/span")).click()
+    $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > button > span > span")).click()
   }
 
   Thread.sleep(2000)
