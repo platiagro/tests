@@ -292,6 +292,8 @@ E(/o usuário poderá visualizar o motivo no Histórico de Erros e Mensagens/) {
   WebDriverWait wait = new WebDriverWait(browser.driver, 60);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#root > section > section > section > main > section > main > div.custom-flow > div.logs-panel > div.logs-panel-logs > div > div.log-list-item-icon > span > svg"))).isDisplayed();
 
+  Thread.sleep(2000)
+
 }
 
 E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução/) { ->
