@@ -210,6 +210,11 @@ E(/adicionar a tarefa Regressão Linear ao fluxo/) { ->
 }
 
 E(/no drawer de propriedade da tarefa selecione no campo Atributo Alvo o atributo label/) { ->
+  
+  WebElement combo = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/div"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("arguments[0].scrollIntoView()", combo);
+
   at PageExperimento
 
   waitFor(30) {
@@ -223,11 +228,18 @@ E(/no drawer de propriedade da tarefa selecione no campo Atributo Alvo o atribut
 }
 
 E(/no campo Features para incluir-remover no modelo selecionar o atributo text/) { ->
+
+  WebElement combo = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[3]/div[2]/div"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("arguments[0].scrollIntoView()", combo);
+
   at PageExperimento
 
   waitFor(30) {
     page.campoFeature.click()
   }
+
+	//jse.executeScript("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('click',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", browser.driver.findElement(By.xpath("//*[contains(@title, 'text')]")));
 
   waitFor(30) {
     page.text.click()
@@ -236,6 +248,11 @@ E(/no campo Features para incluir-remover no modelo selecionar o atributo text/)
 }
 
 E(/no campo Features para fazer codificação ordinal selecionar o atributo is_valid/) { ->
+
+  WebElement combo = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]/div/div/span[2]"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("arguments[0].scrollIntoView()", combo);
+
   at PageExperimento
 
   waitFor(30) {
@@ -300,6 +317,9 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
   waitFor(30) {
     $(By.xpath("//div[@class='ellipsis'][text()='Regressão Linear']")).click()
   }
+
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("scroll(0, 250)");
 
   waitFor(30) {
     page.btnJupyter.click()

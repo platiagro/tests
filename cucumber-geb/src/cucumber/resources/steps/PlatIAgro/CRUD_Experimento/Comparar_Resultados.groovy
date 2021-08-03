@@ -77,13 +77,14 @@ E(/selecionar o botão Adicionar Resultado/) { ->
 }
 
 Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/) { ->
+
   at PageExperimento
 
   waitFor(30) {
     page.btnSelectExp_I.click()
   }
 
-  Thread.sleep(1000)
+  Thread.sleep(2000)
 
   for (int i=0; i<=1; i++){
     robot.keyPress(KeyEvent.VK_DOWN);
@@ -93,11 +94,13 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
   Thread.sleep(1000)
 	robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(1000)
+  Thread.sleep(2000)
 
   waitFor(10) {
     page.selTask_I.click()
   }
+
+  Thread.sleep(1000)
 
   for (int i=0; i<1; i++){
     robot.keyPress(KeyEvent.VK_DOWN);
@@ -105,11 +108,12 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
   Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(1000)
+  Thread.sleep(2000)
 
   waitFor(30) {
     page.btnSelectExp_II.click()
   }
+
   Thread.sleep(1000)
   robot.keyPress(KeyEvent.VK_DOWN);
   Thread.sleep(1000)
@@ -117,11 +121,13 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
   Thread.sleep(1000)
 	robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(1000)
+  Thread.sleep(2000)
 
   waitFor(10) {
     page.selTask_II.click()
   }
+
+  Thread.sleep(1000)
 
   for (int i=0; i<=2; i++){
     robot.keyPress(KeyEvent.VK_DOWN);

@@ -61,7 +61,10 @@ environments {
     chromeheadless {
 	  	//driver =  { new ChromeDriver() }
 	    ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--no-sandbox");
 	    chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("disable-gpu");
+        chromeOptions.addArguments("window-size=1400,2100");
 	    driver = {new ChromeDriver(chromeOptions)};
     }
 
