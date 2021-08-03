@@ -325,6 +325,8 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
     page.btnJupyter.click()
   }
 
+  Thread.sleep(2000)
+
   List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
   browser.driver.switchTo().window(abas.get(1));
 
@@ -335,7 +337,5 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
   
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[19]/div[2]/div[2]/div[3]/p/span")));
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[19]/div[2]/div[2]/div[3]/p/span"), 'Execution using papermill encountered an exception here and stopped:'));
-  
-  Thread.sleep(2000)
 
 }

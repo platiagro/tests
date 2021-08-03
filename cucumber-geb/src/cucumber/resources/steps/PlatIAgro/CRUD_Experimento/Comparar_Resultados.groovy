@@ -5,14 +5,12 @@ import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
-
-import java.awt.Robot
-import java.awt.event.KeyEvent
 
 import java.util.List
 
@@ -24,8 +22,6 @@ import org.sikuli.basics.Settings
 
 Screen screen = new Screen();
 Settings.ActionLogs = null != null;*/
-
-Robot robot = new Robot();
 
 Dado(/que o usuário selecione um projeto com N Experimentos/) { ->
 
@@ -77,24 +73,24 @@ E(/selecionar o botão Adicionar Resultado/) { ->
 }
 
 Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/) { ->
-
   at PageExperimento
 
   waitFor(30) {
     page.btnSelectExp_I.click()
   }
 
-  Thread.sleep(2000)
-
-  for (int i=0; i<=1; i++){
-    robot.keyPress(KeyEvent.VK_DOWN);
-  }
   Thread.sleep(1000)
-  robot.keyPress(KeyEvent.VK_RIGHT);
-  Thread.sleep(1000)
-	robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(2000)
+  WebElement element_I = browser.driver.findElement(By.xpath("//li[contains(text(), 'Experimento Alter')]"));
+  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  jse.executeScript("arguments[0].click();", element_I);
+
+  Thread.sleep(1000)
+
+  List <WebElement> listOfElements_I = browser.driver.findElements(By.className("ant-cascader-menu-item"));
+	listOfElements_I.get(2).click();
+
+  Thread.sleep(1000)
 
   waitFor(10) {
     page.selTask_I.click()
@@ -102,26 +98,26 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
 
   Thread.sleep(1000)
 
-  for (int i=0; i<1; i++){
-    robot.keyPress(KeyEvent.VK_DOWN);
-  }
-  Thread.sleep(1000)
-  robot.keyPress(KeyEvent.VK_ENTER);
+  WebElement element_II = browser.driver.findElement(By.xpath("//*[contains(@title, 'Seleção Manual de Atributos')]"));
+  jse.executeScript("arguments[0].click();", element_II);
 
-  Thread.sleep(2000)
+  Thread.sleep(1000)
 
   waitFor(30) {
     page.btnSelectExp_II.click()
   }
 
   Thread.sleep(1000)
-  robot.keyPress(KeyEvent.VK_DOWN);
-  Thread.sleep(1000)
-  robot.keyPress(KeyEvent.VK_RIGHT);
-  Thread.sleep(1000)
-	robot.keyPress(KeyEvent.VK_ENTER);
 
-  Thread.sleep(2000)
+  List <WebElement> listOfElements_II = browser.driver.findElements(By.xpath("//li[contains(text(), 'Teste_Exp_Duplicado')]"));
+	listOfElements_II.get(1).click();
+
+  Thread.sleep(1000)
+
+  List <WebElement> listOfElements_III = browser.driver.findElements(By.className("ant-cascader-menu-item"));
+	listOfElements_III.get(5).click();
+
+  Thread.sleep(1000)
 
   waitFor(10) {
     page.selTask_II.click()
@@ -129,13 +125,8 @@ Quando(/selecionar os experimentos em conjunto com as tarefas para comparação/
 
   Thread.sleep(1000)
 
-  for (int i=0; i<=2; i++){
-    robot.keyPress(KeyEvent.VK_DOWN);
-  }
-  Thread.sleep(1000)
-  robot.keyPress(KeyEvent.VK_ENTER);
-
-  Thread.sleep(2000)
+  WebElement element_III = browser.driver.findElement(By.xpath("//*[contains(@title, 'Upload de arquivo')]"));
+  jse.executeScript("arguments[0].click();", element_III);
 
 }
 
