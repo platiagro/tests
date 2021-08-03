@@ -318,8 +318,8 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
     $(By.xpath("//div[@class='ellipsis'][text()='Regressão Linear']")).click()
   }
 
-  JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
-  jse.executeScript("scroll(0, 250)");
+  //JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+  //jse.executeScript("scroll(0, 250)");
 
   waitFor(30) {
     page.btnJupyter.click()
@@ -327,6 +327,8 @@ E(/ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais det
 
   List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
   browser.driver.switchTo().window(abas.get(1));
+
+  Thread.sleep(2000)
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 60);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div[2]/div[3]/div[4]/div[2]/div[1]/div[2]/div[2]/div[3]/p/span")));
