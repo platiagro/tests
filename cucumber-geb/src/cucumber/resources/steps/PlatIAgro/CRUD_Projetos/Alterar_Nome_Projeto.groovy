@@ -13,10 +13,8 @@ Dado(/que o usuário detalhe o Projeto criado anteriormente/) { ->
   }
 
   waitFor(30) {
-    def nomeProj = $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > button > span > span")).text()
-    repo.add("Nome Projeto Atual", nomeProj)
-
-    $(By.cssSelector("#root > section > section > div.contentPage > div > div > div > div > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > button > span > span")).click()
+    def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
+    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/button/span/span[text()='"+nomeProj+"']")).click()
   }
 
   Thread.sleep(2000)
@@ -39,7 +37,7 @@ E(/o sistema abrir um modal, com o atual nome do projeto selecionado/) { ->
   def modal = $(By.className("ant-modal-content")).isDisplayed()
   assert modal == true
 
-  def nomeProjAtual = repo.get("Nome Projeto Atual");
+  def nomeProjAtual = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
   assert $(By.xpath("//*[@value='"+nomeProjAtual+"']")).isDisplayed()
 
 }
@@ -55,7 +53,7 @@ Quando(/o usuário limpar o campo/) { ->
 
 E(/renomear o projeto acrescentando ao final: {string}/) { String nameAlter ->
 
-  String nomeProjAtual = repo.get("Nome Projeto Atual");
+  String nomeProjAtual = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Projetos_dataBase/Registros.txt")).get(10).substring(22).split("\\|")[0].trim();
   String nomeProjAlter = nomeProjAtual + " " + nameAlter
 
   waitFor(10) {
