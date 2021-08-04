@@ -153,7 +153,7 @@ E(/clique na tarefa Seleção Manual de Atributos presente no fluxo/) { ->
   at PageExperimento
 
   waitFor(30) {
-      page.selManAtributos.click()
+    page.selManAtributos.click()
   }
 
   Thread.sleep(2000)
