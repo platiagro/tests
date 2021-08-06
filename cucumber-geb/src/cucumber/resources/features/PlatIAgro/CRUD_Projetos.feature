@@ -1,6 +1,6 @@
 #language:pt
 
-Funcionalidade: Criar Projeto na PlatIAgro
+Funcionalidade: Projetos na PlatIAgro
 Como usuário da plataforma, desejo criar um novo Projeto para iniciar um experimento.
 
 Contexto: Acessar a página Meus Projetos na Plataforma

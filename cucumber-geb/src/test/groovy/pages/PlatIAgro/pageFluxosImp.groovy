@@ -10,17 +10,15 @@ class PageFluxoImp extends BasePage {
 
     btnImpFluxo {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[1]/div/div[2]/button[3]"))}
 
-    btntstfluxo{$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr"))}
+    btnTesteFluxo {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[1]/div/div[2]/button[1]"))}
       
-    inputFile{$("input[type='file']")}
+    inputFile {$("input[type='file']")}
 
-    btndelete {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[1]"))}
-      
-    btnsim {$(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"))}
+    btnComoUsar {$(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[1]/button"))}
 
-    btnlogs {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/button[2]"))}
+    cardFluxo {$(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[1]/div[2]/button"))}
 
-    btnUseImp {$(By.xpath("//*[@id='root']/section/section/div[2]/button"))}
+    btnDownload {$(By.xpath("//*[contains(@aria-label, 'download')]"))}
 
     }
 }

@@ -1,6 +1,6 @@
 #language:pt
 
-Funcionalidade: Criar Experimento na PlatIAgro
+Funcionalidade: Experimento na PlatIAgro
 Como usuário da plataforma, desejo criar um novo Experimento.
 
 Contexto: Acessar a página Meus Projetos na Plataforma

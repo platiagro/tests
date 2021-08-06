@@ -70,6 +70,11 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
     }
   }
 
+  waitFor(10) {
+    String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+    page.campnome.value(del)
+  }
+
   def nomeProj = "Teste " + NumberGerador.number()
 
   waitFor(10) {
@@ -81,8 +86,8 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
   //Armazena o nome do projeto gerado para ser utilizado por outros cenários
   reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_FluxoImplantado_dataBase/Registros.txt"), true);
   reg.write("+---------------------------------------------------------+\n"
-		  + "| Nome do projeto criado: " + nomeProj + "                   |\n"
-		  + "+---------------------------------------------------------+\n");
+		      + "| Nome do projeto criado: " + nomeProj + "                   |\n"
+		      + "+---------------------------------------------------------+\n");
   reg.close();
 
   waitFor(10) {
@@ -99,6 +104,30 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
 
   waitFor(30) {
     page.cardExperimento.click()
+  }
+
+  Thread.sleep(2000)
+
+  String menu = browser.driver.findElement(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[1]/div[1]/span/span[2]")).getAttribute("innerHTML");
+  if (menu.equals("Templates")) {
+    at PageExperimento
+
+    waitFor(30) {
+      page.selectTemplate.click()
+    }
+
+    Thread.sleep(2000)
+  
+    WebElement template = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[1]/ul/li/div/div[2]/span"));
+    Actions action = new Actions(browser.driver);
+    action.contextClick(template).build().perform();
+
+    waitFor(30) {
+      page.remover.click()
+    }
+  } else {
+    WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class='tab-title-custom']"), 'Experimento 1'));
   }
 
   waitFor(30) {

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.apache.commons.io.FileUtils
 
-Dado(/que o usuário acesse um fluxo implantado/) { ->
+Dado(/que o usuário esteja na página de Fluxos Implantados/) { ->
 
   for (int i=0; i<2; i++){
     println " "
@@ -26,7 +26,7 @@ Dado(/que o usuário acesse um fluxo implantado/) { ->
 
 }
 
-Quando(/selecionar o botão Excluir, localizado na coluna Ações/) { ->
+Quando(/demandar o clique no botão Excluir, localizado na coluna Ações/) { ->
 
   Thread.sleep(1000)
 
@@ -34,7 +34,7 @@ Quando(/selecionar o botão Excluir, localizado na coluna Ações/) { ->
 
 }
 
-E(/um popover com a seguinte mensagem for exibido: {string}/) { String msg ->
+E(/exibir um popover com a seguinte mensagem: {string}/) { String msg ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-popover-content"))).isDisplayed();
@@ -42,28 +42,28 @@ E(/um popover com a seguinte mensagem for exibido: {string}/) { String msg ->
 
 }
 
-Quando(/o usuário confirmar a operação de exclusão/) { ->
+Quando(/o usuário optar por não excluir a implantação/) { ->
 
   WebElement element = browser.driver.findElement(By.className("ant-popover-buttons"));
   JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
-  jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
+  jse.executeScript("arguments[0].getElementsByTagName('button')[0].click();", element);
 
 }
 
-Então(/o sistema irá sinalizar com o seguinte display: {string}/) { String msgSuccess ->
-
-  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
-  assert $(By.xpath("//*[contains(text(), '"+msgSuccess+"')]")).text()
-
-}
-
-E(/a implantação será deletada/) { ->
+Então(/o popover será resetado/) { ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-popover-content")));
-  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]/span/span[2]")));
-  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr/td[2]")));
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr/td"), 'Nenhum Fluxo Implantado'));
+
+  def popover = $(By.className("ant-popover-content")).isDisplayed()                        
+  assert popover == false
+
+}
+
+E(/os dados referente a implantação continuarão sendo exibidos/) { ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[1]/div/span"), 'Fluxos implantados'));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]/span/span[2]"), 'Sucesso'));
 
 }

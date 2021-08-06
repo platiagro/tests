@@ -1,6 +1,6 @@
 #language:pt
 
-Funcionalidade: Criar Tarefa na PlatIAgro
+Funcionalidade: Tarefa na PlatIAgro
 Como usuário da plataforma, desejo criar uma nova tarefa para iniciar um projeto.
 
 Contexto: Acessar a página Tarefas na Plataforma
