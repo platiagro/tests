@@ -13,7 +13,7 @@ jobs:
       - name: Install Xvfb
         run: |
           sudo apt-get install xvfb
-          Xvfb :99 -ac &
+          Xvfb :99 -screen 0 1280x1024x24 &
       - name: Install Google Chrome
         run: |
           sudo apt-get install libxss1 libappindicator1 libindicator7
@@ -25,7 +25,7 @@ jobs:
           java-version: 8
       - uses: eskatos/gradle-command-action@v1
         with:
-          arguments: bdd -Ptag=@CRUDPROJ@CRUDEXP
+          arguments: bdd -Ptag=@CRUDPROJ@CRUDEXP -Penv=chromeheadless
           build-root-directory: cucumber-geb
           gradle-version: 4.0.1
         env:
