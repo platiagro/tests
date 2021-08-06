@@ -25,7 +25,7 @@ jobs:
           java-version: 8
       - uses: eskatos/gradle-command-action@v1
         with:
-          arguments: bdd -Ptag=@CRUDPROJ@CRUDEXP -Penv=chromeheadless
+          arguments: bdd -Ptag=@CRUDPROJ@CRUDEXP@FLUXOIMP -Penv=chromeheadless
           build-root-directory: cucumber-geb
           gradle-version: 4.0.1
         env:
