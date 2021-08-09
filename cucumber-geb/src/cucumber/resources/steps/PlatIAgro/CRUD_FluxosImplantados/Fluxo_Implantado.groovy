@@ -70,6 +70,9 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
     }
   }
 
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-modal-content"))).isDisplayed();
+
   waitFor(10) {
     String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
     page.campnome.value(del)
