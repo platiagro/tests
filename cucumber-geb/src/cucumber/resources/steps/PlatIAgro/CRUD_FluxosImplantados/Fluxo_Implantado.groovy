@@ -70,8 +70,9 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
     }
   }
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 120);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-modal-content"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='name']")));
 
   waitFor(10) {
     String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
@@ -129,7 +130,6 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
       page.remover.click()
     }
   } else {
-    WebDriverWait wait = new WebDriverWait(browser.driver, 10);
     wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class='tab-title-custom']"), 'Experimento 1'));
   }
 
@@ -196,7 +196,6 @@ Dado(/que o usuário possua um projeto com experimento associado/) { ->
 
   Thread.sleep(10000)
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 120);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(), 'Treinamento concluído')]")));
 
