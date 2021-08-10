@@ -20,5 +20,9 @@ class PageFluxoImp extends BasePage {
 
     btnDownload {$(By.xpath("//*[contains(@aria-label, 'download')]"))}
 
+    btnAdd {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[3]/div[1]/div/button[1]"))}
+
+    btnVerMonit {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[3]/div[1]/div[1]/button[2]/span[2]"))}
+
     }
 }

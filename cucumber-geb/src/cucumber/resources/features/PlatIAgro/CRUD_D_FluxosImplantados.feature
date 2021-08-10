@@ -29,25 +29,34 @@ Cenário: C02 - Implantação - Testar Fluxo - CSV
 
 @FLUXOIMP
 Cenário: C03 - Implantação - Download do resultado
- Dado o usuário selecione o botão Testar Fluxo
+ Dado que o usuário selecione o botão Testar Fluxo
  Quando selecionar o botão Fazer Download
  Então um arquivo do resultado será baixado com êxito
 
 @FLUXOIMP
-Cenário: C04 - Implantação - Como usar Fluxo implantado
+Cenário: C04 - Implantação - Monitoramento
+ Dado que o usuário clique no botão para adicionar um monitoramento
+ E um modal seja aberto para seleção
+ E escolha um tipo de monitoramento
+ Quando clicar no botão Adicionar Monitoramento
+ Então no painel de monitoramento é exibido o tipo selecionado anteriormente
+ E ao clicar no botão Ver Monitoramentos um drawer será exibido
+
+@FLUXOIMP
+Cenário: C05 - Implantação - Como usar Fluxo implantado
  Dado que o usuário está na página Fluxos Implantados
  Quando selecionar o botão Como usar fluxo Implantado?
  Então será aberto um modal com as dicas do que o usuário deve fazer para usar a implantação
 
 @FLUXOIMP
-Cenário: C05 - Fluxo Implantado - Visualizar Logs
+Cenário: C06 - Fluxo Implantado - Visualizar Logs
  Dado que haja fluxo implantado com sucesso pelo usuário
  Quando selecionar o botão Ver Logs, localizado na coluna Ações
  Então será aberto uma drawer de Logs
  E as informações estarão divididas em três colunas: 'Data', 'Nível' e 'Mensagem'
 
 @FLUXOIMP
-Cenário: C06 - Fluxo Implantado - Deletar Fluxo - Resetar
+Cenário: C07 - Fluxo Implantado - Deletar Fluxo - Resetar
  Dado que o usuário esteja na página de Fluxos Implantados
  Quando demandar o clique no botão Excluir, localizado na coluna Ações
  E exibir um popover com a seguinte mensagem: 'Você tem certeza que deseja excluir esta implantação?'
@@ -56,7 +65,7 @@ Cenário: C06 - Fluxo Implantado - Deletar Fluxo - Resetar
  E os dados referente a implantação continuarão sendo exibidos
 
 @FLUXOIMP
-Cenário: C07 - Fluxo Implantado - Deletar Fluxo
+Cenário: C08 - Fluxo Implantado - Deletar Fluxo
  Dado que o usuário acesse um fluxo implantado
  Quando selecionar o botão Excluir, localizado na coluna Ações
  E um popover com a seguinte mensagem for exibido: 'Você tem certeza que deseja excluir esta implantação?'

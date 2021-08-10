@@ -15,7 +15,7 @@ import java.nio.file.Paths
 String filePath = System.getProperty ('user.dir')
 String caminho = '/src/cucumber/resources/files/Iris.csv'
 
-Dado(/o usuário selecione o botão Testar Fluxo/) { ->
+Dado(/que o usuário selecione o botão Testar Fluxo/) { ->
 
   for (int i=0; i<2; i++){
     println " "
