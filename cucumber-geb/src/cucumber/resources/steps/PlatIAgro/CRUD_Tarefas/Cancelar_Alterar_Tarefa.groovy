@@ -4,6 +4,8 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário escolha uma das Tarefas da lista para editar/) { ->
@@ -16,74 +18,63 @@ Dado(/que o usuário escolha uma das Tarefas da lista para editar/) { ->
     $(By.xpath("//*[contains(@title, '4')]")).click()
   }
 
-  def nomeTar = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(25).split("\\|")[0].trim();
+  def nomeTar = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+nomeTar+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+nomeTar+"']")).click()
   }
 
-  Thread.sleep(2000)
+}
+
+E(/clique no ícone para editar/) { ->
+  at PageTarefa
+
+  waitFor(10) {
+    page.iconEdit.click()
+  }
 
 }
 
 E(/limpar o campo nome/) { ->
+  at PageTarefa
 
   waitFor(10) {
     String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
-    $(By.xpath("//*[@id='name']")).value(del)
+    page.fieldNameTask.value(del)
   }
 
 }
 
 E(/renomear a Tarefa: {string}/) { String rename ->
+  at PageTarefa
 
   waitFor(10) {
-    $(By.xpath("//*[@id='name']")).value(rename)
+    page.fieldNameTask.value(rename)
   }
 
-  repo.add("Nome Projeto Alterado", rename)
+  repo.add("Nome Tarefa Alterada", rename)
 
 }
 
-E(/inserir uma nova descrição: {string}/) { String descAlter ->
+Quando(/efetuar o clique no botão Cancelar Edição/) { ->
+  at PageTarefa
 
   waitFor(10) {
-    $(By.xpath("//*[@id='description']")).value(descAlter)
+    page.btnCancelEdit.click()
   }
 
-  repo.add("Descrição Alterada", descAlter)
-
-  Thread.sleep(2000)
-  
 }
 
-Quando(/efetuar o clique no botão Cancelar/) { ->
+Então(/o nome da tarefa não deve ser alterado/) { ->
 
-  waitFor(10) {
-    $(By.xpath("//*[text()='Cancelar']")).click()
-  }
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
 
-  Thread.sleep(2000)
+  String minhaTarefaAlterada = repo.get("Nome Tarefa Alterada");
 
-}
+  wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), minhaTarefaAlterada));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), 'Tarefa em branco - 1'));
 
-Então(/o sistema deve fechar modal/) { ->
-
-  def modal = $(By.className("ant-modal-content")).isDisplayed()
-  assert modal == false
-
-}
-
-E(/o nome e a descrição da tarefa não devem ser alterados/) { ->
-
-  String minhaTarefaAlterada = repo.get("Nome Projeto Alterado");
-  String myTaskAlter = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+minhaTarefaAlterada+"']")).isDisplayed()
+  String myTaskAlter = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span[text()='"+minhaTarefaAlterada+"']")).isDisplayed()
   assert myTaskAlter != true
-
-  String descAlterado = repo.get("Descrição Alterada");
-  String descriptionAlter = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/span[text()='"+descAlterado+"']")).isDisplayed()
-  assert descriptionAlter != true
-
-  Thread.sleep(1000)
 
 }

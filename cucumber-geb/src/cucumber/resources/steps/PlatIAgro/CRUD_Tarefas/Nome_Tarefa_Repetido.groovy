@@ -3,6 +3,9 @@ import pages.*
 import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
+import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 
 Dado(/que o usuário clique no botão Nova Tarefa/) { ->
 
@@ -11,52 +14,61 @@ Dado(/que o usuário clique no botão Nova Tarefa/) { ->
   }
 
   waitFor(30) {
-    page.btntarefa.click()
+    page.btnTarefa.click()
   }
 
-  Thread.sleep(2000)
+}
+
+E(/demande a criação da tarefa a partir de um template em branco/) { ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("task-template-item-title"), 'Em Branco'));
+
+  at PageTarefa
+
+  waitFor(30) {
+    page.btnCreateTask.click()
+  }
+
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(), 'Criando Nova Tarefa')]")));
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
 
 }
 
-E(/abra um modal para escolher um exemplo ou um template em branco para criar nova tarefa/) { ->
-
-  assert $(By.className("ant-modal-content")).isDisplayed() 
-  
-  $(By.xpath("//*[contains(@title, 'Template em branco')]")).isDisplayed()
-
-}
-
-E(/nomear a Tarefa: {string}/) { String nomeTarefa ->
+E(/nomeie a Tarefa com uma designação existente: {string}/) { String nomeTarefa ->
+  at PageTarefa
 
   waitFor(10) {
-    page.campnametask.value(nomeTarefa)
+    page.iconEdit.click()
+  }
+
+  waitFor(10) {
+    String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+    page.fieldNameTask.value(del)
+  }
+
+  waitFor(10) {
+    page.fieldNameTask.value(nomeTarefa)
   }
 
 }
 
-E(/inserir a seguinte descrição: {string}/) { String desc ->
+Quando (/realizar o clique no botão Salvar/) { ->
+  at PageTarefa
 
-  waitFor(30) {
-    page.campdesctask.value(desc)
+  waitFor(10) {
+    page.btnSave.click()
   }
-
-  Thread.sleep(2000)
-
-}
-
-Quando (/realizar o clique no botão Criar Notebooks/) { ->
-
-  waitFor(30) {
-    page.btnConfirm.click()
-  }
-
-  Thread.sleep(2000)
 
 }
 
 Então(/o sistema deverá exibir a mensagem impeditiva: {string}/) { String repeatName ->
 
-  String nomeRepete = $(By.xpath("//*[@id='newTaskForm']/div[2]/div[2]/div[2]/div")).text();
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//span[contains(text(), 'Já existe uma tarefa com este nome!')]"), repeatName));
+
+  String nomeRepete = $(By.xpath("//span[contains(text(), 'Já existe uma tarefa com este nome!')]")).text();
   assert nomeRepete.contains(repeatName)
 
 }

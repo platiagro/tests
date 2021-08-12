@@ -12,13 +12,21 @@ class PageTarefa extends BasePage {
 
     menuTarefa {$(By.xpath("/html/body/div[1]/section/aside/div[1]/ul/li[2]/span[1]"))}
 
-    btnConfirm {$(By.xpath("//*[contains(text(), 'Criar Notebooks')]"))}
+    btnCreateTask {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div[1]/div[2]/div[1]/button/span"))}
+
+    iconEdit {$(By.xpath("//*[contains(@type, 'edit')]"))}
+
+    fieldNameTask {$(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/form/input"))}
+
+    btnCancelEdit {$(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/form/button[1]"))}
+
+    btnSave {$(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/form/button[2]"))}
 
     btnnext {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[5]/button"))}
 
     btnprevious {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/ul/li[1]"))}
 
-    btntarefa {$(By.xpath("//*[@id='root']/section/section/div/div[2]/button"))}
+    btnTarefa {$(By.xpath("//*[@id='root']/section/section/div/div[2]/button"))}
 
     btnselect {$(By.xpath("//*[@id='newTaskForm_template']/div/span"))}
 
@@ -67,8 +75,6 @@ class PageTarefa extends BasePage {
     btnreset {$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[2]/button"))}
 
     camptask {$(By.xpath("/html/body/div[3]/div/div/div/div/input"))}
-
-    btnCriarTask {$(By.xpath("//*[text()='Criar Notebooks']"))}
 
    }
 }

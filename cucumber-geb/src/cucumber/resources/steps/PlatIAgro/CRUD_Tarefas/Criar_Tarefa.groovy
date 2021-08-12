@@ -4,6 +4,8 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
@@ -13,14 +15,9 @@ import java.util.Random
 import java.util.Date
 import java.util.TimeZone
 
-import org.sikuli.script.Key
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
 import helper.utility.NumberGerador
 
 FileWriter reg;
-Screen screen = new Screen();
 Date now = new Date();
 SimpleDateFormat fmtDate = new SimpleDateFormat("dd/MM/yyyy");
 SimpleDateFormat fmtHour = new SimpleDateFormat("HH:mm");
@@ -47,142 +44,100 @@ Dado(/que o usuário selecione o botão Nova Tarefa/) { ->
 	reg.close();
 
   waitFor(30) {
-    page.btntarefa.click()
+    page.btnTarefa.click()
   }
-
-  Thread.sleep(2000)
 
 }
 
-E(/seja aberto um modal onde o Template em branco deve estar definido como default/) { ->
+Quando(/criar tarefa a partir de um template em branco/) { ->
 
-  assert $(By.className("ant-modal-content")).isDisplayed() 
-  
-  $(By.xpath("//*[contains(@title, 'Template em branco')]")).isDisplayed()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("task-template-item-title"), 'Em Branco'));
+
+  at PageTarefa
+
+  waitFor(30) {
+    page.btnCreateTask.click()
+  }
 
 }
 
-E(/haverá a opção de escolher um exemplo/) { ->
+Então(/a plataforma exibirá o seguinte display: {string}/) { String msgSuccess ->
 
-  /*for(String winHandle : browser.driver.getWindowHandles()){
-	browser.driver.switchTo().window(winHandle);
-  }
-
-  browser.driver.switchTo().activeElement();*/
-
-  browser.driver.executeScript("document.querySelector('#newTaskForm > div:nth-child(1) > div.ant-col.ant-form-item-control > div > div > div > div > span.ant-select-selection-item').click()")
-  
-  Settings.ActionLogs = null != null;
-  screen.type(Key.ENTER);
-
-  Thread.sleep(2000)
-
-  def comboBox = $(By.className("rc-virtual-list-holder-inner")).isDisplayed()
-  assert comboBox == true
-
-  screen.type(Key.ENTER);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(), 'Criando Nova Tarefa')]")));
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//span[contains(text(), 'Tarefa criada com sucesso.')]"), msgSuccess));
 
 }
 
-E(/nomear a Tarefa com o nome inicial de: {string}/) { String nomeEd ->
+E(/o nome default da tarefa será: {string}/) { String nameTask ->
 
-  def nomeTarefa = nomeEd + " " + NumberGerador.number()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), nameTask));
 
-  waitFor(10) {
-    page.campnametask.value(nomeTarefa)
-  }
+  def taskName = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span")).text()
+  repo.add("Nome Tarefa", taskName)
 
-  repo.add("Nome Tarefa", nomeTarefa)
-
-  //Armazena o nome do projeto gerado para ser utilizado por outros cenários
+  //Armazena o nome da tarefa gerado por default para ser utilizado por outros cenários
 	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt"), true);
 	reg.write("+---------------------------------------------------------+\n"
-			    + "| Nome da tarefa criada: " + nomeTarefa + "           |\n"
+			    + "| Nome da tarefa por default: " + taskName + "        |\n"
 			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
 }
 
-E(/inserir a Descrição: {string}/) { String desc ->
+E(/os seguintes campos estarão presentes para entrada de dados: {string}, {string}, {string}, {string}, {string} e {string}/) { String description, String category, String inputData, String outputData, String searchTags, String documentation ->
 
-  waitFor(30) {
-    page.campdesctask.value(desc)
-  }
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
 
-  repo.add("Descrição", desc)
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='task-details-page-content-form-field-label'][text()='"+description+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='DESCRIPTION'][contains(@placeholder, 'Adicionar Descrição')]"))).isDisplayed();
 
-  Thread.sleep(2000)
-  
-}
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='task-details-page-content-form-field-label'][text()='"+category+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='ant-select-selection-item'][contains(@title, 'Minhas Tarefas')]"))).isDisplayed();
 
-Quando (/clicar no botão Criar Notebooks/) { ->
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div[1]/div[3]/label/span[text()='"+inputData+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='INPUT_DATA'][contains(@placeholder, 'Adicionar dados de entrada')]"))).isDisplayed();
 
-  waitFor(10) {
-    page.btnCriarTask.click()
-  }
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div[1]/div[4]/label/span[text()='"+outputData+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='OUTPUT_DATA'][contains(@placeholder, 'Adicionar dados de saída')]"))).isDisplayed();
 
-  Thread.sleep(1000)
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div[1]/div[5]/label/span[text()='"+searchTags+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(@value, 'DEFAULT')]"))).isDisplayed();
 
-}
-
-Então(/o sistema exibirá a seguinte mensagem: {string}/) { String msgSuccess ->
-
-  assert $(By.className("ant-message-success")).isDisplayed()
-
-  assert $(By.xpath("//*[contains(text(), '"+msgSuccess+"')]")).isDisplayed()
-
-  Thread.sleep(1000)
-   
-}
-
-E(/o modal será resetado e fechado/) { ->
-
-  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
-  browser.driver.switchTo().window(abas.get(0));
-
-  def modal = $(By.className("ant-modal-content")).isDisplayed()
-  assert modal == false
-
-}
-
-E(/irá abrir uma nova tela do JupyterLab: {string}/) { String jupyter ->
-
-  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
-  browser.driver.switchTo().window(abas.get(1));
-
-  //browser.driver.switchTo().defaultContent();
-
-  def labJupyter = $(By.xpath("/html/body/div/section/section/div/div/div[2]")).text()
-  assert labJupyter == jupyter
-
-  Thread.sleep(2000)
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='task-details-page-content-form-field-label'][text()='"+documentation+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='DOCUMENTATION'][contains(@placeholder, 'Adicionar documentação')]"))).isDisplayed();
 
 }
 
 E(/a tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética/) { ->
 
-  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
-  browser.driver.switchTo().window(abas.get(0));
+  waitFor(30) {
+    $(By.className("ant-page-header-back-button")).click()
+  }
 
-  $(By.xpath("//*[contains(@title, '4')]")).click()
+  waitFor(30) {
+    $(By.xpath("//*[contains(@title, '4')]")).click()
+  }
 
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   def tarefaNome = repo.get("Nome Tarefa")
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+tarefaNome+"']")).isDisplayed()
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+tarefaNome+"']"))).isDisplayed();
 
-  Thread.sleep(2000)
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+tarefaNome+"']")).isDisplayed()
    
 }
 
 E(/as informações das tarefas estarão divididas em quatro colunas: {string}, {string}, {string} e {string}/) { String nomeTarefa, String desc, String origem, String action -> 
   
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]/strong[text()='"+nomeTarefa+"']")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]/strong[text()='"+nomeTarefa+"']")).isDisplayed()
 
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/strong[text()='"+desc+"']")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[2]/strong[text()='"+desc+"']")).isDisplayed()
 
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[3]/strong[text()='"+origem+"']")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[3]/strong[text()='"+origem+"']")).isDisplayed()
 
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[4]/strong[text()='"+action+"']")).isDisplayed()
-
-  Thread.sleep(2000)
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[4]/strong[text()='"+action+"']")).isDisplayed()
 
 }

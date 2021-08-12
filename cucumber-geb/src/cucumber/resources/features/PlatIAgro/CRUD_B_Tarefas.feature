@@ -10,69 +10,63 @@ Contexto: Acessar a página Tarefas na Plataforma
   Então a tela inicial da página 'Tarefas' será exibida com êxito
 
 @CRUDTAREFA
-Cenário: C01 - Criar Tarefa
+Cenário: C01 - Criar Tarefa - Em Branco - Default
  Dado que o usuário selecione o botão Nova Tarefa
- E seja aberto um modal onde o Template em branco deve estar definido como default
- E haverá a opção de escolher um exemplo
- E nomear a Tarefa com o nome inicial de: 'Tarefa - Teste'
- E inserir a Descrição: 'Teste - Funcionalidade: Criar Tarefa'
- Quando clicar no botão Criar Notebooks
- Então o sistema exibirá a seguinte mensagem: 'Tarefa criada com sucesso.'
- E o modal será resetado e fechado
- E irá abrir uma nova tela do JupyterLab: 'Aguarde, o JupyterLab está sendo preparado...'
+ Quando criar tarefa a partir de um template em branco
+ Então a plataforma exibirá o seguinte display: 'Tarefa criada com sucesso.'
+ E o nome default da tarefa será: 'Tarefa em branco - 1'
+ E os seguintes campos estarão presentes para entrada de dados: 'Descrição', 'Categoria', 'Dados de Entrada', 'Dados de Saída', 'Tags de Busca' e 'Documentação'
  E a tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
  E as informações das tarefas estarão divididas em quatro colunas: 'Nome da Tarefa', 'Descrição', 'Origem' e 'Ação'
 
 @CRUDTAREFA
-Cenário: C02 - Criar Tarefa - Nome Repetido
+Cenário: C02- Alterar nome da Tarefa - Cancelar
+ Dado que o usuário escolha uma das Tarefas da lista para editar
+ E clique no ícone para editar
+ E limpar o campo nome
+ E renomear a Tarefa: 'Tarefa Teste'
+ Quando efetuar o clique no botão Cancelar Edição
+ Então o nome da tarefa não deve ser alterado
+
+@CRUDTAREFA
+Cenário: C03 - Alterar nome da Tarefa - Efetivar
+ Dado que o usuário selecione a Tarefa criada anteriormente
+ E acione o clique no ícone para editar
+ E limpe o campo nome da tarefa
+ E alterar o nome da Tarefa: 'Tarefa Teste'
+ Quando confirmar a operação
+ Então uma mensagem de sucesso será exibida na tela: 'Alteração realizada com sucesso.'
+ E o nome da tarefa alterada será atualizada
+
+@CRUDTAREFA
+Cenário: C04 - Alterar a descrição, categoria, dados de entrada e saída, tags de busca e documentação - Tarefa
+ Dado que o usuário detalhe uma Tarefa existente
+ E altere a descrição com a seguinte informação: 'Teste - Alteração da descrição'
+ E insira uma nova categoria: 'Conjunto de dados'
+ E em dados de entrada registrar: 'Arquivo .csv com dados tabulares (um atributo por coluna), sem cabeçalho'
+ E para dados de saída registrar: 'Conjunto de dados em formato de matriz, com uma amostra por linha'
+ E escolha a palavra-chave para a tag de busca: 'TST'
+ E adicione a documentação: 'Teste - Adição da documentação'
+ Quando clicar fora dos campos descritivos
+ Então será exibida na tela uma mensagem de sucesso: 'Alteração realizada com sucesso.'
+ E as alterações nos detalhes da tarefa serão efetivados
+
+@CRUDTAREFA_TST
+Cenário: C05 - Criar Tarefa - Nome Repetido
  Dado que o usuário clique no botão Nova Tarefa
- E abra um modal para escolher um exemplo ou um template em branco para criar nova tarefa
- E nomear a Tarefa: 'Regressor MLP'
- E inserir a seguinte descrição: 'Teste - Nome Repetido'
- Quando realizar o clique no botão Criar Notebooks
+ E demande a criação da tarefa a partir de um template em branco
+ E nomeie a Tarefa com uma designação existente: 'Regressor MLP'
+ Quando realizar o clique no botão Salvar
  Então o sistema deverá exibir a mensagem impeditiva: 'Já existe uma tarefa com este nome!'
 
 @CRUDTAREFA
-Cenário: C03 - Criar Tarefa Operação: Cancelar
- Dado que o usuário acione o botão Nova Tarefa
- E um modal seja aberto onde o Template em branco deve estar definido como default
- E entrar com o nome para a Tarefa: 'Tarefa Teste'
- E inserir a descrição: 'Teste - Operação: Cancelar'
- Quando clicar no botão Cancelar
- Então o sistema fará com que o modal seja resetado e fechado
- E nenhuma tarefa será criada
-
-@CRUDTAREFA
-Cenário: C04- Alterar nome e descrição da Tarefa - Cancelar
- Dado que o usuário escolha uma das Tarefas da lista para editar
- E limpar o campo nome
- E renomear a Tarefa: 'Tarefa Teste'
- E inserir uma nova descrição: 'Alterar Nome e Descrição - CANCELAR'
- Quando efetuar o clique no botão Cancelar
- Então o sistema deve fechar modal
- E o nome e a descrição da tarefa não devem ser alterados
-
-@CRUDTAREFA
-Cenário: C05 - Alterar nome e descrição da Tarefa
- Dado que o usuário selecione a Tarefa criada anteriormente
- E um modal seja aberto, com o atual nome da tarefa selecionada
- E limpe o campo nome da tarefa
- E alterar o nome da Tarefa, acrescentando ao final: 'Alter'
- E informar uma nova descrição: 'Teste - Alterar Nome e Descrição'
- Quando confirmar a operação
- Então o modal será fechado
- E uma mensagem de sucesso será exibida na tela: 'Alteração realizada com sucesso.'
- E o nome e a descrição da tarefa alterados serão atualizados
-
-@CRUDTAREFA
 Cenário: C06- Copiar Tarefa
- Dado que o usuário faça uma Cópia, de uma das Tarefas na lista, localizado na coluna Ação - Mais
- E será aberto um modal
- E os valores nos campos template e descrição serão os mesmos da tarefa selecionada para cópia
- E no campo nome estará preenchido com o nome da tarefa seguido por 'cópia'
- Quando o usuário selecionar o botão Criar Notebooks
- Então terá a cópia da 'Tarefa criada com sucesso.'
- E abrirá uma nova tela do JupyterLab: 'Aguarde, o JupyterLab está sendo preparado...'
+ Dado que o usuário acione o botão Mais, localizado na coluna Ação, de uma das Tarefas na lista
+ E um popover seja aberto
+ Quando demandar o ato de fazer uma cópia
+ Então a plataforma exibirá na página de detalhes a mensagem: 'Tarefa criada com sucesso.'
+ E no campo nome da Tarefa estará preenchido com a designação default
+ E o valor do campo da descrição será o mesmo da tarefa selecionada para cópia
  E a cópia da tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
 
 @CRUDTAREFA

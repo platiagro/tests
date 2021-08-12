@@ -7,7 +7,7 @@ import org.openqa.selenium.Keys
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-Dado(/que o usuário faça uma Cópia, de uma das Tarefas na lista, localizado na coluna Ação - Mais/) { ->
+Dado(/que o usuário acione o botão Mais, localizado na coluna Ação, de uma das Tarefas na lista/) { ->
 
   for (int i=0; i<2; i++){
     println " "
@@ -17,28 +17,57 @@ Dado(/que o usuário faça uma Cópia, de uma das Tarefas na lista, localizado n
     $(By.xpath("//*[contains(@title, '4')]")).click()
   }
 
-  def desc = $(By.xpath("/html/body/div[1]/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/span")).text()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
+                       
+  def desc = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[2]/span")).text()
   repo.add("Descrição", desc)
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[4]/div/div[3]/button")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()          
   }
+
+}
+
+E(/um popover seja aberto/) { ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-popover-content"))).isDisplayed();
+
+  assert $(By.className("ant-popover-content")).isDisplayed()
+
+}
+
+Quando(/demandar o ato de fazer uma cópia/) { ->
 
   waitFor(10){
     $(By.xpath("//*[contains(text(), 'Fazer uma cópia')]")).click()
   }
 
-  Thread.sleep(2000)
+}
+
+Então(/a plataforma exibirá na página de detalhes a mensagem: {string}/) { String msgSuccess ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//span[contains(text(), 'Tarefa criada com sucesso.')]"), msgSuccess));
 
 }
 
-E(/será aberto um modal/) { ->
+E(/no campo nome da Tarefa estará preenchido com a designação default/) { ->
 
-  assert $(By.className("ant-modal-content")).isDisplayed()  
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+
+  def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), nomeTarefa));
+  assert $(By.xpath("//*[contains(@value, '"+nomeTarefa+"')]")).isDisplayed()
+
+  String nomeCopiado = browser.driver.findElement(By.id("name")).getAttribute("value")
+  repo.add("Tarefa Copiada", nomeCopiado)
 
 }
 
-E(/os valores nos campos template e descrição serão os mesmos da tarefa selecionada para cópia/) { ->
+E(/o valor do campo da descrição será o mesmo da tarefa selecionada para cópia/) { ->
 
   def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(13).substring(27).split("\\|")[0].trim();
   assert $(By.xpath("//*[contains(@title, '"+nomeTarefa+"')]")).isDisplayed()
@@ -46,16 +75,6 @@ E(/os valores nos campos template e descrição serão os mesmos da tarefa selec
   String description = repo.get("Descrição")
   String copyDesc = browser.driver.findElement(By.xpath("//*[@id='description']")).getAttribute("innerHTML")
   Assert.assertEquals(description, copyDesc);
-
-}
-
-E(/no campo nome estará preenchido com o nome da tarefa seguido por {string}/) { String nameTask ->
-
-  def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(13).substring(27).split("\\|")[0].trim();
-  assert $(By.xpath("//*[contains(@value, '"+nomeTarefa+" "+nameTask+"')]")).isDisplayed()
-
-  String nomeCopiado = browser.driver.findElement(By.id("name")).getAttribute("value")
-  repo.add("Tarefa Copiada", nomeCopiado)
 
 }
 

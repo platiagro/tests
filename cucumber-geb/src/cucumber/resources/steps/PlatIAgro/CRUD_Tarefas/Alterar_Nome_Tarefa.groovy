@@ -4,8 +4,12 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.apache.commons.io.FileUtils
 import org.testng.Assert
+
+import helper.utility.NumberGerador
 
 Dado(/que o usuário selecione a Tarefa criada anteriormente/) { ->
 
@@ -17,107 +21,79 @@ Dado(/que o usuário selecione a Tarefa criada anteriormente/) { ->
     $(By.xpath("//*[contains(@title, '4')]")).click()
   }
 
-  def nomeTar = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(25).split("\\|")[0].trim();
+  def nomeTar = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+nomeTar+"']")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+nomeTar+"']")).click()
   }
-
-  Thread.sleep(2000)
 
 }
 
-E(/um modal seja aberto, com o atual nome da tarefa selecionada/) { ->  
-  
-  def modal = $(By.className("ant-modal-content")).isDisplayed()
-  assert modal == true
-  
-  def nomeProj = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(25).split("\\|")[0].trim();
-  assert $(By.xpath("//*[contains(@value, '"+nomeProj+"')]")).isDisplayed()
+E(/acione o clique no ícone para editar/) { ->  
+  at PageTarefa
+
+  waitFor(10) {
+    page.iconEdit.click()
+  }
 
 }
 
 E(/limpe o campo nome da tarefa/) { ->
+  at PageTarefa
 
   waitFor(10) {
     String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
-    $(By.xpath("//*[@id='name']")).value(del)
+    page.fieldNameTask.value(del)
   }
 
 }
 
-E(/alterar o nome da Tarefa, acrescentando ao final: {string}/) { String nameAlter ->
+E(/alterar o nome da Tarefa: {string}/) { String nameAlter ->
+  at PageTarefa
 
-  def nomeTar = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(34).split("\\|")[0].trim();
-  def nomeTarAlter = nomeTar + " " + nameAlter
+  def nomeTarAlter = nameAlter + " " + NumberGerador.number()
 
   waitFor(10) {
-    $(By.xpath("//*[@id='name']")).value(nomeTarAlter)
+    page.fieldNameTask.value(nomeTarAlter)
   }
 
   repo.add("Nome Tarefa Alterada", nomeTarAlter)
 
-  //Armazena o nome do projeto alterado para controle
+  //Armazena o nome da tarefa alterada para controle
 	reg = new FileWriter((System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt"), true);
 	reg.write("+---------------------------------------------------------+\n"
-		    + "| Nome da tarefa alterada: " + nomeTarAlter + "            |\n"
-			+ "+---------------------------------------------------------+\n");
+		      + "| Nome da tarefa alterada: " + nomeTarAlter + "           |\n"
+			    + "+---------------------------------------------------------+\n");
 	reg.close();
 
 }
 
-E(/informar uma nova descrição: {string}/) { String descAlter ->
-
-  waitFor(10) {
-    $(By.xpath("//*[@id='description']")).value(descAlter)
-  }
-
-  repo.add("Descrição Alterada", descAlter)
-
-  Thread.sleep(2000)
-  
-}
-
 Quando(/confirmar a operação/) { ->
+  at PageTarefa
 
   waitFor(10) {
-    page.btneditTask.click()
+    page.btnSave.click()
   }
 
-  Thread.sleep(2000)
+}
+
+Então(/uma mensagem de sucesso será exibida na tela: {string}/) { String msgSuccess ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//span[contains(text(), 'Alteração realizada com sucesso.')]"), msgSuccess));
 
 }
 
-Então(/o modal será fechado/) { ->
+E(/o nome da tarefa alterada será atualizada/) { ->
 
-  def modal = $(By.className("ant-modal-content")).isDisplayed()
-  assert modal == false
-
-}
-
-E(/uma mensagem de sucesso será exibida na tela: {string}/) { String msgSuccess ->
-
-  assert $(By.className("ant-message-notice")).isDisplayed()
-
-  //String displaySucess = $(By.xpath("//*[contains(text(), '"+msgSuccess+"')]")).text()
-  //Assert.assertEquals(msgSuccess, displaySucess);
-
-  assert $(By.xpath("//*[contains(text(), '"+msgSuccess+"')]")).isDisplayed()
-
-  Thread.sleep(2000)
-
-}
-
-E(/o nome e a descrição da tarefa alterados serão atualizados/) { ->
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
 
   String minhaTarefaAlterada = repo.get("Nome Tarefa Alterada");
-  String myTaskAlter = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+minhaTarefaAlterada+"']")).text();
+
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), minhaTarefaAlterada));
+
+  String myTaskAlter = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span[text()='"+minhaTarefaAlterada+"']")).text();
   assert minhaTarefaAlterada.contains(myTaskAlter)
-
-  String descAlterado = repo.get("Descrição Alterada");
-  String descriptionAlter = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[2]/span[text()='"+descAlterado+"']")).text();
-  assert descAlterado.contains(descriptionAlter)
-
-  Thread.sleep(1000)
 
 }
