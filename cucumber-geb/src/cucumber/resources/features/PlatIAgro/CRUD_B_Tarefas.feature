@@ -51,14 +51,6 @@ Cenário: C04 - Alterar a descrição, categoria, dados de entrada e saída, tag
  Então será exibida na tela uma mensagem de sucesso: 'Alteração realizada com sucesso.'
  E as alterações nos detalhes da tarefa serão efetivados
 
-@CRUDTAREFA_TST
-Cenário: C05 - Criar Tarefa - Nome Repetido
- Dado que o usuário clique no botão Nova Tarefa
- E demande a criação da tarefa a partir de um template em branco
- E nomeie a Tarefa com uma designação existente: 'Regressor MLP'
- Quando realizar o clique no botão Salvar
- Então o sistema deverá exibir a mensagem impeditiva: 'Já existe uma tarefa com este nome!'
-
 @CRUDTAREFA
 Cenário: C06- Copiar Tarefa
  Dado que o usuário acione o botão Mais, localizado na coluna Ação, de uma das Tarefas na lista
@@ -66,8 +58,16 @@ Cenário: C06- Copiar Tarefa
  Quando demandar o ato de fazer uma cópia
  Então a plataforma exibirá na página de detalhes a mensagem: 'Tarefa criada com sucesso.'
  E no campo nome da Tarefa estará preenchido com a designação default
- E o valor do campo da descrição será o mesmo da tarefa selecionada para cópia
+ E os valores dos campos da página de detalhamento serão os mesmos da tarefa selecionada para cópia
  E a cópia da tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
+
+@CRUDTAREFA
+Cenário: C05 - Tarefa - Nome Repetido
+ Dado que o usuário clique no botão Nova Tarefa
+ E demande a criação da tarefa a partir de um template em branco
+ E nomeie a Tarefa com uma designação existente: 'Regressor MLP'
+ Quando realizar o clique no botão Salvar
+ Então o sistema deverá exibir a mensagem impeditiva: 'Já existe uma tarefa com este nome!'
 
 @CRUDTAREFA
 Cenário: C07 - Filtrar Tarefa - Pesquisar nome

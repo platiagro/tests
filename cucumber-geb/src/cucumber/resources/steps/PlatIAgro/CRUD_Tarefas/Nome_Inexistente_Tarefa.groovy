@@ -3,6 +3,8 @@ import pages.*
 import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário acione o ícone de pesquisa ao lado da coluna Nome da Tarefa/) { ->
@@ -12,28 +14,25 @@ Dado(/que o usuário acione o ícone de pesquisa ao lado da coluna Nome da Taref
   }
 
   waitFor(10) {
-    page.iconpesq.click()
+    page.iconPesq.click()
   }
-
-  Thread.sleep(2000)
 
 }
 
 E(/o modal para pesquisa tenha a sua abertura realizada/) { ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-filter-dropdown"))).isDisplayed();
   
   assert $(By.className("ant-table-filter-dropdown")).isDisplayed()
-
-  Thread.sleep(2000)
 
 }
 
 E(/insira um nome de uma tarefa inexistente/) { ->
   
   waitFor(10) {
-    page.camptask.value("Teste False")
+    page.fieldTask.value("Teste False")
   }
-
-  Thread.sleep(1000)
 
 }
 
@@ -43,13 +42,14 @@ Quando(/efetuar o clique no botão Search/) { ->
     page.btnSearch.click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 Então(/o sitema deve apresentar a página em branco: {string}/) { String noData ->
 
-  String pagBranco = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td/div/p")).text()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td/div/p"), noData));
+                                 
+  String pagBranco = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td/div/p")).text()
   assert pagBranco.contains(noData)
 
 }
@@ -57,16 +57,15 @@ Então(/o sitema deve apresentar a página em branco: {string}/) { String noData
 E(/deverá selecionar o botão Reset para a lista de Tarefas ser apresentada novamente/) { ->
   
   waitFor(10) {
-    page.iconpesq.click()
+    page.iconPesq.click()
   }
-
-  Thread.sleep(1000)
 
   waitFor(60){
-    page.btnreset.click() 
+    page.btnReset.click()
   }
 
-  Thread.sleep(1000)
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-tbody"))).isDisplayed();
 
   assert $(By.className("ant-table-tbody")).isDisplayed()
 

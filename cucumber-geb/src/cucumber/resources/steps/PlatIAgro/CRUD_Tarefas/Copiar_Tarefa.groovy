@@ -4,6 +4,8 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
@@ -21,7 +23,7 @@ Dado(/que o usuário acione o botão Mais, localizado na coluna Ação, de uma d
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
                        
   def desc = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[2]/span")).text()
-  repo.add("Descrição", desc)
+  repo.add("Descrição Copiada", desc)
 
   waitFor(10) {
     $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()          
@@ -60,67 +62,46 @@ E(/no campo nome da Tarefa estará preenchido com a designação default/) { ->
 
   def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), nomeTarefa));
-  assert $(By.xpath("//*[contains(@value, '"+nomeTarefa+"')]")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span[text()='"+nomeTarefa+"']")).isDisplayed()
 
-  String nomeCopiado = browser.driver.findElement(By.id("name")).getAttribute("value")
-  repo.add("Tarefa Copiada", nomeCopiado)
+  def nomeTarefaCopiado = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span")).text()
+  repo.add("Tarefa Copiada", nomeTarefaCopiado)
 
 }
 
-E(/o valor do campo da descrição será o mesmo da tarefa selecionada para cópia/) { ->
+E(/os valores dos campos da página de detalhamento serão os mesmos da tarefa selecionada para cópia/) { ->
 
-  def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(13).substring(27).split("\\|")[0].trim();
-  assert $(By.xpath("//*[contains(@title, '"+nomeTarefa+"')]")).isDisplayed()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
 
-  String description = repo.get("Descrição")
-  String copyDesc = browser.driver.findElement(By.xpath("//*[@id='description']")).getAttribute("innerHTML")
+  String descriptionCopy = repo.get("Descrição Copiada");
+
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='DESCRIPTION'][contains(@value, '"+descriptionCopy+"')]"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='ant-select-selection-item'][contains(@title, 'Conjunto de dados')]"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='INPUT_DATA'][contains(@value, 'Arquivo .csv com dados tabulares (um atributo por coluna), sem cabeçalho')]"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='OUTPUT_DATA'][contains(@value, 'Conjunto de dados em formato de matriz, com uma amostra por linha')]"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@value, 'TST')]"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='DOCUMENTATION'][contains(text(), 'Teste - Adição da documentação')]"))).isDisplayed();
+
+  String description = repo.get("Descrição Copiada")
+  String copyDesc = browser.driver.findElement(By.xpath("//*[@id='DESCRIPTION']")).getAttribute("value")
   Assert.assertEquals(description, copyDesc);
-
-}
-
-Quando(/o usuário selecionar o botão Criar Notebooks/) { ->
-
-  waitFor(10){
-    page.btnCriarTask.click()
-  }
-
-  Thread.sleep(1500)
-
-}
-
-Então (/terá a cópia da {string}/) { String copyTaskSuccess ->
-
-  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
-  browser.driver.switchTo().window(abas.get(0));
-
-  assert $(By.className("ant-message-success")).isDisplayed()
-
-  assert $(By.xpath("//*[contains(text(), '"+copyTaskSuccess+"')]")).isDisplayed()
-
-  Thread.sleep(2000)
-
-}
-
-E(/abrirá uma nova tela do JupyterLab: {string}/) { String jupyter ->
-
-  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
-  browser.driver.switchTo().window(abas.get(1));
-
-  def labJupyter = $(By.xpath("/html/body/div/section/section/div/div/div[2]")).text()
-  assert labJupyter == jupyter
-
-  Thread.sleep(2000)
 
 }
 
 E(/a cópia da tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética/) { ->
 
-  List<String> abas = new ArrayList<>(browser.driver.getWindowHandles());
-  browser.driver.switchTo().window(abas.get(0));
+  waitFor(30) {
+    $(By.className("ant-page-header-back-button")).click()
+  }
 
+  waitFor(30) {
+    $(By.xpath("//*[contains(@title, '4')]")).click()
+  }
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   def tarefaNome = repo.get("Tarefa Copiada")
-  assert $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+tarefaNome+"']")).isDisplayed()
-
-  Thread.sleep(2000)
+  def copyDesc = repo.get("Descrição Copiada")
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+tarefaNome+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[2]/span[text()='"+copyDesc+"']"))).isDisplayed();
    
 }

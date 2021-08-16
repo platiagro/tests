@@ -68,13 +68,13 @@ class PageTarefa extends BasePage {
    
     btneditTask {$(By.xpath("//*[contains(text(), 'Confirmar')]"))}
 
-    iconpesq {$(By.xpath("/html/body/div[1]/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[2]/span/span"))}
+    iconPesq {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[2]/span"))}
     
     btnSearch {$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[1]/button"))}
 
-    btnreset {$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[2]/button"))}
+    btnReset {$(By.xpath("/html/body/div[3]/div/div/div/div/div/div[2]/button"))}
 
-    camptask {$(By.xpath("/html/body/div[3]/div/div/div/div/input"))}
+    fieldTask {$(By.xpath("//html/body/div[3]/div/div/div/div/input"))}
 
    }
 }
