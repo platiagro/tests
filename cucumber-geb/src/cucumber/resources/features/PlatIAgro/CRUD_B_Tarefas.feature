@@ -87,7 +87,14 @@ Cenário: C08 - Filtrar Tarefa - Pesquisar nome inexistente
  E deverá selecionar o botão Reset para a lista de Tarefas ser apresentada novamente
 
 @CRUDTAREFA
- Cenário: C09 - Excluir Tarefa - Cancelar
+ Cenário: C09 - Excluir Tarefa - Relacionada a um Experimento
+ Dado que o usuário selecione para exclusão uma Tarefa da lista que esteja relacionada a um projeto com experimento
+ E a plataforma apresentar uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir essa tarefa?'
+ Quando for confirmada a operação de exclusão
+ Então a operação será cancelada, informando que a Tarefa está em uso: 'Não foi possível excluir esta tarefa, pois ela está associada a um experimento.'
+
+@CRUDTAREFA
+ Cenário: C10 - Excluir Tarefa - Cancelar
  Dado que o usuário, na coluna Ação da lista, clique em Excluir uma Tarefa
  E o sistema deve abrir uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir essa tarefa?'
  Quando selecionar o botão Não
@@ -95,17 +102,8 @@ Cenário: C08 - Filtrar Tarefa - Pesquisar nome inexistente
  E nenhuma tarefa será excluída
 
 @CRUDTAREFA
- Cenário: C10 - Excluir Tarefa
+ Cenário: C11 - Excluir Tarefa
  Dado que o usuário clique em Excluir, na coluna Ação, de uma Tarefa constante na lista
  E o sistema deve abrir uma pop-up exibindo a mensagem: 'Você tem certeza que deseja excluir essa tarefa?'
  Quando o usuário confirmar a operação
  Então a tarefa será excluída da lista
-
-#@CRUDTAREFA
- #Cenário: C11 - Excluir Tarefa - Relacionada a um Experimento
- #Dado que o usuário selecione uma Tarefa da lista que esteja relacionada a um projeto
- #E na coluna Ação clicar nos botões Mais e Excluir
- #E o sistema apresentar uma pop-up com a seguinte mensagem 'Você tem certeza que deseja excluir essa tarefa?'
- #Quando for confirmada a operação de exclusão
- #Então a operação será cancelada
- #E o sistema deverá informar que aquela Tarefa está em uso

@@ -4,13 +4,11 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.apache.commons.io.FileUtils
-
-import org.sikuli.script.Key
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
-Screen screen = new Screen();
 
 Dado(/que o usuário clique em Excluir, na coluna Ação, de uma Tarefa constante na lista/) { ->
 
@@ -22,19 +20,24 @@ Dado(/que o usuário clique em Excluir, na coluna Ação, de uma Tarefa constant
     $(By.xpath("//*[contains(@title, '4')]")).click()
   }
 
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
+
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[4]/div/div[3]/button/span[1]")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()
   }
 
   waitFor(10){
     $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 E(/o sistema deve abrir uma pop-up exibindo a mensagem: {string}/) { String msg ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-popconfirm"))).isDisplayed();
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[contains(text(), 'Você tem certeza que deseja excluir essa tarefa?')]"), msg));
 
   assert $(By.className("ant-popconfirm")).isDisplayed()
 
@@ -45,43 +48,41 @@ E(/o sistema deve abrir uma pop-up exibindo a mensagem: {string}/) { String msg 
 Quando(/o usuário confirmar a operação/) { ->
 
   waitFor(10) {
-    page.btnsim.click()
+    page.btnSim.click()
   }
-
-  Thread.sleep(2000)
 
 }
 
 Então (/a tarefa será excluída da lista/) { ->
 
-  def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(25).split("\\|")[0].trim();
-  def projDelete = $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span[text()='"+nomeTarefa+"']")).isDisplayed()                             
-  assert projDelete == false
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
 
-  Thread.sleep(2000)
+  def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();
 
-  waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[4]/div/div[3]/button/span[1]")).click()
-  }
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+nomeTarefa+"']")));
 
-  waitFor(10){
-    $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
-  }
+  def projDelete = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+nomeTarefa+"']")).isDisplayed()                             
+  assert projDelete == false            
 
-  Thread.sleep(2000)
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
 
-  /*waitFor(10) {
-    $(By.xpath("//*[@class='ant-btn-sm'][text()='Sim']")).click()
-  }*/
-
-  Settings.ActionLogs = null != null;
-  
   for (int i=0; i<=1; i++){
-    screen.type(Key.TAB);
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()
+    }
+
+    waitFor(10){
+      $(By.xpath("//*[contains(text(), 'Excluir')]")).click()
+    }
+
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-popconfirm"))).isDisplayed();
+
+    WebElement element = browser.driver.findElement(By.className("ant-popover-buttons"));
+    JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
+    jse.executeScript("arguments[0].getElementsByTagName('button')[1].click();", element);
+
+
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
   }
-
-  screen.type(Key.ENTER);
-
-  Thread.sleep(1000)
 
 }
