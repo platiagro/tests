@@ -34,7 +34,7 @@ pipeline {
         string(
             name: 'GRADLE_BDD_PARAM',
             description: "Parâmetros para a chamada do 'gradle bdd'",
-            defaultValue: '-Ptag=@CRUDPROJ@CRUDEXP@FLUXOIMP -Penv=chromeheadless',
+            defaultValue: '-Ptag=@CRUDPROJ@CRUDTAREFA@CRUDEXP@FLUXOIMP -Penv=chromeheadless',
             trim: true,
         )               
         string(
