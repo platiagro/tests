@@ -34,11 +34,7 @@ pipeline {
         choice(
             name: 'GRADLE_BDD_PARAM',
             description: "Parâmetros para a chamada do 'gradle bdd'",
-            choices: ['@CRUDPROJ@CRUDTAREFA@CRUDEXP@FLUXOIMP'],
-            choices: ['@CRUDPROJ'],
-            choices: ['@CRUDTAREFA'],
-            choices: ['@CRUDEXP'],
-            choices: ['@FLUXOIMP'],
+            choices: ['@CRUDPROJ@CRUDTAREFA@CRUDEXP@FLUXOIMP', '@CRUDPROJ', '@CRUDTAREFA', '@CRUDEXP', '@FLUXOIMP'],
         )               
         string(
             name: 'EMAIL',
@@ -108,7 +104,7 @@ pipeline {
         		    gradle -version
                                 
                             cd code/cucumber-geb
-                            gradle bdd "-Ptag=${GRADLE_BDD_PARAM} -Penv=chromeheadless"
+                            gradle bdd -Ptag=${GRADLE_BDD_PARAM} -Penv=chromeheadless
                         """
 	        }
             }
