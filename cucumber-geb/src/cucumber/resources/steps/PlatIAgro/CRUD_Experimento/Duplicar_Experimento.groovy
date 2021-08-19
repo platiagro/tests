@@ -145,7 +145,7 @@ E(/o botão Salvar como Template será desabilitado e aparecerá a função para
 
 E(/após efetivação cada tarefa será sinalizada como {string}/) { String success ->
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 70);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 120);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   assert $(By.xpath("//*[contains(text(), '"+success+"')]")).text()
