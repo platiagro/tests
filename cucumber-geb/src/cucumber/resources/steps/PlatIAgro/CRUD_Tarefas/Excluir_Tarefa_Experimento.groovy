@@ -22,8 +22,30 @@ Dado(/que o usuário selecione para exclusão uma Tarefa da lista que esteja rel
     $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]/span[1]")).click()
   }
 
-  waitFor(30) {
-    $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+  Thread.sleep(1000)
+
+  List<WebElement> search = browser.driver.findElements(By.className("myProjectsEmptyPlaceholder"));
+  int check = search.size();
+  if (check!=0) {
+    waitFor(30) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+  } else {
+    waitFor(10) {
+      $(By.xpath("/html/body/div[1]/section/section/div[2]/div/div/div/div/div/div/div/table/thead/tr/th[1]/div/label/span/input")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button[2]/span[2]")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[contains(text(), 'Sim')]")).click()
+    }
+    waitFor(10) {
+      $(By.xpath("//*[@id='root']/section/section/div[2]/button/span[2]")).click()
+    }
+    Thread.sleep(1000)
+    WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
   }
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 30);

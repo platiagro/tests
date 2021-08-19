@@ -9,7 +9,7 @@ Contexto: Acessar a página Tarefas na Plataforma
   Quando acessar a página de Tarefas
   Então a tela inicial da página 'Tarefas' será exibida com êxito
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C01 - Criar Tarefa - Em Branco - Default
  Dado que o usuário selecione o botão Nova Tarefa
  Quando criar tarefa a partir de um template em branco
@@ -19,7 +19,7 @@ Cenário: C01 - Criar Tarefa - Em Branco - Default
  E a tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
  E as informações das tarefas estarão divididas em quatro colunas: 'Nome da Tarefa', 'Descrição', 'Origem' e 'Ação'
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C02- Alterar nome da Tarefa - Cancelar
  Dado que o usuário escolha uma das Tarefas da lista para editar
  E clique no ícone para editar
@@ -28,7 +28,7 @@ Cenário: C02- Alterar nome da Tarefa - Cancelar
  Quando efetuar o clique no botão Cancelar Edição
  Então o nome da tarefa não deve ser alterado
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C03 - Alterar nome da Tarefa - Efetivar
  Dado que o usuário selecione a Tarefa criada anteriormente
  E acione o clique no ícone para editar
@@ -38,7 +38,7 @@ Cenário: C03 - Alterar nome da Tarefa - Efetivar
  Então uma mensagem de sucesso será exibida na tela: 'Alteração realizada com sucesso.'
  E o nome da tarefa alterada será atualizada
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C04 - Alterar a descrição, categoria, dados de entrada e saída, tags de busca e documentação - Tarefa
  Dado que o usuário detalhe uma Tarefa existente
  E altere a descrição com a seguinte informação: 'Teste - Alteração da descrição'
@@ -51,7 +51,7 @@ Cenário: C04 - Alterar a descrição, categoria, dados de entrada e saída, tag
  Então será exibida na tela uma mensagem de sucesso: 'Alteração realizada com sucesso.'
  E as alterações nos detalhes da tarefa serão efetivados
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C06- Copiar Tarefa
  Dado que o usuário acione o botão Mais, localizado na coluna Ação, de uma das Tarefas na lista
  E um popover seja aberto
@@ -61,7 +61,7 @@ Cenário: C06- Copiar Tarefa
  E os valores dos campos da página de detalhamento serão os mesmos da tarefa selecionada para cópia
  E a cópia da tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C05 - Tarefa - Nome Repetido
  Dado que o usuário clique no botão Nova Tarefa
  E demande a criação da tarefa a partir de um template em branco
@@ -69,7 +69,7 @@ Cenário: C05 - Tarefa - Nome Repetido
  Quando realizar o clique no botão Salvar
  Então o sistema deverá exibir a mensagem impeditiva: 'Já existe uma tarefa com este nome!'
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C07 - Filtrar Tarefa - Pesquisar nome
  Dado que o usuário selecione o ícone de pesquisa ao lado da coluna Nome da Tarefa
  E o modal para pesquisa seja aberto
@@ -77,7 +77,7 @@ Cenário: C07 - Filtrar Tarefa - Pesquisar nome
  Quando clicar no botão Search
  Então o sistema deve apresentar a Tarefa que possui o nome inserido no campo de pesquisa
 
-@CRUDTAREFA
+@TAREFA
 Cenário: C08 - Filtrar Tarefa - Pesquisar nome inexistente
  Dado que o usuário acione o ícone de pesquisa ao lado da coluna Nome da Tarefa
  E o modal para pesquisa tenha a sua abertura realizada
@@ -86,14 +86,14 @@ Cenário: C08 - Filtrar Tarefa - Pesquisar nome inexistente
  Então o sitema deve apresentar a página em branco: 'Não há dados'
  E deverá selecionar o botão Reset para a lista de Tarefas ser apresentada novamente
 
-@CRUDTAREFA
+@TAREFA
  Cenário: C09 - Excluir Tarefa - Relacionada a um Experimento
  Dado que o usuário selecione para exclusão uma Tarefa da lista que esteja relacionada a um projeto com experimento
  E a plataforma apresentar uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir essa tarefa?'
  Quando for confirmada a operação de exclusão
  Então a operação será cancelada, informando que a Tarefa está em uso: 'Não foi possível excluir esta tarefa, pois ela está associada a um experimento.'
 
-@CRUDTAREFA
+@TAREFA
  Cenário: C10 - Excluir Tarefa - Cancelar
  Dado que o usuário, na coluna Ação da lista, clique em Excluir uma Tarefa
  E o sistema deve abrir uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir essa tarefa?'
@@ -101,7 +101,7 @@ Cenário: C08 - Filtrar Tarefa - Pesquisar nome inexistente
  Então a operação será cancelada
  E nenhuma tarefa será excluída
 
-@CRUDTAREFA
+@TAREFA
  Cenário: C11 - Excluir Tarefa
  Dado que o usuário clique em Excluir, na coluna Ação, de uma Tarefa constante na lista
  E o sistema deve abrir uma pop-up exibindo a mensagem: 'Você tem certeza que deseja excluir essa tarefa?'

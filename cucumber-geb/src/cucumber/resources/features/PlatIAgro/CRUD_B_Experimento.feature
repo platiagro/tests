@@ -8,7 +8,7 @@ Contexto: Acessar a página Meus Projetos na Plataforma
   Quando a plataforma PlatIAgro for acessada
   Então será exibida com sucesso a tela inicial da página 'Meus projetos'
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C01 - Visualização de Dados do Upload
  Dado que o usuário demande o clique no botão Novo Projeto
  E o sistema abra um modal, com o nome 'Novo Projeto' selecionado
@@ -29,7 +29,7 @@ Cenário: C01 - Visualização de Dados do Upload
  E selecionar o botão Visualizar Dados
  Então a tela de visualização de dados vai ser aberta
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C02 - Criar um Experimento com Sucesso
  Dado que o usuário volte ao fluxo
  E abra o menu Engenharia de Atributos
@@ -46,7 +46,7 @@ Cenário: C02 - Criar um Experimento com Sucesso
  Então um modal será aberto
  E o usuário poderá visualizar o valor do Dataset e dos Parâmetros
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C03 - Criar um Experimento com Erro
  Dado que o usuário demande a criação de um novo Projeto
  E um novo experimento seja criado, nomeado como: 'Experimento 1'
@@ -65,7 +65,7 @@ Cenário: C03 - Criar um Experimento com Erro
  E o usuário poderá visualizar o motivo no Histórico de Erros e Mensagens
  E ao selecionar o botão Ver código no Jupyter o usuário poderá ver mais detallhes do erro na execução
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C04 - Alterar Nome de um Experimento
  Dado que o usuário selecione um projeto presente na listagem
  E selecione o card experimento
@@ -78,7 +78,7 @@ Cenário: C04 - Alterar Nome de um Experimento
  Então o modal será resetado
  E o nome do experimento será alterado com sucesso
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C05 - Duplicar Experimento
  Dado que o usuário selecione um projeto da lista
  E efetue o clique no card experimento
@@ -95,7 +95,7 @@ Cenário: C05 - Duplicar Experimento
  E após efetivação cada tarefa será sinalizada como 'Treinamento concluído'
  E os botões acima do fluxo de experimento serão habilitados
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C06 - Comparar Resultados
  Dado que o usuário selecione um projeto com N Experimentos
  E na página onde há os experimentos do projeto selecionar o botão Comparar Resultados
@@ -104,7 +104,7 @@ Cenário: C06 - Comparar Resultados
  Quando selecionar os experimentos em conjunto com as tarefas para comparação
  Então será exibido os resultados, as métricas e os parâmetros da tarefa selecionada
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C07 - Salvar Como Template
  Dado que o usuário selecione um projeto da lista de Projetos
  E na página do experimento selecionar o botão Salvar como template
@@ -117,7 +117,7 @@ Cenário: C07 - Salvar Como Template
  Então o menu Templates ficará visível no Armazém de Tarefas
  E o template será salvo nesse menu
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C08 - Adicionar Template ao Fluxo
  Dado que o usuário deseje criar um novo Projeto
  E selecione o botão Novo experimento
@@ -127,7 +127,7 @@ Cenário: C08 - Adicionar Template ao Fluxo
  Quando selecionar o template salvo anteriormente para adicionar ao fluxo
  Então o usuário poderá iniciar seu novo experimento
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C09 - Interromper Execução
  Dado que o usuário tenha um projeto com tarefas no fluxo da experimentação
  E o usuário selecionar o botão Executar
@@ -136,7 +136,7 @@ Cenário: C09 - Interromper Execução
  Então a mensagem 'Interrompendo execução...' deve ser exibida no topo da tela
  E será exibida na finalização do processo de interrupção a mensagem: 'Treinamento interrompido!'
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C10 - Preparar para Implantação
  Dado que o usuário selecione um projeto com experimentos associados
  E selecione o botão Preparar para a implantação
@@ -146,13 +146,13 @@ Cenário: C10 - Preparar para Implantação
  Então o sistema irá indicar que os experimentos foram implantados: 'Experimento implantado!'
  E será direcionado para a página de fluxos implantados: 'Pré-implantação'
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C11 - Excluir Tarefa
 Dado que seja selecionado um projeto na listagem que possua experimento associado
 Quando selecionar a Tarefa presente no fluxo de experimento para remover
 Então a tarefa será removida do fluxo de experimento com o sistema apresentando: 'Operador removido com sucesso!'
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C12 - Resetar a Exclusão do Experimento
 Dado que o usuário selecione a função Excluir, ao lado do nome do Experimento
 E uma pop-up com a seguinte mensagem 'Excluir o experimento?' for exibida
@@ -160,7 +160,7 @@ Quando for selecionado o botão Não
 Então o pop-up será fechado
 E o experimento não será excluído
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C13 - Excluir Experimento
 Dado que o usuário faça a seleção da função Excluir, ao lado do nome do Experimento
 E uma pop-up com a seguinte mensagem for exibida: 'Excluir o experimento?'
@@ -168,7 +168,7 @@ Quando for selecionado o botão Sim
 Então será fechado o pop-up
 E o experimento será excluído
 
-@CRUDEXP
+@EXPERIMENTO
 Cenário: C14 - Excluir Template
 Dado que o usuário selecione no armazém de tarefas o template salvo
 Quando for requisitada a remoção do template

@@ -8,7 +8,7 @@ Contexto: Acessar a página Meus Projetos na Plataforma
   Quando acessar a plataforma PlatIAgro
   Então a tela inicial da página 'Meus projetos' será exibida com sucesso
 
-@CRUDPROJ
+@PROJETO
 Cenário: C01 - Criar Projeto - Operação: Criar
  Dado que o usuário clique no botão Novo Projeto
  E o sistema abra um modal com o nome 'Novo Projeto' selecionado
@@ -25,14 +25,14 @@ Cenário: C01 - Criar Projeto - Operação: Criar
  Então o usuário ao retornar para a página 'Meus projetos' deverá observar se o novo projeto foi adicionado à lista de projetos
  E deverá estar divididos em cinco colunas: 'Nome do Projeto', 'Descrição', 'Tags', 'Última modificação' e 'Ação'
 
-@CRUDPROJ
+@PROJETO
 Cenário:C02 - Criar Projeto - Operação: Cancelar
  Dado que o usuário efetue o clique no botão Novo Projeto
  E o sistema abrir um modal com o nome 'Novo Projeto' selecionado
  Quando realizar o clique no botão Cancelar
  Então o modal deve ser resetado e fechado
 
-@CRUDPROJ
+@PROJETO
 Cenário:C03 - Criar Projeto - Nome repetido
  Dado que o usuário realize o clique no botão Novo Projeto
  E o sistema demandar a abertura do modal com o nome 'Novo Projeto' selecionado
@@ -42,7 +42,7 @@ Cenário:C03 - Criar Projeto - Nome repetido
  Quando for demandado o clique no botão Criar
  Então o sistema deverá informar que 'Já existe um projeto com este nome!'
 
-@CRUDPROJ
+@PROJETO
 Cenário:C05 - Alterar nome do Projeto - Operação: Salvar Alteração
  Dado que o usuário detalhe o Projeto criado anteriormente
  E selecione o botão Editar, ao lado do nome do projeto
@@ -53,7 +53,7 @@ Cenário:C05 - Alterar nome do Projeto - Operação: Salvar Alteração
  E clicar no botão para salvar a alteração: 'Projeto salvo!'
  Então o nome e a descrição do projeto serão atualizados
 
-@CRUDPROJ
+@PROJETO
 Cenário: C06 - Pesquisar Nome do Projeto
  Dado que o usuário faça a seleção do ícone de pesquisa ao lado da coluna Nome do Projeto
  E que seja aberto um modal
@@ -61,7 +61,7 @@ Cenário: C06 - Pesquisar Nome do Projeto
  Quando selecionar o botão Buscar
  Então o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa
 
-@CRUDPROJ
+@PROJETO
 Cenário: C07 - Pesquisar Nome do Projeto - Cancelar
  Dado que o usuário selecione o ícone de pesquisa ao lado da coluna Nome do Projeto
  E seja aberto um modal
@@ -69,7 +69,7 @@ Cenário: C07 - Pesquisar Nome do Projeto - Cancelar
  E selecionar o botão Reset
  Então o sistema deve cancelar a operação fechando o modal
 
-@CRUDPROJ
+@PROJETO
 Cenário: C08 - Filtrar Projeto - Tags
  Dado que o usuário faça a seleção do ícone ao lado da coluna Tags
  E que seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
@@ -77,7 +77,7 @@ Cenário: C08 - Filtrar Projeto - Tags
  Quando selecionar o botão OK
  Então o sistema deverá exibir os projetos que possuem 'Experimentação'
 
-@CRUDPROJ
+@PROJETO
 Cenário: C09 - Filtrar Projeto - Tags - Resetar
  Dado que o usuário selecione o ícone ao lado da coluna Tags
  E seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
@@ -85,7 +85,7 @@ Cenário: C09 - Filtrar Projeto - Tags - Resetar
  Quando selecionar o botão Resetar
  Então o modal das Tags será fechado
 
-@CRUDPROJ
+@PROJETO
 Cenário: C10 - Excluir Projeto - Página Detalhes do Projeto
  Dado que o usuário faça o clique no botão Novo Projeto
  E o sistema demandar a abertura de um modal com o nome 'Novo Projeto' selecionado
@@ -101,7 +101,7 @@ Cenário: C10 - Excluir Projeto - Página Detalhes do Projeto
  Então o projeto será excluído
  E o usuário será direcionado para a página 'Meus projetos'
 
-@CRUDPROJ
+@PROJETO
 Cenário: C11 - Excluir Projeto - Detalhes - Cancelar
 Dado que o usuário acesse a página Detalhes do projeto selecionado
 E acionar o botão Excluir
@@ -109,7 +109,7 @@ E o sistema revelar uma pop-up com a seguinte mensagem: 'Você tem certeza que d
 Quando o usuário efetuar o clique no botão Não
 Então o projeto não será excluído
 
-@CRUDPROJ
+@PROJETO
 Cenário: C12 - Excluir Projeto - Ação - Cancelar
  Dado que o usuário efetue a seleção de um dos projetos da lista
  E na coluna ação seletar a opção Excluir
@@ -117,7 +117,7 @@ Cenário: C12 - Excluir Projeto - Ação - Cancelar
  Quando o usuário clicar no botão Não
  Então o projeto não será excluído e permanecerá na lista de projetos
 
-@CRUDPROJ
+@PROJETO
 Cenário: C13 - Excluir Projeto - Ação Excluir
  Dado que o usuário selecione um dos projetos da lista
  E na coluna ação selecionar a opção Excluir
@@ -125,7 +125,7 @@ Cenário: C13 - Excluir Projeto - Ação Excluir
  Quando o usuário confirmar a operação clicando no botão Sim
  Então o projeto será excluído da lista de Projetos
 
-@CRUDPROJ
+@PROJETO
 Cenário:C14 - Excluir N Projetos - Cancelar
  Dado que o usuário selecione vários projetos da lista
  E clicar no botão Excluir Selecionados
@@ -133,7 +133,7 @@ Cenário:C14 - Excluir N Projetos - Cancelar
  Quando o usuário selecionar o botão Não
  Então nenhum dos projetos selecionados será excluído
 
-@CRUDPROJ
+@PROJETO
 Cenário:C15 - Excluir N Projetos - Efetivar Exclusão
  Dado que o usuário selecione vários projetos existentes na lista
  E na sequência clicar no botão Excluir Selecionados

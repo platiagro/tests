@@ -65,7 +65,7 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@CRUDEXP
+call gradle bdd -Ptag=@EXPERIMENTO
 pause
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 goto menu
@@ -84,7 +84,7 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@FLUXOIMP
+call gradle bdd -Ptag=@IMPLANTAR
 pause
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 goto menu
@@ -103,7 +103,7 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@CRUDPROJ
+call gradle bdd -Ptag=@PROJETO
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 pause
 goto menu
@@ -122,7 +122,7 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@CRUDTAREFA
+call gradle bdd -Ptag=@TAREFA
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 pause
 goto menu
@@ -141,7 +141,7 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@CRUDPROJ@CRUDEXP@FLUXOIMP
+call gradle bdd -Ptag=@PROJETO@EXPERIMENTO@IMPLANTAR@TAREFA
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 pause
 goto menu
