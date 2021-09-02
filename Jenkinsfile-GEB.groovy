@@ -53,7 +53,22 @@ pipeline {
         GIT_URL="https://bitbucket.cpqd.com.br/scm/${env.PROJECT}/${env.REPOSITORY}.git"
     }   
     
-    stages {            
+    stages {   
+        
+        stage('Env PlatIAgro Update') {
+            steps {
+                script {
+                    sh '''						
+						echo ""
+						echo " *****************************************"
+						echo "Starting Env. platiagro@awsplatagro02     "
+						echo " *****************************************"
+                        ssh -o "StrictHostKeyChecking=no" platiagro@awsplatiagro02.aquarius.cpqd.com.br "./reinstall.sh"
+                        '''						
+                }
+                sleep 10
+            }    
+        }
         stage('Prepare') {
             steps {
                 startStage ( info : BRANCH )
