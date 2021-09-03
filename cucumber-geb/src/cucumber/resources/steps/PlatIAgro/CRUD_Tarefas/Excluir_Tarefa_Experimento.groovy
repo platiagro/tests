@@ -130,7 +130,7 @@ Então (/a operação será cancelada, informando que a Tarefa está em uso: {st
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), '"+msgImpediment+"')]"))).isDisplayed();
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='Tarefa em branco - 1']"))).isDisplayed();
 
-  def task = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='Tarefa em branco - 2']")).isDisplayed()                          
+  def task = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='Tarefa em branco - 1']")).isDisplayed()                          
   assert task != false
 
   waitFor(10) {
