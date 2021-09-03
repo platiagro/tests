@@ -74,9 +74,9 @@ Então(/a plataforma exibirá o seguinte display: {string}/) { String msgSuccess
 E(/o nome default da tarefa será: {string}/) { String nameTask ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), nameTask));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span"), nameTask));
 
-  def taskName = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span")).text()
+  def taskName = $(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span")).text()
   repo.add("Nome Tarefa", taskName)
 
   //Armazena o nome da tarefa gerado por default para ser utilizado por outros cenários

@@ -56,15 +56,17 @@ Então(/a plataforma exibirá na página de detalhes a mensagem: {string}/) { St
 
 }
 
-E(/no campo nome da Tarefa estará preenchido com a designação default/) { ->
+E(/no campo nome da Tarefa estará preenchido com a designação término Cópia - 1/) { ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
 
-  def nomeTarefa = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), nomeTarefa));
-  assert $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span[text()='"+nomeTarefa+"']")).isDisplayed()
+  def taskName = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(13).substring(27).split("\\|")[0].trim();
+  def copyName = taskName + " - Cópia - 1"
 
-  def nomeTarefaCopiado = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span")).text()
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span"), copyName));
+  assert $(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span[text()='"+copyName+"']")).isDisplayed()
+
+  def nomeTarefaCopiado = $(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span")).text()
   repo.add("Tarefa Copiada", nomeTarefaCopiado)
 
 }

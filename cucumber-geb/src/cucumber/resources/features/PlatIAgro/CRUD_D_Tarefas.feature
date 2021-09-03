@@ -57,7 +57,7 @@ Cenário: C06- Copiar Tarefa
  E um popover seja aberto
  Quando demandar o ato de fazer uma cópia
  Então a plataforma exibirá na página de detalhes a mensagem: 'Tarefa criada com sucesso.'
- E no campo nome da Tarefa estará preenchido com a designação default
+ E no campo nome da Tarefa estará preenchido com a designação término Cópia - 1
  E os valores dos campos da página de detalhamento serão os mesmos da tarefa selecionada para cópia
  E a cópia da tarefa criada será adicionada na lista de tarefas de acordo com a ordenação alfabética
 

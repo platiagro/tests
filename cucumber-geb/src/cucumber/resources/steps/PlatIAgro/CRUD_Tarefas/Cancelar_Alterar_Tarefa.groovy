@@ -71,10 +71,10 @@ Então(/o nome da tarefa não deve ser alterado/) { ->
 
   String minhaTarefaAlterada = repo.get("Nome Tarefa Alterada");
 
-  wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), minhaTarefaAlterada));
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), 'Tarefa em branco - 1'));
+  wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span"), minhaTarefaAlterada));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span"), 'Tarefa em branco - 1'));
 
-  String myTaskAlter = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span[text()='"+minhaTarefaAlterada+"']")).isDisplayed()
+  String myTaskAlter = $(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span[text()='"+minhaTarefaAlterada+"']")).isDisplayed()
   assert myTaskAlter != true
 
 }

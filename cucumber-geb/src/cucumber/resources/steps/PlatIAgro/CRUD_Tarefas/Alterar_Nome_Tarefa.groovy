@@ -91,9 +91,9 @@ E(/o nome da tarefa alterada será atualizada/) { ->
 
   String minhaTarefaAlterada = repo.get("Nome Tarefa Alterada");
 
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span"), minhaTarefaAlterada));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span"), minhaTarefaAlterada));
 
-  String myTaskAlter = $(By.xpath("//*[@id='root']/section/section/div/div[1]/div/div/span/h3/h3/span[text()='"+minhaTarefaAlterada+"']")).text();
+  String myTaskAlter = $(By.xpath("/html/body/div[1]/section/section/div/div[1]/div/div/span/div/h3/span[text()='"+minhaTarefaAlterada+"']")).text();
   assert minhaTarefaAlterada.contains(myTaskAlter)
 
 }

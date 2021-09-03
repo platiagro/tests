@@ -127,8 +127,8 @@ Então (/a operação será cancelada, informando que a Tarefa está em uso: {st
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-notice-content"))).isDisplayed();
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), 'Não foi possível excluir esta tarefa, pois ela está associada a um experimento.')]"), msgImpediment));
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='Tarefa em branco - 2']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), '"+msgImpediment+"')]"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='Tarefa em branco - 1']"))).isDisplayed();
 
   def task = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='Tarefa em branco - 2']")).isDisplayed()                          
   assert task != false
