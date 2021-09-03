@@ -94,7 +94,7 @@ Dado(/que o usuário selecione para exclusão uma Tarefa da lista que esteja rel
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[10]/td[4]/div/div[3]/button")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()
   }
 
   waitFor(10){
