@@ -18,7 +18,7 @@ class BasePage extends Page {
     }
   }
 
-     //Faz o controle de carregamento em caso de lentidão.
+   //Faz o controle de carregamento em caso de lentidão.
    def waitPageLoading(){
       Thread.sleep(2000);
        if($(By.xpath("//*[@id='modalDiv']/div/img")) ){
