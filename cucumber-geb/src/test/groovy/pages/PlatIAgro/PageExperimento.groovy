@@ -56,7 +56,7 @@ class PageExperimento extends BasePage {
 
     atributoSepalL {$(By.xpath("/html/body/div[4]/div/div/div/div[2]/div[1]/div/div/div[2]/div"))}
 
-    campoCodeOrd {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]/div/div/span[2]"))}
+    campoCodeOrd {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]/div/div/div/span[2]"))}
 
     atributoPetal {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[4]'))}
 

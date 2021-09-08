@@ -249,7 +249,7 @@ E(/no campo Features para incluir-remover no modelo selecionar o atributo text/)
 
 E(/no campo Features para fazer codificação ordinal selecionar o atributo is_valid/) { ->
 
-  WebElement combo = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]/div/div/span[2]"));
+  WebElement combo = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]/div/div/div/span[2]"));
   JavascriptExecutor jse = (JavascriptExecutor)browser.driver;
   jse.executeScript("arguments[0].scrollIntoView()", combo);
 
