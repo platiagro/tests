@@ -45,7 +45,7 @@ Então(/será aberto uma drawer de Logs/) { ->
 E(/as informações estarão divididas em três colunas: {string}, {string} e {string}/) { String date, String level, String message ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
-  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("ant-table-column-sorters"), date));
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class='ant-table-cell'][text()='Data']"), date));
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class='ant-table-cell'][text()='Nível']"), level));
   wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class='ant-table-cell'][text()='Mensagem']"), message));
 
