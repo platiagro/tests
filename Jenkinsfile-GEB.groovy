@@ -117,6 +117,17 @@ pipeline {
                         gradle check
                     """
                 }
+                echo 'Publish Codenarc report'
+                publishHTML(
+                    target: [
+                        allowMissing         : false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll              : true,
+                        reportDir            : 'build/reports/codenarc',
+                        reportFiles          : 'test.html',
+                        reportName           : "Codenarc Report"
+                    ]
+                )
             }
         }
 
@@ -127,8 +138,8 @@ pipeline {
                     allowMissing         : false,
                     alwaysLinkToLastBuild: false,
                     keepAll              : true,
-                    reportDir            : 'target/site',
-                    reportFiles          : 'codenarc.html',
+                    reportDir            : 'build/reports/codenarc',
+                    reportFiles          : 'test.html',
                     reportName           : "Codenarc Report"
                 ]
             )
