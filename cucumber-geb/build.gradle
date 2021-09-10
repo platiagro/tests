@@ -104,8 +104,13 @@ codenarc {
     toolVersion = '2.2.0'
     configFile = new File(projectDir, 'config/codenarc/rules.groovy')
     reportFormat = 'html'
-	//reportsDir = new File("build/reports/codenarc")
+
+	formats = [
+		'html:build/reports/codenarc' // html codenarc
+		]
+
 	ignoreFailures = true
+
 }
 
 cucumber {
@@ -117,7 +122,7 @@ cucumber {
 
 	formats = [
 		'pretty', // prints nice format out to the console
-		'html:build/reports/cucumber', // html
+		'html:build/reports/cucumber', // html cucumber
 		'junit:build/cucumber.xml', // junit format for integration with CI tool etc
     'json:build/cucumber.json'
 		]
