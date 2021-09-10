@@ -117,18 +117,18 @@ pipeline {
                         gradle check
                     """
                 }
-            }
-            echo 'Publish Codenarc report'
-            publishHTML(
-                target: [
+                echo 'Publish Codenarc report'
+                publishHTML(
+                    target:
                         allowMissing         : false,
                         alwaysLinkToLastBuild: false,
                         keepAll              : true,
                         reportDir            : 'target/site',
                         reportFiles          : 'codenarc.html',
                         reportName           : "Codenarc Report"
-                ]
-            )
+                    ]
+                )
+            }
         }
         
         stage('GEB: Execução dos testes') {     
