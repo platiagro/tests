@@ -110,10 +110,13 @@ pipeline {
 
         stage('Static Analysis') {
             steps {
-                sh """
+                startStage ( info : "${BRANCH}" )
+                envGEB {
+                    sh """
                         cd code/cucumber-geb
                         gradle check
                     """
+                }
             }
             echo 'Publish Codenarc report'
             publishHTML(
