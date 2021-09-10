@@ -105,7 +105,7 @@ codenarc {
     configFile = new File(projectDir, 'config/codenarc/rules.groovy')
 	formats = [
 		'html:build/reports/codenarc' // html codenarc
-		]
+	]
 	ignoreFailures = true
 }
 
@@ -120,8 +120,8 @@ cucumber {
 		'pretty', // prints nice format out to the console
 		'html:build/reports/cucumber', // html cucumber
 		'junit:build/cucumber.xml', // junit format for integration with CI tool etc
-    'json:build/cucumber.json'
-		]
+    	'json:build/cucumber.json'
+	]
 
 	// src/cucumber/resources is included automatically
 	glueDirs = [

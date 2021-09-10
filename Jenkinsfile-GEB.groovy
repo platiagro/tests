@@ -130,20 +130,6 @@ pipeline {
                 )
             }
         }
-
-        /*stage('Publish') {
-            echo 'Publish Codenarc report'
-            publishHTML(
-                target: [
-                    allowMissing         : false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll              : true,
-                    reportDir            : 'build/reports/codenarc',
-                    reportFiles          : 'test.html',
-                    reportName           : "Codenarc Report"
-                ]
-            )
-        }*/
         
         stage('GEB: Execução dos testes') {     
             steps {
@@ -158,10 +144,10 @@ pipeline {
                             cd code/cucumber-geb
                             gradle bdd -Ptag=${GRADLE_BDD_PARAM} -Penv=chromeheadless
                         """
-	        }
+	            }
             }
-
         }
+        
 //        stage('GEB: Gerando relatorios HTML') {
 //            steps {
 //                script {
