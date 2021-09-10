@@ -104,6 +104,7 @@ codenarc {
     toolVersion = '2.2.0'
     configFile = new File(projectDir, 'config/codenarc/rules.groovy')
     reportFormat = 'html'
+	reportsDir = new File("build/reports/codenarc")
 	ignoreFailures = true
 }
 
