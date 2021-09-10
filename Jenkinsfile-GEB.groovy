@@ -117,7 +117,7 @@ pipeline {
                         gradle check
                     """
                 }
-                echo 'Publish Codenarc report'
+                /*echo 'Publish Codenarc report'
                 publishHTML(
                     target: [
                         allowMissing         : false,
@@ -127,7 +127,7 @@ pipeline {
                         reportFiles          : 'test.html',
                         reportName           : "Codenarc Report"
                     ]
-                )
+                )*/
             }
         }
         
@@ -147,7 +147,7 @@ pipeline {
 	            }
             }
         }
-        
+
 //        stage('GEB: Gerando relatorios HTML') {
 //            steps {
 //                script {
