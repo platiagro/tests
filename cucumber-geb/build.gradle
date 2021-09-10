@@ -38,6 +38,8 @@ apply plugin: 'ru.alfalab.cucumber-reporting'
 
 apply plugin: "java-library"
 
+apply plugin: 'codenarc'
+
 repositories {
 	mavenCentral()
 	jcenter()
@@ -96,6 +98,13 @@ dependencies {
 	//compile group: 'com.jtransc', name: 'jtransc-rt', version: '0.5.0-ALPHA2'
 	implementation group: 'com.jtransc', name: 'jtransc-rt', version: '0.6.8'
 
+}
+
+codenarc {
+    toolVersion = '2.2.0'
+    configFile = new File(projectDir, 'config/codenarc/rules.groovy')
+    reportFormat = 'html'
+	ignoreFailures = true
 }
 
 cucumber {
