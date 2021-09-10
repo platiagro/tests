@@ -103,14 +103,10 @@ dependencies {
 codenarc {
     toolVersion = '2.2.0'
     configFile = new File(projectDir, 'config/codenarc/rules.groovy')
-    reportFormat = 'html'
-
 	formats = [
 		'html:build/reports/codenarc' // html codenarc
 		]
-
 	ignoreFailures = true
-
 }
 
 cucumber {
