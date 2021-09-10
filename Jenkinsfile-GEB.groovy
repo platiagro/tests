@@ -120,7 +120,7 @@ pipeline {
             }
         }
 
-        stage('Publish') {
+        /*stage('Publish') {
             echo 'Publish Codenarc report'
             publishHTML(
                 target: [
@@ -132,7 +132,7 @@ pipeline {
                     reportName           : "Codenarc Report"
                 ]
             )
-        }
+        }*/
         
         stage('GEB: Execução dos testes') {     
             steps {
