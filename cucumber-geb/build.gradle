@@ -103,6 +103,8 @@ dependencies {
 codenarc {
     toolVersion = '2.2.0'
     configFile = new File(projectDir, 'config/codenarc/rules.groovy')
+	println "### getting ReportsDirCodeNarc"
+	System.setProperty("ReportsDirCodeNarc","${project.buildDir}/reports/codenarc");
 	formats = [
 		'html:build/reports/codenarc' // html codenarc
 	]
