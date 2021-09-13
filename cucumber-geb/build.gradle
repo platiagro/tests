@@ -108,7 +108,7 @@ codenarc {
 	formats = [
 		'html:build/reports/codenarc' // html codenarc
 	]
-	//ignoreFailures = true
+	ignoreFailures = true
 }
 
 cucumber {
