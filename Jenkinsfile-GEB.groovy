@@ -119,11 +119,13 @@ pipeline {
                 }
                 recordIssues(
                     tool: pyLint(pattern: '**/pylint.out'),
-                    unstableTotalAll: '30',
+                    unstableTotalAll: 20,
+                    failedTotalAll: 30
                 )
                 recordIssues(
                     tool: pep8(pattern: '**/pep8.out'),
-                    unstableTotalAll: '100',
+                    unstableTotalAll: 200,
+                    failedTotalAll: 220
                 )
                 /*echo 'Publish Codenarc report'
                 publishHTML(
