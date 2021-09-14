@@ -119,7 +119,7 @@ pipeline {
                 }
                 recordIssues(
                     tool: pyLint(pattern: '**/pylint.out'),
-                    unstableTotalAll: '100',
+                    unstableTotalAll: '30',
                 )
                 recordIssues(
                     tool: pep8(pattern: '**/pep8.out'),
