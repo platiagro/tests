@@ -117,15 +117,20 @@ pipeline {
                         gradle check
                     """
                 }
-                warnings ([ 
-                    canComputeNew: false , 
-                    canResolveRelativePaths: false , 
-                    parserConfigurations: [
-                        [parserName: 'CodeNarc' , pattern: 'build/reports/codenarc/test.html' ] 
-                    ], 
-                    useDeltaValues: true , 
-                    useStableBuildAsReference: true 
-                ])
+                script {
+                    def htmlFiles
+                    dir ('reports') {
+                        htmlFiles = findFiles glob: '*.html'
+                    }
+                    echo 'Publish Codenarc Report'
+                    publishHTML([
+                        reportDir: 'reports',
+                        reportFiles: htmlFiles.join(','),
+                        reportName: 'Newman Collection Results',
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true])
+                }
                 /*echo 'Publish Codenarc report'
                 publishHTML(
                     target: [
