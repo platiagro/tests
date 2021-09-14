@@ -120,12 +120,12 @@ pipeline {
                 script {
                     def htmlFiles
                     dir ('code/cucumber-geb/build/reports/codenarc/') {
-                        htmlFiles = findFiles glob: 'test.html'
+                        htmlFiles = findFiles glob: '*.html'
                     }
                     echo 'Publish CodeNarc Report'
                     publishHTML([
                         reportDir: 'code/cucumber-geb/build/reports/codenarc/',
-                        reportFiles: htmlFiles,
+                        reportFiles: htmlFiles.join('test.html'),
                         reportTitles: 'Checkout Code',
                         reportName: 'CodeNarc Report',
                         allowMissing: true,
