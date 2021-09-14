@@ -126,22 +126,12 @@ pipeline {
                     publishHTML([
                         reportDir: 'code/cucumber-geb/build/reports/codenarc/',
                         reportFiles: htmlFiles.join(','),
-                        reportName: 'CodeNarc Report Results',
+                        reportTitles: 'Checkout Code',
+                        reportName: 'CodeNarc Report',
                         allowMissing: true,
                         alwaysLinkToLastBuild: true,
                         keepAll: true])
                 }
-                /*echo 'Publish Codenarc report'
-                publishHTML(
-                    target: [
-                        allowMissing         : false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll              : true,
-                        reportDir            : 'build/reports/codenarc',
-                        reportFiles          : 'test.html',
-                        reportName           : "Codenarc Report"
-                    ]
-                )*/
             }
         }
         
