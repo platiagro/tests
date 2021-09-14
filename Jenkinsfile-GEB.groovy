@@ -117,16 +117,15 @@ pipeline {
                         gradle check
                     """
                 }
-                recordIssues(
-                    tool: pyLint(pattern: '**/pylint.out'),
-                    unstableTotalAll: 20,
-                    failedTotalAll: 30
-                )
-                recordIssues(
-                    tool: pep8(pattern: '**/pep8.out'),
-                    unstableTotalAll: 200,
-                    failedTotalAll: 220
-                )
+                warnings ([ 
+                    canComputeNew: false , 
+                    canResolveRelativePaths: false , 
+                    parserConfigurations: [
+                        [parserName: 'CodeNarc' , pattern: 'build/reports/codenarc/test.html' ] 
+                    ], 
+                    useDeltaValues: true , 
+                    useStableBuildAsReference: true 
+                ])
                 /*echo 'Publish Codenarc report'
                 publishHTML(
                     target: [
