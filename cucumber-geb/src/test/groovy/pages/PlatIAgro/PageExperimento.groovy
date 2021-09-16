@@ -12,8 +12,6 @@ class PageExperimento extends BasePage {
 
     menuConjunto {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[2]"))}
 
-    //select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/div/button[1]/span[2]"))}
-
     inputFile {$("input[type='file']")}
 
     btnConf {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))}
@@ -30,8 +28,6 @@ class PageExperimento extends BasePage {
 
     selRegLinear {$(By.xpath("//*[@class='ellipsis'][text()='Regressão Linear']"))}
 
-    //tarefaRegLog {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div"))}
-
     campoAtrAlvo {$(By.cssSelector("div:nth-child(1) > div.propertyBlockInput > div"))}
 
     campoFeatFiltragem {$(By.cssSelector("div.operator-resizable-section-drawer > div > div.propertyBlockInput > div"))}
@@ -47,8 +43,6 @@ class PageExperimento extends BasePage {
     selTask_I {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div"))}
 
     selTask_II {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[2]/div[1]/div"))}
-
-    //campoMSF {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[2]"))}
 
     opIncluir {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]/div"))}
 
