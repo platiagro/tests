@@ -3,7 +3,6 @@ package pages
 import org.openqa.selenium.By
 import pages.base.BasePage
 
-@CompileStatic
 class PageExperimento extends BasePage {
 
   static at = { title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
