@@ -251,18 +251,17 @@ Quando(/o usuário selecionar a tarefa Seleção Manual de Atributos/) { ->
 E(/selecionar o botão Visualizar Resultados/) { ->
 
   waitFor(30) {
-    page.btnVisuResult.click()
+    page.btnViewResult.click()
   }
-
-  Thread.sleep(2000)
 
 }
 
 Então(/um modal será aberto/) { ->
 
-  assert $(By.className("ant-modal-content")).isDisplayed()
+  WebDriverWait wait = new WebDriverWait(browser.driver, 10);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-modal-content"))).isDisplayed();
 
-  Thread.sleep(2000) 
+  assert $(By.className("ant-modal-content")).isDisplayed()
 
 }
 

@@ -7,7 +7,11 @@ ruleset {
     ruleset('rulesets/design.xml')
     ruleset('rulesets/dry.xml')
     ruleset('rulesets/exceptions.xml')
-    ruleset('rulesets/formatting.xml')
+    ruleset('rulesets/formatting.xml') {
+        'LineLength' {
+            length = 140
+        }
+    }
     ruleset('rulesets/generic.xml')
     ruleset('rulesets/imports.xml')
     ruleset('rulesets/naming.xml')

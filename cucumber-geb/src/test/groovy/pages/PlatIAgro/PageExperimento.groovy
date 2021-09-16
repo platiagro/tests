@@ -12,29 +12,29 @@ class PageExperimento extends BasePage {
 
     menuConjunto {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[2]"))}
 
-    select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/div/button[1]/span[2]"))}
+    //select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/div/button[1]/span[2]"))}
 
     inputFile {$("input[type='file']")}
 
     btnConf {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))}
 
-    btnVisualizar {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/button/span[2]"))}
+    btnVisualizar {$(By.className("anticon-table"))}
 
     menuEngAtributos {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]/div/span/span[2]"))}
 
     menuTreinamento {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[7]/div/span/span[2]"))}
 
-    operadorUpArq {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div/div/div"))}
+    operadorUpArq {$(By.xpath("//*[@class='ellipsis'][text()='Upload de arquivo']"))}
 
-    selManAtributos {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div"))}
+    selManAtributos {$(By.xpath("//*[@class='ellipsis'][text()='Seleção Manual de Atributos']"))}
 
-    selRegLinear {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div"))}
+    selRegLinear {$(By.xpath("//*[@class='ellipsis'][text()='Regressão Linear']"))}
 
-    tarefaRegLog {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div"))}
+    //tarefaRegLog {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div[2]/div"))}
 
-    campoAtrAlvo {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/div"))}
+    campoAtrAlvo {$(By.cssSelector("div:nth-child(1) > div.propertyBlockInput > div"))}
 
-    campoFeatFiltragem {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/div"))}
+    campoFeatFiltragem {$(By.cssSelector("div.operator-resizable-section-drawer > div > div.propertyBlockInput > div"))}
 
     species {$(By.xpath("//*[contains(text(), 'Species')]"))}
 
@@ -48,27 +48,27 @@ class PageExperimento extends BasePage {
 
     selTask_II {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[2]/div[1]/div"))}
 
-    campoMSF {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[2]"))}
+    //campoMSF {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[2]"))}
 
     opIncluir {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]/div"))}
 
-    campoFeature {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[3]/div[2]/div"))}
+    campoFeature {$(By.cssSelector("div:nth-child(3) > div.propertyBlockInput > div"))}
 
     atributoSepalL {$(By.xpath("/html/body/div[4]/div/div/div/div[2]/div[1]/div/div/div[2]/div"))}
 
-    campoCodeOrd {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[2]/div/div/div/span[2]"))}
+    campoCodeOrd {$(By.cssSelector("div:nth-child(4) > div.propertyBlockInput > div"))}
 
     atributoPetal {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[4]'))}
 
-    btnExecut {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]/span[2]"))}
+    btnExecut {$(By.className("anticon-play-circle"))}
 
-    btnVisuResult {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div/button[1]/span[2]"))}
+    btnViewResult {$(By.xpath("//*[contains(text(), 'Visualizar resultados')]"))}
 
     abaDataset {$(By.xpath("//*[contains(text(), 'Dataset')]"))}
 
     abaParametros {$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
 
-    btnJupyter {$(By.xpath("/html/body/div[1]/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[2]/div/button[2]/span[2]"))}
+    btnJupyter {$(By.className("anticon-code"))}
 
     campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
