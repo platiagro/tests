@@ -3,12 +3,13 @@ package pages
 import org.openqa.selenium.By
 import pages.base.BasePage
 
+@CompileStatic
 class PageExperimento extends BasePage {
 
   static at = { title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
   static content = {
 
-    cardExperimento {$(By.xpath("/html/body/div[1]/section/section/section/main/section/div/div[1]/div[1]/button/div[1]/div/img"))}
+    cardExperimento {$(By.className("experimentacaoText"))}
 
     menuConjunto {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[2]"))}
 
