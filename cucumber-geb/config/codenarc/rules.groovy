@@ -11,6 +11,7 @@ ruleset {
         'LineLength' {
             length = 140
         }
+        Indentation(enabled:false)
     }
     ruleset('rulesets/generic.xml')
     ruleset('rulesets/imports.xml')

@@ -7,22 +7,23 @@ class PageFluxoImp extends BasePage {
 
   static at = { title == 'PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio' }
   static content = {
+    // Interface de acesso a elementos da camada de visão relativa a Fluxo de Implantação
 
-    btnImpFluxo {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[1]/div/div[2]/button[3]"))}
+    btnImpFluxo { $(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[1]/div/div[2]/button[3]")) }
 
-    btnTesteFluxo {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[1]/div/div[2]/button[1]"))}
-      
-    inputFile {$("input[type='file']")}
+    btnTesteFluxo { $(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[1]/div/div[2]/button[1]")) }
 
-    btnComoUsar {$(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[1]/button"))}
+    inputFile { $("input[type='file']") }
 
-    cardFluxo {$(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[1]/div[2]/button"))}
+    btnComoUsar { $(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[2]/div[1]/button")) }
 
-    btnDownload {$(By.xpath("//*[contains(@aria-label, 'download')]"))}
+    cardFluxo { $(By.xpath("//*[@id='root']/section/section/section/main/section/div/div[1]/div[2]/button")) }
 
-    btnAdd {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[3]/div[1]/div/button[1]"))}
+    btnDownload { $(By.xpath("//*[contains(@aria-label, 'download')]")) }
 
-    btnVerMonit {$(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[3]/div[1]/div[1]/button[2]/span[2]"))}
+    btnAdd { $(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[3]/div[1]/div/button[1]")) }
 
+    btnVerMonit { $(By.xpath("//*[@id='root']/section/section/div/div[2]/div[1]/div[3]/div[1]/div[1]/button[2]/span[2]")) }
   }
+
 }
