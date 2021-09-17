@@ -5,12 +5,12 @@ import pages.base.BasePage
 
 class PageProj extends BasePage {
 
-  static at = { title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
+  static at = { title == 'PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio' }
   static content = {
 
     titleMeusProjetos {$(By.xpath("//*[@id='root']/section/section/div[1]/div/div/span/div/div/h3"))}
 
-    buttonClear {$(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/form/div[1]/div[2]/div/div/span/span/span/svg/path"))}
+    buttonClear {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[2]/form/div[1]/div[2]/div/div/span/span/span/svg/path'))}
        
     projetoMenu {$(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]"))}
        
@@ -26,7 +26,7 @@ class PageProj extends BasePage {
 
     btnCancel {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[1]'))}
 
-    cardExp {$(By.xpath("/html/body/div[1]/section/section/section/main/section/div/div[1]/div[1]/button/div[1]/div/img"))}
+    cardExp {$(By.xpath('/html/body/div[1]/section/section/section/main/section/div/div[1]/div[1]/button/div[1]/div/img'))}
 
     cardFluxos {$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[2]/div[2]"))}
 
@@ -50,8 +50,6 @@ class PageProj extends BasePage {
 
     btnsim {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]'))}
 
-    btnNao {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[1]'))}
-
     btnselect {$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/button"))}
 
     campclear {$(By.xpath("//*[@id='projectForm']/div[1]/div[2]/div/div/span/span"))}
@@ -72,11 +70,7 @@ class PageProj extends BasePage {
 
     uploadArq {$(By.xpath("//*[@id='DATASETS\$Menu']/li[2]/div/div[1]/span"))}
 
-    btnimport {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/span/div[1]/span/button"))}
-
     select {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]"))}
-
-    btnvisualizar {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/button"))}
 
     abaobs {$(By.xpath("//*[@id='rc-tabs-1-tab-2']"))}
 
@@ -89,10 +83,6 @@ class PageProj extends BasePage {
     opImputer {$(By.xpath("//*[contains(text(), 'Imputação de Valores Faltantes')]"))}
 
     opReglog {$(By.xpath("//*[contains(text(), 'Regressão Logística')]"))}
-
-    tarefaImputer {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
-
-    selectAtrib {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div/span[1]"))}
 
     atributoSpecies {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[6]/div'))}
 
@@ -110,15 +100,11 @@ class PageProj extends BasePage {
 
     atributoisvalid {$(By.xpath('/html/body/div[5]/div/div/div/div[2]/div/div/div[3]'))}
 
-    opreglinear {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[2]/div/div/div[2]/div/div"))}
-
     selectProj {$(By.xpath("//*[contains(text(), 'TESTE J')]"))}
 
     newexp {$(By.xpath("//*[@id='root']/section/section/section/main/section/div[1]/div[1]/div[1]/button"))}
 
     btncleancamp {$(By.xpath("//*[@id='newExperimentForm']/div/div[2]/div/div/span/span"))}
-
-    campnamExp {$(By.xpath("//*[@id='name']"))}
 
     btnNewExp {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]'))}
 
@@ -139,8 +125,6 @@ class PageProj extends BasePage {
     btninterromper {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[2]"))}
 
     btnremovetask {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[1]/button[5]"))}
-
-    btnsimremover {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]'))}
 
     btnremoverExp {$(By.xpath("//*[@id='rc-tabs-7-tab-b40d5b1e-bd59-45f7-b500-5360f52729c4']/div/div/span/svg/path"))}
 

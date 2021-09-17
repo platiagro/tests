@@ -4,6 +4,8 @@ import static cucumber.api.groovy.PT.*
 import cucumber.api.PendingException
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.apache.commons.io.FileUtils
 
 Dado(/que o usuário acesse a página Detalhes do projeto selecionado/) { ->
@@ -29,11 +31,12 @@ E(/acionar o botão Excluir/) { ->
     page.btndeleteProj.click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 E(/o sistema revelar uma pop-up com a seguinte mensagem: {string}/) { String msg ->
+
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-popover-content"))).isDisplayed();
 
   assert $(By.className("ant-popover-content")).isDisplayed()
 
@@ -47,16 +50,16 @@ Quando(/o usuário efetuar o clique no botão Não/) { ->
     page.deleteNo.click()
   }
 
-  Thread.sleep(2000)
-
 }
 
 Então (/o projeto não será excluído/) { ->
 
   def nomeProj = repo.get("Nome Projeto");
-  def projDelete = $(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/div/h3[text()='"+nomeProj+"']")).isDisplayed()                             
-  assert projDelete == true
+  def projDelete = $(By.xpath("//*[@id='root']/section/section/div/div/div/span/div/div/h3[text()='"+nomeProj+"']")).isDisplayed()
 
-  Thread.sleep(2000)
+  WebDriverWait wait = new WebDriverWait(browser.driver, 30);
+  wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[contains(text(), '"+nomeProj+"')]"), nomeProj));
+
+  assert projDelete == true
 
 }

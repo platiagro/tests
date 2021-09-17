@@ -5,10 +5,10 @@ import pages.base.BasePage
 
 class PageExperimento extends BasePage {
 
-  static at = { title == "PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio" }
+  static at = { title == 'PlatIAgro - Plataforma de Inteligência Artificial para o Agronegócio' }
   static content = {
 
-    cardExperimento {$(By.className("experimentacaoText"))}
+    cardExperimento {$(By.className('experimentacaoText'))}
 
     menuConjunto {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[2]"))}
 
@@ -16,7 +16,7 @@ class PageExperimento extends BasePage {
 
     btnConf {$(By.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div[3]/button[2]/span'))}
 
-    btnVisualizar {$(By.className("anticon-table"))}
+    btnVisualizar {$(By.className('anticon-table'))}
 
     menuEngAtributos {$(By.xpath("//*[@id='root']/section/section/section/aside/div/div/ul/li[5]/div/span/span[2]"))}
 
@@ -28,9 +28,9 @@ class PageExperimento extends BasePage {
 
     selRegLinear {$(By.xpath("//*[@class='ellipsis'][text()='Regressão Linear']"))}
 
-    campoAtrAlvo {$(By.cssSelector("div:nth-child(1) > div.propertyBlockInput > div"))}
+    campoAtrAlvo {$(By.cssSelector('div:nth-child(1) > div.propertyBlockInput > div'))}
 
-    campoFeatFiltragem {$(By.cssSelector("div.operator-resizable-section-drawer > div > div.propertyBlockInput > div"))}
+    campoFeatFiltragem {$(By.cssSelector('div.operator-resizable-section-drawer > div > div.propertyBlockInput > div'))}
 
     species {$(By.xpath("//*[contains(text(), 'Species')]"))}
 
@@ -40,21 +40,21 @@ class PageExperimento extends BasePage {
 
     isValid {$(By.xpath("//*[contains(@title, 'is_valid')]"))}
 
-    selTask_I {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div"))}
+    selTask_I {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div'))}
 
-    selTask_II {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[2]/div[1]/div"))}
+    selTask_II {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[2]/div[1]/div'))}
 
-    opIncluir {$(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]/div"))}
+    opIncluir {$(By.xpath('/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]/div'))}
 
-    campoFeature {$(By.cssSelector("div:nth-child(3) > div.propertyBlockInput > div"))}
+    campoFeature {$(By.cssSelector('div:nth-child(3) > div.propertyBlockInput > div'))}
 
-    atributoSepalL {$(By.xpath("/html/body/div[4]/div/div/div/div[2]/div[1]/div/div/div[2]/div"))}
+    atributoSepalL {$(By.xpath('/html/body/div[4]/div/div/div/div[2]/div[1]/div/div/div[2]/div'))}
 
-    campoCodeOrd {$(By.cssSelector("div:nth-child(4) > div.propertyBlockInput > div"))}
+    campoCodeOrd {$(By.cssSelector('div:nth-child(4) > div.propertyBlockInput > div'))}
 
     atributoPetal {$(By.xpath('/html/body/div[6]/div/div/div/div[2]/div/div/div[4]'))}
 
-    btnExecut {$(By.className("anticon-play-circle"))}
+    btnExecut {$(By.className('anticon-play-circle'))}
 
     btnViewResult {$(By.xpath("//*[contains(text(), 'Visualizar resultados')]"))}
 
@@ -62,7 +62,7 @@ class PageExperimento extends BasePage {
 
     abaParametros {$(By.xpath("//*[contains(text(), 'Parâmetros')]"))}
 
-    btnJupyter {$(By.className("anticon-code"))}
+    btnJupyter {$(By.className('anticon-code'))}
 
     campError {$(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]"))}
 
@@ -74,9 +74,9 @@ class PageExperimento extends BasePage {
 
     btnAddResult {$(By.xpath("//*[contains(text(), 'Adicionar resultado')]"))}
 
-    btnSelectExp_I {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]"))}
+    btnSelectExp_I {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]'))}
 
-    btnSelectExp_II {$(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[1]/div/div/div/div[2]"))}
+    btnSelectExp_II {$(By.xpath('/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[1]/div/div/div/div[2]'))}
 
     btnSaveTempl {$(By.xpath("//*[@id='root']/section/section/section/main/section/main/div[1]/div[1]/div[2]/button[1]/span[2]"))}
 
