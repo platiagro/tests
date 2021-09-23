@@ -22,22 +22,25 @@ echo.
 echo            MENU TESTES
 echo  ==================================
 echo.
-echo *  1. CRUD Experimento             *
+echo *  1. Login - PlatIAgro            *
 echo.
 echo.
-echo *  2. CRUD Fluxos Implantados      *
+echo *  2. CRUD Experimento             *
 echo.
 echo.
-echo *  3. CRUD Projetos                *
+echo *  3. CRUD Fluxos Implantados      *
 echo.
 echo.
-echo *  4. CRUD Tarefas                 *
+echo *  4. CRUD Projetos                *
 echo.
 echo.
-echo *  5. Test All                     *
+echo *  5. CRUD Tarefas                 *
 echo.
 echo.
-echo *  6. Sair                         *
+echo *  6. Test All                     *
+echo.
+echo.
+echo *  7. Sair                         *
 echo.
 echo  ==================================
 
@@ -49,9 +52,29 @@ if %opcao% equ 3 goto opcao3
 if %opcao% equ 4 goto opcao4
 if %opcao% equ 5 goto opcao5
 if %opcao% equ 6 goto opcao6
-if %opcao% GEQ 7 goto opcao7
+if %opcao% equ 7 goto opcao7
+if %opcao% GEQ 8 goto opcao8
 
 :opcao1
+cls
+@echo off
+echo.
+echo.
+echo =============================================
+echo.
+echo *********     Login - PlatIAgro     *********
+echo.
+echo =============================================
+echo.
+echo.
+cd /
+cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
+call gradle bdd -Ptag=@LOGIN
+pause
+call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
+goto menu
+
+:opcao2
 cls
 @echo off
 echo.
@@ -70,7 +93,7 @@ pause
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 goto menu
 
-:opcao2
+:opcao3
 cls
 @echo off
 echo.
@@ -89,7 +112,7 @@ pause
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 goto menu
 
-:opcao3
+:opcao4
 cls
 @echo off
 echo.
@@ -108,7 +131,7 @@ call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumb
 pause
 goto menu
 
-:opcao4
+:opcao5
 cls
 @echo off
 echo.
@@ -127,7 +150,7 @@ call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumb
 pause
 goto menu
 
-:opcao5
+:opcao6
 cls
 @echo off
 echo.
@@ -141,16 +164,16 @@ echo.
 echo.
 cd /
 cd \Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\
-call gradle bdd -Ptag=@PROJETO@EXPERIMENTO@IMPLANTAR@TAREFA
+call gradle bdd -Ptag=@LOGIN@PROJETO@EXPERIMENTO@IMPLANTAR@TAREFA
 call C:\Bitbucket\PlatIAgro\testes_automaticos\cucumber-geb\build\reports\cucumber\cucumber-html-reports\overview-features.html
 pause
 goto menu
 
-:opcao6
+:opcao7
 cls
 exit
 
-:opcao7
+:opcao8
 echo.
 echo ===============================================
 echo * Opcao Invalida! Escolha outra opcao do menu *

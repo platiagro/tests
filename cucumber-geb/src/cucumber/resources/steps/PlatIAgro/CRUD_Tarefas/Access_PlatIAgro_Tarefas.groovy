@@ -10,12 +10,25 @@ Dado(/que o usuário demande a abertura do browser/) { ->
 }
 
 E(/conectar a plataforma PlatIAgro/){ ->
+  to PageLogin
 
-  to PageTarefa
+  waitFor(30){
+    page.user.value('platiagro')
+  }
+
+  waitFor(30){
+    page.senha.value('platiagro1234')
+  }
+
+  waitFor(30){
+    page.btnInput.click()
+  }
 
 }
 
 Quando(/acessar a página de Tarefas/){ ->
+  page.switchTo(PageTarefa)
+  at PageTarefa
 
   waitFor(10){
     page.menuTarefa.click()
@@ -24,7 +37,6 @@ Quando(/acessar a página de Tarefas/){ ->
 }
 
 Então(/a tela inicial da página {string} será exibida com êxito/) { String pagTarefas ->
-  at PageTarefa
 
   def pagTasks
 

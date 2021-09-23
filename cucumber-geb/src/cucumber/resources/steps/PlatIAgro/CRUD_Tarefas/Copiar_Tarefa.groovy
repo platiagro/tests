@@ -16,17 +16,17 @@ Dado(/que o usuário acione o botão Mais, localizado na coluna Ação, de uma d
   }
 
   waitFor(10) {
-    $(By.xpath("//*[contains(@title, '4')]")).click()
+    $(By.xpath("//*[contains(@title, '5')]")).click()
   }
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
                        
-  def desc = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[2]/span")).text()
+  def desc = $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/span")).text()
   repo.add("Descrição Copiada", desc)
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()          
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button")).click()          
   }
 
 }
@@ -97,13 +97,13 @@ E(/a cópia da tarefa criada será adicionada na lista de tarefas de acordo com 
   }
 
   waitFor(30) {
-    $(By.xpath("//*[contains(@title, '4')]")).click()
+    $(By.xpath("//*[contains(@title, '5')]")).click()
   }
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   def tarefaNome = repo.get("Tarefa Copiada")
   def copyDesc = repo.get("Descrição Copiada")
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[1]/div/button/span/span[text()='"+tarefaNome+"']"))).isDisplayed();
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[2]/span[text()='"+copyDesc+"']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/span[text()='"+copyDesc+"']"))).isDisplayed();
    
 }

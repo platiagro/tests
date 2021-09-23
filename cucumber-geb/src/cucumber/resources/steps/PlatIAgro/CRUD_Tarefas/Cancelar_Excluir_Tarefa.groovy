@@ -15,14 +15,14 @@ Dado(/que o usuário, na coluna Ação da lista, clique em Excluir uma Tarefa/) 
   }
 
   waitFor(10) {
-    $(By.xpath("//*[contains(@title, '4')]")).click()
+    $(By.xpath("//*[contains(@title, '5')]")).click()
   }
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button")).click()
   }
 
   waitFor(10){
@@ -64,8 +64,8 @@ Então (/a operação será cancelada/) { ->
 E(/nenhuma tarefa será excluída/) { ->
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
-  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[1]/div/button/span/span[text()='Tarefa em branco - 1']"))).isDisplayed();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/div/button/span/span[text()='Tarefa em branco - 1']"))).isDisplayed();
 
-  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[1]/div/button/span/span[text()='Tarefa em branco - 1']")).isDisplayed()
+  assert $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/div/button/span/span[text()='Tarefa em branco - 1']")).isDisplayed()
 
 }

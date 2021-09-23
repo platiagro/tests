@@ -15,7 +15,7 @@ Dado(/que o usuário escolha uma das Tarefas da lista para editar/) { ->
   }
 
   waitFor(10) {
-    $(By.xpath("//*[contains(@title, '4')]")).click()
+    $(By.xpath("//*[contains(@title, '5')]")).click()
   }
 
   def nomeTar = (String)FileUtils.readLines(new File(System.getProperty("user.dir") + "/src/cucumber/resources/helper/CRUD_Tarefas_dataBase/Registros.txt")).get(10).substring(30).split("\\|")[0].trim();

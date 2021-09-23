@@ -17,14 +17,14 @@ Dado(/que o usuário clique em Excluir, na coluna Ação, de uma Tarefa constant
   }
 
   waitFor(10) {
-    $(By.xpath("//*[contains(@title, '4')]")).click()
+    $(By.xpath("//*[contains(@title, '5')]")).click()
   }
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-table-content"))).isDisplayed();
 
   waitFor(10) {
-    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()
+    $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button")).click()
   }
 
   waitFor(10){
@@ -68,7 +68,7 @@ Então (/a tarefa será excluída da lista/) { ->
 
   for (int i=0; i<=1; i++){
     waitFor(10) {
-      $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[9]/td[4]/div/div[3]/button")).click()
+      $(By.xpath("//*[@id='root']/section/section/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[1]/td[4]/div/div[3]/button")).click()
     }
 
     waitFor(10){

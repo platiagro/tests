@@ -21,15 +21,6 @@ import java.util.TimeZone
 
 import helper.utility.NumberGerador
 
-/*import org.sikuli.script.Key
-import org.sikuli.script.Match
-import org.sikuli.script.Pattern
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;*/
-
 FileWriter reg;
 Date now = new Date();
 SimpleDateFormat fmtDate = new SimpleDateFormat("dd/MM/yyyy");
@@ -237,93 +228,6 @@ Quando(/o usuário selecionar o Menu Conjunto de Dados/) { ->
 E(/selecionar e arrastar o operador Upload de arquivos para o fluxo/) { ->
 
   Thread.sleep(1000)
-      /*def simulateDragDrop = '''
-        function createCustomEvent(type) {
-            var event = new CustomEvent("CustomEvent");
-            event.initCustomEvent(type, true, true, null);
-            event.dataTransfer = {
-                data: { pos: {x:0, y:2}
-                },
-                setData: function(type, val) {
-                    this.data[type] = val;
-                },
-                getData: function(type) {
-                    return this.data[type];
-
-                },
-           
-                dropEffect: 'move'
-           
-            };
-            return event;
-        }
-
-        function dispatchEvent(node, type, event) {
-            console.log(node); 
-           
-            console.log(event);
-           
-            if (node.dispatchEvent) {
-                return node.dispatchEvent(event);
-            }
-            if (node.fireEvent) {
-                return node.fireEvent("on" + type, event);
-            }
-        }
-
-        function simulateDragDrop(sourceNode, destinationNode) {
-            var EVENT_TYPES = { 
-                DRAG_END: 'dragend', mousemove: 'mousemove',
-                DRAG_START: 'dragstart',
-                DROP: 'drop'
-            };
-
-            var event = createCustomEvent(EVENT_TYPES.DRAG_START);
-            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event);
-            
-            console.log (event.dataTransfer);
-            //event.dataTransfer.setData() = {x:0, y:2};
-
-            var mousemoveEvent = document.createEvent('MouseEvent');
-            mousemoveEvent.initMouseEvent(EVENT_TYPES.mousemove, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
-            dispatchEvent(sourceNode, EVENT_TYPES.mousemove, mousemoveEvent);
-            
-            var dropEvent = createCustomEvent(EVENT_TYPES.DROP);
-            dropEvent.dataTransfer = event.dataTransfer;
-            dispatchEvent(destinationNode, EVENT_TYPES.DROP, dropEvent);
-
-            var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END);
-            dragEndEvent.dataTransfer = event.dataTransfer;
-            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent);
-        }
-
-        var source = document.getElementsByClassName('drag-icon')[1];
-        var destination = document.getElementsByClassName('react-flow')[0];
-        simulateDragDrop(source, destination);
-      '''
-      browser.driver.executeScript(simulateDragDrop)*/
-
-  /*WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[2]/ul/li[2]/div/div[2]/span"));
-  Actions action = new Actions(browser.driver);
-  action.clickAndHold(elementoBase).build().perform();*/
- 
-  /*Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image1.png");
-  Pattern image2 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image2.png");
-  Pattern image3 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image3.png");
-
-  screen.dragDrop(image1, image2);
-
-  Match m1 = screen.exists(image2);
-  Match m2 = screen.exists(image3);
-	while (m1 != null && m2 == null) {
-    action.clickAndHold(elementoBase).build().perform();
-    screen.dragDrop(image1, image2);
-    screen.wait(image3, 10);
-    Match m3 = screen.exists(image3);
-    if (m3 != null) {
-      break;
-    }
-	}*/
   
   WebElement source = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[2]/ul/li[2]/div/div[2]/span"));
   WebElement destination = browser.driver.findElement(By.cssSelector("#root > section > section > section > main > section > main > div.custom-flow > div.experiment-flow > div > div.OperatorsEmptyContainer.experiment-flow-empty-operators > img"));
@@ -378,7 +282,5 @@ Então(/a tela de visualização de dados vai ser aberta/) { ->
   assert $(By.className("ant-modal-content")).isDisplayed() 
   
   assert $(By.xpath("//*[contains(text(), 'Visualizar dados')]")).toString()
-
-  Thread.sleep(2000)
 
 }

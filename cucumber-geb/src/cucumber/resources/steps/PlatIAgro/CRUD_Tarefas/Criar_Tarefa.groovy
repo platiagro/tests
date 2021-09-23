@@ -119,7 +119,7 @@ E(/a tarefa criada será adicionada na lista de tarefas de acordo com a ordenaç
   }
 
   waitFor(30) {
-    $(By.xpath("//*[contains(@title, '4')]")).click()
+    $(By.xpath("//*[contains(@title, '5')]")).click()
   }
 
   WebDriverWait wait = new WebDriverWait(browser.driver, 10);

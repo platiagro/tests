@@ -13,15 +13,6 @@ import org.openqa.selenium.interactions.Actions
 import org.testng.Assert
 import org.apache.commons.io.FileUtils
 
-/*import org.sikuli.script.Key
-import org.sikuli.script.Match
-import org.sikuli.script.Pattern
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;*/
-
 String filePath = System.getProperty ('user.dir')
 String caminho = '/src/cucumber/resources/files/'
 
@@ -61,84 +52,6 @@ E(/abra o menu Engenharia de Atributos/) { ->
 }
 
 E(/selecione a tarefa Seleção Manual de Atributos para adicionar ao fluxo/) { ->
-
-  /*Thread.sleep(2000)
-      def simulateDragDrop = '''
-        function createCustomEvent(type) {
-            var event = new CustomEvent("CustomEvent");
-            event.initCustomEvent(type, true, true, null);
-            event.dataTransfer = {
-                data: {
-                },
-                setData: function(type, val) {
-                    this.data[type] = val;
-                },
-                getData: function(type) {
-                    return this.data[type];
-                }
-            };
-            return event;
-        }
-
-        function dispatchEvent(node, type, event) {
-            
-            if (node.dispatchEvent) {
-                return node.dispatchEvent(event);
-            }
-            
-            if (node.fireEvent) {
-                return node.fireEvent("on" + type, event);
-            }
-        }
-
-        function simulateDragDrop(sourceNode, destinationNode) {
-            var EVENT_TYPES = {
-                DRAG_END: 'dragend',
-                DRAG_START: 'dragstart',
-                DROP: 'drop'
-            };
-
-            var event = createCustomEvent(EVENT_TYPES.DRAG_START);
-            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event);
-
-            var dropEvent = createCustomEvent(EVENT_TYPES.DROP);
-            dropEvent.dataTransfer = event.dataTransfer;
-            dispatchEvent(destinationNode, EVENT_TYPES.DROP, dropEvent);
-
-            var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END);
-            dragEndEvent.dataTransfer = event.dataTransfer;
-            dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent);
-        }
-
-         
-        var source = document.getElementsByClassName('drag-icon')[8];
-        var destination = document.getElementsByClassName('react-flow')[0]
-        simulateDragDrop(source, destination);
-      '''
-      browser.driver.executeScript(simulateDragDrop)*/
-
-  /*screen.type(Key.PAGE_DOWN);
-
-  WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[5]/ul/li[11]/div/div[2]/span"));
-  Actions action = new Actions(browser.driver);
-  action.clickAndHold(elementoBase).build().perform();
-
-  Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image4.png");
-  Pattern image2 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image5.png");
-  Pattern image3 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image6.png");
-
-  screen.dragDrop(image1, image2);
-  screen.waitVanish(image3);
-
-  Match m1 = screen.exists(image3);
-	while (m1 == null) {
-    action.clickAndHold(elementoBase).build().perform();
-    screen.dragDrop(image1, image2);
-    Match m2 = screen.exists(image3);
-    if (m2 != null) {
-      break;
-    }
-	}*/
 
   Thread.sleep(1000)
 
@@ -274,7 +187,5 @@ E(/o usuário poderá visualizar o valor do Dataset e dos Parâmetros/) { ->
   waitFor(30) {
     page.abaParametros.click()
   }
-
-  Thread.sleep(2000)
 
 }
