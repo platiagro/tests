@@ -34,7 +34,7 @@ pipeline {
         choice(
             name: 'GRADLE_BDD_PARAM',
             description: "Parâmetros para a chamada do 'gradle bdd'",
-            choices: ['@PROJETO@EXPERIMENTO@IMPLANTAR@TAREFA', '@PROJETO', '@EXPERIMENTO', '@IMPLANTAR', '@TAREFA'],
+            choices: ['@LOGIN@PROJETO@EXPERIMENTO@IMPLANTAR@TAREFA', '@LOGIN', '@PROJETO', '@EXPERIMENTO', '@IMPLANTAR', '@TAREFA'],
         )               
         string(
             name: 'EMAIL',
