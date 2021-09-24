@@ -138,14 +138,21 @@ Então (/a operação será cancelada, informando que a Tarefa está em uso: {st
   waitFor(10) {
     $(By.xpath("//*[@id='root']/section/aside/div[1]/ul/li[1]/span[1]")).click()
   }
+
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ant-message-notice-content")));
+
   waitFor(10) {
-    //$(By.xpath("//*[@id='root']/section/section/div[2]/div/div/div/div/div/div/div/table/tbody/tr/td[6]/button/span")).click()
-    $(By.cssSelector("tr:nth-child(1) > td:nth-child(6) > button > span")).click()
+    $(By.cssSelector("th.ant-table-cell.ant-table-selection-column > div > label > span > input")).click()
   }
+
+  waitFor(10) {
+    $(By.cssSelector("#root > section > section > div.contentPage > button:nth-child(2)")).click()
+  }
+
   waitFor(10) {
     $(By.xpath("//*[contains(text(), 'Sim')]")).click()
   }
 
-  //wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("myProjectsEmptyPlaceholder")));
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("myProjectsEmptyPlaceholder")));
 
 }
