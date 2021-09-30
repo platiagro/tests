@@ -63,7 +63,7 @@ class PageExperimento extends BasePage {
 
     abaParametros { $(By.xpath("//*[contains(text(), 'Parâmetros')]")) }
 
-    btnJupyter { $(By.className('anticon-code')) }
+    btnJupyter { $(By.cssSelector('div.propertyBlock > div > button:nth-child(2) > span:nth-child(2)')) }
 
     campError { $(By.xpath("//*[@id='id-47a50ad1-bc31-451d-9726-4c0e985464c5']/div[20]/div[3]/div[2]/div/div[2]")) }
 
