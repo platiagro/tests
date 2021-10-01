@@ -60,10 +60,10 @@ pipeline {
                 script {
                     sh '''						
 						echo ""
-						echo " *****************************************"
-						echo "Starting Env. platiagro@awsplatagro02     "
-						echo " *****************************************"
-                        ssh -o "StrictHostKeyChecking=no" platiagro@awsplatiagro02.aquarius.cpqd.com.br "./reinstall.sh"
+						echo " ***************************************** "
+						echo "   Starting Env. platiagro@awsplatagro16   "
+						echo " ***************************************** "
+                        ssh -o "StrictHostKeyChecking=no" platiagro@awsplatiagro16.aquarius.cpqd.com.br "./reinstall.sh"
                         '''						
                 }
                 sleep 10
