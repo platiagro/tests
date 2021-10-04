@@ -15,14 +15,6 @@ import org.apache.commons.io.FileUtils
 
 import helper.utility.NumberGerador
 
-/*import org.sikuli.script.Match
-import org.sikuli.script.Pattern
-import org.sikuli.script.Screen
-import org.sikuli.basics.Settings
-
-Screen screen = new Screen();
-Settings.ActionLogs = null != null;*/
-
 Dado(/que o usuário deseje criar um novo Projeto/) { ->
 
   for (int i=0; i<2; i++){
@@ -116,28 +108,6 @@ Quando(/selecionar o template salvo anteriormente para adicionar ao fluxo/) { ->
   }
 
   Thread.sleep(1000)
-  
-  /*WebElement elementoBase = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[1]/ul/li/div/div[2]/span"));
-  Actions action = new Actions(browser.driver);
-  action.clickAndHold(elementoBase).build().perform();
- 
-  Pattern image1 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image11.png");
-  Pattern image2 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image2.png");
-  Pattern image3 = new Pattern(System.getProperty("user.dir") + "/src/cucumber/resources/helper/images/Image3.png");
-
-  screen.dragDrop(image1, image2);
-
-  Match m1 = screen.exists(image2);
-  Match m2 = screen.exists(image3);
-	while (m1 != null && m2 == null) {
-    action.clickAndHold(elementoBase).build().perform();
-    screen.dragDrop(image1, image2);
-    screen.wait(image3, 10);
-    Match m3 = screen.exists(image3);
-    if (m3 != null) {
-      break;
-    }
-	}*/
 
   WebElement source = browser.driver.findElement(By.xpath("/html/body/div[1]/section/section/section/aside/div/div/ul/li[1]/ul/li/div/div[2]/span"));
   WebElement destination = browser.driver.findElement(By.cssSelector("#root > section > section > section > main > section > main > div.custom-flow > div.experiment-flow > div > div.OperatorsEmptyContainer.experiment-flow-empty-operators > img"));

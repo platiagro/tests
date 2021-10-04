@@ -135,7 +135,7 @@ E(/confira se a função de salvar template estará desabilitada e o botão {str
 
 E(/após a operação sendo concluída verificará que será sinalizada como {string}/) { String success ->
 
-  WebDriverWait wait = new WebDriverWait(browser.driver, 120);
+  WebDriverWait wait = new WebDriverWait(browser.driver, 180);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ant-message-success"))).isDisplayed();
 
   assert $(By.xpath("//*[contains(text(), '"+success+"')]")).text()
