@@ -26,14 +26,14 @@ Cenário: C01 - Criar Projeto - Operação: Criar
  E deverá estar divididos em cinco colunas: 'Nome do Projeto', 'Descrição', 'Tags', 'Última modificação' e 'Ação'
 
 @PROJETO
-Cenário:C02 - Criar Projeto - Operação: Cancelar
+Cenário: C02 - Criar Projeto - Operação: Cancelar
  Dado que o usuário efetue o clique no botão Novo Projeto
  E o sistema abrir um modal com o nome 'Novo Projeto' selecionado
  Quando realizar o clique no botão Cancelar
  Então o modal deve ser resetado e fechado
 
 @PROJETO
-Cenário:C03 - Criar Projeto - Nome repetido
+Cenário: C03 - Criar Projeto - Nome repetido
  Dado que o usuário realize o clique no botão Novo Projeto
  E o sistema demandar a abertura do modal com o nome 'Novo Projeto' selecionado
  E seja apagado o conteúdo do campo nome do projeto
@@ -43,7 +43,7 @@ Cenário:C03 - Criar Projeto - Nome repetido
  Então o sistema deverá informar que 'Já existe um projeto com este nome!'
 
 @PROJETO
-Cenário:C05 - Alterar nome do Projeto - Operação: Salvar Alteração
+Cenário: C04 - Alterar nome do Projeto - Operação: Salvar Alteração
  Dado que o usuário detalhe o Projeto criado anteriormente
  E selecione o botão Editar, ao lado do nome do projeto
  E o sistema abrir um modal, com o atual nome do projeto selecionado
@@ -54,7 +54,7 @@ Cenário:C05 - Alterar nome do Projeto - Operação: Salvar Alteração
  Então o nome e a descrição do projeto serão atualizados
 
 @PROJETO
-Cenário: C06 - Pesquisar Nome do Projeto
+Cenário: C05 - Pesquisar Nome do Projeto
  Dado que o usuário faça a seleção do ícone de pesquisa ao lado da coluna Nome do Projeto
  E que seja aberto um modal
  E inserir o nome de um projeto existente na lista
@@ -62,7 +62,7 @@ Cenário: C06 - Pesquisar Nome do Projeto
  Então o sistema deve apresentar o projeto que possui o nome inserido no campo de pesquisa
 
 @PROJETO
-Cenário: C07 - Pesquisar Nome do Projeto - Cancelar
+Cenário: C06 - Pesquisar Nome do Projeto - Cancelar
  Dado que o usuário selecione o ícone de pesquisa ao lado da coluna Nome do Projeto
  E seja aberto um modal
  Quando inserir o nome do projeto alterado anteriormente
@@ -70,7 +70,7 @@ Cenário: C07 - Pesquisar Nome do Projeto - Cancelar
  Então o sistema deve cancelar a operação fechando o modal
 
 @PROJETO
-Cenário: C08 - Filtrar Projeto - Tags
+Cenário: C07 - Filtrar Projeto - Tags
  Dado que o usuário faça a seleção do ícone ao lado da coluna Tags
  E que seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
  E demandar a seleção da Tag Experimentação
@@ -78,7 +78,7 @@ Cenário: C08 - Filtrar Projeto - Tags
  Então o sistema deverá exibir os projetos que possuem 'Experimentação'
 
 @PROJETO
-Cenário: C09 - Filtrar Projeto - Tags - Resetar
+Cenário: C08 - Filtrar Projeto - Tags - Resetar
  Dado que o usuário selecione o ícone ao lado da coluna Tags
  E seja aberto um modal com as opções de tags: 'Experimentação', 'Pré-implantação' e 'Implantado'
  E selecionar a Tag Experimentação
@@ -86,7 +86,7 @@ Cenário: C09 - Filtrar Projeto - Tags - Resetar
  Então o modal das Tags será fechado
 
 @PROJETO
-Cenário: C10 - Excluir Projeto - Página Detalhes do Projeto
+Cenário: C09 - Excluir Projeto - Página Detalhes do Projeto
  Dado que o usuário faça o clique no botão Novo Projeto
  E o sistema demandar a abertura de um modal com o nome 'Novo Projeto' selecionado
  E suceder em limpar o campo nome do projeto
@@ -102,7 +102,7 @@ Cenário: C10 - Excluir Projeto - Página Detalhes do Projeto
  E o usuário será direcionado para a página 'Meus projetos'
 
 @PROJETO
-Cenário: C11 - Excluir Projeto - Detalhes - Cancelar
+Cenário: C10 - Excluir Projeto - Detalhes - Cancelar
 Dado que o usuário acesse a página Detalhes do projeto selecionado
 E acionar o botão Excluir
 E o sistema revelar uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir esse projeto?'
@@ -110,7 +110,7 @@ Quando o usuário efetuar o clique no botão Não
 Então o projeto não será excluído
 
 @PROJETO
-Cenário: C12 - Excluir Projeto - Ação - Cancelar
+Cenário: C11 - Excluir Projeto - Ação - Cancelar
  Dado que o usuário efetue a seleção de um dos projetos da lista
  E na coluna ação seletar a opção Excluir
  E o sistema apresentar uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir esse projeto?'
@@ -118,7 +118,7 @@ Cenário: C12 - Excluir Projeto - Ação - Cancelar
  Então o projeto não será excluído e permanecerá na lista de projetos
 
 @PROJETO
-Cenário: C13 - Excluir Projeto - Ação Excluir
+Cenário: C12 - Excluir Projeto - Ação Excluir
  Dado que o usuário selecione um dos projetos da lista
  E na coluna ação selecionar a opção Excluir
  E o sistema exibir uma pop-up com a seguinte mensagem: 'Você tem certeza que deseja excluir esse projeto?'
@@ -126,7 +126,7 @@ Cenário: C13 - Excluir Projeto - Ação Excluir
  Então o projeto será excluído da lista de Projetos
 
 @PROJETO
-Cenário:C14 - Excluir N Projetos - Cancelar
+Cenário: C13 - Excluir N Projetos - Cancelar
  Dado que o usuário selecione vários projetos da lista
  E clicar no botão Excluir Selecionados
  E o sistema iniciar uma pop-up com a seguinte mensagem: 'Excluir projetos selecionados?'
@@ -134,7 +134,7 @@ Cenário:C14 - Excluir N Projetos - Cancelar
  Então nenhum dos projetos selecionados será excluído
 
 @PROJETO
-Cenário:C15 - Excluir N Projetos - Efetivar Exclusão
+Cenário: C14 - Excluir N Projetos - Efetivar Exclusão
  Dado que o usuário selecione vários projetos existentes na lista
  E na sequência clicar no botão Excluir Selecionados
  E o sistema encetar uma pop-up com a seguinte mensagem: 'Excluir projetos selecionados?'
